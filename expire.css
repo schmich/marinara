@@ -68,24 +68,14 @@ body {
   position: relative;
 }
 .button.break {
-  background: #00d618; /* Old browsers */
-  background: -moz-linear-gradient(top,  #00d618 0%, #2da000 95%, #2da000 100%); /* FF3.6+ */
+  background: #00d618;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00d618), color-stop(95%,#2da000), color-stop(100%,#2da000)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #00d618 0%,#2da000 95%,#2da000 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #00d618 0%,#2da000 95%,#2da000 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #00d618 0%,#2da000 95%,#2da000 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #00d618 0%,#2da000 95%,#2da000 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00d618', endColorstr='#2da000',GradientType=0 ); /* IE6-9 */
 }
 .button.focus {
-  background: #ed510f; /* Old browsers */
-  background: -moz-linear-gradient(top,  #ed510f 0%, #b51a00 95%, #b51a00 100%); /* FF3.6+ */
+  background: #ed510f;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed510f), color-stop(95%,#b51a00), color-stop(100%,#b51a00)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed510f', endColorstr='#b51a00',GradientType=0 ); /* IE6-9 */
 }
 .button.break:active {
   background: #2da000;
