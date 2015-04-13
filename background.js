@@ -17,7 +17,7 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
 
     this.updateInterval = setInterval(function() {
       elapsedMin++;
-      updateBadge(durationMin - elapsedMin, badgeColor);
+      updateBadge(Math.ceil(durationMin - elapsedMin), badgeColor);
     }, 60 * 1000);
 
     this.expireTimeout = setTimeout(function() {
@@ -30,7 +30,7 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
       expireCallback();
     }, durationMin * 60 * 1000);
 
-    updateBadge(durationMin, badgeColor);
+    updateBadge(Math.ceil(durationMin), badgeColor);
   };
 
   this.stop = function() {
@@ -116,15 +116,28 @@ function Pomo() {
     chrome.tabs.create({ url: chrome.extension.getURL('expire.html') });
   }
 
+  function notify(title, message) {
+    var notification = {
+      type: 'basic',
+      title: title,
+      message: message,
+      iconUrl: 'icon.png'
+    };
+
+    chrome.notifications.create('', notification, function() { });
+  }
+
   function loadTimers() {
     self.getDuration(function(focusDuration, breakDuration) {
       focusTimer = new CountdownTimer(focusDuration, '#cc0000', function() {
         focusNext = false;
+        notify('Pomo: Take a break!', "Start your break when you're ready");
         showExpirePage();
       });
    
       breakTimer = new CountdownTimer(breakDuration, '#00cc00', function() {
         focusNext = true;
+        notify('Pomo: Break finished', "Start your focus session when you're ready");
         showExpirePage();
       });
     });
