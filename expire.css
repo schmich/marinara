@@ -1,3 +1,6 @@
+body, html {
+  height: 100%;
+}
 body {
   background: #f3f3f3;
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f3f3f3), color-stop(100%,#dddddd));
@@ -12,8 +15,8 @@ body {
   width: 80%;
   max-width: 600px;
   min-width: 400px;
-  top: 20%;
   margin: 0 auto;
+  top: 20%;
   text-align: center;
 }
 .dialog::after {
