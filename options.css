@@ -1,0 +1,9 @@
+body {
+  padding: 10px;
+}
+.field {
+  margin-bottom: 10px;
+}
+p {
+  display: inline-block;
+}

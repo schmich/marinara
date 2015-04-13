@@ -1,8 +1,6 @@
 var defaultSettings = {
-  duration: {
-    focus: 1,
-    break: 1
-  }
+  focusDuration: 25,
+  breakDuration: 5
 };
 
 function CountdownTimer(durationMin, badgeColor, expireCallback) {
@@ -66,6 +64,7 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
 }
 
 function Pomo() {
+  var self = this;
   var focusNext = true;
   var focusTimer;
   var breakTimer;
@@ -92,36 +91,46 @@ function Pomo() {
 
   this.getDuration = function(callback) {
     chrome.storage.sync.get(function(result) {
-      if (!result.duration) {
+      if (result.focusDuration === undefined || result.breakDuration === undefined) {
         chrome.storage.sync.set(defaultSettings, function() {
-          callback(defaultSettings.duration.focus, defaultSettings.duration.break);
+          callback(defaultSettings.focusDuration, defaultSettings.breakDuration);
         });
       } else {
-        callback(result.duration.focus, result.duration.break);
+        callback(result.focusDuration, result.breakDuration);
       }
     });
   };
 
-  this.setDuration = function(focusDuration, breakDuration) {
-    var settings = { duration: { focus: focusDuration, break: breakDuration } };
-    chrome.storage.sync.set(settings);
+  this.setDuration = function(focusDuration, breakDuration, callback) {
+    focusTimer.stop();
+    breakTimer.stop();
+
+    var settings = { focusDuration: focusDuration, breakDuration: breakDuration };
+    chrome.storage.sync.set(settings, function() {
+      loadTimers();
+      callback();
+    });
   };
 
   function showExpirePage() {
     chrome.tabs.create({ url: chrome.extension.getURL('expire.html') });
   }
 
-  this.getDuration(function(focusDuration, breakDuration) {
-    focusTimer = new CountdownTimer(focusDuration, '#cc0000', function() {
-      focusNext = false;
-      showExpirePage();
+  function loadTimers() {
+    self.getDuration(function(focusDuration, breakDuration) {
+      focusTimer = new CountdownTimer(focusDuration, '#cc0000', function() {
+        focusNext = false;
+        showExpirePage();
+      });
+   
+      breakTimer = new CountdownTimer(breakDuration, '#00cc00', function() {
+        focusNext = true;
+        showExpirePage();
+      });
     });
- 
-    breakTimer = new CountdownTimer(breakDuration, '#00cc00', function() {
-      focusNext = true;
-      showExpirePage();
-    });
-  });
+  }
+
+  loadTimers();
 }
 
 var pomo = new Pomo();
@@ -174,6 +183,37 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
     }
   } else if (request.command == 'start-session') {
     pomo.cycleState();
+    respond({});
+  } else if (request.command == 'get-duration') {
+    pomo.getDuration(function(focusDuration, breakDuration) {
+      respond({ focusDuration: focusDuration, breakDuration: breakDuration });
+    });
+  } else if (request.command == 'set-duration') {
+    var focusDuration = request.focusDuration.trim();
+    var breakDuration = request.breakDuration.trim();
+
+    if (!focusDuration) {
+      respond({ error: 'Focus duration is required.' });
+      return true;
+    } else if (!breakDuration) {
+      respond({ error: 'Break duration is required.' });
+      return true;
+    }
+
+    var focusParsed = +focusDuration;
+    var breakParsed = +breakDuration;
+
+    if (focusParsed <= 0 || isNaN(focusParsed)) {
+      respond({ error: 'Focus duration must be a positive number.' });
+      return true;
+    } else if (breakParsed <= 0 || isNaN(breakParsed)) {
+      respond({ error: 'Break duration must be a positive number.' });
+      return true;
+    }
+
+    pomo.setDuration(focusParsed, breakParsed, function() {
+      respond({});
+    });
   }
 
   return true;
