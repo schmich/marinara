@@ -1,0 +1,30 @@
+{
+  "name": "Pomo",
+  "version": "0.1",
+  "description": "",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "tabs",
+    "storage",
+    "http://*/",
+    "https://*/"
+  ],
+  "browser_action": {
+    "default_title": "Pomo",
+    "default_icon": "icon-bw.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "64": "icon.png",
+    "128": "icon.png"
+  },
+  "web_accessible_resources": [],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
