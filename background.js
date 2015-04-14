@@ -23,11 +23,13 @@ function Timer(durationSec, tickSec) {
     this.expireTimeout = createExpireTimeout(durationSec);
     this.tickInterval = createTickInterval(tickSec);
 
+    this.remainingSec = durationSec;
+
     state = 'running';
     this.startTime = Date.now();
     this.emitEvent('start', [{
       elapsed: 0,
-      remaining: durationSec
+      remaining: this.remainingSec
     }]);
   };
 
@@ -56,13 +58,13 @@ function Timer(durationSec, tickSec) {
     clearInterval(this.tickInterval);
     clearTimeout(this.expireTimeout);
 
-    var elapsedSec = Date.now() - this.startTime;
-    this.remainingSec = durationSec - elapsedSec;
+    var intervalSec = (Date.now() - this.startTime) / 1000;
+    this.remainingSec -= intervalSec;
 
     state = 'paused';
     this.startTime = null;
     this.emitEvent('pause', [{
-      elapsed: elapsedSec,
+      elapsed: durationSec - this.remainingSec,
       remaining: this.remainingSec
     }]);
   };
@@ -112,7 +114,7 @@ function Timer(durationSec, tickSec) {
 
   function createTickInterval(seconds) {
     return setInterval(function() {
-      var elapsedSec = Date.now() - self.startTime;
+      var elapsedSec = (Date.now() - self.startTime) / 1000;
       var remainingSec = durationSec - elapsedSec;
 
       self.emitEvent('tick', [{
@@ -125,69 +127,114 @@ function Timer(durationSec, tickSec) {
 
 Timer.prototype = Object.create(EventEmitter.prototype);
 
-function BadgeTimer(durationMin, badgeTitle, badgeColor) {
-  var timer = new Timer(durationMin * 60, 60);
+function BadgeObserver() {
+}
 
+BadgeObserver.observe = function(timer, title, color) {
   timer.addListener('start', function(state) {
-    updateBadge(Math.round(state.remaining / 60));
+    updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
   timer.addListener('tick', function(state) {
-    updateBadge(Math.round(state.remaining / 60));
+    updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
   timer.addListener('stop', function() {
-    updateBadge(null);
+    removeBadge();
+  });
+
+  timer.addListener('pause', function() {
+    updateBadge({ text: '—', title: 'Paused' });
+  });
+
+  timer.addListener('resume', function(state) {
+    updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
   timer.addListener('expire', function() {
-    updateBadge(null);
+    removeBadge();
   });
 
-  this.start = function() {
-    return timer.start();
-  };
-
-  this.stop = function() {
-    return timer.stop();
-  };
-
-  this.pause = function() {
-    return timer.pause();
-  };
-
-  this.resume = function() {
-    return timer.resume();
-  };
-
-  this.reset = function() {
-    return timer.reset();
-  };
-
-  this.state = function() {
-    return timer.state();
-  };
-
-  this.addListener = function(eventName, handler) {
-    timer.addListener(eventName, handler);
-    return this;
-  };
-
-  function updateBadge(remainingMin) {
-    var text;
-    if (remainingMin === null) {
-      text = '';
-      title = '';
+  function updateBadge(options) {
+    var minutes = options.minutes;
+    if (minutes != null) {
+      text = ((minutes == 0) ? '<1' : minutes)  + 'm';
+      badgeTitle = title + ': ' + minutes + 'm remaining.';
     } else {
-      text = ((remainingMin == 0) ? '<1' : remainingMin)  + 'm';
-      title = badgeTitle + ' ' + remainingMin + 'm remaining.';
+      text = options.text;
+      badgeTitle = title + ': ' + options.title;
     }
 
-    chrome.browserAction.setTitle({ title: title });
+    chrome.browserAction.setTitle({ title: badgeTitle });
     chrome.browserAction.setBadgeText({ text: text });
-    chrome.browserAction.setBadgeBackgroundColor({ color: badgeColor });
+    chrome.browserAction.setBadgeBackgroundColor({ color: color });
   };
+
+  function removeBadge() {
+    chrome.browserAction.setTitle({ title: '' });
+    chrome.browserAction.setBadgeText({ text: '' });
+  }
 }
+
+function ContextMenuObserver() {
+}
+
+ContextMenuObserver.observe = function(pomo, timer) {
+  timer.addListener('start', function() {
+    addPause();
+    removeResume();
+  });
+
+  timer.addListener('pause', function() {
+    removePause();
+    addResume();
+  });
+
+  timer.addListener('resume', function() {
+    addPause();
+    removeResume();
+  });
+
+  timer.addListener('stop', function() {
+    removePause();
+    removeResume();
+  });
+
+  timer.addListener('expire', function() {
+    removePause();
+    removeResume();
+  });
+
+  function addPause() {
+    chrome.contextMenus.create({
+      id: 'pause',
+      title: 'Pause',
+      contexts: ['browser_action'],
+      onclick: function() {
+        pomo.pause();
+      }
+    });
+  }
+
+  function removePause() {
+    chrome.contextMenus.remove('pause', function() { });
+  }
+
+  function addResume() {
+    chrome.contextMenus.create({
+      id: 'resume',
+      title: 'Resume',
+      contexts: ['browser_action'],
+      onclick: function() {
+        pomo.resume();
+      }
+    });
+  }
+
+  function removeResume() {
+    chrome.contextMenus.remove('resume', function() { });
+  }
+};
 
 function Pomo() {
   var self = this;
@@ -214,6 +261,22 @@ function Pomo() {
     }
   };
 
+  this.pause = function() {
+    if (focusTimer.state() === 'running') {
+      focusTimer.pause();
+    } else if (breakTimer.state() === 'running') {
+      breakTimer.pause();
+    }
+  };
+
+  this.resume = function() {
+    if (focusTimer.state() == 'paused') {
+      focusTimer.resume();
+    } else if (breakTimer.state() == 'paused') {
+      breakTimer.resume();
+    }
+  }
+
   this.focusNext = function() {
     return focusNext;
   };
@@ -232,7 +295,7 @@ function Pomo() {
 
   this.setSettings = function(settings, callback) {
     chrome.storage.sync.set(settings, function() {
-      loadTimers();
+      createTimers();
       callback();
     });
   };
@@ -252,13 +315,15 @@ function Pomo() {
     chrome.notifications.create('', notification, function() { });
   }
 
-  function loadTimers() {
+  function createTimers() {
     self.getSettings(function(settings) {
       if (focusTimer) {
         focusTimer.stop();
       }
 
-      focusTimer = new BadgeTimer(settings.focusDuration, 'Focus:', '#cc0000');
+      focusTimer = new Timer(settings.focusDuration * 60, 60);
+      BadgeObserver.observe(focusTimer, 'Focus', '#cc0000');
+      ContextMenuObserver.observe(self, focusTimer);
       focusTimer.addListener('expire', function() {
         focusNext = false;
 
@@ -275,7 +340,9 @@ function Pomo() {
         breakTimer.stop();
       }
    
-      breakTimer = new BadgeTimer(settings.breakDuration, 'Break:', '#00cc00');
+      breakTimer = new Timer(settings.breakDuration * 60, 60);
+      BadgeObserver.observe(breakTimer, 'Break', '#00cc00');
+      ContextMenuObserver.observe(self, breakTimer);
       breakTimer.addListener('expire', function() {
         focusNext = true;
 
@@ -290,19 +357,12 @@ function Pomo() {
     });
   }
 
-  loadTimers();
+  createTimers();
 }
 
-var pomo = new Pomo();
-
 chrome.contextMenus.removeAll();
-chrome.contextMenus.create({
-  id: 'pomo-pause',
-  title: 'Pause',
-  contexts: ['browser_action'],
-  onclick: function() {
-  }
-});
+
+var pomo = new Pomo();
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   var id = chrome.runtime.id;
