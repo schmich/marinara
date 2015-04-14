@@ -1,6 +1,8 @@
 var defaultSettings = {
   focusDuration: 25,
-  breakDuration: 5
+  breakDuration: 5,
+  showDesktopNotification: true,
+  showNewTabNotification: true
 };
 
 function CountdownTimer(durationMin, badgeTitle, badgeColor, expireCallback) {
@@ -92,23 +94,22 @@ function Pomo() {
     return focusNext;
   };
 
-  this.getDuration = function(callback) {
+  this.getSettings = function(callback) {
     chrome.storage.sync.get(function(result) {
-      if (result.focusDuration === undefined || result.breakDuration === undefined) {
+      if (Object.keys(result).length == 0) {
         chrome.storage.sync.set(defaultSettings, function() {
-          callback(defaultSettings.focusDuration, defaultSettings.breakDuration);
+          callback(defaultSettings);
         });
       } else {
-        callback(result.focusDuration, result.breakDuration);
+        callback(result);
       }
     });
   };
 
-  this.setDuration = function(focusDuration, breakDuration, callback) {
+  this.setSettings = function(settings, callback) {
     focusTimer.stop();
     breakTimer.stop();
 
-    var settings = { focusDuration: focusDuration, breakDuration: breakDuration };
     chrome.storage.sync.set(settings, function() {
       loadTimers();
       callback();
@@ -131,17 +132,29 @@ function Pomo() {
   }
 
   function loadTimers() {
-    self.getDuration(function(focusDuration, breakDuration) {
-      focusTimer = new CountdownTimer(focusDuration, 'Focus:', '#cc0000', function() {
+    self.getSettings(function(settings) {
+      focusTimer = new CountdownTimer(settings.focusDuration, 'Focus:', '#cc0000', function() {
         focusNext = false;
-        notify('Pomo: Take a break!', "Start your break when you're ready");
-        showExpirePage();
+
+        if (settings.showDesktopNotification) {
+          notify('Pomo: Take a break!', "Start your break when you're ready");
+        }
+
+        if (settings.showNewTabNotification) {
+          showExpirePage();
+        }
       });
    
-      breakTimer = new CountdownTimer(breakDuration, 'Break:', '#00cc00', function() {
+      breakTimer = new CountdownTimer(settings.breakDuration, 'Break:', '#00cc00', function() {
         focusNext = true;
-        notify('Pomo: Break finished', "Start your focus session when you're ready");
-        showExpirePage();
+
+        if (settings.showDesktopNotification) {
+          notify('Pomo: Break finished', "Start your focus session when you're ready");
+        }
+
+        if (settings.showNewTabNotification) {
+          showExpirePage();
+        }
       });
     });
   }
@@ -179,20 +192,20 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 chrome.runtime.onMessage.addListener(function(request, sender, respond) {
   if (request.command == 'get-session') {
     if (pomo.focusNext()) {
-      pomo.getDuration(function(focusDuration, _) {
+      pomo.getSettings(function(settings) {
         respond({
           focusNext: true,
           title: 'Break finished',
-          subtitle: "Start your " + focusDuration + " minute focus session when you're ready",
+          subtitle: "Start your " + settings.focusDuration + " minute focus session when you're ready",
           action: 'Start Focusing'
         });
       });
     } else {
-      pomo.getDuration(function(_, breakDuration) {
+      pomo.getSettings(function(settings) {
         respond({
           focusNext: false,
           title: 'Take a break!',
-          subtitle: "Start your " + breakDuration + " minute break when you're ready",
+          subtitle: "Start your " + settings.breakDuration + " minute break when you're ready",
           action: 'Start Break'
         });
       });
@@ -200,13 +213,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
   } else if (request.command == 'start-session') {
     pomo.cycleState();
     respond({});
-  } else if (request.command == 'get-duration') {
-    pomo.getDuration(function(focusDuration, breakDuration) {
-      respond({ focusDuration: focusDuration, breakDuration: breakDuration });
-    });
-  } else if (request.command == 'set-duration') {
-    var focusDuration = request.focusDuration.trim();
-    var breakDuration = request.breakDuration.trim();
+  } else if (request.command == 'get-settings') {
+    pomo.getSettings(respond);
+  } else if (request.command == 'set-settings') {
+    var newSettings = request.settings;
+    var focusDuration = newSettings.focusDuration.trim();
+    var breakDuration = newSettings.breakDuration.trim();
 
     if (!focusDuration) {
       respond({ error: 'Focus duration is required.' });
@@ -227,7 +239,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
       return true;
     }
 
-    pomo.setDuration(focusParsed, breakParsed, function() {
+    newSettings.focusDuration = focusParsed;
+    newSettings.breakDuration = breakParsed;
+
+    pomo.setSettings(newSettings, function() {
       respond({});
     });
   }

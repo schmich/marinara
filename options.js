@@ -1,10 +1,14 @@
 function loadOptions() {
-  chrome.runtime.sendMessage({ command: 'get-duration' }, function(settings) {
+  chrome.runtime.sendMessage({ command: 'get-settings' }, function(settings) {
     var focusElem = document.getElementById('focus-duration');
     var breakElem = document.getElementById('break-duration');
+    var desktopNotification = document.getElementById('desktop-notification');
+    var newTabNotification = document.getElementById('new-tab-notification');
 
     focusElem.value = settings.focusDuration;
     breakElem.value = settings.breakDuration;
+    desktopNotification.checked = settings.showDesktopNotification;
+    newTabNotification.checked = settings.showNewTabNotification;
   });
 }
 
@@ -14,14 +18,17 @@ function saveOptions() {
 
   var focusElem = document.getElementById('focus-duration');
   var breakElem = document.getElementById('break-duration');
-
-  var focusDuration = focusElem.value;
-  var breakDuration = breakElem.value;
+  var desktopNotification = document.getElementById('desktop-notification');
+  var newTabNotification = document.getElementById('new-tab-notification');
 
   var message = {
-    command: 'set-duration',
-    focusDuration: focusDuration,
-    breakDuration: breakDuration
+    command: 'set-settings',
+    settings: {
+      focusDuration: focusElem.value,
+      breakDuration: breakElem.value,
+      showDesktopNotification: desktopNotification.checked,
+      showNewTabNotification: newTabNotification.checked
+    }
   };
 
   chrome.runtime.sendMessage(message, function(result) {

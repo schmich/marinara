@@ -4,6 +4,11 @@ body {
 .field {
   margin-bottom: 10px;
 }
+input[type="checkbox"] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+}
 p {
   display: inline-block;
 }
