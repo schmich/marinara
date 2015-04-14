@@ -262,32 +262,28 @@ function Pomo() {
   var focusTimer;
   var breakTimer;
 
-  this.cycleState = function() {
-    if (focusTimer.state() !== 'stopped') {
-      focusTimer.stop();
-      focusNext = false;
-    } else if (breakTimer.state() !== 'stopped') {
-      breakTimer.stop();
-      focusNext = true;
-    } else {
-      focusTimer.stop();
-      breakTimer.stop();
+  this.startSession = function() {
+    focusTimer.stop();
+    breakTimer.stop();
 
-      if (focusNext) {
-        focusTimer.start();
-      } else {
-        breakTimer.start();
-      }
+    if (focusNext) {
+      focusTimer.start();
+    } else {
+      breakTimer.start();
     }
   };
 
   this.browserAction = function() {
-    if (focusTimer.state() === 'paused') {
+    if (focusTimer.state() === 'running') {
+      focusTimer.pause();
+    } else if (breakTimer.state() === 'running') {
+      breakTimer.pause();
+    } else if (focusTimer.state() === 'paused') {
       focusTimer.resume();
     } else if (breakTimer.state() === 'paused') {
       breakTimer.resume();
     } else {
-      this.cycleState();
+      this.startSession();
     }
   };
 
@@ -495,7 +491,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
       });
     }
   } else if (request.command == 'start-session') {
-    pomo.cycleState();
+    pomo.startSession();
     respond({});
   } else if (request.command == 'get-settings') {
     pomo.getSettings(respond);
