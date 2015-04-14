@@ -305,9 +305,9 @@ function Pomo() {
   };
 
   this.resume = function() {
-    if (focusTimer.state() == 'paused') {
+    if (focusTimer.state() === 'paused') {
       focusTimer.resume();
-    } else if (breakTimer.state() == 'paused') {
+    } else if (breakTimer.state() === 'paused') {
       breakTimer.resume();
     }
   };
@@ -368,46 +368,58 @@ function Pomo() {
         focusTimer.stop();
       }
 
-      focusTimer = new Timer(settings.focusDuration * 60, 60);
-      BadgeObserver.observe(focusTimer, 'Focus', '#cc0000');
-      ContextMenuObserver.observe(self, focusTimer);
-
-      focusTimer.addListener('expire', function() {
-        focusNext = false;
-
-        if (settings.showDesktopNotification) {
-          notify('Pomo: Take a break!', "Start your break when you're ready");
-        }
-
-        if (settings.showNewTabNotification) {
-          showExpirePage();
-        }
-      });
-
-      focusTimer.addListener('start', closeExtensionTabs);
+      focusTimer = createFocusTimer(settings);
 
       if (breakTimer) {
         breakTimer.stop();
       }
-   
-      breakTimer = new Timer(settings.breakDuration * 60, 60);
-      BadgeObserver.observe(breakTimer, 'Break', '#00cc00');
-      ContextMenuObserver.observe(self, breakTimer);
 
-      breakTimer.addListener('expire', function() {
-        focusNext = true;
-
-        if (settings.showDesktopNotification) {
-          notify('Pomo: Break finished', "Start your focus session when you're ready");
-        }
-
-        if (settings.showNewTabNotification) {
-          showExpirePage();
-        }
-      });
-
-      breakTimer.addListener('start', closeExtensionTabs);
+      breakTimer = createBreakTimer(settings);
     });
+  }
+
+  function createFocusTimer(settings) {
+    var timer = new Timer(settings.focusDuration * 60, 60);
+    BadgeObserver.observe(timer, 'Focus', '#cc0000');
+    ContextMenuObserver.observe(self, timer);
+
+    timer.addListener('expire', function() {
+      focusNext = false;
+
+      if (settings.showDesktopNotification) {
+        notify('Pomo: Take a break!', "Start your break when you're ready");
+      }
+
+      if (settings.showNewTabNotification) {
+        showExpirePage();
+      }
+    });
+
+    timer.addListener('start', closeExtensionTabs);
+
+    return timer;
+  }
+
+  function createBreakTimer(settings) {
+    var timer = new Timer(settings.breakDuration * 60, 60);
+    BadgeObserver.observe(timer, 'Break', '#00cc00');
+    ContextMenuObserver.observe(self, timer);
+
+    timer.addListener('expire', function() {
+      focusNext = true;
+
+      if (settings.showDesktopNotification) {
+        notify('Pomo: Break finished', "Start your focus session when you're ready");
+      }
+
+      if (settings.showNewTabNotification) {
+        showExpirePage();
+      }
+    });
+
+    timer.addListener('start', closeExtensionTabs);
+
+    return timer;
   }
 
   function closeExtensionTabs() {
