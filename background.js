@@ -3,7 +3,7 @@ var defaultSettings = {
   breakDuration: 5
 };
 
-function CountdownTimer(durationMin, badgeColor, expireCallback) {
+function CountdownTimer(durationMin, badgeTitle, badgeColor, expireCallback) {
   var self = this;
   this.updateInterval = null;
   this.expireTimeout = null;
@@ -17,12 +17,12 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
 
     this.updateInterval = setInterval(function() {
       elapsedMin++;
-      updateBadge(Math.ceil(durationMin - elapsedMin), badgeColor);
+      updateBadge(Math.ceil(durationMin - elapsedMin));
     }, 60 * 1000);
 
     this.expireTimeout = setTimeout(function() {
       clearInterval(self.updateInterval);
-      updateBadge(null, badgeColor);
+      updateBadge(null);
 
       self.updateInterval = null;
       self.expireTimeout = null;
@@ -30,7 +30,7 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
       expireCallback();
     }, durationMin * 60 * 1000);
 
-    updateBadge(Math.ceil(durationMin), badgeColor);
+    updateBadge(Math.ceil(durationMin));
   };
 
   this.stop = function() {
@@ -40,7 +40,7 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
 
     clearInterval(this.updateInterval);
     clearTimeout(this.expireTimeout);
-    updateBadge(null, badgeColor);
+    updateBadge(null);
 
     this.updateInterval = null;
     this.expireTimeout = null;
@@ -50,16 +50,19 @@ function CountdownTimer(durationMin, badgeColor, expireCallback) {
     return this.updateInterval !== null;
   };
 
-  function updateBadge(remainingMin, color) {
+  function updateBadge(remainingMin, title) {
     var text;
     if (remainingMin === null) {
       text = '';
+      title = '';
     } else {
       text = remainingMin + 'm';
+      title = badgeTitle + ' ' + remainingMin + 'm remaining.';
     }
 
+    chrome.browserAction.setTitle({ title: title });
     chrome.browserAction.setBadgeText({ text: text });
-    chrome.browserAction.setBadgeBackgroundColor({ color: color });
+    chrome.browserAction.setBadgeBackgroundColor({ color: badgeColor });
   };
 }
 
@@ -129,13 +132,13 @@ function Pomo() {
 
   function loadTimers() {
     self.getDuration(function(focusDuration, breakDuration) {
-      focusTimer = new CountdownTimer(focusDuration, '#cc0000', function() {
+      focusTimer = new CountdownTimer(focusDuration, 'Focus:', '#cc0000', function() {
         focusNext = false;
         notify('Pomo: Take a break!', "Start your break when you're ready");
         showExpirePage();
       });
    
-      breakTimer = new CountdownTimer(breakDuration, '#00cc00', function() {
+      breakTimer = new CountdownTimer(breakDuration, 'Break:', '#00cc00', function() {
         focusNext = true;
         notify('Pomo: Break finished', "Start your focus session when you're ready");
         showExpirePage();
