@@ -19,7 +19,7 @@
     "scripts": ["lib/EventEmitter.min.js", "background.js"]
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "options/options.html",
     "chrome_style": true
   },
   "icons": {
