@@ -181,29 +181,49 @@ function ContextMenuObserver() {
 
 ContextMenuObserver.observe = function(pomo, timer) {
   timer.addListener('start', function() {
+    addStop();
     addPause();
     removeResume();
   });
 
   timer.addListener('pause', function() {
+    addStop();
     removePause();
     addResume();
   });
 
   timer.addListener('resume', function() {
+    addStop();
     addPause();
     removeResume();
   });
 
   timer.addListener('stop', function() {
+    removeStop();
     removePause();
     removeResume();
   });
 
   timer.addListener('expire', function() {
+    removeStop();
     removePause();
     removeResume();
   });
+
+  function addStop() {
+    chrome.contextMenus.create({
+      id: 'stop',
+      title: 'Stop',
+      contexts: ['browser_action'],
+      onclick: function() {
+        pomo.stop();
+      }
+    });
+  }
+
+  function removeStop() {
+    chrome.contextMenus.remove('stop', function() { });
+  }
 
   function addPause() {
     chrome.contextMenus.create({
@@ -261,6 +281,16 @@ function Pomo() {
     }
   };
 
+  this.browserAction = function() {
+    if (focusTimer.state() === 'paused') {
+      focusTimer.resume();
+    } else if (breakTimer.state() === 'paused') {
+      breakTimer.resume();
+    } else {
+      this.cycleState();
+    }
+  };
+
   this.pause = function() {
     if (focusTimer.state() === 'running') {
       focusTimer.pause();
@@ -269,13 +299,30 @@ function Pomo() {
     }
   };
 
+  this.stop = function() {
+    focusTimer.stop();
+    breakTimer.stop();
+  };
+
   this.resume = function() {
     if (focusTimer.state() == 'paused') {
       focusTimer.resume();
     } else if (breakTimer.state() == 'paused') {
       breakTimer.resume();
     }
-  }
+  };
+
+  this.startBreak = function() {
+    focusTimer.stop();
+    breakTimer.stop();
+    breakTimer.start();
+  };
+
+  this.startFocus = function() {
+    focusTimer.stop();
+    breakTimer.stop();
+    focusTimer.start();
+  };
 
   this.focusNext = function() {
     return focusNext;
@@ -324,6 +371,7 @@ function Pomo() {
       focusTimer = new Timer(settings.focusDuration * 60, 60);
       BadgeObserver.observe(focusTimer, 'Focus', '#cc0000');
       ContextMenuObserver.observe(self, focusTimer);
+
       focusTimer.addListener('expire', function() {
         focusNext = false;
 
@@ -336,6 +384,8 @@ function Pomo() {
         }
       });
 
+      focusTimer.addListener('start', closeExtensionTabs);
+
       if (breakTimer) {
         breakTimer.stop();
       }
@@ -343,6 +393,7 @@ function Pomo() {
       breakTimer = new Timer(settings.breakDuration * 60, 60);
       BadgeObserver.observe(breakTimer, 'Break', '#00cc00');
       ContextMenuObserver.observe(self, breakTimer);
+
       breakTimer.addListener('expire', function() {
         focusNext = true;
 
@@ -354,6 +405,24 @@ function Pomo() {
           showExpirePage();
         }
       });
+
+      breakTimer.addListener('start', closeExtensionTabs);
+    });
+  }
+
+  function closeExtensionTabs() {
+    var id = chrome.runtime.id;
+    var extensionUrl = 'chrome-extension://' + id;
+
+    chrome.tabs.query({}, function(tabs) {
+      var remove = [];
+      for (var i = 0; i < tabs.length; ++i) {
+        if (tabs[i].url.indexOf(extensionUrl) !== -1) {
+          remove.push(tabs[i].id);
+        }
+      }
+
+      chrome.tabs.remove(remove, function() { });
     });
   }
 
@@ -362,24 +431,34 @@ function Pomo() {
 
 chrome.contextMenus.removeAll();
 
+chrome.contextMenus.create({
+  id: 'start-break',
+  title: 'Begin break',
+  contexts: ['browser_action'],
+  onclick: function() {
+    pomo.startBreak();
+  }
+});
+
+chrome.contextMenus.create({
+  id: 'start-focus',
+  title: 'Begin focusing',
+  contexts: ['browser_action'],
+  onclick: function() {
+    pomo.startFocus();
+  }
+});
+
+chrome.contextMenus.create({
+  id: 'separator',
+  type: 'separator',
+  contexts: ['browser_action']
+});
+
 var pomo = new Pomo();
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  var id = chrome.runtime.id;
-  var extensionUrl = 'chrome-extension://' + id;
-
-  chrome.tabs.query({}, function(tabs) {
-    var remove = [];
-    for (var i = 0; i < tabs.length; ++i) {
-      if (tabs[i].url.indexOf(extensionUrl) !== -1) {
-        remove.push(tabs[i].id);
-      }
-    }
-
-    chrome.tabs.remove(remove, function() {
-      pomo.cycleState();
-    });
-  });
+chrome.browserAction.onClicked.addListener(function() {
+  pomo.browserAction();
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, respond) {
