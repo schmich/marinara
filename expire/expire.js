@@ -7,9 +7,6 @@ window.onload = function() {
     var startSession = document.getElementById('start-session');
     startSession.onclick = function() {
       chrome.runtime.sendMessage({ command: 'start-session' });
-      chrome.tabs.getCurrent(function(tab) {
-        chrome.tabs.remove(tab.id);
-      });
     };
 
     var sessionTitle = document.getElementById('session-title');
