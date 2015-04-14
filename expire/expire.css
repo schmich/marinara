@@ -27,7 +27,7 @@ body {
   left: 0;
   bottom: 0;
   opacity: 0.5;
-  background-image: url('icon.png');
+  background-image: url('../icon.png');
   background-position: right -50px bottom -120px;
   background-repeat: no-repeat;
 }
