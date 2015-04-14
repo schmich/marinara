@@ -95,12 +95,14 @@ function Timer(durationSec, tickSec) {
   function createExpireTimeout(seconds) {
     return setTimeout(function() {
       clearInterval(self.tickInterval);
+      clearTimeout(self.expireTimeout);
 
       self.tickInterval = null;
       self.expireTimeout = null;
       self.startTime = null;
       self.remainingSec = null;
 
+      state = 'stopped';
       self.emitEvent('expire', [{
         elapsed: durationSec,
         remaining: 0
@@ -177,7 +179,7 @@ function BadgeTimer(durationMin, badgeTitle, badgeColor) {
       text = '';
       title = '';
     } else {
-      text = remainingMin + 'm';
+      text = ((remainingMin == 0) ? '<1' : remainingMin)  + 'm';
       title = badgeTitle + ' ' + remainingMin + 'm remaining.';
     }
 
