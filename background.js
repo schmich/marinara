@@ -344,7 +344,7 @@ function Pomo() {
   };
 
   function showExpirePage() {
-    chrome.tabs.create({ url: chrome.extension.getURL('expire.html') });
+    chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') });
   }
 
   function notify(title, message) {
