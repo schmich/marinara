@@ -28,7 +28,7 @@ body {
   bottom: 0;
   opacity: 0.5;
   background-image: url('icon.png');
-  background-position: right -60px bottom -170px;
+  background-position: right -50px bottom -120px;
   background-repeat: no-repeat;
 }
 .dialog h1 {
