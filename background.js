@@ -12,7 +12,7 @@ function Timer(durationSec, tickSec) {
   this.tickInterval = null;
   this.expireTimeout = null;
 
-  this.startTime = null;
+  this.periodStartTime = null;
   this.remainingSec = null;
 
   this.start = function() {
@@ -26,7 +26,7 @@ function Timer(durationSec, tickSec) {
     this.remainingSec = durationSec;
 
     state = 'running';
-    this.startTime = Date.now();
+    this.periodStartTime = Date.now();
     this.emitEvent('start', [{
       elapsed: 0,
       remaining: this.remainingSec
@@ -43,7 +43,7 @@ function Timer(durationSec, tickSec) {
 
     this.tickInterval = null;
     this.expireTimeout = null;
-    this.startTime = null;
+    this.periodStartTime = null;
     this.remainingSec = null;
 
     state = 'stopped';
@@ -58,11 +58,11 @@ function Timer(durationSec, tickSec) {
     clearInterval(this.tickInterval);
     clearTimeout(this.expireTimeout);
 
-    var intervalSec = (Date.now() - this.startTime) / 1000;
-    this.remainingSec -= intervalSec;
+    var periodSec = (Date.now() - this.periodStartTime) / 1000;
+    this.remainingSec -= periodSec;
 
     state = 'paused';
-    this.startTime = null;
+    this.periodStartTime = null;
     this.emitEvent('pause', [{
       elapsed: durationSec - this.remainingSec,
       remaining: this.remainingSec
@@ -78,7 +78,7 @@ function Timer(durationSec, tickSec) {
     this.tickInterval = createTickInterval(tickSec);
 
     state = 'running';
-    this.startTime = Date.now();
+    this.periodStartTime = Date.now();
     this.emitEvent('resume', [{
       elapsed: durationSec - this.remainingSec,
       remaining: this.remainingSec
@@ -101,7 +101,7 @@ function Timer(durationSec, tickSec) {
 
       self.tickInterval = null;
       self.expireTimeout = null;
-      self.startTime = null;
+      self.periodStartTime = null;
       self.remainingSec = null;
 
       state = 'stopped';
@@ -114,11 +114,11 @@ function Timer(durationSec, tickSec) {
 
   function createTickInterval(seconds) {
     return setInterval(function() {
-      var elapsedSec = (Date.now() - self.startTime) / 1000;
-      var remainingSec = durationSec - elapsedSec;
+      var periodSec = (Date.now() - self.periodStartTime) / 1000;
+      var remainingSec = self.remainingSec - periodSec;
 
       self.emitEvent('tick', [{
-        elapsed: elapsedSec,
+        elapsed: durationSec - remainingSec,
         remaining: remainingSec
       }]);
     }, seconds * 1000);
