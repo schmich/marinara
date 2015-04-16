@@ -179,7 +179,7 @@ BadgeObserver.observe = function(timer, title, color) {
 function ContextMenuObserver() {
 }
 
-ContextMenuObserver.observe = function(pomo, timer) {
+ContextMenuObserver.observe = function(controller, timer) {
   timer.addListener('start', function() {
     addStop();
     addPause();
@@ -216,7 +216,7 @@ ContextMenuObserver.observe = function(pomo, timer) {
       title: 'Stop',
       contexts: ['browser_action'],
       onclick: function() {
-        pomo.stop();
+        controller.stop();
       }
     });
   }
@@ -231,7 +231,7 @@ ContextMenuObserver.observe = function(pomo, timer) {
       title: 'Pause',
       contexts: ['browser_action'],
       onclick: function() {
-        pomo.pause();
+        controller.pause();
       }
     });
   }
@@ -246,7 +246,7 @@ ContextMenuObserver.observe = function(pomo, timer) {
       title: 'Resume',
       contexts: ['browser_action'],
       onclick: function() {
-        pomo.resume();
+        controller.resume();
       }
     });
   }
@@ -256,7 +256,7 @@ ContextMenuObserver.observe = function(pomo, timer) {
   }
 };
 
-function Pomo() {
+function Controller() {
   var self = this;
   var focusNext = true;
   var focusTimer;
@@ -383,7 +383,7 @@ function Pomo() {
       focusNext = false;
 
       if (settings.showDesktopNotification) {
-        notify('Pomo: Take a break!', "Start your break when you're ready");
+        notify('Take a break!', "Start your break when you're ready");
       }
 
       if (settings.showNewTabNotification) {
@@ -405,7 +405,7 @@ function Pomo() {
       focusNext = true;
 
       if (settings.showDesktopNotification) {
-        notify('Pomo: Break finished', "Start your focus session when you're ready");
+        notify('Break finished', "Start your focus session when you're ready");
       }
 
       if (settings.showNewTabNotification) {
@@ -444,7 +444,7 @@ chrome.contextMenus.create({
   title: 'Begin break',
   contexts: ['browser_action'],
   onclick: function() {
-    pomo.startBreak();
+    controller.startBreak();
   }
 });
 
@@ -453,7 +453,7 @@ chrome.contextMenus.create({
   title: 'Begin focusing',
   contexts: ['browser_action'],
   onclick: function() {
-    pomo.startFocus();
+    controller.startFocus();
   }
 });
 
@@ -463,16 +463,16 @@ chrome.contextMenus.create({
   contexts: ['browser_action']
 });
 
-var pomo = new Pomo();
+var controller = new Controller();
 
 chrome.browserAction.onClicked.addListener(function() {
-  pomo.browserAction();
+  controller.browserAction();
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, respond) {
   if (request.command == 'get-session') {
-    if (pomo.focusNext()) {
-      pomo.getSettings(function(settings) {
+    if (controller.focusNext()) {
+      controller.getSettings(function(settings) {
         respond({
           focusNext: true,
           title: 'Break finished',
@@ -481,7 +481,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
         });
       });
     } else {
-      pomo.getSettings(function(settings) {
+      controller.getSettings(function(settings) {
         respond({
           focusNext: false,
           title: 'Take a break!',
@@ -491,10 +491,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
       });
     }
   } else if (request.command == 'start-session') {
-    pomo.startSession();
+    controller.startSession();
     respond({});
   } else if (request.command == 'get-settings') {
-    pomo.getSettings(respond);
+    controller.getSettings(respond);
   } else if (request.command == 'set-settings') {
     var newSettings = request.settings;
     var focusDuration = newSettings.focusDuration.trim();
@@ -522,7 +522,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
     newSettings.focusDuration = focusParsed;
     newSettings.breakDuration = breakParsed;
 
-    pomo.setSettings(newSettings, function() {
+    controller.setSettings(newSettings, function() {
       respond({});
     });
   }

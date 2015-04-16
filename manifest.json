@@ -1,5 +1,5 @@
 {
-  "name": "Pomo",
+  "name": "Marinara",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Pomodoro time management assistant.",
@@ -11,7 +11,7 @@
     "notifications"
   ],
   "browser_action": {
-    "default_title": "Pomo",
+    "default_title": "Marinara",
     "default_icon": "icon-bw.png"
   },
   "background": {
