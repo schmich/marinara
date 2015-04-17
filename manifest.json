@@ -12,7 +12,7 @@
   ],
   "browser_action": {
     "default_title": "Marinara",
-    "default_icon": "icon-bw.png"
+    "default_icon": "icons/browser-action.png"
   },
   "background": {
     "persistent": true,
@@ -23,10 +23,10 @@
     "chrome_style": true
   },
   "icons": {
-    "16": "icon.png",
-    "32": "icon.png",
-    "64": "icon.png",
-    "128": "icon.png"
+    "16": "icons/128.png",
+    "32": "icons/128.png",
+    "64": "icons/128.png",
+    "128": "icons/128.png"
   },
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }
