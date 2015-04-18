@@ -181,36 +181,37 @@ function ContextMenuObserver() {
 
 ContextMenuObserver.observe = function(controller, timer) {
   timer.addListener('start', function() {
-    addStop();
     addPause();
+    addStop();
     removeResume();
   });
 
   timer.addListener('pause', function() {
+    addResume();
     addStop();
     removePause();
-    addResume();
   });
 
   timer.addListener('resume', function() {
-    addStop();
     addPause();
+    addStop();
     removeResume();
   });
 
   timer.addListener('stop', function() {
-    removeStop();
     removePause();
+    removeStop();
     removeResume();
   });
 
   timer.addListener('expire', function() {
-    removeStop();
     removePause();
+    removeStop();
     removeResume();
   });
 
   function addStop() {
+    removeStop();
     chrome.contextMenus.create({
       id: 'stop',
       title: 'Stop',
@@ -226,6 +227,7 @@ ContextMenuObserver.observe = function(controller, timer) {
   }
 
   function addPause() {
+    removePause();
     chrome.contextMenus.create({
       id: 'pause',
       title: 'Pause',
@@ -241,6 +243,7 @@ ContextMenuObserver.observe = function(controller, timer) {
   }
 
   function addResume() {
+    removeResume();
     chrome.contextMenus.create({
       id: 'resume',
       title: 'Resume',
@@ -440,20 +443,20 @@ function Controller() {
 chrome.contextMenus.removeAll();
 
 chrome.contextMenus.create({
-  id: 'start-break',
-  title: 'Begin break',
-  contexts: ['browser_action'],
-  onclick: function() {
-    controller.startBreak();
-  }
-});
-
-chrome.contextMenus.create({
   id: 'start-focus',
   title: 'Begin focusing',
   contexts: ['browser_action'],
   onclick: function() {
     controller.startFocus();
+  }
+});
+
+chrome.contextMenus.create({
+  id: 'start-break',
+  title: 'Begin break',
+  contexts: ['browser_action'],
+  onclick: function() {
+    controller.startBreak();
   }
 });
 
