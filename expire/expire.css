@@ -26,9 +26,10 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  opacity: 0.5;
-  background-image: url('../icon.png');
-  background-position: right -50px bottom -120px;
+  opacity: 0.4;
+  background-image: url('../icons/full.png');
+  background-size: 50%;
+  background-position: right -100px bottom -160px;
   background-repeat: no-repeat;
 }
 .dialog h1 {
