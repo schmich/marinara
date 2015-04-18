@@ -355,7 +355,7 @@ function Controller() {
       type: 'basic',
       title: title,
       message: message,
-      iconUrl: 'icon.png'
+      iconUrl: '../icons/128.png'
     };
 
     chrome.notifications.create('', notification, function() { });
