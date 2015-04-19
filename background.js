@@ -176,87 +176,78 @@ BadgeObserver.observe = function(timer, title, color) {
   }
 }
 
+function MenuEntry(title, action) {
+  this.id = null;
+
+  this.show = function() {
+    this.hide();
+
+    if (title === null) {
+      this.id = chrome.contextMenus.create({
+        type: 'separator',
+        contexts: ['browser_action']
+      });
+    } else {
+      this.id = chrome.contextMenus.create({
+        title: title,
+        contexts: ['browser_action'],
+        onclick: action
+      });
+    }
+  };
+
+  this.hide = function() {
+    if (this.id === null) {
+      return;
+    }
+
+    chrome.contextMenus.remove(this.id, function() { });
+    this.id = null;
+  };
+}
+
+MenuEntry.create = function(title, action) {
+  var menu = new MenuEntry(title, action);
+  menu.show();
+};
+
 function ContextMenuObserver() {
 }
 
 ContextMenuObserver.observe = function(controller, timer) {
+  var stop = new MenuEntry('Stop', controller.stop);
+  var pause = new MenuEntry('Pause', controller.pause);
+  var resume = new MenuEntry('Resume', controller.resume);
+
   timer.addListener('start', function() {
-    addPause();
-    addStop();
-    removeResume();
+    pause.show();
+    stop.show();
+    resume.hide();
   });
 
   timer.addListener('pause', function() {
-    addResume();
-    addStop();
-    removePause();
+    resume.show();
+    stop.show();
+    pause.hide();
   });
 
   timer.addListener('resume', function() {
-    addPause();
-    addStop();
-    removeResume();
+    pause.show();
+    stop.show();
+    resume.hide();
   });
 
   timer.addListener('stop', function() {
-    removePause();
-    removeStop();
-    removeResume();
+    pause.hide();
+    stop.hide();
+    resume.hide();
   });
 
   timer.addListener('expire', function() {
-    removePause();
-    removeStop();
-    removeResume();
+    pause.hide();
+    stop.hide();
+    resume.hide();
   });
-
-  function addStop() {
-    removeStop();
-    chrome.contextMenus.create({
-      id: 'stop',
-      title: 'Stop',
-      contexts: ['browser_action'],
-      onclick: function() {
-        controller.stop();
-      }
-    });
-  }
-
-  function removeStop() {
-    chrome.contextMenus.remove('stop', function() { });
-  }
-
-  function addPause() {
-    removePause();
-    chrome.contextMenus.create({
-      id: 'pause',
-      title: 'Pause',
-      contexts: ['browser_action'],
-      onclick: function() {
-        controller.pause();
-      }
-    });
-  }
-
-  function removePause() {
-    chrome.contextMenus.remove('pause', function() { });
-  }
-
-  function addResume() {
-    removeResume();
-    chrome.contextMenus.create({
-      id: 'resume',
-      title: 'Resume',
-      contexts: ['browser_action'],
-      onclick: function() {
-        controller.resume();
-      }
-    });
-  }
-
-  function removeResume() {
-    chrome.contextMenus.remove('resume', function() { });
-  }
 };
 
 function Controller() {
@@ -440,33 +431,13 @@ function Controller() {
   createTimers();
 }
 
+var controller = new Controller();
+
 chrome.contextMenus.removeAll();
 
-chrome.contextMenus.create({
-  id: 'start-focus',
-  title: 'Begin focusing',
-  contexts: ['browser_action'],
-  onclick: function() {
-    controller.startFocus();
-  }
-});
-
-chrome.contextMenus.create({
-  id: 'start-break',
-  title: 'Begin break',
-  contexts: ['browser_action'],
-  onclick: function() {
-    controller.startBreak();
-  }
-});
-
-chrome.contextMenus.create({
-  id: 'separator',
-  type: 'separator',
-  contexts: ['browser_action']
-});
-
-var controller = new Controller();
+MenuEntry.create('Begin focusing', controller.startFocus);
+MenuEntry.create('Begin break', controller.startBreak);
+MenuEntry.create(null);
 
 chrome.browserAction.onClicked.addListener(function() {
   controller.browserAction();
