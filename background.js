@@ -343,7 +343,9 @@ function Controller() {
     } else {
       chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, function(tab) {
         expirePageTabId = tab.id;
-        callback(tab);
+        if (callback) {
+          callback(tab);
+        }
       });
     }
   }
