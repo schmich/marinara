@@ -337,20 +337,41 @@ function Controller() {
     });
   };
 
-  function showExpirePage() {
-    chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') });
+  function showExpirePage(callback) {
+    if (expirePageTabId !== null) {
+      chrome.tabs.update(expirePageTabId, { active: true, highlighted: true }, callback);
+    } else {
+      chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, function(tab) {
+        expirePageTabId = tab.id;
+        callback(tab);
+      });
+    }
   }
 
+  var expirePageTabId = null;
+  chrome.tabs.onRemoved.addListener(function(tabId) {
+    if (tabId === expirePageTabId) {
+      expirePageTabId = null;
+    }
+  });
+
   function notify(title, message) {
-    var notification = {
+    var options = {
       type: 'basic',
       title: title,
       message: message,
-      iconUrl: '../icons/128.png'
+      iconUrl: '../icons/128.png',
+      isClickable: true
     };
 
-    chrome.notifications.create('', notification, function() { });
+    chrome.notifications.create('', options, function() { });
   }
+
+  chrome.notifications.onClicked.addListener(function() {
+    showExpirePage(function(tab) {
+      chrome.windows.update(tab.windowId, { focused: true });
+    });
+  });
 
   function createTimers() {
     self.getSettings(function(settings) {
