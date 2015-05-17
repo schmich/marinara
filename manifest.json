@@ -1,7 +1,7 @@
 {
   "name": "Marinara",
   "short_name": "Marinara",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "manifest_version": 2,
   "description": "Pomodoro time management assistant.",
   "author": "Chris Schmich <schmch@gmail.com>",
