@@ -22,3 +22,26 @@ p {
   display: inline-block;
   margin: 0;
 }
+.tabs {
+  border-bottom: 1px solid #bbb;
+  margin-bottom: 20px;
+}
+.tab {
+  color: #000;
+  cursor: pointer;
+  font-size: larger;
+  text-decoration: none;
+  padding: 0 15px;
+}
+.tab.active {
+  border-bottom: 2px solid #fa0000;
+}
+.session:not(.active) {
+  display: none;
+}
+.attribution {
+  display: block;
+}
+button#save {
+  margin-top: 20px;
+}

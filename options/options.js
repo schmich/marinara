@@ -1,3 +1,21 @@
+function showSession(name) {
+  var tabs = ['focus', 'break'];
+
+
+  for (var i = 0; i < tabs.length; ++i) {
+    var tab = document.getElementById(tabs[i] + '-tab');
+    var session = document.getElementById(tabs[i] + '-session');
+
+    if (name === tabs[i]) {
+      tab.classList.add('active');
+      session.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+      session.classList.remove('active');
+    }
+  }
+}
+
 function appendSounds(elem, sounds, selected) {
   for (var i = 0; i < sounds.length; ++i) {
     var sound = sounds[i];
@@ -126,5 +144,17 @@ function saveOptions() {
 document.addEventListener('DOMContentLoaded', function() {
   var save = document.getElementById('save');
   save.onclick = saveOptions;
+
+  var focusTab = document.getElementById('focus-tab');
+  focusTab.onclick = function() {
+    showSession('focus');
+  };
+
+  var breakTab = document.getElementById('break-tab');
+  breakTab.onclick = function() {
+    showSession('break');
+  };
+
+  showSession('focus');
   loadOptions();
 });
