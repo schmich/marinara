@@ -50,5 +50,12 @@ button#save {
   padding: 5px 30px;
 }
 .links {
-  margin-top: 10px;
+  margin-top: 15px;
+}
+.licenses {
+  margin-top: 15px;
+}
+.licenses a {
+  display: block;
+  margin-top: 3px;
 }
