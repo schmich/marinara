@@ -47,6 +47,7 @@ p {
 }
 button#save {
   margin-top: 15px;
+  padding: 5px 30px;
 }
 .links {
   margin-top: 10px;
