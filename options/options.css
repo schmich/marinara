@@ -3,6 +3,11 @@ h2 {
   padding-bottom: 2px;
   margin: 0 0 15px 0;
 }
+h3 {
+  font-size: 17px;
+  margin: 0;
+  padding: 0;
+}
 body {
   padding: 10px;
 }
@@ -23,6 +28,7 @@ p {
   margin: 0;
 }
 .tabs {
+  padding-bottom: 6px;
   border-bottom: 1px solid #bbb;
   margin-bottom: 20px;
 }
@@ -31,17 +37,17 @@ p {
   cursor: pointer;
   font-size: larger;
   text-decoration: none;
-  padding: 0 15px;
+  padding: 0 10px 5px 10px;
 }
 .tab.active {
   border-bottom: 2px solid #fa0000;
 }
-.session:not(.active) {
+.tab-page:not(.active) {
   display: none;
 }
-.attribution {
-  display: block;
-}
 button#save {
-  margin-top: 20px;
+  margin-top: 15px;
+}
+.links {
+  margin-top: 10px;
 }

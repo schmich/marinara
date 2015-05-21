@@ -9,10 +9,11 @@
 </head>
 <body>
   <div class="tabs">
-    <a class="tab" id="focus-tab" onclick="showSession('focus');">Focus Session</a>
-    <a class="tab" id="break-tab" onclick="showSession('break');">Break Session</a>
+    <a class="tab" id="focus-tab">Focus Session</a>
+    <a class="tab" id="break-tab">Break Session</a>
+    <a class="tab" id="about-tab">About</a>
   </div>
-  <div id="focus-session" class="session">
+  <div id="focus-content" class="tab-page">
     <div class="section">
       <div class="field">
         <label>
@@ -42,7 +43,7 @@
       </div>
     </div>
   </div>
-  <div id="break-session" class="session">
+  <div id="break-content" class="tab-page">
     <div class="section">
       <div class="field">
         <label>
@@ -72,7 +73,16 @@
       </div>
     </div>
   </div>
-  <a href="../ATTRIBUTION" class="attribution" target="_blank">View audio attributions</a>
+  <div id="about-content" class="tab-page">
+    <center>
+      <h3>Marinara</h3>
+      <p>by <a href="https://twitter.com/schmich" target="_blank">Chris Schmich</a></p>
+      <div class="links">
+        <div><a href="https://github.com/schmich/marinara" target="_blank">https://github.com/schmich/marinara</a></div>
+        <div><a href="../ATTRIBUTION" target="_blank">View audio attributions</a></div>
+      </div>
+    </center>
+  </div>
   <button id="save">Save</button> <p id="status" class="status">&nbsp;</p>
 </body>
 </html>

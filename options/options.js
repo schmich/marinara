@@ -1,17 +1,16 @@
-function showSession(name) {
-  var tabs = ['focus', 'break'];
-
+function showTab(name) {
+  var tabs = ['focus', 'break', 'about'];
 
   for (var i = 0; i < tabs.length; ++i) {
     var tab = document.getElementById(tabs[i] + '-tab');
-    var session = document.getElementById(tabs[i] + '-session');
+    var content = document.getElementById(tabs[i] + '-content');
 
     if (name === tabs[i]) {
       tab.classList.add('active');
-      session.classList.add('active');
+      content.classList.add('active');
     } else {
       tab.classList.remove('active');
-      session.classList.remove('active');
+      content.classList.remove('active');
     }
   }
 }
@@ -145,16 +144,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var save = document.getElementById('save');
   save.onclick = saveOptions;
 
-  var focusTab = document.getElementById('focus-tab');
-  focusTab.onclick = function() {
-    showSession('focus');
-  };
+  var tabs = ['focus', 'break', 'about'];
+  for (var i = 0; i < tabs.length; ++i) {
+    var tab = document.getElementById(tabs[i] + '-tab');
+    tab.onclick = function(tabName) {
+      return function() { showTab(tabName); }
+    }(tabs[i]);
+  }
 
-  var breakTab = document.getElementById('break-tab');
-  breakTab.onclick = function() {
-    showSession('break');
-  };
-
-  showSession('focus');
+  showTab('focus');
   loadOptions();
 });
