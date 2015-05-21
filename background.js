@@ -1,9 +1,47 @@
 var defaultSettings = {
-  focusDuration: 25,
-  breakDuration: 5,
-  showDesktopNotification: true,
-  showNewTabNotification: true
+  focus: {
+    duration: 25,
+    desktopNotification: true,
+    newTabNotification: true,
+    sound: null
+  },
+  break: {
+    duration: 5,
+    desktopNotification: true,
+    newTabNotification: true,
+    sound: null
+  },
+  version: 1
 };
+
+var sounds = [
+  { name: 'Tone', file: 'tone.mp3' },
+  { name: 'Electronic Chime', file: 'electronic-chime.mp3' },
+  { name: 'Gong 1', file: 'gong-1.mp3' },
+  { name: 'Gong 2', file: 'gong-2.mp3' },
+  { name: 'Computer Magic', file: 'computer-magic.mp3' },
+  { name: 'Fire Pager', file: 'fire-pager.mp3' },
+  { name: 'Glass Ping', file: 'glass-ping.mp3' },
+  { name: 'Music Box', file: 'music-box.mp3' },
+  { name: 'Pin Dropping', file: 'pin-dropping.mp3' },
+  { name: 'Robot Blip 1', file: 'robot-blip-1.mp3' },
+  { name: 'Robot Blip 2', file: 'robot-blip-2.mp3' },
+  { name: 'Ship Bell', file: 'ship-bell.mp3' },
+  { name: 'Train Horn', file: 'train-horn.mp3' },
+  { name: 'Bike Horn', file: 'bike-horn.mp3' },
+  { name: 'Bell Ring', file: 'bell-ring.mp3' },
+  { name: 'Reception Bell', file: 'reception-bell.mp3' },
+  { name: 'Ding', file: 'ding.mp3' },
+  { name: 'Toaster Oven', file: 'toaster-oven.mp3' },
+  { name: 'Din Ding', file: 'din-ding.mp3' },
+  { name: 'Battle Horn', file: 'battle-horn.mp3' },
+  { name: 'Dong', file: 'dong.mp3' },
+  { name: 'Ding Dong', file: 'ding-dong.mp3' }
+];
+
+for (var i = 0; i < sounds.length; ++i) {
+  sounds[i].file = 'chrome-extension://' + chrome.runtime.id + '/audio/' + sounds[i].file;
+}
 
 function Timer(durationSec, tickSec) {
   var self = this;
@@ -211,6 +249,17 @@ MenuEntry.create = function(title, action) {
   menu.show();
 };
 
+function AudioObserver() {
+}
+
+AudioObserver.observe = function(timer, sourceFile) {
+  timer.addListener('expire', function() {
+    var audio = new Audio();
+    audio.src = sourceFile;
+    audio.play();
+  });
+};
+
 function ContextMenuObserver() {
 }
 
@@ -392,18 +441,19 @@ function Controller() {
   }
 
   function createFocusTimer(settings) {
-    var timer = new Timer(settings.focusDuration * 60, 60);
+    var timer = new Timer(settings.focus.duration * 60, 60);
     BadgeObserver.observe(timer, 'Focus', '#cc0000');
     ContextMenuObserver.observe(self, timer);
+    AudioObserver.observe(timer, settings.focus.sound);
 
     timer.addListener('expire', function() {
       focusNext = false;
 
-      if (settings.showDesktopNotification) {
+      if (settings.focus.desktopNotification) {
         notify('Take a break!', "Start your break when you're ready");
       }
 
-      if (settings.showNewTabNotification) {
+      if (settings.focus.newTabNotification) {
         showExpirePage();
       }
     });
@@ -414,18 +464,19 @@ function Controller() {
   }
 
   function createBreakTimer(settings) {
-    var timer = new Timer(settings.breakDuration * 60, 60);
+    var timer = new Timer(settings.break.duration * 60, 60);
     BadgeObserver.observe(timer, 'Break', '#00cc00');
     ContextMenuObserver.observe(self, timer);
+    AudioObserver.observe(timer, settings.break.sound);
 
     timer.addListener('expire', function() {
       focusNext = true;
 
-      if (settings.showDesktopNotification) {
+      if (settings.break.desktopNotification) {
         notify('Break finished', "Start your focus session when you're ready");
       }
 
-      if (settings.showNewTabNotification) {
+      if (settings.break.newTabNotification) {
         showExpirePage();
       }
     });
@@ -467,13 +518,13 @@ chrome.browserAction.onClicked.addListener(function() {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, respond) {
-  if (request.command == 'get-session') {
+  if (request.command === 'get-session') {
     if (controller.focusNext()) {
       controller.getSettings(function(settings) {
         respond({
           focusNext: true,
           title: 'Break finished',
-          subtitle: "Start your " + settings.focusDuration + " minute focus session when you're ready",
+          subtitle: "Start your " + settings.focus.duration + " minute focus session when you're ready",
           action: 'Start Focusing'
         });
       });
@@ -482,20 +533,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
         respond({
           focusNext: false,
           title: 'Take a break!',
-          subtitle: "Start your " + settings.breakDuration + " minute break when you're ready",
+          subtitle: "Start your " + settings.break.duration + " minute break when you're ready",
           action: 'Start Break'
         });
       });
     }
-  } else if (request.command == 'start-session') {
+  } else if (request.command === 'start-session') {
     controller.startSession();
     respond({});
-  } else if (request.command == 'get-settings') {
+  } else if (request.command === 'get-sounds') {
+    console.log('get-sounds');
+    respond(sounds);
+  } else if (request.command === 'get-settings') {
     controller.getSettings(respond);
-  } else if (request.command == 'set-settings') {
+  } else if (request.command === 'set-settings') {
     var newSettings = request.settings;
-    var focusDuration = newSettings.focusDuration.trim();
-    var breakDuration = newSettings.breakDuration.trim();
+    var focusDuration = newSettings.focus.duration.trim();
+    var breakDuration = newSettings.break.duration.trim();
 
     if (!focusDuration) {
       respond({ error: 'Focus duration is required.' });
@@ -516,8 +570,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
       return true;
     }
 
-    newSettings.focusDuration = focusParsed;
-    newSettings.breakDuration = breakParsed;
+    newSettings.focus.duration = focusParsed;
+    newSettings.break.duration = breakParsed;
 
     controller.setSettings(newSettings, function() {
       respond({});

@@ -8,30 +8,64 @@
   <script src="options.js"></script>
 </head>
 <body>
-  <div class="field">
-    <label>
-      Focus duration:
-      <input type="text" id="focus-duration" autofocus> minutes
-    </label>
+  <h2>Focus Session</h2>
+  <div class="section">
+    <div class="field">
+      <label>
+        Duration:
+        <input type="text" id="focus-duration" autofocus> minutes
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="focus-desktop-notification">
+        Show desktop notification
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="focus-new-tab-notification">
+        Show new tab notification
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="focus-audio-notification">
+        Play audio notification:
+        <select id="focus-sounds">
+        </select>
+      </label>
+    </div>
   </div>
-  <div class="field">
-    <label>
-      Break duration:
-      <input type="text" id="break-duration"> minutes
-    </label>
+  <h2>Break Session</h2>
+  <div class="section">
+    <div class="field">
+      <label>
+        Duration:
+        <input type="text" id="break-duration"> minutes
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="break-desktop-notification">
+        Show desktop notification
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="break-new-tab-notification">
+        Show new tab notification
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="break-audio-notification">
+        Play audio notification:
+        <select id="break-sounds">
+        </select>
+      </label>
+    </div>
   </div>
-  <div class="field">
-    <label>
-      <input type="checkbox" id="desktop-notification">
-      Show desktop notification
-    </label>
-  </div>
-  <div class="field">
-    <label>
-      <input type="checkbox" id="new-tab-notification">
-      Show new tab notification
-    </label>
-  </div>
-  <button id="save">Save</button> <p id="status">&nbsp;</p>
+  <button id="save">Save</button> <p id="status" class="status">&nbsp;</p>
 </body>
 </html>

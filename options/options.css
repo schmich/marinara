@@ -1,14 +1,24 @@
+h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 2px;
+  margin: 0 0 15px 0;
+}
 body {
   padding: 10px;
 }
 .field {
   margin-bottom: 10px;
 }
+.section {
+  margin-bottom: 20px;
+}
 input[type="checkbox"] {
   vertical-align: middle;
   position: relative;
   bottom: 2px;
+  margin: 5px 0;
 }
 p {
   display: inline-block;
+  margin: 0;
 }
