@@ -31,12 +31,12 @@ var sounds = [
   { name: 'Bike Horn', file: 'bike-horn.mp3' },
   { name: 'Bell Ring', file: 'bell-ring.mp3' },
   { name: 'Reception Bell', file: 'reception-bell.mp3' },
-  { name: 'Ding', file: 'ding.mp3' },
   { name: 'Toaster Oven', file: 'toaster-oven.mp3' },
-  { name: 'Din Ding', file: 'din-ding.mp3' },
   { name: 'Battle Horn', file: 'battle-horn.mp3' },
+  { name: 'Ding', file: 'ding.mp3' },
   { name: 'Dong', file: 'dong.mp3' },
-  { name: 'Ding Dong', file: 'ding-dong.mp3' }
+  { name: 'Ding Dong', file: 'ding-dong.mp3' },
+  { name: 'Din Ding', file: 'din-ding.mp3' }
 ];
 
 for (var i = 0; i < sounds.length; ++i) {
