@@ -542,7 +542,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
     controller.startSession();
     respond({});
   } else if (request.command === 'get-sounds') {
-    console.log('get-sounds');
     respond(sounds);
   } else if (request.command === 'get-settings') {
     controller.getSettings(respond);
