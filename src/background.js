@@ -2,12 +2,14 @@ var defaultSettings = {
   focus: {
     duration: 25,
     desktopNotification: true,
+    toggleModeOnNotification: false,
     newTabNotification: true,
     sound: null
   },
   break: {
     duration: 5,
     desktopNotification: true,
+    toggleModeOnNotification: false,
     newTabNotification: true,
     sound: null
   },
@@ -406,13 +408,15 @@ function Controller() {
     }
   });
 
-  function notify(title, message) {
+  function notify(title, message, buttons) {
+    var buttons = buttons || [];
     var options = {
       type: 'basic',
       title: title,
       message: message,
       iconUrl: '../icons/128.png',
-      isClickable: true
+      isClickable: true,
+      buttons: buttons
     };
 
     chrome.notifications.create('', options, function() { });
@@ -422,6 +426,11 @@ function Controller() {
     showExpirePage(function(tab) {
       chrome.windows.update(tab.windowId, { focused: true });
     });
+  });
+
+  chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
+    self.focusNext() ? self.startFocus() : self.startBreak();
+    chrome.notifications.clear(notificationId);
   });
 
   function createTimers() {
@@ -450,7 +459,13 @@ function Controller() {
       focusNext = false;
 
       if (settings.focus.desktopNotification) {
-        notify('Take a break!', "Start your break when you're ready");
+        notify(
+          'Take a break!', 
+          "Start your break when you're ready", 
+          settings.focus.toggleModeOnNotification 
+            ? [{title:"Begin break"}]
+            : []
+        );
       }
 
       if (settings.focus.newTabNotification) {
@@ -473,7 +488,13 @@ function Controller() {
       focusNext = true;
 
       if (settings.break.desktopNotification) {
-        notify('Break finished', "Start your focus session when you're ready");
+        notify(
+          'Break finished', 
+          "Start your focus session when you're ready", 
+          settings.break.toggleModeOnNotification
+            ? [{title:"Begin focusing"}]
+            : []
+        );
       }
 
       if (settings.break.newTabNotification) {
