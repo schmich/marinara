@@ -29,14 +29,12 @@ function appendSounds(elem, sounds, selected) {
 function loadOptions() {
   var focusDuration = document.getElementById('focus-duration');
   var focusDesktopNotification = document.getElementById('focus-desktop-notification');
-  var focusDesktopNotificationToggleMode = document.getElementById('focus-desktop-notification-toggle-mode');
   var focusNewTabNotification = document.getElementById('focus-new-tab-notification');
   var focusAudioNotification = document.getElementById('focus-audio-notification');
   var focusSounds = document.getElementById('focus-sounds');
 
   var breakDuration = document.getElementById('break-duration');
   var breakDesktopNotification = document.getElementById('break-desktop-notification');
-  var breakDesktopNotificationToggleMode = document.getElementById('break-desktop-notification-toggle-mode');
   var breakNewTabNotification = document.getElementById('break-new-tab-notification');
   var breakAudioNotification = document.getElementById('break-audio-notification');
   var breakSounds = document.getElementById('break-sounds');
@@ -52,14 +50,12 @@ function loadOptions() {
   chrome.runtime.sendMessage({ command: 'get-settings' }, function(settings) {
     focusDuration.value = settings.focus.duration;
     focusDesktopNotification.checked = settings.focus.desktopNotification;
-    focusDesktopNotificationToggleMode.checked = settings.focus.toggleModeOnNotification;
     focusNewTabNotification.checked = settings.focus.newTabNotification;
     focusAudioNotification.checked = (settings.focus.sound !== null);
     focusSounds.disabled = !focusAudioNotification.checked;
 
     breakDuration.value = settings.break.duration;
     breakDesktopNotification.checked = settings.break.desktopNotification;
-    breakDesktopNotificationToggleMode.checked = settings.break.toggleModeOnNotification;
     breakNewTabNotification.checked = settings.break.newTabNotification;
     breakAudioNotification.checked = (settings.break.sound !== null);
     breakSounds.disabled = !breakAudioNotification.checked;
@@ -95,14 +91,12 @@ function saveOptions() {
 
   var focusDuration = document.getElementById('focus-duration');
   var focusDesktopNotification = document.getElementById('focus-desktop-notification');
-  var focusDesktopNotificationToggleMode = document.getElementById('focus-desktop-notification-toggle-mode');
   var focusNewTabNotification = document.getElementById('focus-new-tab-notification');
   var focusAudioNotification = document.getElementById('focus-audio-notification');
   var focusSounds = document.getElementById('focus-sounds');
 
   var breakDuration = document.getElementById('break-duration');
   var breakDesktopNotification = document.getElementById('break-desktop-notification');
-  var breakDesktopNotificationToggleMode = document.getElementById('break-desktop-notification-toggle-mode');
   var breakNewTabNotification = document.getElementById('break-new-tab-notification');
   var breakAudioNotification = document.getElementById('break-audio-notification');
   var breakSounds = document.getElementById('break-sounds');
@@ -125,14 +119,12 @@ function saveOptions() {
       focus: {
         duration: focusDuration.value,
         desktopNotification: focusDesktopNotification.checked,
-        toggleModeOnNotification: focusDesktopNotificationToggleMode.checked,
         newTabNotification: focusNewTabNotification.checked,
         sound: focusSoundFile
       },
       break: {
         duration: breakDuration.value,
         desktopNotification: breakDesktopNotification.checked,
-        toggleModeOnNotification: breakDesktopNotificationToggleMode.checked,
         newTabNotification: breakNewTabNotification.checked,
         sound: breakSoundFile
       }

@@ -2,14 +2,12 @@ var defaultSettings = {
   focus: {
     duration: 25,
     desktopNotification: true,
-    toggleModeOnNotification: false,
     newTabNotification: true,
     sound: null
   },
   break: {
     duration: 5,
     desktopNotification: true,
-    toggleModeOnNotification: false,
     newTabNotification: true,
     sound: null
   },
@@ -408,15 +406,14 @@ function Controller() {
     }
   });
 
-  function notify(title, message, buttons) {
-    var buttons = buttons || [];
+  function notify(title, message, buttonTitle) {
     var options = {
       type: 'basic',
       title: title,
       message: message,
-      iconUrl: '../icons/128.png',
+      iconUrl: 'icons/128.png',
       isClickable: true,
-      buttons: buttons
+      buttons: [{ title: buttonTitle, iconUrl: 'icons/start.png' }]
     };
 
     chrome.notifications.create('', options, function() { });
@@ -462,9 +459,7 @@ function Controller() {
         notify(
           'Take a break!', 
           "Start your break when you're ready", 
-          settings.focus.toggleModeOnNotification 
-            ? [{title:"Begin break"}]
-            : []
+          'Start break now'
         );
       }
 
@@ -491,9 +486,7 @@ function Controller() {
         notify(
           'Break finished', 
           "Start your focus session when you're ready", 
-          settings.break.toggleModeOnNotification
-            ? [{title:"Begin focusing"}]
-            : []
+          'Start focusing now'
         );
       }
 
@@ -530,8 +523,8 @@ var controller = new Controller();
 
 chrome.contextMenus.removeAll();
 
-MenuEntry.create('Begin focusing', controller.startFocus);
-MenuEntry.create('Begin break', controller.startBreak);
+MenuEntry.create('Start focusing', controller.startFocus);
+MenuEntry.create('Start break', controller.startBreak);
 MenuEntry.create(null);
 
 chrome.browserAction.onClicked.addListener(function() {
