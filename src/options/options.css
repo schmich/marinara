@@ -59,3 +59,9 @@ button#save {
   display: block;
   margin-top: 3px;
 }
+input.duration {
+  width: 50px;
+}
+#status {
+  margin-left: 10px;
+}
