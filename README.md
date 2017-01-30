@@ -3,11 +3,11 @@
 
 ## Screenshots
 
-![](assets/screenshots/focus-expired.png)
-![](assets/screenshots/break-expired.png)
-![](assets/screenshots/options.png)
-![](assets/screenshots/desktop-notification.png)
-![](assets/screenshots/browser-action-menu-pause.png)
+![](assets/screenshots/focus-expired-zoom.png)
+![](assets/screenshots/options-zoom.png)
+![](assets/screenshots/desktop-notification-zoom.png)
+![](assets/screenshots/browser-action-menu-zoom.png)
+![](assets/screenshots/break-expired-zoom.png)
 
 ## License
 
