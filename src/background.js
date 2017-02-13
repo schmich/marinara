@@ -448,7 +448,7 @@ function Controller() {
 
   function createFocusTimer(settings) {
     var timer = new Timer(settings.focus.duration * 60, 60);
-    BadgeObserver.observe(timer, 'Focus', '#cc0000');
+    BadgeObserver.observe(timer, 'Focus', '#990000');
     ContextMenuObserver.observe(self, timer);
     AudioObserver.observe(timer, settings.focus.sound);
 
@@ -475,7 +475,7 @@ function Controller() {
 
   function createBreakTimer(settings) {
     var timer = new Timer(settings.break.duration * 60, 60);
-    BadgeObserver.observe(timer, 'Break', '#00cc00');
+    BadgeObserver.observe(timer, 'Break', '#009900');
     ContextMenuObserver.observe(self, timer);
     AudioObserver.observe(timer, settings.break.sound);
 
