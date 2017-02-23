@@ -304,6 +304,7 @@ function Controller() {
   var focusNext = true;
   var focusTimer;
   var breakTimer;
+  var notificationId = null;
 
   this.startSession = function() {
     focusTimer.stop();
@@ -416,7 +417,9 @@ function Controller() {
       buttons: [{ title: buttonTitle, iconUrl: 'icons/start.png' }]
     };
 
-    chrome.notifications.create('', options, function() { });
+    chrome.notifications.create('', options, function (id) {
+      notificationId = id;
+    });
   }
 
   chrome.notifications.onClicked.addListener(function() {
@@ -468,7 +471,10 @@ function Controller() {
       }
     });
 
-    timer.addListener('start', closeExtensionTabs);
+    timer.addListener('start', function () {
+      closeExtensionTabs();
+      closeNotifications();
+    });
 
     return timer;
   }
@@ -495,7 +501,10 @@ function Controller() {
       }
     });
 
-    timer.addListener('start', closeExtensionTabs);
+    timer.addListener('start', function () {
+      closeExtensionTabs();
+      closeNotifications();
+    });
 
     return timer;
   }
@@ -514,6 +523,13 @@ function Controller() {
 
       chrome.tabs.remove(remove, function() { });
     });
+  }
+
+  function closeNotifications() {
+    if (notificationId !== null) {
+      chrome.notifications.clear(notificationId);
+      notificationId = null;
+    }
   }
 
   createTimers();
