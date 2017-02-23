@@ -253,11 +253,13 @@ function AudioObserver() {
 }
 
 AudioObserver.observe = function(timer, sourceFile) {
-  timer.addListener('expire', function() {
-    var audio = new Audio();
-    audio.src = sourceFile;
-    audio.play();
-  });
+  if (sourceFile) {
+    timer.addListener('expire', function() {
+      var audio = new Audio();
+      audio.src = sourceFile;
+      audio.play();
+    });
+  }
 };
 
 function ContextMenuObserver() {
