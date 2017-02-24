@@ -14,7 +14,7 @@ var defaultSettings = {
   version: 1
 };
 
-var sounds = [
+const sounds = [
   { name: 'Tone', file: 'tone.mp3' },
   { name: 'Electronic Chime', file: 'electronic-chime.mp3' },
   { name: 'Gong 1', file: 'gong-1.mp3' },
@@ -39,7 +39,7 @@ var sounds = [
   { name: 'Din Ding', file: 'din-ding.mp3' }
 ];
 
-for (var i = 0; i < sounds.length; ++i) {
+for (let i = 0; i < sounds.length; ++i) {
   sounds[i].file = 'chrome-extension://' + chrome.runtime.id + '/audio/' + sounds[i].file;
 }
 
@@ -214,40 +214,46 @@ BadgeObserver.observe = function(timer, title, color) {
   }
 }
 
-function MenuEntry(title, action) {
-  this.id = null;
+class MenuEntry
+{
+  constructor(title, action) {
+    this.id = null;
+    this.title = title;
+    this.action = action;
+  }
 
-  this.show = function() {
+  show() {
     this.hide();
 
-    if (title === null) {
+    if (this.title === null) {
       this.id = chrome.contextMenus.create({
         type: 'separator',
         contexts: ['browser_action']
       });
     } else {
       this.id = chrome.contextMenus.create({
-        title: title,
+        title: this.title,
         contexts: ['browser_action'],
-        onclick: action
+        onclick: this.action
       });
     }
-  };
+  }
 
-  this.hide = function() {
+  hide() {
     if (this.id === null) {
       return;
     }
 
     chrome.contextMenus.remove(this.id, function() { });
     this.id = null;
-  };
-}
+  }
 
-MenuEntry.create = function(title, action) {
-  var menu = new MenuEntry(title, action);
-  menu.show();
-};
+  static add(title, action) {
+    let entry = new MenuEntry(title, action);
+    entry.show();
+    return entry;
+  }
+}
 
 function AudioObserver() {
 }
@@ -541,9 +547,9 @@ var controller = new Controller();
 
 chrome.contextMenus.removeAll();
 
-MenuEntry.create('Start focusing', controller.startFocus);
-MenuEntry.create('Start break', controller.startBreak);
-MenuEntry.create(null);
+MenuEntry.add('Start focusing', controller.startFocus);
+MenuEntry.add('Start break', controller.startBreak);
+MenuEntry.add(null);
 
 chrome.browserAction.onClicked.addListener(function() {
   controller.browserAction();
