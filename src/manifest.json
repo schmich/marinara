@@ -9,7 +9,6 @@
   "offline_enabled": true,
   "permissions": [
     "contextMenus",
-    "tabs",
     "storage",
     "notifications"
   ],

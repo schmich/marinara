@@ -480,7 +480,7 @@ function Controller() {
     });
 
     timer.addListener('start', function () {
-      closeExtensionTabs();
+      closeExpireTab();
       closeNotifications();
     });
 
@@ -510,27 +510,17 @@ function Controller() {
     });
 
     timer.addListener('start', function () {
-      closeExtensionTabs();
+      closeExpireTab();
       closeNotifications();
     });
 
     return timer;
   }
 
-  function closeExtensionTabs() {
-    var id = chrome.runtime.id;
-    var extensionUrl = 'chrome-extension://' + id;
-
-    chrome.tabs.query({}, function(tabs) {
-      var remove = [];
-      for (var i = 0; i < tabs.length; ++i) {
-        if (tabs[i].url.indexOf(extensionUrl) !== -1) {
-          remove.push(tabs[i].id);
-        }
-      }
-
-      chrome.tabs.remove(remove, function() { });
-    });
+  function closeExpireTab() {
+    if (expirePageTabId !== null) {
+      chrome.tabs.remove(expirePageTabId, function() { });
+    }
   }
 
   function closeNotifications() {
