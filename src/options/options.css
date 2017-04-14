@@ -37,7 +37,13 @@ p {
   cursor: pointer;
   font-size: larger;
   text-decoration: none;
-  padding: 0 10px 5px 10px;
+  padding: 5px 10px 5px 10px;
+  border-bottom: 1px solid #fff;
+  transition: background 0.2s, border 0.2s;
+}
+.tab:hover {
+  background: #fddddd;
+  border-bottom: 1px solid #fddddd;
 }
 .tab.active {
   border-bottom: 2px solid #fa0000;
