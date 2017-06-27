@@ -39,6 +39,13 @@ function loadOptions() {
   var breakAudioNotification = document.getElementById('break-audio-notification');
   var breakSounds = document.getElementById('break-sounds');
 
+  function playSound(control) {
+    var option = control.options[control.selectedIndex];
+    var audio = new Audio();
+    audio.src = option.dataset.file;
+    audio.play();
+  }
+
   focusAudioNotification.addEventListener('change', function() {
     focusSounds.disabled = !focusAudioNotification.checked;
   });
@@ -64,22 +71,24 @@ function loadOptions() {
       appendSounds(focusSounds, sounds, settings.focus.sound);
       appendSounds(breakSounds, sounds, settings.break.sound);
 
-      focusSounds.addEventListener('change', function() {
-        var option = focusSounds.options[focusSounds.selectedIndex];
-        var audio = new Audio();
-        audio.src = option.dataset.file;
-        audio.play();
+      focusAudioNotification.addEventListener('change', function() {
+        if (focusAudioNotification.checked) {
+          playSound(focusSounds);
+        }
+      });
 
-        return true;
+      focusSounds.addEventListener('change', function() {
+        playSound(focusSounds);
+      });
+
+      breakAudioNotification.addEventListener('change', function() {
+        if (breakAudioNotification.checked) {
+          playSound(breakSounds);
+        }
       });
 
       breakSounds.addEventListener('change', function() {
-        var option = breakSounds.options[breakSounds.selectedIndex];
-        var audio = new Audio();
-        audio.src = option.dataset.file;
-        audio.play();
-
-        return true;
+        playSound(breakSounds);
       });
     });
   });
