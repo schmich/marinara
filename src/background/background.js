@@ -221,7 +221,7 @@ class Controller
       phase: 'Focus',
       duration: settings.focus.duration,
       sound: settings.focus.sound,
-      badgeColor: '#990000',
+      badgeColor: '#bb0000',
       notification: !settings.focus.desktopNotification ? null : {
         title: 'Take a break!',
         message: "Start your break when you're ready",
