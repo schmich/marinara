@@ -1,27 +1,28 @@
-window.onload = function() {
-  chrome.windows.getCurrent({}, function(thisWindow) {
+window.onload = () => {
+  chrome.windows.getCurrent({}, thisWindow => {
     chrome.windows.update(thisWindow.id, { focused: true });
   });
 
-  chrome.runtime.sendMessage({ command: 'get-session' }, function(session) {
-    var startSession = document.getElementById('start-session');
-    startSession.onclick = function() {
+  chrome.runtime.sendMessage({ command: 'get-phase' }, phase => {
+    let start = document.getElementById('start-session');
+    start.onclick = () => {
       chrome.runtime.sendMessage({ command: 'start-session' });
     };
 
-    var sessionTitle = document.getElementById('session-title');
-    sessionTitle.innerText = session.title;
+    let title = document.getElementById('session-title');
+    let subtitle = document.getElementById('session-subtitle');
+    let action = document.getElementById('session-action');
 
-    var sessionSubtitle = document.getElementById('session-subtitle');
-    sessionSubtitle.innerText = session.subtitle;
-
-    var sessionAction = document.getElementById('session-action');
-    sessionAction.innerText = session.action;
-
-    if (session.focusNext) {
-      startSession.className += ' focus';
-    } else {
-      startSession.className += ' break';
+    if (phase === 'focus') {
+      title.innerText = 'Break finished';
+      subtitle.innerText = "Start your focus session when you're ready";
+      action.innerText = 'Start Focusing';
+    } else if (phase === 'break') {
+      title.innerText = 'Take a break!';
+      subtitle.innerText = "Start your break when you're ready";
+      action.innerText = 'Start Break';
     }
+
+    start.className += ' ' + phase;
   });
 };

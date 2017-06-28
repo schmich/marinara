@@ -1,8 +1,9 @@
 class Menu
 {
-  constructor(...contexts) {
+  constructor(contexts, ...groups) {
     this.contexts = contexts;
-    this.groups = [];
+    this.groups = groups;
+    this.refresh();
   }
 
   addGroup(group) {
@@ -40,7 +41,7 @@ class Menu
 
 class MenuGroup
 {
-  constructor(items = []) {
+  constructor(...items) {
     this.items = items;
   }
 
@@ -115,7 +116,7 @@ class StopTimerMenuItem extends MenuItem
   }
 
   visible() {
-    let state = this.controller.state();
+    let state = this.controller.state;
     return (state === TimerState.Running) || (state === TimerState.Paused);
   }
 
@@ -136,7 +137,7 @@ class PauseTimerMenuItem extends MenuItem
   }
 
   visible() {
-    return this.controller.state() === TimerState.Running;
+    return this.controller.state === TimerState.Running;
   }
 
   run() {
@@ -156,7 +157,7 @@ class ResumeTimerMenuItem extends MenuItem
   }
 
   visible() {
-    return this.controller.state() === TimerState.Paused;
+    return this.controller.state === TimerState.Paused;
   }
 
   run() {

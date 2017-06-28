@@ -46,15 +46,15 @@ function loadOptions() {
     audio.play();
   }
 
-  focusAudioNotification.addEventListener('change', function() {
+  focusAudioNotification.addEventListener('change', () => {
     focusSounds.disabled = !focusAudioNotification.checked;
   });
 
-  breakAudioNotification.addEventListener('change', function() {
+  breakAudioNotification.addEventListener('change', () => {
     breakSounds.disabled = !breakAudioNotification.checked;
   });
 
-  chrome.runtime.sendMessage({ command: 'get-settings' }, function(settings) {
+  chrome.runtime.sendMessage({ command: 'get-settings' }, settings => {
     focusDuration.value = settings.focus.duration;
     focusDesktopNotification.checked = settings.focus.desktopNotification;
     focusNewTabNotification.checked = settings.focus.newTabNotification;
@@ -67,27 +67,27 @@ function loadOptions() {
     breakAudioNotification.checked = (settings.break.sound !== null);
     breakSounds.disabled = !breakAudioNotification.checked;
 
-    chrome.runtime.sendMessage({ command: 'get-sounds' }, function(sounds) {
+    chrome.runtime.sendMessage({ command: 'get-sounds' }, sounds => {
       appendSounds(focusSounds, sounds, settings.focus.sound);
       appendSounds(breakSounds, sounds, settings.break.sound);
 
-      focusAudioNotification.addEventListener('change', function() {
+      focusAudioNotification.addEventListener('change', () => {
         if (focusAudioNotification.checked) {
           playSound(focusSounds);
         }
       });
 
-      focusSounds.addEventListener('change', function() {
+      focusSounds.addEventListener('change', () => {
         playSound(focusSounds);
       });
 
-      breakAudioNotification.addEventListener('change', function() {
+      breakAudioNotification.addEventListener('change', () => {
         if (breakAudioNotification.checked) {
           playSound(breakSounds);
         }
       });
 
-      breakSounds.addEventListener('change', function() {
+      breakSounds.addEventListener('change', () => {
         playSound(breakSounds);
       });
     });
@@ -140,7 +140,7 @@ function saveOptions() {
     }
   };
 
-  chrome.runtime.sendMessage(message, function(result) {
+  chrome.runtime.sendMessage(message, result => {
     if (!result.error) {
       statusElem.innerText = '✓ Options saved.';
     } else {
@@ -149,7 +149,7 @@ function saveOptions() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   var save = document.getElementById('save');
   save.onclick = saveOptions;
 

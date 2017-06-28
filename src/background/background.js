@@ -1,4 +1,4 @@
-var defaultSettings = {
+const defaultSettings = {
   focus: {
     duration: 25,
     desktopNotification: true,
@@ -47,32 +47,32 @@ function BadgeObserver() {
 }
 
 BadgeObserver.observe = function(timer, title, color) {
-  timer.addListener('start', function(state) {
+  timer.addListener('start', state => {
     updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
-  timer.addListener('tick', function(state) {
+  timer.addListener('tick', state => {
     updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
-  timer.addListener('stop', function() {
+  timer.addListener('stop', () => {
     removeBadge();
   });
 
-  timer.addListener('pause', function() {
+  timer.addListener('pause', () => {
     updateBadge({ text: '—', title: 'Timer Paused' });
   });
 
-  timer.addListener('resume', function(state) {
+  timer.addListener('resume', state => {
     updateBadge({ minutes: Math.round(state.remaining / 60) });
   });
 
-  timer.addListener('expire', function() {
+  timer.addListener('expire', () => {
     removeBadge();
   });
 
   function updateBadge(options) {
-    var minutes = options.minutes;
+    let minutes = options.minutes;
     if (minutes != null) {
       text = ((minutes == 0) ? '<1' : minutes)  + 'm';
       badgeTitle = title + ': ' + minutes + 'm remaining.';
@@ -92,125 +92,191 @@ BadgeObserver.observe = function(timer, title, color) {
   }
 }
 
-function AudioObserver() {
+class AudioObserver
+{
+  static observe(timer, source) {
+    if (source) {
+      timer.addListener('expire', () => {
+        let audio = new Audio();
+        audio.src = source;
+        audio.play();
+      });
+    }
+  }
 }
 
-AudioObserver.observe = function(timer, sourceFile) {
-  if (sourceFile) {
-    timer.addListener('expire', function() {
-      var audio = new Audio();
-      audio.src = sourceFile;
-      audio.play();
+class MultiTimer
+{
+  constructor(...timers) {
+    this.timers = timers;
+    this.timerIndex = 0;
+
+    for (let item of this.timers) {
+      item.timer.addListener('expire', () => {
+        this.timerIndex = (this.timerIndex + 1) % this.timers.length;
+      });
+    }
+  }
+
+  get current() {
+    return this.timers[this.timerIndex].timer;
+  }
+
+  get phase() {
+    return this.timers[this.timerIndex].phase;
+  }
+
+  get state() {
+    return this.current.state;
+  }
+
+  get isRunning() {
+    return this.current.isRunning;
+  }
+
+  get isStopped() {
+    return this.current.isStopped;
+  }
+
+  get isPaused() {
+    return this.current.isPaused;
+  }
+
+  start(phase = null) {
+    for (let item of this.timers) {
+      item.timer.stop();
+    }
+
+    if (phase !== null) {
+      this.timerIndex = this.timers.findIndex(t => t.phase === phase);
+    }
+
+    this.current.start();
+  }
+
+  pause() {
+    this.current.pause();
+  }
+
+  stop() {
+    this.current.stop();
+  }
+
+  resume() {
+    this.current.resume();
+  }
+
+  reset() {
+    this.current.reset();
+  }
+}
+
+class Controller
+{
+  constructor() {
+    this.createTimers();
+
+    this.menu = new Menu(['browser_action'],
+      new MenuGroup(
+        new PauseTimerMenuItem(this),
+        new ResumeTimerMenuItem(this),
+        new StopTimerMenuItem(this)
+      ),
+      new MenuGroup(
+        new StartFocusingMenuItem(this),
+        new StartBreakMenuItem(this)
+      )
+    );
+
+    this.notificationId = null;
+    this.timer = null;
+
+    this.expirePageTabId = null;
+    chrome.tabs.onRemoved.addListener(tabId => {
+      if (tabId === this.expirePageTabId) {
+        this.expirePageTabId = null;
+      }
+    });
+
+    chrome.notifications.onClicked.addListener(() => {
+      this.showExpirePage(tab => {
+        chrome.windows.update(tab.windowId, { focused: true });
+      });
+    });
+
+    chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
+      this.start();
+      chrome.notifications.clear(notificationId);
     });
   }
-};
 
-function Controller() {
-  var self = this;
-  var focusNext = true;
-  var focusTimer;
-  var breakTimer;
-  var notificationId = null;
+  get phase() {
+    return this.timer.phase;
+  }
 
-  this.state = function() {
-    if (!breakTimer || !focusTimer) {
-      return 'expired';
-    }
+  get state() {
+    return this.timer ? this.timer.state : null;
+  }
 
-    if (!breakTimer.isStopped) {
-      return breakTimer.state;
-    }
-
-    return focusTimer.state;
-  };
-
-  this.startSession = function() {
-    focusTimer.stop();
-    breakTimer.stop();
-
-    if (focusNext) {
-      focusTimer.start();
+  browserAction() {
+    if (this.timer.isRunning) {
+      this.timer.pause();
+    } else if (this.timer.isPaused) {
+      this.timer.resume();
     } else {
-      breakTimer.start();
+      this.timer.start();
     }
-  };
+  }
 
-  this.browserAction = function() {
-    if (focusTimer.isRunning) {
-      focusTimer.pause();
-    } else if (breakTimer.isRunning) {
-      breakTimer.pause();
-    } else if (focusTimer.isPaused) {
-      focusTimer.resume();
-    } else if (breakTimer.isPaused) {
-      breakTimer.resume();
-    } else {
-      this.startSession();
-    }
-  };
+  start() {
+    this.timer.start();
+  }
 
-  this.pause = function() {
-    if (focusTimer.isRunning) {
-      focusTimer.pause();
-    } else if (breakTimer.isRunning) {
-      breakTimer.pause();
-    }
-  };
+  pause() {
+    this.timer.pause();
+  }
 
-  this.stop = function() {
-    focusTimer.stop();
-    breakTimer.stop();
-  };
+  stop() {
+    this.timer.stop();
+  }
 
-  this.resume = function() {
-    if (focusTimer.isPaused) {
-      focusTimer.resume();
-    } else if (breakTimer.isPaused) {
-      breakTimer.resume();
-    }
-  };
+  resume() {
+    this.timer.resume();
+  }
 
-  this.startBreak = function() {
-    focusTimer.stop();
-    breakTimer.stop();
-    breakTimer.start();
-  };
+  startFocus() {
+    this.timer.start('focus');
+  }
 
-  this.startFocus = function() {
-    focusTimer.stop();
-    breakTimer.stop();
-    focusTimer.start();
-  };
+  startBreak() {
+    this.timer.start('break');
+  }
 
-  this.focusNext = function() {
-    return focusNext;
-  };
-
-  this.getSettings = function(callback) {
-    chrome.storage.sync.get(function(result) {
+  getSettings(callback) {
+    chrome.storage.sync.get(result => {
       if (Object.keys(result).length == 0) {
-        chrome.storage.sync.set(defaultSettings, function() {
+        chrome.storage.sync.set(defaultSettings, () => {
           callback(defaultSettings);
         });
       } else {
         callback(result);
       }
     });
-  };
-
-  this.setSettings = function(settings, callback) {
-    chrome.storage.sync.set(settings, function() {
-      createTimers();
+  }
+  
+  setSettings(settings, callback) {
+    chrome.storage.sync.set(settings, () => {
+      this.createTimers();
       callback();
     });
-  };
+  }
 
-  function showExpirePage(callback) {
-    if (expirePageTabId !== null) {
-      chrome.tabs.update(expirePageTabId, { active: true, highlighted: true }, callback);
+  showExpirePage(callback) {
+    if (this.expirePageTabId !== null) {
+      chrome.tabs.update(this.expirePageTabId, { active: true, highlighted: true }, callback);
     } else {
-      chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, function(tab) {
-        expirePageTabId = tab.id;
+      chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, tab => {
+        this.expirePageTabId = tab.id;
         if (callback) {
           callback(tab);
         }
@@ -218,15 +284,8 @@ function Controller() {
     }
   }
 
-  var expirePageTabId = null;
-  chrome.tabs.onRemoved.addListener(function(tabId) {
-    if (tabId === expirePageTabId) {
-      expirePageTabId = null;
-    }
-  });
-
-  function notify(title, message, buttonTitle) {
-    var options = {
+  notify(title, message, buttonTitle) {
+    let options = {
       type: 'basic',
       title: title,
       message: message,
@@ -235,173 +294,102 @@ function Controller() {
       buttons: [{ title: buttonTitle, iconUrl: 'icons/start.png' }]
     };
 
-    chrome.notifications.create('', options, function (id) {
-      notificationId = id;
+    chrome.notifications.create('', options, id => {
+      this.notificationId = id;
     });
   }
 
-  chrome.notifications.onClicked.addListener(function() {
-    showExpirePage(function(tab) {
-      chrome.windows.update(tab.windowId, { focused: true });
-    });
-  });
-
-  chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
-    self.focusNext() ? self.startFocus() : self.startBreak();
-    chrome.notifications.clear(notificationId);
-  });
-
-  function createTimers() {
-    self.getSettings(function(settings) {
-      if (focusTimer) {
-        focusTimer.stop();
+  createTimers() {
+    this.getSettings(settings => {
+      if (this.timer) {
+        this.timer.stop();
       }
 
-      focusTimer = createFocusTimer(settings);
+      let fs = settings.focus;
+      fs.phase = 'Focus';
+      fs.badgeColor = '#990000';
+      fs.notificationTitle = 'Take a break!';
+      fs.notificationMessage = "Start your break when you're ready";
+      fs.notificationButton = 'Start break now';
+      let focusTimer = this.createTimer(fs);
 
-      if (breakTimer) {
-        breakTimer.stop();
-      }
+      let bs = settings.break;
+      bs.phase = 'Break';
+      bs.badgeColor = '#009900';
+      bs.notificationTitle = 'Break finished';
+      bs.notificationMessage = "Start your focus session when you're ready";
+      bs.notificationButton = 'Start focusing now';
+      let breakTimer = this.createTimer(bs);
 
-      breakTimer = createBreakTimer(settings);
+      this.timer = new MultiTimer({ phase: 'focus', timer: focusTimer }, { phase: 'break', timer: breakTimer });
     });
   }
 
-  function menuHandler(timer) {
-    timer.addListener('start', () => menu.refresh());
-    timer.addListener('stop', () => menu.refresh());
-    timer.addListener('pause', () => menu.refresh());
-    timer.addListener('resume', () => menu.refresh());
-    timer.addListener('expire', () => menu.refresh());
-  }
+  createTimer(settings) {
+    let timer = new Timer(settings.duration * 60, 60);
+    BadgeObserver.observe(timer, settings.phase, settings.badgeColor);
+    AudioObserver.observe(timer, settings.sound);
 
-  function createFocusTimer(settings) {
-    var timer = new Timer(settings.focus.duration * 60, 60);
-    BadgeObserver.observe(timer, 'Focus', '#990000');
-    menuHandler(timer);
-    AudioObserver.observe(timer, settings.focus.sound);
+    timer.addListener('start', () => this.menu.refresh());
+    timer.addListener('stop', () => this.menu.refresh());
+    timer.addListener('pause', () => this.menu.refresh());
+    timer.addListener('resume', () => this.menu.refresh());
+    timer.addListener('expire', () => this.menu.refresh());
 
-    timer.addListener('expire', function() {
-      focusNext = false;
-
-      if (settings.focus.desktopNotification) {
-        notify(
-          'Take a break!', 
-          "Start your break when you're ready", 
-          'Start break now'
+    timer.addListener('expire', () => {
+      if (settings.desktopNotification) {
+        this.notify(
+          settings.notificationTitle,
+          settings.notificationMessage,
+          settings.notificationButton
         );
       }
 
-      if (settings.focus.newTabNotification) {
-        showExpirePage();
+      if (settings.newTabNotification) {
+        this.showExpirePage();
       }
     });
 
-    timer.addListener('start', function () {
-      closeExpireTab();
-      closeNotifications();
+    timer.addListener('start', () => {
+      this.closeExpireTab();
+      this.closeNotifications();
     });
 
     return timer;
   }
 
-  function createBreakTimer(settings) {
-    var timer = new Timer(settings.break.duration * 60, 60);
-    BadgeObserver.observe(timer, 'Break', '#009900');
-    menuHandler(timer);
-    AudioObserver.observe(timer, settings.break.sound);
-
-    timer.addListener('expire', function() {
-      focusNext = true;
-
-      if (settings.break.desktopNotification) {
-        notify(
-          'Break finished', 
-          "Start your focus session when you're ready", 
-          'Start focusing now'
-        );
-      }
-
-      if (settings.break.newTabNotification) {
-        showExpirePage();
-      }
-    });
-
-    timer.addListener('start', function () {
-      closeExpireTab();
-      closeNotifications();
-    });
-
-    return timer;
-  }
-
-  function closeExpireTab() {
-    if (expirePageTabId !== null) {
-      chrome.tabs.remove(expirePageTabId, function() { });
+  closeExpireTab() {
+    if (this.expirePageTabId !== null) {
+      chrome.tabs.remove(this.expirePageTabId, () => {});
     }
   }
 
-  function closeNotifications() {
-    if (notificationId !== null) {
-      chrome.notifications.clear(notificationId);
-      notificationId = null;
+  closeNotifications() {
+    if (this.notificationId !== null) {
+      chrome.notifications.clear(this.notificationId);
+      this.notificationId = null;
     }
   }
-
-  createTimers();
-
-  let menu = new Menu('browser_action');
-
-  menu.addGroup(new MenuGroup([
-    new StopTimerMenuItem(self),
-    new PauseTimerMenuItem(self),
-    new ResumeTimerMenuItem(self)
-  ]));
-
-  menu.addGroup(new MenuGroup([
-    new StartFocusingMenuItem(self),
-    new StartBreakMenuItem(self)
-  ]));
 }
 
-var controller = new Controller();
+let controller = new Controller();
 
-chrome.browserAction.onClicked.addListener(function() {
-  controller.browserAction();
-});
+chrome.browserAction.onClicked.addListener(() => controller.browserAction());
 
-chrome.runtime.onMessage.addListener(function(request, sender, respond) {
-  if (request.command === 'get-session') {
-    if (controller.focusNext()) {
-      controller.getSettings(function(settings) {
-        respond({
-          focusNext: true,
-          title: 'Break finished',
-          subtitle: "Start your " + settings.focus.duration + " minute focus session when you're ready",
-          action: 'Start Focusing'
-        });
-      });
-    } else {
-      controller.getSettings(function(settings) {
-        respond({
-          focusNext: false,
-          title: 'Take a break!',
-          subtitle: "Start your " + settings.break.duration + " minute break when you're ready",
-          action: 'Start Break'
-        });
-      });
-    }
+chrome.runtime.onMessage.addListener((request, sender, respond) => {
+  if (request.command === 'get-phase') {
+    respond(controller.phase);
   } else if (request.command === 'start-session') {
-    controller.startSession();
+    controller.start();
     respond({});
   } else if (request.command === 'get-sounds') {
     respond(sounds);
   } else if (request.command === 'get-settings') {
     controller.getSettings(respond);
   } else if (request.command === 'set-settings') {
-    var newSettings = request.settings;
-    var focusDuration = newSettings.focus.duration.trim();
-    var breakDuration = newSettings.break.duration.trim();
+    let newSettings = request.settings;
+    let focusDuration = newSettings.focus.duration.trim();
+    let breakDuration = newSettings.break.duration.trim();
 
     if (!focusDuration) {
       respond({ error: 'Focus duration is required.' });
@@ -411,8 +399,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
       return true;
     }
 
-    var focusParsed = +focusDuration;
-    var breakParsed = +breakDuration;
+    let focusParsed = +focusDuration;
+    let breakParsed = +breakDuration;
 
     if (focusParsed <= 0 || isNaN(focusParsed)) {
       respond({ error: 'Focus duration must be a positive number.' });
@@ -425,7 +413,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, respond) {
     newSettings.focus.duration = focusParsed;
     newSettings.break.duration = breakParsed;
 
-    controller.setSettings(newSettings, function() {
+    controller.setSettings(newSettings, () => {
       respond({});
     });
   }
