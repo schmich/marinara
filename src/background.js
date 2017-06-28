@@ -214,47 +214,6 @@ BadgeObserver.observe = function(timer, title, color) {
   }
 }
 
-class MenuEntry
-{
-  constructor(title, action) {
-    this.id = null;
-    this.title = title;
-    this.action = action;
-  }
-
-  show() {
-    this.hide();
-
-    if (this.title === null) {
-      this.id = chrome.contextMenus.create({
-        type: 'separator',
-        contexts: ['browser_action']
-      });
-    } else {
-      this.id = chrome.contextMenus.create({
-        title: this.title,
-        contexts: ['browser_action'],
-        onclick: this.action
-      });
-    }
-  }
-
-  hide() {
-    if (this.id === null) {
-      return;
-    }
-
-    chrome.contextMenus.remove(this.id, function() { });
-    this.id = null;
-  }
-
-  static add(title, action) {
-    let entry = new MenuEntry(title, action);
-    entry.show();
-    return entry;
-  }
-}
-
 function AudioObserver() {
 }
 
@@ -268,51 +227,24 @@ AudioObserver.observe = function(timer, sourceFile) {
   }
 };
 
-function ContextMenuObserver() {
-}
-
-ContextMenuObserver.observe = function(controller, timer) {
-  var stop = new MenuEntry('Stop Timer', controller.stop);
-  var pause = new MenuEntry('Pause Timer', controller.pause);
-  var resume = new MenuEntry('Resume Timer', controller.resume);
-
-  timer.addListener('start', function() {
-    pause.show();
-    stop.show();
-    resume.hide();
-  });
-
-  timer.addListener('pause', function() {
-    resume.show();
-    stop.show();
-    pause.hide();
-  });
-
-  timer.addListener('resume', function() {
-    pause.show();
-    stop.show();
-    resume.hide();
-  });
-
-  timer.addListener('stop', function() {
-    pause.hide();
-    stop.hide();
-    resume.hide();
-  });
-
-  timer.addListener('expire', function() {
-    pause.hide();
-    stop.hide();
-    resume.hide();
-  });
-};
-
 function Controller() {
   var self = this;
   var focusNext = true;
   var focusTimer;
   var breakTimer;
   var notificationId = null;
+
+  this.state = function() {
+    if (!breakTimer || !focusTimer) {
+      return 'expired';
+    }
+
+    if (breakTimer.state() !== 'stopped') {
+      return breakTimer.state();
+    }
+
+    return focusTimer.state();
+  };
 
   this.startSession = function() {
     focusTimer.stop();
@@ -457,10 +389,18 @@ function Controller() {
     });
   }
 
+  function menuHandler(timer) {
+    timer.addListener('start', () => menu.refresh());
+    timer.addListener('stop', () => menu.refresh());
+    timer.addListener('pause', () => menu.refresh());
+    timer.addListener('resume', () => menu.refresh());
+    timer.addListener('expire', () => menu.refresh());
+  }
+
   function createFocusTimer(settings) {
     var timer = new Timer(settings.focus.duration * 60, 60);
     BadgeObserver.observe(timer, 'Focus', '#990000');
-    ContextMenuObserver.observe(self, timer);
+    menuHandler(timer);
     AudioObserver.observe(timer, settings.focus.sound);
 
     timer.addListener('expire', function() {
@@ -490,7 +430,7 @@ function Controller() {
   function createBreakTimer(settings) {
     var timer = new Timer(settings.break.duration * 60, 60);
     BadgeObserver.observe(timer, 'Break', '#009900');
-    ContextMenuObserver.observe(self, timer);
+    menuHandler(timer);
     AudioObserver.observe(timer, settings.break.sound);
 
     timer.addListener('expire', function() {
@@ -531,15 +471,22 @@ function Controller() {
   }
 
   createTimers();
+
+  let menu = new Menu('browser_action');
+
+  menu.addGroup(new MenuGroup([
+    new StopTimerMenuItem(self),
+    new PauseTimerMenuItem(self),
+    new ResumeTimerMenuItem(self)
+  ]));
+
+  menu.addGroup(new MenuGroup([
+    new StartFocusingMenuItem(self),
+    new StartBreakMenuItem(self)
+  ]));
 }
 
 var controller = new Controller();
-
-chrome.contextMenus.removeAll();
-
-MenuEntry.add('Start Focusing', controller.startFocus);
-MenuEntry.add('Start Break', controller.startBreak);
-MenuEntry.add(null);
 
 chrome.browserAction.onClicked.addListener(function() {
   controller.browserAction();
