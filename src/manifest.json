@@ -23,6 +23,7 @@
       "background/enum.js",
       "background/menu.js",
       "background/timer.js",
+      "background/sounds.js",
       "background/settings.js",
       "background/messages.js",
       "background/background.js"

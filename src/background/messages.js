@@ -31,7 +31,7 @@ class MarinaraMessageHandler extends MessageHandler
   }
 
   async getSounds() {
-    return sounds;
+    return Sounds.all;
   }
 
   async getSettings() {
