@@ -182,7 +182,7 @@ BadgeObserver.observe = function(timer, title, color) {
   });
 
   timer.addListener('pause', function() {
-    updateBadge({ text: '—', title: 'Paused' });
+    updateBadge({ text: '—', title: 'Timer Paused' });
   });
 
   timer.addListener('resume', function(state) {
@@ -272,9 +272,9 @@ function ContextMenuObserver() {
 }
 
 ContextMenuObserver.observe = function(controller, timer) {
-  var stop = new MenuEntry('Stop', controller.stop);
-  var pause = new MenuEntry('Pause', controller.pause);
-  var resume = new MenuEntry('Resume', controller.resume);
+  var stop = new MenuEntry('Stop Timer', controller.stop);
+  var pause = new MenuEntry('Pause Timer', controller.pause);
+  var resume = new MenuEntry('Resume Timer', controller.resume);
 
   timer.addListener('start', function() {
     pause.show();
@@ -537,8 +537,8 @@ var controller = new Controller();
 
 chrome.contextMenus.removeAll();
 
-MenuEntry.add('Start focusing', controller.startFocus);
-MenuEntry.add('Start break', controller.startBreak);
+MenuEntry.add('Start Focusing', controller.startFocus);
+MenuEntry.add('Start Break', controller.startBreak);
 MenuEntry.add(null);
 
 chrome.browserAction.onClicked.addListener(function() {
