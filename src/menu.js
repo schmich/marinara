@@ -116,7 +116,7 @@ class StopTimerMenuItem extends MenuItem
 
   visible() {
     let state = this.controller.state();
-    return (state === 'running') || (state === 'paused');
+    return (state === TimerState.Running) || (state === TimerState.Paused);
   }
 
   run() {
@@ -136,7 +136,7 @@ class PauseTimerMenuItem extends MenuItem
   }
 
   visible() {
-    return this.controller.state() === 'running';
+    return this.controller.state() === TimerState.Running;
   }
 
   run() {
@@ -156,7 +156,7 @@ class ResumeTimerMenuItem extends MenuItem
   }
 
   visible() {
-    return this.controller.state() === 'paused';
+    return this.controller.state() === TimerState.Paused;
   }
 
   run() {

@@ -18,7 +18,13 @@
   },
   "background": {
     "persistent": true,
-    "scripts": ["lib/EventEmitter.min.js", "menu.js", "background.js"]
+    "scripts": [
+      "lib/EventEmitter.min.js",
+      "enum.js",
+      "menu.js",
+      "timer.js",
+      "background.js"
+    ]
   },
   "options_ui": {
     "page": "options/options.html",

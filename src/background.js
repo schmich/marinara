@@ -43,128 +43,6 @@ for (let i = 0; i < sounds.length; ++i) {
   sounds[i].file = 'chrome-extension://' + chrome.runtime.id + '/audio/' + sounds[i].file;
 }
 
-function Timer(durationSec, tickSec) {
-  var self = this;
-  var state = 'stopped';
-
-  this.tickInterval = null;
-  this.expireTimeout = null;
-
-  this.periodStartTime = null;
-  this.remainingSec = null;
-
-  this.start = function() {
-    if (state !== 'stopped') {
-      return;
-    }
-
-    this.expireTimeout = createExpireTimeout(durationSec);
-    this.tickInterval = createTickInterval(tickSec);
-
-    this.remainingSec = durationSec;
-
-    state = 'running';
-    this.periodStartTime = Date.now();
-    this.emitEvent('start', [{
-      elapsed: 0,
-      remaining: this.remainingSec
-    }]);
-  };
-
-  this.stop = function() {
-    if (state === 'stopped') {
-      return;
-    }
-
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
-
-    this.tickInterval = null;
-    this.expireTimeout = null;
-    this.periodStartTime = null;
-    this.remainingSec = null;
-
-    state = 'stopped';
-    this.emitEvent('stop', [{}]);
-  };
-
-  this.pause = function() {
-    if (state !== 'running') {
-      return;
-    }
-
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
-
-    var periodSec = (Date.now() - this.periodStartTime) / 1000;
-    this.remainingSec -= periodSec;
-
-    state = 'paused';
-    this.periodStartTime = null;
-    this.emitEvent('pause', [{
-      elapsed: durationSec - this.remainingSec,
-      remaining: this.remainingSec
-    }]);
-  };
-
-  this.resume = function() {
-    if (state !== 'paused') {
-      return;
-    }
-
-    this.expireTimeout = createExpireTimeout(this.remainingSec);
-    this.tickInterval = createTickInterval(tickSec);
-
-    state = 'running';
-    this.periodStartTime = Date.now();
-    this.emitEvent('resume', [{
-      elapsed: durationSec - this.remainingSec,
-      remaining: this.remainingSec
-    }]);
-  };
-
-  this.reset = function() {
-    this.stop();
-    this.start();
-  };
-
-  this.state = function() {
-    return state;
-  };
-
-  function createExpireTimeout(seconds) {
-    return setTimeout(function() {
-      clearInterval(self.tickInterval);
-      clearTimeout(self.expireTimeout);
-
-      self.tickInterval = null;
-      self.expireTimeout = null;
-      self.periodStartTime = null;
-      self.remainingSec = null;
-
-      state = 'stopped';
-      self.emitEvent('expire', [{
-        elapsed: durationSec,
-        remaining: 0
-      }]);
-    }, seconds * 1000);
-  }
-
-  function createTickInterval(seconds) {
-    return setInterval(function() {
-      var periodSec = (Date.now() - self.periodStartTime) / 1000;
-      var remainingSec = self.remainingSec - periodSec;
-
-      self.emitEvent('tick', [{
-        elapsed: durationSec - remainingSec,
-        remaining: remainingSec
-      }]);
-    }, seconds * 1000);
-  }
-}
-
-Timer.prototype = Object.create(EventEmitter.prototype);
-
 function BadgeObserver() {
 }
 
@@ -239,7 +117,7 @@ function Controller() {
       return 'expired';
     }
 
-    if (breakTimer.state() !== 'stopped') {
+    if (breakTimer.state() !== TimerState.Stopped) {
       return breakTimer.state();
     }
 
@@ -258,13 +136,13 @@ function Controller() {
   };
 
   this.browserAction = function() {
-    if (focusTimer.state() === 'running') {
+    if (focusTimer.state() === TimerState.Running) {
       focusTimer.pause();
-    } else if (breakTimer.state() === 'running') {
+    } else if (breakTimer.state() === TimerState.Running) {
       breakTimer.pause();
-    } else if (focusTimer.state() === 'paused') {
+    } else if (focusTimer.state() === TimerState.Paused) {
       focusTimer.resume();
-    } else if (breakTimer.state() === 'paused') {
+    } else if (breakTimer.state() === TimerState.Paused) {
       breakTimer.resume();
     } else {
       this.startSession();
@@ -272,9 +150,9 @@ function Controller() {
   };
 
   this.pause = function() {
-    if (focusTimer.state() === 'running') {
+    if (focusTimer.state() === TimerState.Running) {
       focusTimer.pause();
-    } else if (breakTimer.state() === 'running') {
+    } else if (breakTimer.state() === TimerState.Running) {
       breakTimer.pause();
     }
   };
@@ -285,9 +163,9 @@ function Controller() {
   };
 
   this.resume = function() {
-    if (focusTimer.state() === 'paused') {
+    if (focusTimer.state() === TimerState.Paused) {
       focusTimer.resume();
-    } else if (breakTimer.state() === 'paused') {
+    } else if (breakTimer.state() === TimerState.Paused) {
       breakTimer.resume();
     }
   };
