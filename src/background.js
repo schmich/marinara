@@ -117,11 +117,11 @@ function Controller() {
       return 'expired';
     }
 
-    if (breakTimer.state() !== TimerState.Stopped) {
-      return breakTimer.state();
+    if (breakTimer.state !== TimerState.Stopped) {
+      return breakTimer.state;
     }
 
-    return focusTimer.state();
+    return focusTimer.state;
   };
 
   this.startSession = function() {
@@ -136,13 +136,13 @@ function Controller() {
   };
 
   this.browserAction = function() {
-    if (focusTimer.state() === TimerState.Running) {
+    if (focusTimer.state === TimerState.Running) {
       focusTimer.pause();
-    } else if (breakTimer.state() === TimerState.Running) {
+    } else if (breakTimer.state === TimerState.Running) {
       breakTimer.pause();
-    } else if (focusTimer.state() === TimerState.Paused) {
+    } else if (focusTimer.state === TimerState.Paused) {
       focusTimer.resume();
-    } else if (breakTimer.state() === TimerState.Paused) {
+    } else if (breakTimer.state === TimerState.Paused) {
       breakTimer.resume();
     } else {
       this.startSession();
@@ -150,9 +150,9 @@ function Controller() {
   };
 
   this.pause = function() {
-    if (focusTimer.state() === TimerState.Running) {
+    if (focusTimer.state === TimerState.Running) {
       focusTimer.pause();
-    } else if (breakTimer.state() === TimerState.Running) {
+    } else if (breakTimer.state === TimerState.Running) {
       breakTimer.pause();
     }
   };
@@ -163,9 +163,9 @@ function Controller() {
   };
 
   this.resume = function() {
-    if (focusTimer.state() === TimerState.Paused) {
+    if (focusTimer.state === TimerState.Paused) {
       focusTimer.resume();
-    } else if (breakTimer.state() === TimerState.Paused) {
+    } else if (breakTimer.state === TimerState.Paused) {
       breakTimer.resume();
     }
   };

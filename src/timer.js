@@ -4,36 +4,43 @@ const TimerState = new Enum({
   Paused: 2
 });
 
-function Timer(durationSec, tickSec) {
-  var self = this;
-  var state = TimerState.Stopped;
+class Timer extends EventEmitter
+{
+  constructor(durationSec, tickSec) {
+    super();
 
-  this.tickInterval = null;
-  this.expireTimeout = null;
+    this._state = TimerState.Stopped;
 
-  this.periodStartTime = null;
-  this.remainingSec = null;
+    this.durationSec = durationSec;
+    this.tickSec = tickSec;
 
-  this.start = function() {
-    if (state !== TimerState.Stopped) {
+    this.tickInterval = null;
+    this.expireTimeout = null;
+
+    this.periodStartTime = null;
+    this.remainingSec = null;
+  }
+
+  start() {
+    if (this._state !== TimerState.Stopped) {
       return;
     }
 
-    this.expireTimeout = createExpireTimeout(durationSec);
-    this.tickInterval = createTickInterval(tickSec);
+    this.expireTimeout = this.createExpireTimeout(this.durationSec);
+    this.tickInterval = this.createTickInterval(this.tickSec);
 
-    this.remainingSec = durationSec;
+    this.remainingSec = this.durationSec;
 
-    state = TimerState.Running;
+    this._state = TimerState.Running;
     this.periodStartTime = Date.now();
     this.emitEvent('start', [{
       elapsed: 0,
       remaining: this.remainingSec
     }]);
-  };
+  }
 
-  this.stop = function() {
-    if (state === TimerState.Stopped) {
+  stop() {
+    if (this._state === TimerState.Stopped) {
       return;
     }
 
@@ -45,12 +52,12 @@ function Timer(durationSec, tickSec) {
     this.periodStartTime = null;
     this.remainingSec = null;
 
-    state = TimerState.Stopped;
+    this._state = TimerState.Stopped;
     this.emitEvent('stop', [{}]);
-  };
+  }
 
-  this.pause = function() {
-    if (state !== TimerState.Running) {
+  pause() {
+    if (this._state !== TimerState.Running) {
       return;
     }
 
@@ -60,68 +67,66 @@ function Timer(durationSec, tickSec) {
     var periodSec = (Date.now() - this.periodStartTime) / 1000;
     this.remainingSec -= periodSec;
 
-    state = TimerState.Paused;
+    this._state = TimerState.Paused;
     this.periodStartTime = null;
     this.emitEvent('pause', [{
-      elapsed: durationSec - this.remainingSec,
+      elapsed: this.durationSec - this.remainingSec,
       remaining: this.remainingSec
     }]);
-  };
+  }
 
-  this.resume = function() {
-    if (state !== TimerState.Paused) {
+  resume() {
+    if (this._state !== TimerState.Paused) {
       return;
     }
 
-    this.expireTimeout = createExpireTimeout(this.remainingSec);
-    this.tickInterval = createTickInterval(tickSec);
+    this.expireTimeout = this.createExpireTimeout(this.remainingSec);
+    this.tickInterval = this.createTickInterval(this.tickSec);
 
-    state = TimerState.Running;
+    this._state = TimerState.Running;
     this.periodStartTime = Date.now();
     this.emitEvent('resume', [{
-      elapsed: durationSec - this.remainingSec,
+      elapsed: this.durationSec - this.remainingSec,
       remaining: this.remainingSec
     }]);
-  };
+  }
 
-  this.reset = function() {
+  reset() {
     this.stop();
     this.start();
-  };
+  }
 
-  this.state = function() {
-    return state;
-  };
+  get state() {
+    return this._state;
+  }
 
-  function createExpireTimeout(seconds) {
-    return setTimeout(function() {
-      clearInterval(self.tickInterval);
-      clearTimeout(self.expireTimeout);
+  createExpireTimeout(seconds) {
+    return setTimeout(() => {
+      clearInterval(this.tickInterval);
+      clearTimeout(this.expireTimeout);
 
-      self.tickInterval = null;
-      self.expireTimeout = null;
-      self.periodStartTime = null;
-      self.remainingSec = null;
+      this.tickInterval = null;
+      this.expireTimeout = null;
+      this.periodStartTime = null;
+      this.remainingSec = null;
 
-      state = TimerState.Stopped;
-      self.emitEvent('expire', [{
-        elapsed: durationSec,
+      this._state = TimerState.Stopped;
+      this.emitEvent('expire', [{
+        elapsed: this.durationSec,
         remaining: 0
       }]);
     }, seconds * 1000);
   }
 
-  function createTickInterval(seconds) {
-    return setInterval(function() {
-      var periodSec = (Date.now() - self.periodStartTime) / 1000;
-      var remainingSec = self.remainingSec - periodSec;
+  createTickInterval(seconds) {
+    return setInterval(() => {
+      var periodSec = (Date.now() - this.periodStartTime) / 1000;
+      var remainingSec = this.remainingSec - periodSec;
 
-      self.emitEvent('tick', [{
-        elapsed: durationSec - remainingSec,
+      this.emitEvent('tick', [{
+        elapsed: this.durationSec - remainingSec,
         remaining: remainingSec
       }]);
     }, seconds * 1000);
   }
 }
-
-Timer.prototype = Object.create(EventEmitter.prototype);
