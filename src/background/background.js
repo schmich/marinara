@@ -155,10 +155,9 @@ class Controller
       }
     });
 
-    chrome.notifications.onClicked.addListener(() => {
-      this.showExpirePage(tab => {
-        chrome.windows.update(tab.windowId, { focused: true });
-      });
+    chrome.notifications.onClicked.addListener((notificationId) => {
+      this.showExpirePage();
+      chrome.notifications.clear(notificationId);
     });
 
     chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
@@ -209,15 +208,16 @@ class Controller
     this.timer.start('break');
   }
 
-  showExpirePage(callback) {
+  showExpirePage() {
+    let focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
+    let focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
+
     if (this.expirePageTabId !== null) {
-      chrome.tabs.update(this.expirePageTabId, { active: true, highlighted: true }, callback);
+      focusTab(this.expirePageTabId);
     } else {
       chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, tab => {
         this.expirePageTabId = tab.id;
-        if (callback) {
-          callback(tab);
-        }
+        focusTab(tab.id);
       });
     }
   }
@@ -288,24 +288,19 @@ class Controller
     });
 
     timer.addListener('start', () => {
-      this.closeExpireTab();
-      this.closeNotifications();
+      // Close expire tab.
+      if (this.expirePageTabId !== null) {
+        chrome.tabs.remove(this.expirePageTabId, () => {});
+      }
+
+      // Close any notifications.
+      if (this.notificationId !== null) {
+        chrome.notifications.clear(this.notificationId);
+        this.notificationId = null;
+      }
     });
 
     return timer;
-  }
-
-  closeExpireTab() {
-    if (this.expirePageTabId !== null) {
-      chrome.tabs.remove(this.expirePageTabId, () => {});
-    }
-  }
-
-  closeNotifications() {
-    if (this.notificationId !== null) {
-      chrome.notifications.clear(this.notificationId);
-      this.notificationId = null;
-    }
   }
 }
 
