@@ -14,7 +14,7 @@ class MessageHandler
   }
 }
 
-class MarinaraMessageHandler extends MessageHandler
+class BackgroundMessageHandler extends MessageHandler
 {
   constructor(controller, settings) {
     super();

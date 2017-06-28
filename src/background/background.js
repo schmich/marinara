@@ -232,9 +232,7 @@ class Controller
       buttons: [{ title: buttonTitle, iconUrl: 'icons/start.png' }]
     };
 
-    chrome.notifications.create('', options, id => {
-      this.notificationId = id;
-    });
+    chrome.notifications.create('', options, id => this.notificationId = id);
   }
 
   async createTimers() {
@@ -243,21 +241,21 @@ class Controller
       this.timer.stop();
     }
 
-    let fs = settings.focus;
-    fs.phase = 'Focus';
-    fs.badgeColor = '#990000';
-    fs.notificationTitle = 'Take a break!';
-    fs.notificationMessage = "Start your break when you're ready";
-    fs.notificationButton = 'Start break now';
-    let focusTimer = this.createTimer(fs);
+    let focus = settings.focus;
+    focus.phase = 'Focus';
+    focus.badgeColor = '#990000';
+    focus.notificationTitle = 'Take a break!';
+    focus.notificationMessage = "Start your break when you're ready";
+    focus.notificationButton = 'Start break now';
+    let focusTimer = this.createTimer(focus);
 
-    let bs = settings.break;
-    bs.phase = 'Break';
-    bs.badgeColor = '#009900';
-    bs.notificationTitle = 'Break finished';
-    bs.notificationMessage = "Start your focus session when you're ready";
-    bs.notificationButton = 'Start focusing now';
-    let breakTimer = this.createTimer(bs);
+    let brk = settings.break;
+    brk.phase = 'Break';
+    brk.badgeColor = '#009900';
+    brk.notificationTitle = 'Break finished';
+    brk.notificationMessage = "Start your focus session when you're ready";
+    brk.notificationButton = 'Start focusing now';
+    let breakTimer = this.createTimer(brk);
 
     this.timer = new MultiTimer({ phase: 'focus', timer: focusTimer }, { phase: 'break', timer: breakTimer });
   }
@@ -293,7 +291,7 @@ class Controller
         chrome.tabs.remove(this.expirePageTabId, () => {});
       }
 
-      // Close any notifications.
+      // Close notification.
       if (this.notificationId !== null) {
         chrome.notifications.clear(this.notificationId);
         this.notificationId = null;
@@ -306,6 +304,6 @@ class Controller
 
 let settings = new Settings();
 let controller = new Controller(settings);
-let handler = new MarinaraMessageHandler(controller, settings);
+let handler = new BackgroundMessageHandler(controller, settings);
 
 chrome.browserAction.onClicked.addListener(() => controller.browserAction());
