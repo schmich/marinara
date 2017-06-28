@@ -340,48 +340,6 @@ class Controller
 
 let settings = new Settings();
 let controller = new Controller(settings);
+let handler = new MarinaraMessageHandler(controller, settings);
 
 chrome.browserAction.onClicked.addListener(() => controller.browserAction());
-
-chrome.runtime.onMessage.addListener((request, sender, respond) => {
-  if (request.command === 'get-phase') {
-    respond(controller.phase);
-  } else if (request.command === 'start-session') {
-    controller.start();
-    respond({});
-  } else if (request.command === 'get-sounds') {
-    respond(sounds);
-  } else if (request.command === 'get-settings') {
-    settings.get().then(respond);
-  } else if (request.command === 'set-settings') {
-    let newSettings = request.settings;
-    let focusDuration = newSettings.focus.duration.trim();
-    let breakDuration = newSettings.break.duration.trim();
-
-    if (!focusDuration) {
-      respond({ error: 'Focus duration is required.' });
-      return true;
-    } else if (!breakDuration) {
-      respond({ error: 'Break duration is required.' });
-      return true;
-    }
-
-    let focusParsed = +focusDuration;
-    let breakParsed = +breakDuration;
-
-    if (focusParsed <= 0 || isNaN(focusParsed)) {
-      respond({ error: 'Focus duration must be a positive number.' });
-      return true;
-    } else if (breakParsed <= 0 || isNaN(breakParsed)) {
-      respond({ error: 'Break duration must be a positive number.' });
-      return true;
-    }
-
-    newSettings.focus.duration = focusParsed;
-    newSettings.break.duration = breakParsed;
-
-    settings.set(newSettings).then(() => respond({}));
-  }
-
-  return true;
-});

@@ -124,7 +124,7 @@ function saveOptions() {
 
   var message = {
     command: 'set-settings',
-    settings: {
+    params: {
       focus: {
         duration: focusDuration.value,
         desktopNotification: focusDesktopNotification.checked,
