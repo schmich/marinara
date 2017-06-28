@@ -117,7 +117,7 @@ function Controller() {
       return 'expired';
     }
 
-    if (breakTimer.state !== TimerState.Stopped) {
+    if (!breakTimer.isStopped) {
       return breakTimer.state;
     }
 
@@ -136,13 +136,13 @@ function Controller() {
   };
 
   this.browserAction = function() {
-    if (focusTimer.state === TimerState.Running) {
+    if (focusTimer.isRunning) {
       focusTimer.pause();
-    } else if (breakTimer.state === TimerState.Running) {
+    } else if (breakTimer.isRunning) {
       breakTimer.pause();
-    } else if (focusTimer.state === TimerState.Paused) {
+    } else if (focusTimer.isPaused) {
       focusTimer.resume();
-    } else if (breakTimer.state === TimerState.Paused) {
+    } else if (breakTimer.isPaused) {
       breakTimer.resume();
     } else {
       this.startSession();
@@ -150,9 +150,9 @@ function Controller() {
   };
 
   this.pause = function() {
-    if (focusTimer.state === TimerState.Running) {
+    if (focusTimer.isRunning) {
       focusTimer.pause();
-    } else if (breakTimer.state === TimerState.Running) {
+    } else if (breakTimer.isRunning) {
       breakTimer.pause();
     }
   };
@@ -163,9 +163,9 @@ function Controller() {
   };
 
   this.resume = function() {
-    if (focusTimer.state === TimerState.Paused) {
+    if (focusTimer.isPaused) {
       focusTimer.resume();
-    } else if (breakTimer.state === TimerState.Paused) {
+    } else if (breakTimer.isPaused) {
       breakTimer.resume();
     }
   };

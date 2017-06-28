@@ -21,8 +21,24 @@ class Timer extends EventEmitter
     this.remainingSec = null;
   }
 
+  get state() {
+    return this._state;
+  }
+
+  get isStopped() {
+    return this.state === TimerState.Stopped;
+  }
+
+  get isRunning() {
+    return this.state === TimerState.Running;
+  }
+
+  get isPaused() {
+    return this.state === TimerState.Paused;
+  }
+
   start() {
-    if (this._state !== TimerState.Stopped) {
+    if (!this.isStopped) {
       return;
     }
 
@@ -40,7 +56,7 @@ class Timer extends EventEmitter
   }
 
   stop() {
-    if (this._state === TimerState.Stopped) {
+    if (this.isStopped) {
       return;
     }
 
@@ -57,7 +73,7 @@ class Timer extends EventEmitter
   }
 
   pause() {
-    if (this._state !== TimerState.Running) {
+    if (!this.isRunning) {
       return;
     }
 
@@ -76,7 +92,7 @@ class Timer extends EventEmitter
   }
 
   resume() {
-    if (this._state !== TimerState.Paused) {
+    if (!this.isPaused) {
       return;
     }
 
@@ -94,10 +110,6 @@ class Timer extends EventEmitter
   reset() {
     this.stop();
     this.start();
-  }
-
-  get state() {
-    return this._state;
   }
 
   createExpireTimeout(seconds) {
