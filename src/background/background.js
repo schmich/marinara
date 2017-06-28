@@ -1,19 +1,3 @@
-const defaultSettings = {
-  focus: {
-    duration: 25,
-    desktopNotification: true,
-    newTabNotification: true,
-    sound: null
-  },
-  break: {
-    duration: 5,
-    desktopNotification: true,
-    newTabNotification: true,
-    sound: null
-  },
-  version: 1
-};
-
 const sounds = [
   { name: 'Tone', file: 'tone.mp3' },
   { name: 'Electronic Chime', file: 'electronic-chime.mp3' },
@@ -173,7 +157,9 @@ class MultiTimer
 
 class Controller
 {
-  constructor() {
+  constructor(settings) {
+    this.settings = settings;
+    this.settings.addListener('change', () => this.createTimers());
     this.createTimers();
 
     this.menu = new Menu(['browser_action'],
@@ -252,25 +238,6 @@ class Controller
     this.timer.start('break');
   }
 
-  getSettings(callback) {
-    chrome.storage.sync.get(result => {
-      if (Object.keys(result).length == 0) {
-        chrome.storage.sync.set(defaultSettings, () => {
-          callback(defaultSettings);
-        });
-      } else {
-        callback(result);
-      }
-    });
-  }
-  
-  setSettings(settings, callback) {
-    chrome.storage.sync.set(settings, () => {
-      this.createTimers();
-      callback();
-    });
-  }
-
   showExpirePage(callback) {
     if (this.expirePageTabId !== null) {
       chrome.tabs.update(this.expirePageTabId, { active: true, highlighted: true }, callback);
@@ -299,30 +266,29 @@ class Controller
     });
   }
 
-  createTimers() {
-    this.getSettings(settings => {
-      if (this.timer) {
-        this.timer.stop();
-      }
+  async createTimers() {
+    let settings = await this.settings.get();
+    if (this.timer) {
+      this.timer.stop();
+    }
 
-      let fs = settings.focus;
-      fs.phase = 'Focus';
-      fs.badgeColor = '#990000';
-      fs.notificationTitle = 'Take a break!';
-      fs.notificationMessage = "Start your break when you're ready";
-      fs.notificationButton = 'Start break now';
-      let focusTimer = this.createTimer(fs);
+    let fs = settings.focus;
+    fs.phase = 'Focus';
+    fs.badgeColor = '#990000';
+    fs.notificationTitle = 'Take a break!';
+    fs.notificationMessage = "Start your break when you're ready";
+    fs.notificationButton = 'Start break now';
+    let focusTimer = this.createTimer(fs);
 
-      let bs = settings.break;
-      bs.phase = 'Break';
-      bs.badgeColor = '#009900';
-      bs.notificationTitle = 'Break finished';
-      bs.notificationMessage = "Start your focus session when you're ready";
-      bs.notificationButton = 'Start focusing now';
-      let breakTimer = this.createTimer(bs);
+    let bs = settings.break;
+    bs.phase = 'Break';
+    bs.badgeColor = '#009900';
+    bs.notificationTitle = 'Break finished';
+    bs.notificationMessage = "Start your focus session when you're ready";
+    bs.notificationButton = 'Start focusing now';
+    let breakTimer = this.createTimer(bs);
 
-      this.timer = new MultiTimer({ phase: 'focus', timer: focusTimer }, { phase: 'break', timer: breakTimer });
-    });
+    this.timer = new MultiTimer({ phase: 'focus', timer: focusTimer }, { phase: 'break', timer: breakTimer });
   }
 
   createTimer(settings) {
@@ -372,7 +338,8 @@ class Controller
   }
 }
 
-let controller = new Controller();
+let settings = new Settings();
+let controller = new Controller(settings);
 
 chrome.browserAction.onClicked.addListener(() => controller.browserAction());
 
@@ -385,7 +352,7 @@ chrome.runtime.onMessage.addListener((request, sender, respond) => {
   } else if (request.command === 'get-sounds') {
     respond(sounds);
   } else if (request.command === 'get-settings') {
-    controller.getSettings(respond);
+    settings.get().then(respond);
   } else if (request.command === 'set-settings') {
     let newSettings = request.settings;
     let focusDuration = newSettings.focus.duration.trim();
@@ -413,9 +380,7 @@ chrome.runtime.onMessage.addListener((request, sender, respond) => {
     newSettings.focus.duration = focusParsed;
     newSettings.break.duration = breakParsed;
 
-    controller.setSettings(newSettings, () => {
-      respond({});
-    });
+    settings.set(newSettings).then(() => respond({}));
   }
 
   return true;
