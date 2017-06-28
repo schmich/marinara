@@ -1,121 +1,3 @@
-class BadgeObserver
-{
-  constructor(title, color) {
-    this.title = title;
-    this.color = color;
-  }
-
-  start({ remaining }) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
-  }
-
-  tick({ remaining }) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
-  }
-
-  stop() {
-    this.removeBadge();
-  }
-
-  pause() {
-    this.updateBadge({ text: '—', tooltip: 'Timer Paused' });
-  }
-
-  resume({ remaining }) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
-  }
-
-  expire() {
-    this.removeBadge();
-  }
-
-  updateBadge({ minutes, tooltip, text }) {
-    var text, tooltip;
-
-    if (minutes != null) {
-      text = ((minutes == 0) ? '<1' : minutes)  + 'm';
-      tooltip = this.title + ': ' + minutes + 'm remaining.';
-    } else {
-      tooltip = this.title + ': ' + tooltip;
-    }
-
-    chrome.browserAction.setTitle({ title: tooltip });
-    chrome.browserAction.setBadgeText({ text: text });
-    chrome.browserAction.setBadgeBackgroundColor({ color: this.color });
-  };
-
-  removeBadge() {
-    chrome.browserAction.setTitle({ title: '' });
-    chrome.browserAction.setBadgeText({ text: '' });
-  }
-}
-
-class MultiTimer
-{
-  constructor(...timers) {
-    this.timers = timers;
-    this.timerIndex = 0;
-
-    for (let item of this.timers) {
-      item.timer.addListener('expire', () => {
-        this.timerIndex = (this.timerIndex + 1) % this.timers.length;
-      });
-    }
-  }
-
-  get current() {
-    return this.timers[this.timerIndex].timer;
-  }
-
-  get phase() {
-    return this.timers[this.timerIndex].phase;
-  }
-
-  get state() {
-    return this.current.state;
-  }
-
-  get isRunning() {
-    return this.current.isRunning;
-  }
-
-  get isStopped() {
-    return this.current.isStopped;
-  }
-
-  get isPaused() {
-    return this.current.isPaused;
-  }
-
-  start(phase = null) {
-    for (let item of this.timers) {
-      item.timer.stop();
-    }
-
-    if (phase !== null) {
-      this.timerIndex = this.timers.findIndex(t => t.phase === phase);
-    }
-
-    this.current.start();
-  }
-
-  pause() {
-    this.current.pause();
-  }
-
-  stop() {
-    this.current.stop();
-  }
-
-  resume() {
-    this.current.resume();
-  }
-
-  reset() {
-    this.current.reset();
-  }
-}
-
 class BrowserTimerManager
 {
   constructor(controller) {
@@ -210,6 +92,58 @@ class BrowserTimerManager
     };
 
     chrome.notifications.create('', options, id => this.notificationId = id);
+  }
+}
+
+class BadgeObserver
+{
+  constructor(title, color) {
+    this.title = title;
+    this.color = color;
+  }
+
+  start({ remaining }) {
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
+  }
+
+  tick({ remaining }) {
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
+  }
+
+  stop() {
+    this.removeBadge();
+  }
+
+  pause() {
+    this.updateBadge({ text: '—', tooltip: 'Timer Paused' });
+  }
+
+  resume({ remaining }) {
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
+  }
+
+  expire() {
+    this.removeBadge();
+  }
+
+  updateBadge({ minutes, tooltip, text }) {
+    var text, tooltip;
+
+    if (minutes != null) {
+      text = ((minutes == 0) ? '<1' : minutes)  + 'm';
+      tooltip = this.title + ': ' + minutes + 'm remaining.';
+    } else {
+      tooltip = this.title + ': ' + tooltip;
+    }
+
+    chrome.browserAction.setTitle({ title: tooltip });
+    chrome.browserAction.setBadgeText({ text: text });
+    chrome.browserAction.setBadgeBackgroundColor({ color: this.color });
+  };
+
+  removeBadge() {
+    chrome.browserAction.setTitle({ title: '' });
+    chrome.browserAction.setBadgeText({ text: '' });
   }
 }
 

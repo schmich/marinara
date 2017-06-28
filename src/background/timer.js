@@ -157,3 +157,69 @@ class Timer extends EventEmitter
     }, seconds * 1000);
   }
 }
+
+class MultiTimer
+{
+  constructor(...timers) {
+    this.timers = timers;
+    this.timerIndex = 0;
+
+    for (let item of this.timers) {
+      item.timer.addListener('expire', () => {
+        this.timerIndex = (this.timerIndex + 1) % this.timers.length;
+      });
+    }
+  }
+
+  get current() {
+    return this.timers[this.timerIndex].timer;
+  }
+
+  get phase() {
+    return this.timers[this.timerIndex].phase;
+  }
+
+  get state() {
+    return this.current.state;
+  }
+
+  get isRunning() {
+    return this.current.isRunning;
+  }
+
+  get isStopped() {
+    return this.current.isStopped;
+  }
+
+  get isPaused() {
+    return this.current.isPaused;
+  }
+
+  start(phase = null) {
+    for (let item of this.timers) {
+      item.timer.stop();
+    }
+
+    if (phase !== null) {
+      this.timerIndex = this.timers.findIndex(t => t.phase === phase);
+    }
+
+    this.current.start();
+  }
+
+  pause() {
+    this.current.pause();
+  }
+
+  stop() {
+    this.current.stop();
+  }
+
+  resume() {
+    this.current.resume();
+  }
+
+  reset() {
+    this.current.reset();
+  }
+}
