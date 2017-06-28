@@ -20,10 +20,10 @@
     "persistent": true,
     "scripts": [
       "lib/EventEmitter.min.js",
-      "enum.js",
-      "menu.js",
-      "timer.js",
-      "background.js"
+      "background/enum.js",
+      "background/menu.js",
+      "background/timer.js",
+      "background/background.js"
     ]
   },
   "options_ui": {
