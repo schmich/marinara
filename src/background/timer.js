@@ -21,6 +21,16 @@ class Timer extends EventEmitter
     this.remainingSec = null;
   }
 
+  observe(observer) {
+    this.addListener('start', (...args) => observer.start ? observer.start(...args) : null);
+    this.addListener('stop', (...args) => observer.stop ? observer.stop(...args) : null);
+    this.addListener('pause', (...args) => observer.pause ? observer.pause(...args) : null);
+    this.addListener('resume', (...args) => observer.resume ? observer.resume(...args) : null);
+    this.addListener('tick', (...args) => observer.tick ? observer.tick(...args) : null);
+    this.addListener('expire', (...args) => observer.expire ? observer.expire(...args) : null);
+    this.addListener('change', (...args) => observer.change ? observer.change(...args) : null);
+  }
+
   get state() {
     return this._state;
   }
@@ -53,6 +63,7 @@ class Timer extends EventEmitter
       elapsed: 0,
       remaining: this.remainingSec
     }]);
+    this.emitEvent('change', [{}]);
   }
 
   stop() {
@@ -70,6 +81,7 @@ class Timer extends EventEmitter
 
     this._state = TimerState.Stopped;
     this.emitEvent('stop', [{}]);
+    this.emitEvent('change', [{}]);
   }
 
   pause() {
@@ -89,6 +101,7 @@ class Timer extends EventEmitter
       elapsed: this.durationSec - this.remainingSec,
       remaining: this.remainingSec
     }]);
+    this.emitEvent('change', [{}]);
   }
 
   resume() {
@@ -105,6 +118,7 @@ class Timer extends EventEmitter
       elapsed: this.durationSec - this.remainingSec,
       remaining: this.remainingSec
     }]);
+    this.emitEvent('change', [{}]);
   }
 
   reset() {
@@ -127,6 +141,7 @@ class Timer extends EventEmitter
         elapsed: this.durationSec,
         remaining: 0
       }]);
+      this.emitEvent('change', [{}]);
     }, seconds * 1000);
   }
 
