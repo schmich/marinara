@@ -1,24 +1,24 @@
 function showTab(name) {
-  var tabs = ['focus', 'break', 'about'];
+  ['focus', 'break', 'about'].forEach(tabName => {
+    let tab = document.getElementById(tabName + '-tab');
+    let content = document.getElementById(tabName + '-content');
 
-  for (var i = 0; i < tabs.length; ++i) {
-    var tab = document.getElementById(tabs[i] + '-tab');
-    var content = document.getElementById(tabs[i] + '-content');
-
-    if (name === tabs[i]) {
+    if (name === tabName) {
       tab.classList.add('active');
       content.classList.add('active');
     } else {
       tab.classList.remove('active');
       content.classList.remove('active');
     }
-  }
+  });
+
+  let save = document.getElementById('save-status');
+  save.style.display = (name === 'about') ? 'none' : 'block';
 }
 
 function appendSounds(elem, sounds, selected) {
-  for (var i = 0; i < sounds.length; ++i) {
-    var sound = sounds[i];
-    var option = document.createElement('option');
+  for (let sound of sounds) {
+    let option = document.createElement('option');
     option.appendChild(document.createTextNode(sound.name));
     option.dataset.file = sound.file;
     option.selected = (sound.file == selected);
@@ -26,22 +26,22 @@ function appendSounds(elem, sounds, selected) {
   }
 }
 
-function loadOptions() {
-  var focusDuration = document.getElementById('focus-duration');
-  var focusDesktopNotification = document.getElementById('focus-desktop-notification');
-  var focusNewTabNotification = document.getElementById('focus-new-tab-notification');
-  var focusAudioNotification = document.getElementById('focus-audio-notification');
-  var focusSounds = document.getElementById('focus-sounds');
+async function loadOptions() {
+  let focusDuration = document.getElementById('focus-duration');
+  let focusDesktopNotification = document.getElementById('focus-desktop-notification');
+  let focusNewTabNotification = document.getElementById('focus-new-tab-notification');
+  let focusAudioNotification = document.getElementById('focus-audio-notification');
+  let focusSounds = document.getElementById('focus-sounds');
 
-  var breakDuration = document.getElementById('break-duration');
-  var breakDesktopNotification = document.getElementById('break-desktop-notification');
-  var breakNewTabNotification = document.getElementById('break-new-tab-notification');
-  var breakAudioNotification = document.getElementById('break-audio-notification');
-  var breakSounds = document.getElementById('break-sounds');
+  let breakDuration = document.getElementById('break-duration');
+  let breakDesktopNotification = document.getElementById('break-desktop-notification');
+  let breakNewTabNotification = document.getElementById('break-new-tab-notification');
+  let breakAudioNotification = document.getElementById('break-audio-notification');
+  let breakSounds = document.getElementById('break-sounds');
 
   function playSound(control) {
-    var option = control.options[control.selectedIndex];
-    var audio = new Audio();
+    let option = control.options[control.selectedIndex];
+    let audio = new Audio();
     audio.src = option.dataset.file;
     audio.play();
   }
@@ -54,113 +54,104 @@ function loadOptions() {
     breakSounds.disabled = !breakAudioNotification.checked;
   });
 
-  chrome.runtime.sendMessage({ command: 'get-settings' }, settings => {
-    focusDuration.value = settings.focus.duration;
-    focusDesktopNotification.checked = settings.focus.desktopNotification;
-    focusNewTabNotification.checked = settings.focus.newTabNotification;
-    focusAudioNotification.checked = (settings.focus.sound !== null);
-    focusSounds.disabled = !focusAudioNotification.checked;
+  let settings = await BackgroundClient.getSettings();
 
-    breakDuration.value = settings.break.duration;
-    breakDesktopNotification.checked = settings.break.desktopNotification;
-    breakNewTabNotification.checked = settings.break.newTabNotification;
-    breakAudioNotification.checked = (settings.break.sound !== null);
-    breakSounds.disabled = !breakAudioNotification.checked;
+  focusDuration.value = settings.focus.duration;
+  focusDesktopNotification.checked = settings.focus.desktopNotification;
+  focusNewTabNotification.checked = settings.focus.newTabNotification;
+  focusAudioNotification.checked = (settings.focus.sound !== null);
+  focusSounds.disabled = !focusAudioNotification.checked;
 
-    chrome.runtime.sendMessage({ command: 'get-sounds' }, sounds => {
-      appendSounds(focusSounds, sounds, settings.focus.sound);
-      appendSounds(breakSounds, sounds, settings.break.sound);
+  breakDuration.value = settings.break.duration;
+  breakDesktopNotification.checked = settings.break.desktopNotification;
+  breakNewTabNotification.checked = settings.break.newTabNotification;
+  breakAudioNotification.checked = (settings.break.sound !== null);
+  breakSounds.disabled = !breakAudioNotification.checked;
 
-      focusAudioNotification.addEventListener('change', () => {
-        if (focusAudioNotification.checked) {
-          playSound(focusSounds);
-        }
-      });
+  let sounds = await BackgroundClient.getSounds();
+  appendSounds(focusSounds, sounds, settings.focus.sound);
+  appendSounds(breakSounds, sounds, settings.break.sound);
 
-      focusSounds.addEventListener('change', () => {
-        playSound(focusSounds);
-      });
-
-      breakAudioNotification.addEventListener('change', () => {
-        if (breakAudioNotification.checked) {
-          playSound(breakSounds);
-        }
-      });
-
-      breakSounds.addEventListener('change', () => {
-        playSound(breakSounds);
-      });
-    });
+  focusAudioNotification.addEventListener('change', () => {
+    if (focusAudioNotification.checked) {
+      playSound(focusSounds);
+    }
   });
+
+  focusSounds.addEventListener('change', () => playSound(focusSounds));
+
+  breakAudioNotification.addEventListener('change', () => {
+    if (breakAudioNotification.checked) {
+      playSound(breakSounds);
+    }
+  });
+
+  breakSounds.addEventListener('change', () => playSound(breakSounds));
 }
 
-function saveOptions() {
-  var statusElem = document.getElementById('status');
+async function saveOptions() {
+  let statusElem = document.getElementById('status');
   statusElem.innerText = '';
 
-  var focusDuration = document.getElementById('focus-duration');
-  var focusDesktopNotification = document.getElementById('focus-desktop-notification');
-  var focusNewTabNotification = document.getElementById('focus-new-tab-notification');
-  var focusAudioNotification = document.getElementById('focus-audio-notification');
-  var focusSounds = document.getElementById('focus-sounds');
+  let focusDuration = document.getElementById('focus-duration');
+  let focusDesktopNotification = document.getElementById('focus-desktop-notification');
+  let focusNewTabNotification = document.getElementById('focus-new-tab-notification');
+  let focusAudioNotification = document.getElementById('focus-audio-notification');
+  let focusSounds = document.getElementById('focus-sounds');
 
-  var breakDuration = document.getElementById('break-duration');
-  var breakDesktopNotification = document.getElementById('break-desktop-notification');
-  var breakNewTabNotification = document.getElementById('break-new-tab-notification');
-  var breakAudioNotification = document.getElementById('break-audio-notification');
-  var breakSounds = document.getElementById('break-sounds');
+  let breakDuration = document.getElementById('break-duration');
+  let breakDesktopNotification = document.getElementById('break-desktop-notification');
+  let breakNewTabNotification = document.getElementById('break-new-tab-notification');
+  let breakAudioNotification = document.getElementById('break-audio-notification');
+  let breakSounds = document.getElementById('break-sounds');
 
-  var focusSoundFile = null;
+  let focusSoundFile = null;
   if (focusAudioNotification.checked) {
-    var option = focusSounds.options[focusSounds.selectedIndex];
+    let option = focusSounds.options[focusSounds.selectedIndex];
     focusSoundFile = option.dataset.file;
   }
 
-  var breakSoundFile = null;
+  let breakSoundFile = null;
   if (breakAudioNotification.checked) {
-    var option = breakSounds.options[breakSounds.selectedIndex];
+    let option = breakSounds.options[breakSounds.selectedIndex];
     breakSoundFile = option.dataset.file;
   }
 
-  var message = {
-    command: 'set-settings',
-    params: {
-      focus: {
-        duration: focusDuration.value,
-        desktopNotification: focusDesktopNotification.checked,
-        newTabNotification: focusNewTabNotification.checked,
-        sound: focusSoundFile
-      },
-      break: {
-        duration: breakDuration.value,
-        desktopNotification: breakDesktopNotification.checked,
-        newTabNotification: breakNewTabNotification.checked,
-        sound: breakSoundFile
-      }
+  let params = {
+    focus: {
+      duration: focusDuration.value,
+      desktopNotification: focusDesktopNotification.checked,
+      newTabNotification: focusNewTabNotification.checked,
+      sound: focusSoundFile
+    },
+    break: {
+      duration: breakDuration.value,
+      desktopNotification: breakDesktopNotification.checked,
+      newTabNotification: breakNewTabNotification.checked,
+      sound: breakSoundFile
     }
   };
 
-  chrome.runtime.sendMessage(message, result => {
-    if (!result.error) {
-      statusElem.innerText = '✓ Options saved.';
-    } else {
-      statusElem.innerText = '✗ ' + result.error;
-    }
-  });
+  let result = await BackgroundClient.setSettings(params);
+  if (!result.error) {
+    statusElem.innerText = '✓ Options saved.';
+  } else {
+    statusElem.innerText = '✗ ' + result.error;
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  var save = document.getElementById('save');
-  save.onclick = saveOptions;
+document.addEventListener('DOMContentLoaded', () => setTimeout(async () => await load()));
 
-  var tabs = ['focus', 'break', 'about'];
-  for (var i = 0; i < tabs.length; ++i) {
-    var tab = document.getElementById(tabs[i] + '-tab');
-    tab.onclick = function(tabName) {
-      return function() { showTab(tabName); }
-    }(tabs[i]);
-  }
+async function load() {
+  let save = document.getElementById('save');
+  save.onclick = async () => await saveOptions();
+
+  ['focus', 'break', 'about'].forEach(tabName => {
+    let tab = document.getElementById(tabName + '-tab');
+    tab.onclick = () => showTab(tabName);
+  });
 
   showTab('focus');
-  loadOptions();
-});
+
+  await loadOptions();
+}

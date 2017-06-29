@@ -256,4 +256,4 @@ class Controller
 
 let settings = new Settings();
 let controller = new Controller(settings);
-let handler = new BackgroundMessageHandler(controller, settings);
+let server = new BackgroundServer(controller, settings);

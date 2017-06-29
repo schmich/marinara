@@ -1,28 +1,29 @@
-window.onload = () => {
+window.onload = () => setTimeout(async () => await load());
+
+async function load() {
   chrome.windows.getCurrent({}, thisWindow => {
     chrome.windows.update(thisWindow.id, { focused: true });
   });
 
-  chrome.runtime.sendMessage({ command: 'get-phase' }, phase => {
-    let start = document.getElementById('start-session');
-    start.onclick = () => {
-      chrome.runtime.sendMessage({ command: 'start-session' });
-    };
+  let phase = await BackgroundClient.getPhase();
+  let settings = await BackgroundClient.getSettings();
 
-    let title = document.getElementById('session-title');
-    let subtitle = document.getElementById('session-subtitle');
-    let action = document.getElementById('session-action');
+  let start = document.getElementById('start-session');
+  start.onclick = () => BackgroundClient.startSession();
 
-    if (phase === 'focus') {
-      title.innerText = 'Break finished';
-      subtitle.innerText = "Start your focus session when you're ready";
-      action.innerText = 'Start Focusing';
-    } else if (phase === 'break') {
-      title.innerText = 'Take a break!';
-      subtitle.innerText = "Start your break when you're ready";
-      action.innerText = 'Start Break';
-    }
+  let title = document.getElementById('session-title');
+  let subtitle = document.getElementById('session-subtitle');
+  let action = document.getElementById('session-action');
 
-    start.className += ' ' + phase;
-  });
+  if (phase === 'focus') {
+    title.innerText = 'Break finished';
+    subtitle.innerText = `Start your ${settings.focus.duration} minute focus session when you're ready`;
+    action.innerText = 'Start Focusing';
+  } else if (phase === 'break') {
+    title.innerText = 'Take a break!';
+    subtitle.innerText = `Start your ${settings.break.duration} minute break when you're ready`;
+    action.innerText = 'Start Break';
+  }
+
+  start.className += ' ' + phase;
 };
