@@ -32,9 +32,9 @@ function loadSettingGroup(name, settings, soundOptions) {
   sounds.addEventListener('change', () => playSound(sounds));
 
   duration.value = settings.duration;
-  desktopNotification.checked = settings.desktopNotification;
-  newTabNotification.checked = settings.newTabNotification;
-  audioNotification.checked = settings.sound !== null;
+  desktopNotification.checked = settings.notifications.desktop;
+  newTabNotification.checked = settings.notifications.tab;
+  audioNotification.checked = settings.notifications.sound !== null;
   sounds.disabled = !audioNotification.checked;
 
   appendSounds(sounds, soundOptions, settings.sound);
@@ -75,9 +75,11 @@ function getSettingGroup(name) {
 
   return {
     duration: duration.value,
-    desktopNotification: desktopNotification.checked,
-    newTabNotification: newTabNotification.checked,
-    sound: soundFile
+    notifications: {
+      desktop: desktopNotification.checked,
+      tab: newTabNotification.checked,
+      sound: soundFile
+    }
   };
 }
 

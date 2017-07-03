@@ -225,18 +225,18 @@ class PomodoroTimer
   }
 
   pause() {
-    this.timer.pause();
+    this.timer ? this.timer.pause() : null;
   }
 
   stop() {
-    this.timer.stop();
+    this.timer ? this.timer.stop() : null;
   }
 
   resume() {
-    this.timer.resume();
+    this.timer ? this.timer.resume() : null;
   }
 
   reset() {
-    this.timer.reset();
+    this.timer ? this.timer.reset() : null;
   }
 }

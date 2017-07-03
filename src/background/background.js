@@ -26,26 +26,26 @@ class BrowserTimerManager
     });
   }
 
-  createTimer(settings) {
-    let timer = new Timer(settings.duration * 60, 60);
-    timer.observe(new BadgeObserver(settings.phase, settings.badgeColor));
+  createTimer(options) {
+    let timer = new Timer(options.duration * 60, 60);
+    timer.observe(new BadgeObserver(options.phase, options.badgeColor));
 
     timer.addListener('expire', () => {
-      if (settings.sound) {
+      if (options.sound) {
         let audio = new Audio();
-        audio.src = source;
+        audio.src = options.sound;
         audio.play();
       }
 
-      if (settings.notification) {
+      if (options.notification) {
         this.notify(
-          settings.notification.title,
-          settings.notification.message,
-          settings.notification.button
+          options.notification.title,
+          options.notification.message,
+          options.notification.button
         );
       }
 
-      if (settings.tab) {
+      if (options.tab) {
         this.showExpiration();
       }
     });
@@ -237,42 +237,42 @@ class Controller
       return this.timerManager.createTimer({
         phase: 'Focus',
         duration: settings.focus.duration,
-        sound: settings.focus.sound,
+        sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
-        notification: !settings.focus.desktopNotification ? null : {
+        notification: !settings.focus.notifications.desktop ? null : {
           title: 'Take a break!',
           message: `Start your ${length} break when you're ready`,
           button: `Start ${length} break now`
         },
-        tab: settings.focus.newTabNotification
+        tab: settings.focus.notifications.tab
       });
 
     case Phase.ShortBreak:
       return this.timerManager.createTimer({
         phase: 'Short Break',
         duration: settings.shortBreak.duration,
-        sound: settings.shortBreak.sound,
+        sound: settings.shortBreak.notifications.sound,
         badgeColor: '#009900',
-        notification: !settings.shortBreak.desktopNotification ? null : {
+        notification: !settings.shortBreak.notifications.desktop ? null : {
           title: 'Short break finished',
           message: "Start focusing when you're ready",
           button: 'Start focusing now'
         },
-        tab: settings.shortBreak.newTabNotification
+        tab: settings.shortBreak.notifications.tab
       });
 
     case Phase.LongBreak:
       return this.timerManager.createTimer({
         phase: 'Long Break',
         duration: settings.longBreak.duration,
-        sound: settings.longBreak.sound,
+        sound: settings.longBreak.notifications.sound,
         badgeColor: '#009900',
-        notification: !settings.longBreak.desktopNotification ? null : {
+        notification: !settings.longBreak.notifications.desktop ? null : {
           title: 'Long break finished',
           message: "Start focusing when you're ready",
           button: 'Start focusing now'
         },
-        tab: settings.longBreak.newTabNotification
+        tab: settings.longBreak.notifications.tab
       });
     }
   }

@@ -27,22 +27,28 @@ class Settings extends EventEmitter
     return {
       focus: {
         duration: 25,
-        desktopNotification: true,
-        newTabNotification: true,
-        sound: null
+        notifications: {
+          desktop: true,
+          tab: true,
+          sound: null
+        }
       },
       shortBreak: {
         duration: 5,
-        desktopNotification: true,
-        newTabNotification: true,
-        sound: null
+        notifications: {
+          desktop: true,
+          tab: true,
+          sound: null
+        }
       },
       longBreak: {
         duration: 15,
         interval: 4,
-        desktopNotification: true,
-        newTabNotification: true,
-        sound: null
+        notifications: {
+          desktop: true,
+          tab: true,
+          sound: null
+        }
       },
       version: 2
     };
