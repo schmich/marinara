@@ -3,6 +3,7 @@ class BrowserTimerManager
   constructor(controller) {
     this.notificationId = null;
     this.expirationTabId = null;
+    this.controller = controller;
 
     chrome.tabs.onRemoved.addListener(tabId => {
       if (tabId === this.expirationTabId) {
@@ -29,15 +30,13 @@ class BrowserTimerManager
     let timer = new Timer(settings.duration * 60, 60);
     timer.observe(new BadgeObserver(settings.phase, settings.badgeColor));
 
-    if (settings.sound) {
-      timer.addListener('expire', () => {
+    timer.addListener('expire', () => {
+      if (settings.sound) {
         let audio = new Audio();
         audio.src = source;
         audio.play();
-      });
-    }
+      }
 
-    timer.addListener('expire', () => {
       if (settings.notification) {
         this.notify(
           settings.notification.title,
@@ -153,8 +152,8 @@ class Controller
     this.timerManager = new BrowserTimerManager(this);
 
     this.settings = settings;
-    this.settings.addListener('change', () => this.createTimer());
-    this.createTimer();
+    this.settings.addListener('change', () => this.loadTimers());
+    this.loadTimers();
 
     this.menu = new Menu(['browser_action'],
       new MenuGroup(
@@ -164,7 +163,8 @@ class Controller
       ),
       new MenuGroup(
         new StartFocusingMenuItem(this),
-        new StartBreakMenuItem(this)
+        new StartShortBreakMenuItem(this),
+        new StartLongBreakMenuItem(this)
       )
     );
 
@@ -204,53 +204,77 @@ class Controller
   }
 
   startFocus() {
-    this.timer.start('focus');
+    this.timer.start(Phase.Focus);
   }
 
-  startBreak() {
-    this.timer.start('break');
+  startShortBreak() {
+    this.timer.start(Phase.ShortBreak);
   }
 
-  async createTimer() {
+  startLongBreak() {
+    this.timer.start(Phase.LongBreak);
+  }
+
+  async loadTimers() {
     let settings = await this.settings.get();
     if (this.timer) {
       this.timer.stop();
     }
 
-    let focusTimer = this.timerManager.createTimer({
-      phase: 'Focus',
-      duration: settings.focus.duration,
-      sound: settings.focus.sound,
-      badgeColor: '#bb0000',
-      notification: !settings.focus.desktopNotification ? null : {
-        title: 'Take a break!',
-        message: "Start your break when you're ready",
-        button: 'Start break now'
-      },
-      tab: settings.focus.newTabNotification
-    });
-
-    let breakTimer = this.timerManager.createTimer({
-      phase: 'Break',
-      duration: settings.break.duration,
-      sound: settings.break.sound,
-      badgeColor: '#009900',
-      notification: !settings.break.desktopNotification ? null : {
-        title: 'Break finished',
-        message: "Start your focus session when you're ready",
-        button: 'Start focusing now'
-      },
-      tab: settings.break.newTabNotification
-    });
-
-    for (let timer of [focusTimer, breakTimer]) {
+    let timerFactory = (phase, nextPhase) => {
+      let timer = this.createTimer(phase, nextPhase, settings);
       timer.addListener('change', () => this.menu.refresh());
-    }
+      return timer;
+    };
 
-    this.timer = new MultiTimer(
-      { phase: 'focus', timer: focusTimer },
-      { phase: 'break', timer: breakTimer }
-    );
+    this.timer = new PomodoroTimer(timerFactory, settings.longBreak.interval);
+  }
+
+  createTimer(phase, nextPhase, settings) {
+    switch (phase) {
+    case Phase.Focus:
+      let length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
+      return this.timerManager.createTimer({
+        phase: 'Focus',
+        duration: settings.focus.duration,
+        sound: settings.focus.sound,
+        badgeColor: '#bb0000',
+        notification: !settings.focus.desktopNotification ? null : {
+          title: 'Take a break!',
+          message: `Start your ${length} break when you're ready`,
+          button: `Start ${length} break now`
+        },
+        tab: settings.focus.newTabNotification
+      });
+
+    case Phase.ShortBreak:
+      return this.timerManager.createTimer({
+        phase: 'Short Break',
+        duration: settings.shortBreak.duration,
+        sound: settings.shortBreak.sound,
+        badgeColor: '#009900',
+        notification: !settings.shortBreak.desktopNotification ? null : {
+          title: 'Short break finished',
+          message: "Start focusing when you're ready",
+          button: 'Start focusing now'
+        },
+        tab: settings.shortBreak.newTabNotification
+      });
+
+    case Phase.LongBreak:
+      return this.timerManager.createTimer({
+        phase: 'Long Break',
+        duration: settings.longBreak.duration,
+        sound: settings.longBreak.sound,
+        badgeColor: '#009900',
+        notification: !settings.longBreak.desktopNotification ? null : {
+          title: 'Long break finished',
+          message: "Start focusing when you're ready",
+          button: 'Start focusing now'
+        },
+        tab: settings.longBreak.newTabNotification
+      });
+    }
   }
 }
 

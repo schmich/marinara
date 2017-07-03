@@ -31,13 +31,20 @@ class Settings extends EventEmitter
         newTabNotification: true,
         sound: null
       },
-      break: {
+      shortBreak: {
         duration: 5,
         desktopNotification: true,
         newTabNotification: true,
         sound: null
       },
-      version: 1
+      longBreak: {
+        duration: 15,
+        interval: 4,
+        desktopNotification: true,
+        newTabNotification: true,
+        sound: null
+      },
+      version: 2
     };
   }
 }

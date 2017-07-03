@@ -84,7 +84,7 @@ class StartFocusingMenuItem extends MenuItem
   }
 }
 
-class StartBreakMenuItem extends MenuItem
+class StartShortBreakMenuItem extends MenuItem
 {
   constructor(controller) {
     super();
@@ -92,7 +92,7 @@ class StartBreakMenuItem extends MenuItem
   }
 
   title() {
-    return 'Start Break';
+    return 'Start Short Break';
   }
 
   visible() {
@@ -100,7 +100,27 @@ class StartBreakMenuItem extends MenuItem
   }
 
   run() {
-    this.controller.startBreak();
+    this.controller.startShortBreak();
+  }
+}
+
+class StartLongBreakMenuItem extends MenuItem
+{
+  constructor(controller) {
+    super();
+    this.controller = controller;
+  }
+
+  title() {
+    return 'Start Long Break';
+  }
+
+  visible() {
+    return true;
+  }
+
+  run() {
+    this.controller.startLongBreak();
   }
 }
 

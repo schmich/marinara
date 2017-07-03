@@ -19,10 +19,14 @@ async function load() {
     title.innerText = 'Break finished';
     subtitle.innerText = `Start your ${settings.focus.duration} minute focus session when you're ready`;
     action.innerText = 'Start Focusing';
-  } else if (phase === 'break') {
-    title.innerText = 'Take a break!';
-    subtitle.innerText = `Start your ${settings.break.duration} minute break when you're ready`;
-    action.innerText = 'Start Break';
+  } else if (phase == 'short-break') {
+    title.innerText = 'Take a short break!';
+    subtitle.innerText = `Start your ${settings.shortBreak.duration} minute break when you're ready`;
+    action.innerText = 'Start Short Break';
+  } else if (phase == 'long-break') {
+    title.innerText = 'Take a long break!';
+    subtitle.innerText = `Start your ${settings.longBreak.duration} minute break when you're ready`;
+    action.innerText = 'Start Long Break';
   }
 
   start.className += ' ' + phase;

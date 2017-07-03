@@ -68,7 +68,7 @@ body {
   z-index: 1;
   position: relative;
 }
-.button.break {
+.button.short-break, .button.long-break {
   background: #00d618;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00d618), color-stop(95%,#2da000), color-stop(100%,#2da000)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #00d618 0%,#2da000 95%,#2da000 100%); /* Chrome10+,Safari5.1+ */
@@ -78,7 +78,7 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed510f), color-stop(95%,#b51a00), color-stop(100%,#b51a00)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Chrome10+,Safari5.1+ */
 }
-.button.break:active {
+.button.short-break:active, .button.long-break:active {
   background: #2da000;
 }
 .button.focus:active {

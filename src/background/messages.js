@@ -58,7 +58,14 @@ class BackgroundServer extends MessageServer
   }
 
   async getPhase() {
-    return this.controller.phase;
+    switch (this.controller.phase) {
+    case Phase.Focus:
+      return 'focus';
+    case Phase.ShortBreak:
+      return 'short-break';
+    case Phase.LongBreak:
+      return 'long-break';
+    }
   }
 
   async startSession() {
@@ -73,28 +80,36 @@ class BackgroundServer extends MessageServer
     return await this.settings.get();
   }
 
-  async setSettings(newSettings) {
-    let focusDuration = newSettings.focus.duration.trim();
-    let breakDuration = newSettings.break.duration.trim();
+  async setSettings(settings) {
+    let focusDuration = settings.focus.duration.trim();
+    let shortBreakDuration = settings.shortBreak.duration.trim();
+    let longBreakDuration = settings.longBreak.duration.trim();
 
     if (!focusDuration) {
       return { error: 'Focus duration is required.' };
-    } else if (!breakDuration) {
-      return { error: 'Break duration is required.' };
+    } else if (!shortBreakDuration) {
+      return { error: 'Short break duration is required.' };
+    } else if (!longBreakDuration) {
+      return { error: 'Long break duration is required.' };
     }
 
     let focusParsed = +focusDuration;
-    let breakParsed = +breakDuration;
+    let shortBreakParsed = +shortBreakDuration;
+    let longBreakParsed = +longBreakDuration;
 
     if (focusParsed <= 0 || isNaN(focusParsed)) {
       return { error: 'Focus duration must be a positive number.' };
-    } else if (breakParsed <= 0 || isNaN(breakParsed)) {
-      return { error: 'Break duration must be a positive number.' };
+    } else if (shortBreakParsed <= 0 || isNaN(shortBreakParsed)) {
+      return { error: 'Short break duration must be a positive number.' };
+    } else if (longBreakParsed <= 0 || isNaN(longBreakParsed)) {
+      return { error: 'Long break duration must be a positive number.' };
     }
 
-    newSettings.focus.duration = focusParsed;
-    newSettings.break.duration = breakParsed;
+    settings.focus.duration = focusParsed;
+    settings.shortBreak.duration = shortBreakParsed;
+    settings.longBreak.duration = longBreakParsed;
+    settings.longBreak.interval = +settings.longBreak.interval;
 
-    await this.settings.set(newSettings);
+    await this.settings.set(settings);
   }
 }

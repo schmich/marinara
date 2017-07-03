@@ -1,73 +1,60 @@
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 2px;
-  margin: 0 0 15px 0;
-}
-h3 {
-  font-size: 17px;
+html, body {
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-}
-body {
-  padding: 10px;
 }
 .field {
   margin-bottom: 10px;
 }
 .section {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 input[type="checkbox"] {
   vertical-align: middle;
   position: relative;
-  bottom: 2px;
+  top: -1px;
   margin: 5px 0;
 }
 p {
   display: inline-block;
   margin: 0;
 }
-.tabs {
-  padding-bottom: 6px;
-  border-bottom: 1px solid #bbb;
-  margin-bottom: 20px;
-}
-.tab {
-  color: #000;
-  cursor: pointer;
-  font-size: larger;
-  text-decoration: none;
-  padding: 5px 10px 5px 10px;
-  border-bottom: 1px solid #fff;
-  transition: background 0.2s, border 0.2s;
-}
-.tab:hover {
-  background: #fddddd;
-  border-bottom: 1px solid #fddddd;
-}
-.tab.active {
-  border-bottom: 2px solid #fa0000;
-}
-.tab-page:not(.active) {
-  display: none;
-}
-button#save {
-  margin-top: 15px;
-  padding: 5px 30px;
-}
-.links {
-  margin-top: 15px;
-}
-.licenses {
-  margin-top: 15px;
-}
-.licenses a {
-  display: block;
-  margin-top: 3px;
-}
 input.duration {
   width: 50px;
 }
-#status {
-  margin-left: 10px;
+.header {
+  background: #dd0000;
+  padding: 10px 0;
+  box-shadow: 0 3px 10px #999;
+}
+.header img {
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.header h1 {
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  padding: 0;
+  margin: 3px 0 0 0;
+}
+.inner {
+  width: 600px;
+  margin: 0 auto;
+}
+.content {
+  padding: 35px;
+}
+.section h2 {
+  margin: 0 0 15px 0;
+  font-weight: 500;
+  color: #aa0000;
+  border-bottom: 1px solid #ddcccc;
+}
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: inline;
 }

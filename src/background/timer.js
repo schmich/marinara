@@ -158,68 +158,85 @@ class Timer extends EventEmitter
   }
 }
 
-class MultiTimer
+const Phase = new Enum({
+  Focus: 0,
+  ShortBreak: 1,
+  LongBreak: 2
+});
+
+class PomodoroTimer
 {
-  constructor(...timers) {
-    this.timers = timers;
-    this.timerIndex = 0;
+  constructor(timerFactory, longBreakInterval) {
+    this.timerFactory = timerFactory;
+    this.longBreakInterval = longBreakInterval;
+    this.breakCount = 0;
 
-    for (let item of this.timers) {
-      item.timer.addListener('expire', () => {
-        this.timerIndex = (this.timerIndex + 1) % this.timers.length;
-      });
-    }
-  }
-
-  get current() {
-    return this.timers[this.timerIndex].timer;
+    this.timer = null;
+    this._phase = Phase.Focus;
   }
 
   get phase() {
-    return this.timers[this.timerIndex].phase;
+    return this._phase;
   }
 
   get state() {
-    return this.current.state;
+    return this.timer ? this.timer.state : null;
   }
 
   get isRunning() {
-    return this.current.isRunning;
+    return this.timer ? this.timer.isRunning : false;
   }
 
   get isStopped() {
-    return this.current.isStopped;
+    return this.timer ? this.timer.isStopped : false;
   }
 
   get isPaused() {
-    return this.current.isPaused;
+    return this.timer ? this.timer.isPaused : false;
   }
 
   start(phase = null) {
-    for (let item of this.timers) {
-      item.timer.stop();
+    if (this.timer) {
+      this.timer.stop();
     }
 
-    if (phase !== null) {
-      this.timerIndex = this.timers.findIndex(t => t.phase === phase);
+    if (phase) {
+      this._phase = phase;
     }
 
-    this.current.start();
+    var nextBreakCount;
+    var nextPhase;
+
+    if (this._phase !== Phase.Focus) {
+      nextBreakCount = this.breakCount;
+      nextPhase = Phase.Focus;
+    } else {
+      nextBreakCount = (this.breakCount + 1) % this.longBreakInterval;
+      nextPhase = (nextBreakCount == 0) ? Phase.LongBreak : Phase.ShortBreak;
+    }
+
+    this.timer = this.timerFactory(this._phase, nextPhase);
+    this.timer.addListener('expire', () => {
+      this.breakCount = nextBreakCount;
+      this._phase = nextPhase;
+    });
+
+    this.timer.start();
   }
 
   pause() {
-    this.current.pause();
+    this.timer.pause();
   }
 
   stop() {
-    this.current.stop();
+    this.timer.stop();
   }
 
   resume() {
-    this.current.resume();
+    this.timer.resume();
   }
 
   reset() {
-    this.current.reset();
+    this.timer.reset();
   }
 }

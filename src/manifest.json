@@ -29,10 +29,7 @@
       "background/background.js"
     ]
   },
-  "options_ui": {
-    "page": "options/options.html",
-    "chrome_style": true
-  },
+  "options_page": "options/options.html",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
