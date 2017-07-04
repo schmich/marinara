@@ -37,7 +37,7 @@ function loadSettingGroup(name, settings, soundOptions) {
   audioNotification.checked = settings.notifications.sound !== null;
   sounds.disabled = !audioNotification.checked;
 
-  appendSounds(sounds, soundOptions, settings.sound);
+  appendSounds(sounds, soundOptions, settings.notifications.sound);
 }
 
 async function loadSettings() {

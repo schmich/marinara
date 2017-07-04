@@ -278,6 +278,6 @@ class Controller
   }
 }
 
-let settings = new Settings();
+let settings = new Settings(new MarinaraSchema());
 let controller = new Controller(settings);
 let server = new BackgroundServer(controller, settings);

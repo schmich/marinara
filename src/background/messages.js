@@ -81,35 +81,30 @@ class BackgroundServer extends MessageServer
   }
 
   async setSettings(settings) {
-    let focusDuration = settings.focus.duration.trim();
-    let shortBreakDuration = settings.shortBreak.duration.trim();
-    let longBreakDuration = settings.longBreak.duration.trim();
-
-    if (!focusDuration) {
-      return { error: 'Focus duration is required.' };
-    } else if (!shortBreakDuration) {
-      return { error: 'Short break duration is required.' };
-    } else if (!longBreakDuration) {
-      return { error: 'Long break duration is required.' };
+    try {
+      this._normalize(settings.focus);
+      this._normalize(settings.shortBreak);
+      this._normalize(settings.longBreak);
+    } catch (e) {
+      return { error: e.message };
     }
 
-    let focusParsed = +focusDuration;
-    let shortBreakParsed = +shortBreakDuration;
-    let longBreakParsed = +longBreakDuration;
-
-    if (focusParsed <= 0 || isNaN(focusParsed)) {
-      return { error: 'Focus duration must be a positive number.' };
-    } else if (shortBreakParsed <= 0 || isNaN(shortBreakParsed)) {
-      return { error: 'Short break duration must be a positive number.' };
-    } else if (longBreakParsed <= 0 || isNaN(longBreakParsed)) {
-      return { error: 'Long break duration must be a positive number.' };
-    }
-
-    settings.focus.duration = focusParsed;
-    settings.shortBreak.duration = shortBreakParsed;
-    settings.longBreak.duration = longBreakParsed;
     settings.longBreak.interval = +settings.longBreak.interval;
 
     await this.settings.set(settings);
+  }
+
+  _normalize(phase) {
+    let duration = phase.duration.trim();
+    if (!duration) {
+      throw new Error('Duration is required.');
+    }
+
+    let durationParsed = +duration;
+    if (durationParsed <= 0 || isNaN(durationParsed)) {
+      throw new Error('Duration must be a positive number.');
+    }
+
+    phase.duration = durationParsed;
   }
 }

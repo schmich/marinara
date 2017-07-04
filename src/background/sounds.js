@@ -28,7 +28,7 @@ class Sounds
       ];
 
       for (let sound of this.sounds) {
-        sound.file = 'chrome-extension://' + chrome.runtime.id + '/audio/' + sound.file;
+        sound.file = `/audio/${sound.file}`;
       }
     }
 
