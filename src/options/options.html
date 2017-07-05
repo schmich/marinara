@@ -15,118 +15,149 @@
         <img src="../icons/48.png">
         <h1>Marinara: Pomodoro Timer</h1>
       </div>
+      <div class="tab-bar">
+        <a id="settings-tab" href="#settings">Settings</a>
+        <a id="about-tab" href="#about">About</a>
+      </div>
     </div>
   </div>
   <div class="content">
     <div class="inner">
-      <form id="settings">
-        <div class="section">
-          <h2>Focus</h2>
-          <div class="field">
-            <label>
-              Duration:
-              <input type="text" class="duration" id="focus-duration" autofocus> minutes
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="focus-desktop-notification">
-              Show desktop notification
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="focus-new-tab-notification">
-              Show new tab notification
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="focus-audio-notification">
-              Play audio notification:
-              <select id="focus-sounds">
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="section">
-          <h2>Short Break</h2>
-          <div class="field">
-            <label>
-              Duration:
-              <input type="text" class="duration" id="short-break-duration"> minutes
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="short-break-desktop-notification">
-              Show desktop notification
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="short-break-new-tab-notification">
-              Show new tab notification
-            </label>
-          </div>
-          <div class="field">
-            <label>
-              <input type="checkbox" id="short-break-audio-notification">
-              Play audio notification:
-              <select id="short-break-sounds">
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="section">
-          <h2>Long Break</h2>
-          <div class="field">
-            <label>
-              Take a long break
-              <select id="long-break-interval">
-                <option value="0">never</option>
-                <option value="2">every 2nd break (alternating)</option>
-                <option value="3">every 3rd break</option>
-                <option value="4">every 4th break</option>
-                <option value="5">every 5th break</option>
-                <option value="6">every 6th break</option>
-                <option value="7">every 7th break</option>
-                <option value="8">every 8th break</option>
-                <option value="9">every 9th break</option>
-                <option value="10">every 10th break</option>
-              </select>
-            </label>
-          </div>
-          <fieldset id="long-break">
+      <div class="tab-page" id="settings-page">
+        <form id="settings">
+          <div class="section">
+            <h2>Focus</h2>
             <div class="field">
               <label>
                 Duration:
-                <input type="text" class="duration" id="long-break-duration"> minutes
+                <input type="text" class="duration" id="focus-duration" autofocus> minutes
               </label>
             </div>
             <div class="field">
               <label>
-                <input type="checkbox" id="long-break-desktop-notification">
+                <input type="checkbox" id="focus-desktop-notification">
                 Show desktop notification
               </label>
             </div>
             <div class="field">
               <label>
-                <input type="checkbox" id="long-break-new-tab-notification">
+                <input type="checkbox" id="focus-new-tab-notification">
                 Show new tab notification
               </label>
             </div>
             <div class="field">
               <label>
-                <input type="checkbox" id="long-break-audio-notification">
+                <input type="checkbox" id="focus-audio-notification">
                 Play audio notification:
-                <select id="long-break-sounds">
+                <select id="focus-sounds">
                 </select>
               </label>
             </div>
-          </fieldset>
+          </div>
+          <div class="section">
+            <h2>Short Break</h2>
+            <div class="field">
+              <label>
+                Duration:
+                <input type="text" class="duration" id="short-break-duration"> minutes
+              </label>
+            </div>
+            <div class="field">
+              <label>
+                <input type="checkbox" id="short-break-desktop-notification">
+                Show desktop notification
+              </label>
+            </div>
+            <div class="field">
+              <label>
+                <input type="checkbox" id="short-break-new-tab-notification">
+                Show new tab notification
+              </label>
+            </div>
+            <div class="field">
+              <label>
+                <input type="checkbox" id="short-break-audio-notification">
+                Play audio notification:
+                <select id="short-break-sounds">
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="section">
+            <h2>Long Break</h2>
+            <div class="field">
+              <label>
+                Take a long break
+                <select id="long-break-interval">
+                  <option value="0">never</option>
+                  <option value="2">every 2nd break (alternating)</option>
+                  <option value="3">every 3rd break</option>
+                  <option value="4">every 4th break</option>
+                  <option value="5">every 5th break</option>
+                  <option value="6">every 6th break</option>
+                  <option value="7">every 7th break</option>
+                  <option value="8">every 8th break</option>
+                  <option value="9">every 9th break</option>
+                  <option value="10">every 10th break</option>
+                </select>
+              </label>
+            </div>
+            <fieldset id="long-break">
+              <div class="field">
+                <label>
+                  Duration:
+                  <input type="text" class="duration" id="long-break-duration"> minutes
+                </label>
+              </div>
+              <div class="field">
+                <label>
+                  <input type="checkbox" id="long-break-desktop-notification">
+                  Show desktop notification
+                </label>
+              </div>
+              <div class="field">
+                <label>
+                  <input type="checkbox" id="long-break-new-tab-notification">
+                  Show new tab notification
+                </label>
+              </div>
+              <div class="field">
+                <label>
+                  <input type="checkbox" id="long-break-audio-notification">
+                  Play audio notification:
+                  <select id="long-break-sounds">
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </form>
+      </div>
+      <div class="tab-page" id="about-page">
+        <div class="title">
+          <h1>Marinara</h1>
+          <h2>Pomodoro Timer</h2>
+          <p>
+            <a href="https://twitter.com/schmich" target="_blank">Chris Schmich</a>
+            &amp; <a href="https://github.com/schmich/marinara/graphs/contributors" target="_blank">Contributors</a>
+          </p>
         </div>
-      </form>
+        <div class="links">
+          <p>Feedback</p>
+          <ul>
+            <li><a href="https://chrome.google.com/webstore/detail/marinara-pomodoro-timer/lojgmehidjdhhbmpjfamhpkpodfcodef/reviews" target="_blank">Write a Review</a></li>
+            <li><a href="https://github.com/schmich/marinara/issues" target="_blank">File an Issue</a></li>
+          </ul>
+        </div>
+        <div class="links">
+          <p>View</p>
+          <ul>
+            <li><a href="https://github.com/schmich/marinara" target="_blank">Source Code</a></li>
+            <li><a href="../ATTRIBUTION" target="_blank">Audio attributions</a></li>
+            <li><a href="../LICENSE" target="_blank">License</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </body>

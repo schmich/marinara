@@ -99,6 +99,18 @@ async function saveSettings() {
   }
 }
 
+function selectTab(id) {
+  let active = id.substring(1);
+
+  ['settings', 'about'].forEach(name => {
+    document.getElementById(`${name}-tab`).classList.remove('active');
+    document.getElementById(`${name}-page`).classList.remove('active');
+  });
+
+  document.getElementById(`${active}-tab`).classList.add('active');
+  document.getElementById(`${active}-page`).classList.add('active');
+}
+
 document.addEventListener('DOMContentLoaded', load);
 
 async function load() {
@@ -109,4 +121,11 @@ async function load() {
 
   let texts = document.querySelectorAll('#settings input[type="text"]');
   texts.forEach(text => text.addEventListener('input', saveSettings));
+
+  let hash = window.location.hash || '#settings';
+  selectTab(hash);
+
+  window.addEventListener('popstate', function(e) {
+    selectTab(window.location.hash);
+  });
 }

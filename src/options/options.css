@@ -24,8 +24,31 @@ input.duration {
 }
 .header {
   background: #dd0000;
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   box-shadow: 0 3px 10px #999;
+}
+.header .tab-bar {
+  margin-top: 10px;
+}
+.header a {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+}
+.header a:hover {
+  color: #fff;
+  background: #b33;
+  border-bottom: 4px solid #b33;
+}
+.header a.active {
+  opacity: 1;
+  color: #fff;
+  border-bottom: 4px solid #fdd;
 }
 .header img {
   vertical-align: middle;
@@ -57,4 +80,70 @@ fieldset {
   margin: 0;
   padding: 0;
   display: inline;
+}
+.tab-page {
+  display: none;
+}
+.tab-page.active {
+  display: block;
+}
+#about-page {
+  font-size: 15px;
+}
+#about-page .title {
+  text-align: center;
+  margin: 20px 0 60px 0;
+}
+#about-page .title p {
+  margin-top: 10px;
+}
+#about-page .title a {
+  color: #777;
+}
+#about-page h1 {
+  color: #aa0000;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+#about-page h2 {
+  color: #aa0000;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+#about-page a {
+  color: #000;
+}
+#about-page .links {
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: center;
+}
+#about-page .links a {
+  color: #333;
+  text-decoration: none;
+}
+#about-page .links a:hover {
+  text-decoration: underline;
+  color: #aa0000;
+}
+#about-page .links p {
+  text-align: right;
+}
+#about-page .links p {
+  flex: 45%;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #999;
+}
+#about-page .links ul {
+  flex: 55%;
+  list-style-type: none;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+#about-page .links ul li {
+  margin-bottom: 7px;
 }
