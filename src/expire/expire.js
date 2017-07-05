@@ -21,11 +21,11 @@ async function load() {
     action.innerText = 'Start Focusing';
   } else if (phase == 'short-break') {
     title.innerText = 'Take a short break!';
-    subtitle.innerText = `Start your ${settings.shortBreak.duration} minute break when you're ready`;
+    subtitle.innerText = `Start your ${settings.shortBreak.duration} minute short break when you're ready`;
     action.innerText = 'Start Short Break';
   } else if (phase == 'long-break') {
     title.innerText = 'Take a long break!';
-    subtitle.innerText = `Start your ${settings.longBreak.duration} minute break when you're ready`;
+    subtitle.innerText = `Start your ${settings.longBreak.duration} minute long break when you're ready`;
     action.innerText = 'Start Long Break';
   }
 
