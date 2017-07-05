@@ -116,6 +116,10 @@ document.addEventListener('DOMContentLoaded', load);
 async function load() {
   await loadSettings();
 
+  let manifest = chrome.runtime.getManifest();
+  let version = document.getElementById('version');
+  version.innerText = manifest.version;
+
   let inputs = document.querySelectorAll('#settings input[type="checkbox"], #settings select');
   inputs.forEach(input => input.addEventListener('change', saveSettings));
 
