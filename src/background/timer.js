@@ -202,6 +202,9 @@ class PomodoroTimer
 
     if (phase) {
       this._phase = phase;
+      if (phase === Phase.LongBreak) {
+        this.breakCount = 0;
+      }
     }
 
     var nextBreakCount;
