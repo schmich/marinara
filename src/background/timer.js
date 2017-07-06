@@ -22,13 +22,27 @@ class Timer extends EventEmitter
   }
 
   observe(observer) {
-    this.addListener('start', (...args) => observer.start ? observer.start(...args) : null);
-    this.addListener('stop', (...args) => observer.stop ? observer.stop(...args) : null);
-    this.addListener('pause', (...args) => observer.pause ? observer.pause(...args) : null);
-    this.addListener('resume', (...args) => observer.resume ? observer.resume(...args) : null);
-    this.addListener('tick', (...args) => observer.tick ? observer.tick(...args) : null);
-    this.addListener('expire', (...args) => observer.expire ? observer.expire(...args) : null);
-    this.addListener('change', (...args) => observer.change ? observer.change(...args) : null);
+    if (observer.start) {
+      this.addListener('start', (...args) => observer.start(...args));
+    }
+    if (observer.stop) {
+      this.addListener('stop', (...args) => observer.stop(...args));
+    }
+    if (observer.pause) {
+      this.addListener('pause', (...args) => observer.pause(...args));
+    }
+    if (observer.resume) {
+      this.addListener('resume', (...args) => observer.resume(...args));
+    }
+    if (observer.tick) {
+      this.addListener('tick', (...args) => observer.tick(...args));
+    }
+    if (observer.expire) {
+      this.addListener('expire', (...args) => observer.expire(...args));
+    }
+    if (observer.change) {
+      this.addListener('change', (...args) => observer.change(...args));
+    }
   }
 
   get state() {
