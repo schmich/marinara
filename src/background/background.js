@@ -152,7 +152,7 @@ class Controller
     this.timerManager = new BrowserTimerManager(this);
 
     this.settings = settings;
-    this.settings.addListener('change', () => this.loadTimers());
+    this.settings.on('change', () => this.loadTimers());
     this.loadTimers();
 
     this.menu = new Menu(['browser_action'],
@@ -223,7 +223,7 @@ class Controller
 
     let timerFactory = (phase, nextPhase) => {
       let timer = this.createTimer(phase, nextPhase, settings);
-      timer.addListener('change', () => this.menu.refresh());
+      timer.on('change', () => this.menu.refresh());
       return timer;
     };
 

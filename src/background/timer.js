@@ -23,25 +23,25 @@ class Timer extends EventEmitter
 
   observe(observer) {
     if (observer.start) {
-      this.addListener('start', (...args) => observer.start(...args));
+      this.on('start', (...args) => observer.start(...args));
     }
     if (observer.stop) {
-      this.addListener('stop', (...args) => observer.stop(...args));
+      this.on('stop', (...args) => observer.stop(...args));
     }
     if (observer.pause) {
-      this.addListener('pause', (...args) => observer.pause(...args));
+      this.on('pause', (...args) => observer.pause(...args));
     }
     if (observer.resume) {
-      this.addListener('resume', (...args) => observer.resume(...args));
+      this.on('resume', (...args) => observer.resume(...args));
     }
     if (observer.tick) {
-      this.addListener('tick', (...args) => observer.tick(...args));
+      this.on('tick', (...args) => observer.tick(...args));
     }
     if (observer.expire) {
-      this.addListener('expire', (...args) => observer.expire(...args));
+      this.on('expire', (...args) => observer.expire(...args));
     }
     if (observer.change) {
-      this.addListener('change', (...args) => observer.change(...args));
+      this.on('change', (...args) => observer.change(...args));
     }
   }
 
@@ -233,7 +233,7 @@ class PomodoroTimer
     }
 
     this.timer = this.timerFactory(this._phase, nextPhase);
-    this.timer.addListener('expire', () => {
+    this.timer.on('expire', () => {
       this.breakCount = nextBreakCount;
       this._phase = nextPhase;
     });
