@@ -7,7 +7,7 @@ html, body {
   margin-bottom: 10px;
 }
 .section {
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 input[type="checkbox"] {
   vertical-align: middle;
@@ -67,7 +67,7 @@ input.duration {
   margin: 0 auto;
 }
 .content {
-  padding: 35px;
+  padding: 60px 0 0 0;
 }
 .section h2 {
   margin: 0 0 15px 0;
@@ -92,7 +92,7 @@ fieldset {
 }
 #about-page .title {
   text-align: center;
-  margin: 20px 0 60px 0;
+  margin: 0 0 60px 0;
 }
 #about-page .title p {
   margin-top: 10px;
