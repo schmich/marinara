@@ -260,40 +260,45 @@ class Controller
   createTimer(phase, nextPhase, settings) {
     switch (phase) {
     case Phase.Focus:
+      var hasLong = settings.longBreak.interval > 0;
       let length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
       let lengthTitle = length.replace(/^./, c => c.toUpperCase());
       let nextDuration = settings[`${length}Break`].duration;
+      let brk = hasLong ? `${length} break` : 'break';
+      var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
       return this.timerManager.createTimer({
         phase: 'Focus',
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
-          title: `Take a ${lengthTitle} Break`,
-          message: `${nextDuration} minute ${length} break up next`,
-          action: `Start ${length} break now`
+          title: `Take a ${brkTitle}`,
+          message: `${nextDuration} minute ${brk} up next`,
+          action: `Start ${brk} now`
         },
         tab: !settings.focus.notifications.tab ? null : {
-          title: `Take a ${lengthTitle} Break`,
-          message: `${nextDuration} minute ${length} break up next`,
-          action: `Start ${lengthTitle} Break`,
+          title: `Take a ${brkTitle}`,
+          message: `${nextDuration} minute ${brk} up next`,
+          action: `Start ${brkTitle}`,
           phase: `${length}-break`
         }
       });
 
     case Phase.ShortBreak:
+      var hasLong = settings.longBreak.interval > 0;
+      var brkTitle = hasLong ? `Short Break` : 'Break';
       return this.timerManager.createTimer({
         phase: 'Short Break',
         duration: settings.shortBreak.duration,
         sound: settings.shortBreak.notifications.sound,
         badgeColor: '#009900',
         notification: !settings.shortBreak.notifications.desktop ? null : {
-          title: 'Short Break Finished',
+          title: `${brkTitle} Finished`,
           message: `${settings.focus.duration} minute focus session up next`,
           action: 'Start focusing now'
         },
         tab: !settings.shortBreak.notifications.tab ? null : {
-          title: 'Short Break Finished',
+          title: `${brkTitle} Finished`,
           message: `${settings.focus.duration} minute focus session up next`,
           action: 'Start Focusing',
           phase: 'focus'
