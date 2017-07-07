@@ -28,10 +28,6 @@ class MessageClient
 
 class BackgroundClient extends MessageClient
 {
-  static getPhase() {
-    return this.request('get-phase', arguments);
-  }
-
   static startSession() {
     return this.request('start-session', arguments);
   }
@@ -55,17 +51,6 @@ class BackgroundServer extends MessageServer
     super();
     this.controller = controller;
     this.settings = settings;
-  }
-
-  async getPhase() {
-    switch (this.controller.phase) {
-    case Phase.Focus:
-      return 'focus';
-    case Phase.ShortBreak:
-      return 'short-break';
-    case Phase.LongBreak:
-      return 'long-break';
-    }
   }
 
   async startSession() {

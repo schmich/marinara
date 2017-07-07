@@ -5,8 +5,8 @@ class BrowserTimerManager
     this.expirationTabId = null;
     this.controller = controller;
 
-    chrome.tabs.onRemoved.addListener(tabId => {
-      if (tabId === this.expirationTabId) {
+    chrome.tabs.onRemoved.addListener(id => {
+      if (id === this.expirationTabId) {
         this.expirationTabId = null;
       }
     });
@@ -30,7 +30,7 @@ class BrowserTimerManager
     let timer = new Timer(options.duration * 60, 60);
     timer.observe(new BadgeObserver(options.phase, options.badgeColor));
 
-    timer.addListener('expire', () => {
+    timer.once('expire', () => {
       if (options.sound) {
         let audio = new Audio();
         audio.src = options.sound;
@@ -41,16 +41,21 @@ class BrowserTimerManager
         this.notify(
           options.notification.title,
           options.notification.message,
-          options.notification.button
+          options.notification.action
         );
       }
 
       if (options.tab) {
-        this.showExpiration();
+        this.showExpiration(
+          options.tab.title,
+          options.tab.message,
+          options.tab.action,
+          options.tab.phase
+        );
       }
     });
 
-    timer.addListener('start', () => {
+    timer.once('start', () => {
       // Close expire tab.
       if (this.expirationTabId !== null) {
         chrome.tabs.remove(this.expirationTabId, () => {});
@@ -66,28 +71,39 @@ class BrowserTimerManager
     return timer;
   }
 
-  showExpiration() {
+  showExpiration(title, message, action, phase) {
     let focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
     let focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
 
     if (this.expirationTabId !== null) {
       focusTab(this.expirationTabId);
-    } else {
-      chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html') }, tab => {
-        this.expirationTabId = tab.id;
-        focusTab(tab.id);
-      });
+      return;
     }
+
+    chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html'), active: false }, tab => {
+      this.expirationTabId = tab.id;
+      chrome.tabs.onUpdated.addListener(function update(id, changeInfo, _) {
+        if (id === tab.id && changeInfo.status === 'complete') {
+          chrome.tabs.onUpdated.removeListener(update);
+          chrome.tabs.sendMessage(id, {
+            title: title,
+            message: message,
+            action: action,
+            phase: phase
+          }, {}, () => focusTab(id));
+        }
+      });
+    });
   }
 
-  notify(text, message, buttonText) {
+  notify(title, message, action) {
     let options = {
       type: 'basic',
-      title: text,
+      title: title,
       message: message,
       iconUrl: 'icons/128.png',
       isClickable: true,
-      buttons: [{ title: buttonText, iconUrl: 'icons/start.png' }]
+      buttons: [{ title: action, iconUrl: 'icons/start.png' }]
     };
 
     chrome.notifications.create('', options, id => this.notificationId = id);
@@ -234,17 +250,24 @@ class Controller
     switch (phase) {
     case Phase.Focus:
       let length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
+      let lengthTitle = length.replace(/^./, c => c.toUpperCase());
+      let nextDuration = settings[`${length}Break`].duration;
       return this.timerManager.createTimer({
         phase: 'Focus',
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
-          title: 'Take a break!',
-          message: `Start your ${length} break when you're ready`,
-          button: `Start ${length} break now`
+          title: `Take a ${lengthTitle} Break`,
+          message: `${nextDuration} minute ${length} break up next`,
+          action: `Start ${length} break now`
         },
-        tab: settings.focus.notifications.tab
+        tab: !settings.focus.notifications.tab ? null : {
+          title: `Take a ${lengthTitle} Break`,
+          message: `${nextDuration} minute ${length} break up next`,
+          action: `Start ${lengthTitle} Break`,
+          phase: `${length}-break`
+        }
       });
 
     case Phase.ShortBreak:
@@ -254,11 +277,16 @@ class Controller
         sound: settings.shortBreak.notifications.sound,
         badgeColor: '#009900',
         notification: !settings.shortBreak.notifications.desktop ? null : {
-          title: 'Short break finished',
-          message: "Start focusing when you're ready",
-          button: 'Start focusing now'
+          title: 'Short Break Finished',
+          message: `${settings.focus.duration} minute focus session up next`,
+          action: 'Start focusing now'
         },
-        tab: settings.shortBreak.notifications.tab
+        tab: !settings.shortBreak.notifications.tab ? null : {
+          title: 'Short Break Finished',
+          message: `${settings.focus.duration} minute focus session up next`,
+          action: 'Start Focusing',
+          phase: 'focus'
+        }
       });
 
     case Phase.LongBreak:
@@ -268,11 +296,16 @@ class Controller
         sound: settings.longBreak.notifications.sound,
         badgeColor: '#009900',
         notification: !settings.longBreak.notifications.desktop ? null : {
-          title: 'Long break finished',
-          message: "Start focusing when you're ready",
-          button: 'Start focusing now'
+          title: 'Long Break Finished',
+          message: `${settings.focus.duration} minute focus session up next`,
+          action: 'Start focusing now'
         },
-        tab: settings.longBreak.notifications.tab
+        tab: !settings.longBreak.notifications.tab ? null : {
+          title: 'Long Break Finished',
+          message: `${settings.focus.duration} minute focus session up next`,
+          action: 'Start Focusing',
+          phase: 'focus'
+        }
       });
     }
   }

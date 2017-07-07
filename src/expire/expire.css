@@ -2,9 +2,7 @@ body, html {
   height: 100%;
 }
 body {
-  background: #f3f3f3;
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f3f3f3), color-stop(100%,#dddddd));
-  background: -webkit-radial-gradient(center, ellipse cover,  #f3f3f3 0%,#dddddd 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #fff 0%, #ccc 100%);
 }
 .dialog {
   position: relative;
@@ -26,20 +24,21 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  opacity: 0.4;
+  opacity: 0.3;
   background-image: url('../icons/full.png');
   background-size: 50%;
   background-position: right -100px bottom -160px;
   background-repeat: no-repeat;
 }
 .dialog h1 {
-  margin: 0 0 30px 0;
+  margin: 0 0 15px 0;
   font-weight: normal;
   font-size: 28px;
 }
 .dialog p {
+  color: #555;
   font-size: 16px;
-  margin: 0 0 20px 0;
+  margin: 0 0 40px 0;
 }
 .button {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -87,4 +86,7 @@ body {
 .button:active {
   box-shadow: none;
   transition-delay: 0s;
+}
+.button:not(.focus):not(.short-break):not(.long-break) {
+  display: none;
 }
