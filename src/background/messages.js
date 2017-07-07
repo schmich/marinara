@@ -47,10 +47,10 @@ class BackgroundClient extends MessageClient
 
 class BackgroundServer extends MessageServer
 {
-  constructor(controller, settings) {
+  constructor(controller, settingsManager) {
     super();
     this.controller = controller;
-    this.settings = settings;
+    this.settingsManager = settingsManager;
   }
 
   async startSession() {
@@ -62,7 +62,7 @@ class BackgroundServer extends MessageServer
   }
 
   async getSettings() {
-    return await this.settings.get();
+    return await this.settingsManager.get();
   }
 
   async setSettings(settings) {
@@ -76,7 +76,7 @@ class BackgroundServer extends MessageServer
 
     settings.longBreak.interval = +settings.longBreak.interval;
 
-    await this.settings.set(settings);
+    await this.settingsManager.set(settings);
   }
 
   _normalize(phase) {

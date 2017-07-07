@@ -92,7 +92,8 @@ class StartShortBreakMenuItem extends MenuItem
   }
 
   title() {
-    return 'Start Short Break';
+    let hasLong = this.controller.settings.longBreak.interval > 0;
+    return hasLong ? 'Start Short Break' : 'Start Break';
   }
 
   visible() {
@@ -116,7 +117,7 @@ class StartLongBreakMenuItem extends MenuItem
   }
 
   visible() {
-    return true;
+    return this.controller.settings.longBreak.interval > 0;
   }
 
   run() {

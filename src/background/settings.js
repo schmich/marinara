@@ -25,7 +25,7 @@ class ChromeStorage
   }
 }
 
-class Settings extends EventEmitter
+class SettingsManager extends EventEmitter
 {
   constructor(schema) {
     super();

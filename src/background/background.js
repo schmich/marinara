@@ -164,12 +164,20 @@ class BadgeObserver
 
 class Controller
 {
-  constructor(settings) {
+  constructor(settingsManager) {
     this.timerManager = new BrowserTimerManager(this);
 
-    this.settings = settings;
-    this.settings.on('change', () => this.loadTimers());
-    this.loadTimers();
+    this.settingsManager = settingsManager;
+    settingsManager.on('change', settings => {
+      this._settings = settings;
+      this.loadTimers(settings);
+      this.menu.refresh();
+    });
+  }
+
+  async run() {
+    this._settings = await this.settingsManager.get();
+    this.loadTimers(this._settings);
 
     this.menu = new Menu(['browser_action'],
       new MenuGroup(
@@ -193,6 +201,10 @@ class Controller
         this.timer.start();
       }
     });
+  }
+
+  get settings() {
+    return this._settings;
   }
 
   get phase() {
@@ -231,8 +243,7 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
-  async loadTimers() {
-    let settings = await this.settings.get();
+  loadTimers(settings) {
     if (this.timer) {
       this.timer.stop();
     }
@@ -311,6 +322,8 @@ class Controller
   }
 }
 
-let settings = new Settings(new MarinaraSchema());
-let controller = new Controller(settings);
-let server = new BackgroundServer(controller, settings);
+let settingsManager = new SettingsManager(new MarinaraSchema());
+let controller = new Controller(settingsManager);
+let server = new BackgroundServer(controller, settingsManager);
+
+controller.run();
