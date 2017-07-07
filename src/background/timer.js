@@ -148,7 +148,7 @@ class Timer extends EventEmitter
       this._state = TimerState.Stopped;
 
       this.emit('expire', this.durationSec, 0);
-      this.emit('change', [{}]);
+      this.emit('change');
     }, seconds * 1000);
   }
 
@@ -203,6 +203,7 @@ class PomodoroTimer
   start(phase = null) {
     if (this.timer) {
       this.timer.stop();
+      this.timer.removeAllListeners();
     }
 
     if (phase) {
@@ -218,9 +219,12 @@ class PomodoroTimer
     if (this._phase !== Phase.Focus) {
       nextBreakCount = this.breakCount;
       nextPhase = Phase.Focus;
+    } else if (this.longBreakInterval === 0) {
+      nextBreakCount = this.breakCount;
+      nextPhase = Phase.ShortBreak;
     } else {
       nextBreakCount = (this.breakCount + 1) % this.longBreakInterval;
-      nextPhase = (nextBreakCount == 0) ? Phase.LongBreak : Phase.ShortBreak;
+      nextPhase = (nextBreakCount === 0) ? Phase.LongBreak : Phase.ShortBreak;
     }
 
     this.timer = this.timerFactory(this._phase, nextPhase);
