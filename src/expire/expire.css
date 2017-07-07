@@ -1,5 +1,7 @@
 body, html {
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 body {
   background: -webkit-radial-gradient(center, ellipse cover, #fff 0%, #ccc 100%);
