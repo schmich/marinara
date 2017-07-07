@@ -43,7 +43,7 @@ class Settings extends EventEmitter
 
   async set(settings) {
     await ChromeStorage.sync.set(settings);
-    this.emitEvent('change', [{}]);
+    this.emit('change', settings);
   }
 
   _upgrade(settings) {

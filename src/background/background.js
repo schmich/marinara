@@ -117,11 +117,11 @@ class BadgeObserver
     this.color = color;
   }
 
-  start({ remaining }) {
+  start(elapsed, remaining) {
     this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 
-  tick({ remaining }) {
+  tick(elapsed, remaining) {
     this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 
@@ -133,7 +133,7 @@ class BadgeObserver
     this.updateBadge({ text: '—', tooltip: 'Timer Paused' });
   }
 
-  resume({ remaining }) {
+  resume(elapsed, remaining) {
     this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 

@@ -73,11 +73,8 @@ class Timer extends EventEmitter
 
     this._state = TimerState.Running;
     this.periodStartTime = Date.now();
-    this.emitEvent('start', [{
-      elapsed: 0,
-      remaining: this.remainingSec
-    }]);
-    this.emitEvent('change', [{}]);
+    this.emit('start', 0, this.remainingSec);
+    this.emit('change');
   }
 
   stop() {
@@ -94,8 +91,8 @@ class Timer extends EventEmitter
     this.remainingSec = null;
 
     this._state = TimerState.Stopped;
-    this.emitEvent('stop', [{}]);
-    this.emitEvent('change', [{}]);
+    this.emit('stop');
+    this.emit('change');
   }
 
   pause() {
@@ -111,11 +108,10 @@ class Timer extends EventEmitter
 
     this._state = TimerState.Paused;
     this.periodStartTime = null;
-    this.emitEvent('pause', [{
-      elapsed: this.durationSec - this.remainingSec,
-      remaining: this.remainingSec
-    }]);
-    this.emitEvent('change', [{}]);
+
+    let elapsed = this.durationSec - this.remainingSec;
+    this.emit('pause', elapsed, this.remainingSec);
+    this.emit('change');
   }
 
   resume() {
@@ -128,11 +124,10 @@ class Timer extends EventEmitter
 
     this._state = TimerState.Running;
     this.periodStartTime = Date.now();
-    this.emitEvent('resume', [{
-      elapsed: this.durationSec - this.remainingSec,
-      remaining: this.remainingSec
-    }]);
-    this.emitEvent('change', [{}]);
+
+    let elapsed = this.durationSec - this.remainingSec;
+    this.emit('resume', elapsed, this.remainingSec);
+    this.emit('change');
   }
 
   reset() {
@@ -151,11 +146,9 @@ class Timer extends EventEmitter
       this.remainingSec = null;
 
       this._state = TimerState.Stopped;
-      this.emitEvent('expire', [{
-        elapsed: this.durationSec,
-        remaining: 0
-      }]);
-      this.emitEvent('change', [{}]);
+
+      this.emit('expire', this.durationSec, 0);
+      this.emit('change', [{}]);
     }, seconds * 1000);
   }
 
@@ -164,10 +157,8 @@ class Timer extends EventEmitter
       let periodSec = (Date.now() - this.periodStartTime) / 1000;
       let remainingSec = this.remainingSec - periodSec;
 
-      this.emitEvent('tick', [{
-        elapsed: this.durationSec - remainingSec,
-        remaining: remainingSec
-      }]);
+      let elapsed = this.durationSec - remainingSec;
+      this.emit('tick', elapsed, remainingSec);
     }, seconds * 1000);
   }
 }
