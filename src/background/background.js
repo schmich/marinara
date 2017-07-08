@@ -40,7 +40,7 @@ class BrowserTimerManager
       if (options.notification) {
         this.notify(
           options.notification.title,
-          options.notification.message,
+          options.notification.messages,
           options.notification.action
         );
       }
@@ -48,7 +48,7 @@ class BrowserTimerManager
       if (options.tab) {
         this.showExpiration(
           options.tab.title,
-          options.tab.message,
+          options.tab.messages,
           options.tab.action,
           options.tab.phase
         );
@@ -71,7 +71,7 @@ class BrowserTimerManager
     return timer;
   }
 
-  showExpiration(title, message, action, phase) {
+  showExpiration(title, messages, action, phase) {
     let focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
     let focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
 
@@ -87,7 +87,7 @@ class BrowserTimerManager
           chrome.tabs.onUpdated.removeListener(update);
           chrome.tabs.sendMessage(id, {
             title: title,
-            message: message,
+            messages: messages,
             action: action,
             phase: phase
           }, {}, () => focusTab(id));
@@ -96,11 +96,11 @@ class BrowserTimerManager
     });
   }
 
-  notify(title, message, action) {
+  notify(title, messages, action) {
     let options = {
       type: 'basic',
       title: title,
-      message: message,
+      message: messages.filter(m => m && m.trim() !== '').join("\n"),
       iconUrl: 'icons/128.png',
       isClickable: true,
       buttons: [{ title: action, iconUrl: 'icons/start.png' }]
@@ -258,6 +258,9 @@ class Controller
   }
 
   createTimer(phase, nextPhase, settings) {
+    let pomodoros = this.timer.longBreakPomodoros;
+    let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomdoro${pomodoros === 1 ? '' : 's'} left until long break`;
+
     switch (phase) {
     case Phase.Focus:
       var hasLong = settings.longBreak.interval > 0;
@@ -266,6 +269,7 @@ class Controller
       let nextDuration = settings[`${length}Break`].duration;
       let brk = hasLong ? `${length} break` : 'break';
       var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
+      var messages = [`${nextDuration} minute break`, pomodorosLeft];
       return this.timerManager.createTimer({
         phase: 'Focus',
         duration: settings.focus.duration,
@@ -273,52 +277,52 @@ class Controller
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
           title: `Take a ${brkTitle}`,
-          message: `${nextDuration} minute ${brk} up next`,
+          messages: messages,
           action: `Start ${brk} now`
         },
         tab: !settings.focus.notifications.tab ? null : {
           title: `Take a ${brkTitle}`,
-          message: `${nextDuration} minute ${brk} up next`,
+          messages: messages,
           action: `Start ${brkTitle}`,
           phase: `${length}-break`
         }
       });
 
     case Phase.ShortBreak:
-      var hasLong = settings.longBreak.interval > 0;
-      var brkTitle = hasLong ? `Short Break` : 'Break';
+      var messages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
       return this.timerManager.createTimer({
         phase: 'Short Break',
         duration: settings.shortBreak.duration,
         sound: settings.shortBreak.notifications.sound,
         badgeColor: '#009900',
         notification: !settings.shortBreak.notifications.desktop ? null : {
-          title: `${brkTitle} Finished`,
-          message: `${settings.focus.duration} minute focus session up next`,
+          title: 'Start Focusing',
+          messages: messages,
           action: 'Start focusing now'
         },
         tab: !settings.shortBreak.notifications.tab ? null : {
-          title: `${brkTitle} Finished`,
-          message: `${settings.focus.duration} minute focus session up next`,
+          title: 'Start Focusing',
+          messages: messages,
           action: 'Start Focusing',
           phase: 'focus'
         }
       });
 
     case Phase.LongBreak:
+      var messages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
       return this.timerManager.createTimer({
         phase: 'Long Break',
         duration: settings.longBreak.duration,
         sound: settings.longBreak.notifications.sound,
         badgeColor: '#009900',
         notification: !settings.longBreak.notifications.desktop ? null : {
-          title: 'Long Break Finished',
-          message: `${settings.focus.duration} minute focus session up next`,
+          title: 'Start Focusing',
+          messages: messages,
           action: 'Start focusing now'
         },
         tab: !settings.longBreak.notifications.tab ? null : {
-          title: 'Long Break Finished',
-          message: `${settings.focus.duration} minute focus session up next`,
+          title: 'Start Focusing',
+          messages: messages,
           action: 'Start Focusing',
           phase: 'focus'
         }

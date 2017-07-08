@@ -200,6 +200,15 @@ class PomodoroTimer
     return this.timer ? this.timer.isPaused : false;
   }
 
+  get longBreakPomodoros() {
+    if (this.longBreakInterval === 0) {
+      return 0;
+    }
+
+    let breaks = this.longBreakInterval - this.breakCount;
+    return this._phase === Phase.Focus ? breaks - 1 : breaks;
+  }
+
   start(phase = null) {
     if (this.timer) {
       this.timer.stop();
