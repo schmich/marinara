@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   title.innerText = request.title;
   action.innerText = request.action;
 
-  let message = request.messages.filter(m => m && m.trim() !== '').join(' &middot; ');
+  let message = request.messages.filter(m => m && m.trim() !== '').join(' &mdash; ');
   let p = document.createElement('p');
   p.innerHTML = message;
   messages.appendChild(p);

@@ -101,10 +101,11 @@ class BrowserTimerManager
     }
 
     chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html'), active: false }, tab => {
+      let self = this;
       this.expirationTabId = tab.id;
-      chrome.tabs.onUpdated.addListener(function update(id, changeInfo, _) {
+
+      function updated(id, changeInfo, _) {
         if (id === tab.id && changeInfo.status === 'complete') {
-          chrome.tabs.onUpdated.removeListener(update);
           chrome.tabs.sendMessage(id, {
             title: title,
             messages: messages,
@@ -112,7 +113,17 @@ class BrowserTimerManager
             phase: phase
           }, {}, () => focusTab(id));
         }
+      }
+
+      chrome.tabs.onRemoved.addListener(function removed(id) {
+        if (id === tab.id) {
+          chrome.tabs.onRemoved.removeListener(removed);
+          chrome.tabs.onUpdated.removeListener(updated);
+          self.expirationTabId = null;
+        }
       });
+
+      chrome.tabs.onUpdated.addListener(updated);
     });
   }
 
