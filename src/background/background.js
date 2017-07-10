@@ -12,12 +12,7 @@ class BrowserTimerManager
 
     let notificationClicked = id => {
       if (id === this.notificationId) {
-        this.showExpiration(
-          options.tab.title,
-          options.tab.messages,
-          options.tab.action,
-          options.tab.phase
-        );
+        this.controller.start();
         chrome.notifications.clear(id);
       }
     };
