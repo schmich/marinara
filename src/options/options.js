@@ -102,7 +102,7 @@ async function saveSettings() {
 function selectTab(id) {
   let active = id.substring(1);
 
-  ['settings', 'about'].forEach(name => {
+  ['settings', 'feedback'].forEach(name => {
     document.getElementById(`${name}-tab`).classList.remove('active');
     document.getElementById(`${name}-page`).classList.remove('active');
   });

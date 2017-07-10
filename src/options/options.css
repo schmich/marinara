@@ -34,7 +34,7 @@ input.duration {
   display: inline-block;
   padding: 10px 30px;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: normal;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
@@ -87,63 +87,63 @@ fieldset {
 .tab-page.active {
   display: block;
 }
-#about-page {
+.feedback {
   font-size: 15px;
 }
-#about-page .title {
+.feedback .title {
   text-align: center;
   margin: 0 0 60px 0;
 }
-#about-page .title p {
+.feedback .title p {
   margin-top: 10px;
 }
-#about-page .title a {
+.feedback .title a {
   color: #777;
 }
-#about-page h1 {
+.feedback h1 {
   color: #aa0000;
   font-weight: normal;
   margin: 0;
   padding: 0;
 }
-#about-page h2 {
+.feedback h2 {
   color: #aa0000;
   font-size: 14px;
   text-transform: uppercase;
   margin: 0;
   padding: 0;
 }
-#about-page a {
+.feedback a {
   color: #000;
 }
-#about-page .links {
+.feedback .links {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
-#about-page .links a {
+.feedback .links a {
   color: #333;
   text-decoration: none;
 }
-#about-page .links a:hover {
+.feedback .links a:hover {
   color: #aa0000;
   text-decoration: underline;
 }
-#about-page .links p {
+.feedback .links p {
   text-align: right;
 }
-#about-page .links p {
+.feedback .links p {
   flex: 45%;
   text-transform: uppercase;
   font-weight: bold;
   color: #999;
 }
-#about-page .links ul {
+.feedback .links ul {
   flex: 55%;
   list-style-type: none;
   margin: 0 0 0 20px;
   padding: 0;
 }
-#about-page .links ul li {
+.feedback .links ul li {
   margin-bottom: 7px;
 }
