@@ -4,33 +4,43 @@ body, html {
   margin: 0;
 }
 body {
-  background: -webkit-radial-gradient(center, ellipse cover, #fff 0%, #ccc 100%);
+  background: #fff;
+}
+.footer {
+  position: fixed;
+  margin: 5px 10px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.footer img {
+  max-height: 60px;
+  max-width: 60px;
+}
+.footer .title-actions {
+  font-size: 15px;
+  margin-left: 10px;
+  display: inline-block;
+}
+.footer .title {
+  color: #aa0000;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.footer a {
+  color: #333;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #aa0000;
+  text-decoration: underline;
 }
 .dialog {
   position: relative;
-  padding: 50px 50px;
+  padding: 50px 0px;
   background: #fff;
-  -webkit-border-radius: 5px;
-  -webkit-box-shadow: 0px 6px 16px -5px rgba(0,0,0,0.8);
-  width: 80%;
-  max-width: 600px;
-  min-width: 400px;
-  margin: 0 auto;
   top: 20%;
   text-align: center;
-}
-.dialog::after {
-  content: '';
-  position: absolute;
-  top: 0px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  opacity: 0.25;
-  background-image: url('../icons/full.png');
-  background-size: 50%;
-  background-position: right -100px bottom -160px;
-  background-repeat: no-repeat;
 }
 .dialog h1 {
   margin: 0 0 15px 0;

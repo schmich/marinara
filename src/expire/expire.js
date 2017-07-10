@@ -22,4 +22,10 @@ document.addEventListener('DOMContentLoaded', load);
 async function load() {
   let start = document.getElementById('start-session');
   start.onclick = () => BackgroundClient.startSession();
+
+  let settings = document.getElementById('settings');
+  settings.onclick = () => {
+    chrome.runtime.openOptionsPage();
+    return false;
+  };
 };

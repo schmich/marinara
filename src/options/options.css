@@ -126,8 +126,8 @@ fieldset {
   text-decoration: none;
 }
 #about-page .links a:hover {
-  text-decoration: underline;
   color: #aa0000;
+  text-decoration: underline;
 }
 #about-page .links p {
   text-align: right;
