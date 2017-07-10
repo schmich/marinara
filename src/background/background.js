@@ -190,14 +190,15 @@ class Controller
     this.settingsManager = settingsManager;
     settingsManager.on('change', settings => {
       this._settings = settings;
-      this.loadTimers(settings);
+      let phase = this.timer ? this.timer.phase : Phase.Focus;
+      this.loadTimers(settings, phase);
       this.menu.refresh();
     });
   }
 
   async run() {
     this._settings = await this.settingsManager.get();
-    this.loadTimers(this._settings);
+    this.loadTimers(this._settings, Phase.Focus);
 
     this.menu = new Menu(['browser_action'],
       new MenuGroup(
@@ -263,9 +264,9 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
-  loadTimers(settings) {
+  loadTimers(settings, startPhase) {
     if (this.timer) {
-      this.timer.stop();
+      this.timer.dispose();
     }
 
     let timerFactory = (phase, nextPhase) => {
@@ -274,7 +275,7 @@ class Controller
       return timer;
     };
 
-    this.timer = new PomodoroTimer(timerFactory, settings.longBreak.interval);
+    this.timer = new PomodoroTimer(timerFactory, startPhase, settings.longBreak.interval);
   }
 
   createTimer(phase, nextPhase, settings) {

@@ -171,13 +171,13 @@ const Phase = new Enum({
 
 class PomodoroTimer
 {
-  constructor(timerFactory, longBreakInterval) {
+  constructor(timerFactory, phase, longBreakInterval) {
     this.timerFactory = timerFactory;
     this.longBreakInterval = longBreakInterval;
     this.breakCount = 0;
 
     this.timer = null;
-    this._phase = Phase.Focus;
+    this._phase = phase;
   }
 
   get phase() {
@@ -207,6 +207,13 @@ class PomodoroTimer
 
     let breaks = this.longBreakInterval - this.breakCount;
     return this._phase === Phase.Focus ? breaks - 1 : breaks;
+  }
+
+  dispose() {
+    if (this.timer) {
+      this.timer.stop();
+      this.timer.removeAllListeners();
+    }
   }
 
   start(phase = null) {
