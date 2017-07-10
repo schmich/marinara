@@ -4,31 +4,52 @@ class BrowserTimerManager
     this.notificationId = null;
     this.expirationTabId = null;
     this.controller = controller;
-
-    chrome.tabs.onRemoved.addListener(id => {
-      if (id === this.expirationTabId) {
-        this.expirationTabId = null;
-      }
-    });
-
-    chrome.notifications.onClicked.addListener(id => {
-      if (id === this.notificationId) {
-        this.showExpiration();
-        chrome.notifications.clear(id);
-      }
-    });
-
-    chrome.notifications.onButtonClicked.addListener(id => {
-      if (id === this.notificationId) {
-        controller.start();
-        chrome.notifications.clear(id);
-      }
-    });
   }
 
   createTimer(options) {
     let timer = new Timer(options.duration * 60, 60);
     timer.observe(new BadgeObserver(options.phase, options.badgeColor));
+
+    let notificationClicked = id => {
+      if (id === this.notificationId) {
+        this.showExpiration(
+          options.tab.title,
+          options.tab.messages,
+          options.tab.action,
+          options.tab.phase
+        );
+        chrome.notifications.clear(id);
+      }
+    };
+
+    let buttonClicked = id => {
+      if (id === this.notificationId) {
+        this.controller.start();
+        chrome.notifications.clear(id);
+      }
+    };
+
+    let notificationClosed = id => {
+      if (id === this.notificationId) {
+        chrome.notifications.onClicked.removeListener(notificationClicked);
+        chrome.notifications.onButtonClicked.removeListener(buttonClicked);
+        chrome.notifications.onClosed.removeListener(notificationClosed);
+        this.notificationId = null;
+      }
+    };
+
+    chrome.notifications.onClicked.addListener(notificationClicked);
+    chrome.notifications.onButtonClicked.addListener(buttonClicked);
+    chrome.notifications.onClosed.addListener(notificationClosed);
+
+    let tabRemoved = id => {
+      if (id === this.expirationTabId) {
+        chrome.tabs.onRemoved.removeListener(tabRemoved);
+        this.expirationTabId = null;
+      }
+    };
+
+    chrome.tabs.onRemoved.addListener(tabRemoved);
 
     timer.once('expire', () => {
       if (options.sound) {
@@ -45,7 +66,7 @@ class BrowserTimerManager
         );
       }
 
-      if (options.tab) {
+      if (options.showTab) {
         this.showExpiration(
           options.tab.title,
           options.tab.messages,
@@ -64,7 +85,6 @@ class BrowserTimerManager
       // Close notification.
       if (this.notificationId !== null) {
         chrome.notifications.clear(this.notificationId);
-        this.notificationId = null;
       }
     });
 
@@ -280,12 +300,13 @@ class Controller
           messages: messages,
           action: `Start ${brk} now`
         },
-        tab: !settings.focus.notifications.tab ? null : {
+        tab: {
           title: `Take a ${brkTitle}`,
           messages: messages,
           action: `Start ${brkTitle}`,
           phase: `${length}-break`
-        }
+        },
+        showTab: !!settings.focus.notifications.tab
       });
 
     case Phase.ShortBreak:
@@ -300,12 +321,13 @@ class Controller
           messages: messages,
           action: 'Start focusing now'
         },
-        tab: !settings.shortBreak.notifications.tab ? null : {
+        tab: {
           title: 'Start Focusing',
           messages: messages,
           action: 'Start Focusing',
           phase: 'focus'
-        }
+        },
+        showTab: !!settings.shortBreak.notifications.tab
       });
 
     case Phase.LongBreak:
@@ -320,12 +342,13 @@ class Controller
           messages: messages,
           action: 'Start focusing now'
         },
-        tab: !settings.longBreak.notifications.tab ? null : {
+        tab: {
           title: 'Start Focusing',
           messages: messages,
           action: 'Start Focusing',
           phase: 'focus'
-        }
+        },
+        showTab: !!settings.longBreak.notifications.tab
       });
     }
   }
