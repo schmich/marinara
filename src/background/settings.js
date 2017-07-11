@@ -16,6 +16,12 @@ class ChromeStorage
     });
   }
 
+  clear() {
+    return new Promise((resolve, reject) => {
+      this.store.clear(() => resolve());
+    });
+  }
+
   static get sync() {
     return new ChromeStorage(chrome.storage.sync);
   }
@@ -35,6 +41,7 @@ class SettingsManager extends EventEmitter
   async get() {
     let [settings, modified] = this._upgrade(await ChromeStorage.sync.get());
     if (modified) {
+      await ChromeStorage.sync.clear();
       await ChromeStorage.sync.set(settings);
     }
 
@@ -54,11 +61,19 @@ class SettingsManager extends EventEmitter
       settings = this.schema.default;
     }
 
+    if (!settings.version) {
+      throw new Error('Missing version.');
+    }
+
     if (settings.version < this.schema.version) {
       modified = true;
       for (let version = settings.version; version < this.schema.version; ++version) {
         let method = `from${version}To${version + 1}`;
         settings = this.schema[method](settings);
+
+        if (settings.version !== (version + 1)) {
+          throw new Error('Unexpected version.');
+        }
       }
     }
 
