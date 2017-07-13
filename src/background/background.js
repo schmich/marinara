@@ -1,14 +1,21 @@
-class BrowserTimerManager
+class Notification
 {
-  constructor(controller) {
-    this.notificationId = null;
-    this.expirationTabId = null;
-    this.controller = controller;
+  static async show(title, messages, action) {
+    let options = {
+      type: 'basic',
+      title: title,
+      message: messages.filter(m => m && m.trim() !== '').join("\n"),
+      iconUrl: 'icons/128.png',
+      isClickable: true,
+      buttons: [{ title: action, iconUrl: 'icons/start.png' }]
+    };
+
+    let notificationId = await AsyncChrome.notifications.create(options);
+    return new Notification(notificationId);
   }
 
-  createTimer(options) {
-    let timer = new Timer(options.duration * 60, 60);
-    timer.observe(new BadgeObserver(options.phase, options.badgeColor));
+  constructor(notificationId) {
+    this.notificationId = notificationId;
 
     let notificationClicked = id => {
       if (id === this.notificationId) {
@@ -36,103 +43,56 @@ class BrowserTimerManager
     chrome.notifications.onClicked.addListener(notificationClicked);
     chrome.notifications.onButtonClicked.addListener(buttonClicked);
     chrome.notifications.onClosed.addListener(notificationClosed);
-
-    let tabRemoved = id => {
-      if (id === this.expirationTabId) {
-        chrome.tabs.onRemoved.removeListener(tabRemoved);
-        this.expirationTabId = null;
-      }
-    };
-
-    chrome.tabs.onRemoved.addListener(tabRemoved);
-
-    timer.once('expire', () => {
-      if (options.sound) {
-        let audio = new Audio();
-        audio.src = options.sound;
-        audio.play();
-      }
-
-      if (options.notification) {
-        this.notify(
-          options.notification.title,
-          options.notification.messages,
-          options.notification.action
-        );
-      }
-
-      if (options.showTab) {
-        this.showExpiration(
-          options.tab.title,
-          options.tab.messages,
-          options.tab.action,
-          options.tab.phase
-        );
-      }
-    });
-
-    timer.once('start', () => {
-      // Close expire tab.
-      if (this.expirationTabId !== null) {
-        chrome.tabs.remove(this.expirationTabId, () => {});
-      }
-
-      // Close notification.
-      if (this.notificationId !== null) {
-        chrome.notifications.clear(this.notificationId);
-      }
-    });
-
-    return timer;
   }
 
-  showExpiration(title, messages, action, phase) {
+  close() {
+    if (this.notificationId) {
+      chrome.notifications.clear(this.notificationId);
+    }
+  }
+}
+
+class ExpirationPage
+{
+  static async show(title, messages, action, pomodoros, phase) {
+    let tab = await AsyncChrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html'), active: false });
+    return new ExpirationPage(tab.id, title, messages, action, pomodoros, phase);
+  }
+
+  constructor(tabId, title, messages, action, pomodoros, phase) {
+    let self = this;
     let focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
     let focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
 
-    if (this.expirationTabId !== null) {
-      focusTab(this.expirationTabId);
-      return;
+    this.tabId = tabId;
+
+    function updated(id, changeInfo, _) {
+      if (id === self.tabId && changeInfo.status === 'complete') {
+        chrome.tabs.sendMessage(id, {
+          title: title,
+          messages: messages,
+          pomodoros: pomodoros,
+          action: action,
+          phase: phase
+        }, {}, () => focusTab(id));
+      }
     }
 
-    chrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html'), active: false }, tab => {
-      let self = this;
-      this.expirationTabId = tab.id;
-
-      function updated(id, changeInfo, _) {
-        if (id === tab.id && changeInfo.status === 'complete') {
-          chrome.tabs.sendMessage(id, {
-            title: title,
-            messages: messages,
-            action: action,
-            phase: phase
-          }, {}, () => focusTab(id));
-        }
+    chrome.tabs.onRemoved.addListener(function removed(id) {
+      if (id === self.tabId) {
+        chrome.tabs.onRemoved.removeListener(removed);
+        chrome.tabs.onUpdated.removeListener(updated);
+        self.tabId = null;
       }
-
-      chrome.tabs.onRemoved.addListener(function removed(id) {
-        if (id === tab.id) {
-          chrome.tabs.onRemoved.removeListener(removed);
-          chrome.tabs.onUpdated.removeListener(updated);
-          self.expirationTabId = null;
-        }
-      });
-
-      chrome.tabs.onUpdated.addListener(updated);
     });
+
+    chrome.tabs.onUpdated.addListener(updated);
   }
 
-  notify(title, messages, action) {
-    let options = {
-      type: 'basic',
-      title: title,
-      message: messages.filter(m => m && m.trim() !== '').join("\n"),
-      iconUrl: 'icons/128.png',
-      isClickable: true,
-      buttons: [{ title: action, iconUrl: 'icons/start.png' }]
-    };
-
-    chrome.notifications.create('', options, id => this.notificationId = id);
+  close() {
+    if (this.tabId) {
+      chrome.tabs.remove(this.tabId, () => {});
+    }
   }
 }
 
@@ -190,21 +150,24 @@ class BadgeObserver
 
 class Controller
 {
-  constructor(settingsManager) {
-    this.timerManager = new BrowserTimerManager(this);
+  constructor(settingsManager, history) {
+    this.history = history;
 
     this.settingsManager = settingsManager;
     settingsManager.on('change', settings => {
       this._settings = settings;
       let phase = this.timer ? this.timer.phase : Phase.Focus;
-      this.loadTimers(settings, phase);
+      this.loadTimer(settings, phase);
       this.menu.refresh();
     });
+
+    this.expiration = null;
+    this.notification = null;
   }
 
   async run() {
     this._settings = await this.settingsManager.get();
-    this.loadTimers(this._settings, Phase.Focus);
+    this.loadTimer(this._settings, Phase.Focus);
 
     this.menu = new Menu(['browser_action'],
       new MenuGroup(
@@ -270,99 +233,135 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
-  loadTimers(settings, startPhase) {
+  loadTimer(settings, startPhase) {
     if (this.timer) {
       this.timer.dispose();
     }
 
-    let timerFactory = (phase, nextPhase) => {
-      let timer = this.createTimer(phase, nextPhase, settings);
-      timer.on('change', () => this.menu.refresh());
-      return timer;
-    };
-
-    this.timer = new PomodoroTimer(timerFactory, startPhase, settings.longBreak.interval);
+    let factory = (phase, nextPhase) => this.createTimer(phase, nextPhase);
+    this.timer = new PomodoroTimer(factory, startPhase, settings.longBreak.interval);
   }
 
-  createTimer(phase, nextPhase, settings) {
+  createTimer(phase, nextPhase) {
+    let options = this.timerOptions(phase, nextPhase, this.settings);
+    let timer = new Timer(options.duration * 60, 60);
+
+    timer.observe(new BadgeObserver(options.phase, options.badgeColor));
+
+    timer.on('change', () => this.menu.refresh());
+
+    timer.once('expire', async () => {
+      if (phase === Phase.Focus) {
+        var pomodorosToday = await this.history.addPomodoro();
+      } else {
+        var pomodorosToday = await this.history.completedToday();
+      }
+
+      if (options.sound) {
+        let audio = new Audio();
+        audio.src = options.sound;
+        audio.play();
+      }
+
+      if (options.notification) {
+        this.notification = await Notification.show(
+          options.notification.title,
+          options.notification.messages(pomodorosToday),
+          options.notification.action
+        );
+      }
+
+      if (options.tab) {
+        this.expiration = await ExpirationPage.show(
+          options.tab.title,
+          options.tab.messages,
+          options.tab.action,
+          pomodorosToday,
+          options.tab.phase
+        );
+      }
+    });
+
+    timer.once('start', () => {
+      if (this.notification) {
+        this.notification.close();
+        this.notification = null;
+      }
+
+      if (this.expiration) {
+        this.expiration.close();
+        this.expiration = null;
+      }
+    });
+
+    return timer;
+  }
+
+  timerOptions(phase, nextPhase, settings) {
     let pomodoros = this.timer.longBreakPomodoros;
     let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomodoro${pomodoros === 1 ? '' : 's'} left until long break`;
 
     switch (phase) {
     case Phase.Focus:
       var hasLong = settings.longBreak.interval > 0;
-      let length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
+      var length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
       let lengthTitle = length.replace(/^./, c => c.toUpperCase());
       let nextDuration = settings[`${length}Break`].duration;
       let brk = hasLong ? `${length} break` : 'break';
       var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
-      var messages = [`${nextDuration} minute break`, pomodorosLeft];
-      return this.timerManager.createTimer({
+      var notificationMessages = count => {
+        return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
+      };
+      var tabMessages = [`${nextDuration} minute break`, pomodorosLeft];
+      return {
         phase: 'Focus',
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
-          title: `Take a ${brkTitle}`,
-          messages: messages,
+          title: `Take a ${brkTitle} (${nextDuration}m)`,
+          messages: notificationMessages,
           action: `Start ${brk} now`
         },
-        tab: {
+        tab: !settings.focus.notifications.tab ? null : {
           title: `Take a ${brkTitle}`,
-          messages: messages,
+          messages: tabMessages,
           action: `Start ${brkTitle}`,
           phase: `${length}-break`
-        },
-        showTab: !!settings.focus.notifications.tab
-      });
+        }
+      };
 
     case Phase.ShortBreak:
-      var messages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
-      return this.timerManager.createTimer({
-        phase: 'Short Break',
-        duration: settings.shortBreak.duration,
-        sound: settings.shortBreak.notifications.sound,
-        badgeColor: '#009900',
-        notification: !settings.shortBreak.notifications.desktop ? null : {
-          title: 'Start Focusing',
-          messages: messages,
-          action: 'Start focusing now'
-        },
-        tab: {
-          title: 'Start Focusing',
-          messages: messages,
-          action: 'Start Focusing',
-          phase: 'focus'
-        },
-        showTab: !!settings.shortBreak.notifications.tab
-      });
-
     case Phase.LongBreak:
-      var messages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
-      return this.timerManager.createTimer({
-        phase: 'Long Break',
-        duration: settings.longBreak.duration,
-        sound: settings.longBreak.notifications.sound,
+      var length = (phase === Phase.ShortBreak) ? 'Short' : 'Long'; 
+      let breakSettings = (phase === Phase.ShortBreak) ? settings.shortBreak : settings.longBreak;
+      var notificationMessages = count => {
+        return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
+      };
+      var tabMessages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
+      return {
+        phase: `${length} Break`,
+        duration: breakSettings.duration,
+        sound: breakSettings.notifications.sound,
         badgeColor: '#009900',
-        notification: !settings.longBreak.notifications.desktop ? null : {
-          title: 'Start Focusing',
-          messages: messages,
+        notification: !breakSettings.notifications.desktop ? null : {
+          title: `Start Focusing (${settings.focus.duration}m)`,
+          messages: notificationMessages,
           action: 'Start focusing now'
         },
-        tab: {
+        tab: !breakSettings.notifications.tab ? null : {
           title: 'Start Focusing',
-          messages: messages,
+          messages: tabMessages,
           action: 'Start Focusing',
           phase: 'focus'
-        },
-        showTab: !!settings.longBreak.notifications.tab
-      });
+        }
+      };
     }
   }
 }
 
 let settingsManager = new SettingsManager(new MarinaraSchema());
-let controller = new Controller(settingsManager);
+let controller = new Controller(settingsManager, new History());
 let server = new BackgroundServer(controller, settingsManager);
 
 controller.run();

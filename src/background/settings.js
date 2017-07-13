@@ -1,36 +1,3 @@
-class ChromeStorage
-{
-  constructor(store) {
-    this.store = store;
-  }
-
-  get() {
-    return new Promise((resolve, reject) => {
-      this.store.get(result => resolve(result));
-    });
-  }
-
-  set(obj) {
-    return new Promise((resolve, reject) => {
-      this.store.set(obj, () => resolve());
-    });
-  }
-
-  clear() {
-    return new Promise((resolve, reject) => {
-      this.store.clear(() => resolve());
-    });
-  }
-
-  static get sync() {
-    return new ChromeStorage(chrome.storage.sync);
-  }
-
-  static get local() {
-    return new ChromeStorage(chrome.storage.local);
-  }
-}
-
 class SettingsManager extends EventEmitter
 {
   constructor(schema) {
@@ -39,17 +6,17 @@ class SettingsManager extends EventEmitter
   }
 
   async get() {
-    let [settings, modified] = this._upgrade(await ChromeStorage.sync.get());
+    let [settings, modified] = this._upgrade(await AsyncChrome.storage.sync.get());
     if (modified) {
-      await ChromeStorage.sync.clear();
-      await ChromeStorage.sync.set(settings);
+      await AsyncChrome.storage.sync.clear();
+      await AsyncChrome.storage.sync.set(settings);
     }
 
     return settings;
   }
 
   async set(settings) {
-    await ChromeStorage.sync.set(settings);
+    await AsyncChrome.storage.sync.set(settings);
     this.emit('change', settings);
   }
 

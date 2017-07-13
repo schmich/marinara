@@ -24,7 +24,9 @@
       "background/menu.js",
       "background/timer.js",
       "background/sounds.js",
+      "background/async.js",
       "background/settings.js",
+      "background/history.js",
       "background/messages.js",
       "background/background.js"
     ]

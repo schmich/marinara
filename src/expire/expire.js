@@ -12,6 +12,10 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   let p = document.createElement('p');
   p.innerHTML = message;
   messages.appendChild(p);
+
+  p = document.createElement('p');
+  p.innerHTML = `${request.pomodoros} Pomodoro${request.pomodoros === 1 ? '' : 's'} completed today`;
+  messages.appendChild(p);
   
   let start = document.getElementById('start-session');
   start.classList.add(request.phase);
