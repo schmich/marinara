@@ -109,6 +109,8 @@ function selectTab(id) {
 
   document.getElementById(`${active}-tab`).classList.add('active');
   document.getElementById(`${active}-page`).classList.add('active');
+
+  setTimeout(() => window.scrollTo(0, 0), 0);
 }
 
 document.addEventListener('DOMContentLoaded', load);

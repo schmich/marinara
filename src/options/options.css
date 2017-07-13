@@ -6,6 +6,13 @@ html, body {
 .field {
   margin-bottom: 10px;
 }
+.complete {
+  margin: 5px 0 0 5px;
+}
+.complete p {
+  padding: 0;
+  margin: 5px 0 13px -5px;
+}
 .section {
   margin-bottom: 40px;
 }
