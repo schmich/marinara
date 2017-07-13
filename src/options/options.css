@@ -104,9 +104,6 @@ fieldset {
 .feedback .title p {
   margin-top: 10px;
 }
-.feedback .title a {
-  color: #777;
-}
 .feedback h1 {
   color: #aa0000;
   font-weight: normal;
@@ -121,29 +118,26 @@ fieldset {
   padding: 0;
 }
 .feedback a {
-  color: #000;
+  color: #777;
+  text-decoration: underline;
+}
+.feedback a:hover {
+  color: #aa0000;
 }
 .feedback .links {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
-.feedback .links a {
-  color: #333;
-  text-decoration: none;
-}
-.feedback .links a:hover {
-  color: #aa0000;
-  text-decoration: underline;
-}
 .feedback .links p {
   text-align: right;
 }
 .feedback .links p {
   flex: 45%;
-  text-transform: uppercase;
+  color: #555;
   font-weight: bold;
-  color: #999;
+  font-size: smaller;
+  text-transform: uppercase;
 }
 .feedback .links ul {
   flex: 55%;
