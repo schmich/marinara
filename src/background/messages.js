@@ -40,6 +40,10 @@ class BackgroundClient extends MessageClient
     return this.request('get-settings', arguments);
   }
 
+  static getHistory() {
+    return this.request('get-history', arguments);
+  }
+
   static setSettings() {
     return this.request('set-settings', arguments);
   }
@@ -47,9 +51,10 @@ class BackgroundClient extends MessageClient
 
 class BackgroundServer extends MessageServer
 {
-  constructor(controller, settingsManager) {
+  constructor(controller, history, settingsManager) {
     super();
     this.controller = controller;
+    this.history = history;
     this.settingsManager = settingsManager;
   }
 
@@ -63,6 +68,10 @@ class BackgroundServer extends MessageServer
 
   async getSettings() {
     return await this.settingsManager.get();
+  }
+
+  async getHistory() {
+    return await this.history.stats();
   }
 
   async setSettings(settings) {

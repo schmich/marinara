@@ -11,7 +11,7 @@ html, body {
 }
 .complete p {
   padding: 0;
-  margin: 5px 0 13px -5px;
+  margin: 3px 0 13px -5px;
 }
 .section {
   margin-bottom: 40px;
@@ -42,7 +42,6 @@ input.duration {
   padding: 10px 30px;
   font-size: 14px;
   font-weight: normal;
-  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
@@ -148,4 +147,50 @@ fieldset {
 }
 .feedback .links ul li {
   margin-bottom: 7px;
+}
+.stats {
+  margin: 20px 30px 60px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.stats .stat {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.stats .stat .value {
+  color: #aa0000;
+  font-size: 25px;
+}
+.stats .stat .bucket {
+  color: #555;
+  font-size: 15px;
+  margin-top: 5px;
+}
+#heatmap {
+  margin-left: -20px;
+}
+#heatmap .day {
+  fill: #eee;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+#heatmap .label {
+  fill: #777;
+}
+#heatmap .color0 {
+  fill: #c6e48b;
+}
+#heatmap .color1 {
+  fill: #7bc96f;
+}
+#heatmap .color2 {
+  fill: #239a3b;
+}
+#heatmap .color3 {
+  fill: #196127;
+}
+.tippy-tooltip {
+  opacity: 0.9 !important;
+  padding: 10px 17px;
 }

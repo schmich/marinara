@@ -360,8 +360,9 @@ class Controller
   }
 }
 
+let history = new History();
 let settingsManager = new SettingsManager(new MarinaraSchema());
-let controller = new Controller(settingsManager, new History());
-let server = new BackgroundServer(controller, settingsManager);
+let controller = new Controller(settingsManager, history);
+let server = new BackgroundServer(controller, history, settingsManager);
 
 controller.run();

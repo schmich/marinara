@@ -99,13 +99,170 @@ async function saveSettings() {
   }
 }
 
+async function loadHistory() {
+  if (this.loaded) {
+    return;
+  } else {
+    this.loaded = true;
+  }
+
+  let stats = await BackgroundClient.getHistory();
+
+  ['day', 'week', 'month', 'year', 'all'].forEach(bucket => {
+    let value = document.getElementById(`stat-${bucket}`);
+    value.innerText = stats[bucket].toLocaleString();
+  });
+
+  let now = new Date();
+  let month = document.getElementById('bucket-month');
+  month.innerText = d3.timeFormat('In %B')(now);
+
+  let year = document.getElementById('bucket-year');
+  year.innerText = `In ${now.getFullYear()}`;
+
+  let data = stats.daily;
+  createHeatmap(data, '#heatmap');
+}
+
+function createHeatmap(data, el) {
+  // Inspired strongly by https://github.com/vinnyoodles/reddit-heatmap/blob/master/js/index.js.
+  let max = Math.max(...Object.values(data));
+
+  const cellSize = 11;
+  const colorCount = 4;
+  const cellClass = 'day';
+
+  const width = 700;
+  const height = 90;
+  const dx = 35;
+
+  let formatColor = d3.scaleQuantize()
+    .domain([0, max])
+    .range(d3.range(colorCount).map(d => `color${d}`));
+
+  let now = new Date();
+  let start = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+  start.setDate(start.getDate() - start.getDay());
+  let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+
+  // Determine month label positions.
+  let months = [];
+  let active = null;
+  let cursor = new Date(start);
+  for (let i = 0; cursor < end; ++i) {
+    let month = cursor.getMonth();
+    if (active !== month) {
+      active = month;
+      months.push([i, new Date(cursor)]);
+    }
+    cursor.setDate(cursor.getDate() + 7);
+  }
+
+  // Add month labels.
+  d3.select(el).selectAll('svg.months')
+    .enter()
+    .append('svg')
+    .data([1])
+    .enter()
+    .append('svg')
+      .attr('width', 800)
+      .attr('height', 17)
+    .append('g')
+      .attr('transform', 'translate(0,10)')
+      .selectAll('.month')
+      .data(() => months)
+      .enter()
+      .append('text')
+        .attr('x', d => d[0] * cellSize + dx)
+        .attr('class', 'label')
+        .text(d => d3.timeFormat('%b')(d[1]));
+
+  let heatmap = d3.select(el).selectAll('svg.heatmap')
+    .enter()
+    .append('svg')
+    .data([1])
+    .enter()
+    .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('class', 'color')
+    .append('g')
+    .attr('transform', `translate(${dx},0)`);
+
+  // Add day-of-week labels.
+  let days = ['Mon', 'Wed', 'Fri'];
+  heatmap.selectAll('text.dow')
+    .data(() => d3.zip(d3.range(days.length), days))
+    .enter()
+    .append('text')
+      .attr('transform', d => `translate(-10,${cellSize * 2 * (d[0] + 1)})`)
+      .style('text-anchor', 'end')
+      .attr('class', 'label')
+      .text(d => d[1]);
+
+  let dayRange = d3.timeDays(start, end);
+  heatmap.selectAll('.day')
+    // Heatmap of all days in the range.
+    .data(d => d3.zip(d3.range(dayRange.length), dayRange))
+    .enter()
+    .append('rect')
+      .attr('class', cellClass)
+      .attr('width', cellSize)
+      .attr('height', cellSize)
+      .attr('x', d => Math.floor(d[0] / 7) * cellSize)
+      .attr('y', d => (d[0] % 7) * cellSize)
+      .datum(d => +d[1])
+      // Tooltip title.
+      .attr('title', d => {
+        var count = data[d];
+        var date = d3.timeFormat('%b %d, %Y')(new Date(d));
+        if (!count) {
+          return `<strong>No Pomodoros</strong> on ${date}`;
+        } else {
+          return `<strong>${count} Pomodoro${count === 1 ? '' : 's'}</strong> on ${date}`;
+        }
+      })
+      // Add the colors to the grids.
+      .filter(d => !!data[d])
+      .attr('class', d => `${cellClass} ${formatColor(data[d])}`)
+
+  // Add color legend.
+  d3.select(el).selectAll('svg.legend')
+    .enter()
+    .append('svg')
+    .data([1])
+    .enter()
+    .append('svg')
+      .attr('width', 800)
+      .attr('height', 20)
+    .append('g')
+      .attr('transform', 'translate(0,0)')
+      .selectAll('.legend-grid')
+      .data(() => d3.range(colorCount + 1))
+      .enter()
+      .append('rect')
+        .attr('width', cellSize)
+        .attr('height', cellSize)
+        .attr('x', d => d * cellSize + dx)
+        .attr('class', d => `day color${d - 1}`);
+
+  tippy(`${el} .day`, {
+    arrow: true,
+    duration: 0,
+    animation: null
+  });
+}
+
 function selectTab(id) {
   let active = id.substring(1);
+  if (active === 'history') {
+    loadHistory();
+  }
 
   let title = active[0].toUpperCase() + active.substr(1);
   document.title = `${title} · Marinara`;
 
-  ['settings', 'feedback'].forEach(name => {
+  ['settings', 'history', 'feedback'].forEach(name => {
     document.getElementById(`${name}-tab`).classList.remove('active');
     document.getElementById(`${name}-page`).classList.remove('active');
   });
@@ -115,8 +272,6 @@ function selectTab(id) {
 
   window.requestAnimationFrame(() => window.scrollTo(0, 0));
 }
-
-document.addEventListener('DOMContentLoaded', load);
 
 async function load() {
   await loadSettings();
@@ -138,3 +293,5 @@ async function load() {
     selectTab(window.location.hash);
   });
 }
+
+document.addEventListener('DOMContentLoaded', load);
