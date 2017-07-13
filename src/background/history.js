@@ -18,7 +18,7 @@ class History
     return this.completedToday(local.pomodoros);
   }
 
-  async stats() {
+  async stats(since) {
     const empty = {
       day: 0,
       week: 0,
@@ -38,10 +38,12 @@ class History
       return empty;
     }
 
+    let start = new Date(since);
+
     let daily = {};
     let base = 0;
     let date = History.day;
-    for (let i = 0; i < 365 + 7; ++i) {
+    while (date > start) {
       let completed = this.completedSince(pomodoros, date);
       daily[+date] = completed - base;
       base = completed;

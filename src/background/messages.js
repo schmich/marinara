@@ -40,8 +40,12 @@ class BackgroundClient extends MessageClient
     return this.request('get-settings', arguments);
   }
 
-  static getHistory() {
+  static getHistory(since) {
     return this.request('get-history', arguments);
+  }
+
+  static showHistory() {
+    return this.request('show-history', arguments);
   }
 
   static setSettings() {
@@ -70,8 +74,8 @@ class BackgroundServer extends MessageServer
     return await this.settingsManager.get();
   }
 
-  async getHistory() {
-    return await this.history.stats();
+  async getHistory(since) {
+    return await this.history.stats(since);
   }
 
   async setSettings(settings) {

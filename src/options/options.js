@@ -106,14 +106,18 @@ async function loadHistory() {
     this.loaded = true;
   }
 
-  let stats = await BackgroundClient.getHistory();
+  let now = new Date();
+  let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  start.setDate(start.getDate() - 273);
+  start.setDate(start.getDate() - start.getDay());
+
+  let stats = await BackgroundClient.getHistory(+start);
 
   ['day', 'week', 'month', 'year', 'all'].forEach(bucket => {
     let value = document.getElementById(`stat-${bucket}`);
     value.innerText = stats[bucket].toLocaleString();
   });
 
-  let now = new Date();
   let month = document.getElementById('bucket-month');
   month.innerText = d3.timeFormat('In %B')(now);
 
@@ -121,19 +125,19 @@ async function loadHistory() {
   year.innerText = `In ${now.getFullYear()}`;
 
   let data = stats.daily;
-  createHeatmap(data, '#heatmap');
+  createHeatmap(data, start, '#heatmap');
 }
 
-function createHeatmap(data, el) {
+function createHeatmap(data, start, el) {
   // Inspired strongly by https://github.com/vinnyoodles/reddit-heatmap/blob/master/js/index.js.
   let max = Math.max(...Object.values(data));
 
-  const cellSize = 11;
+  const cellSize = 14;
   const colorCount = 4;
   const cellClass = 'day';
 
   const width = 700;
-  const height = 90;
+  const height = 110;
   const dx = 35;
 
   let formatColor = d3.scaleQuantize()
@@ -141,8 +145,6 @@ function createHeatmap(data, el) {
     .range(d3.range(colorCount).map(d => `color${d}`));
 
   let now = new Date();
-  let start = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-  start.setDate(start.getDate() - start.getDay());
   let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
   // Determine month label positions.
@@ -190,9 +192,9 @@ function createHeatmap(data, el) {
     .attr('transform', `translate(${dx},0)`);
 
   // Add day-of-week labels.
-  let days = ['Mon', 'Wed', 'Fri'];
+  let labels = ['Mon', 'Wed', 'Fri'];
   heatmap.selectAll('text.dow')
-    .data(() => d3.zip(d3.range(days.length), days))
+    .data(() => d3.zip(d3.range(labels.length), labels))
     .enter()
     .append('text')
       .attr('transform', d => `translate(-10,${cellSize * 2 * (d[0] + 1)})`)
@@ -214,8 +216,8 @@ function createHeatmap(data, el) {
       .datum(d => +d[1])
       // Tooltip title.
       .attr('title', d => {
-        var count = data[d];
-        var date = d3.timeFormat('%b %d, %Y')(new Date(d));
+        let count = data[d];
+        let date = d3.timeFormat('%b %d, %Y')(new Date(d));
         if (!count) {
           return `<strong>No Pomodoros</strong> on ${date}`;
         } else {
@@ -243,7 +245,7 @@ function createHeatmap(data, el) {
       .append('rect')
         .attr('width', cellSize)
         .attr('height', cellSize)
-        .attr('x', d => d * cellSize + dx)
+        .attr('x', d => d * (cellSize + 2) + dx)
         .attr('class', d => `day color${d - 1}`);
 
   tippy(`${el} .day`, {

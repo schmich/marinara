@@ -168,12 +168,13 @@ fieldset {
   margin-top: 5px;
 }
 #heatmap {
-  margin-left: -20px;
+  margin-left: -10px;
 }
 #heatmap .day {
   fill: #eee;
   stroke: #fff;
   stroke-width: 2px;
+  outline: 0 !important;
 }
 #heatmap .label {
   fill: #777;
