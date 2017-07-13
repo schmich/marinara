@@ -40,8 +40,9 @@ input.duration {
 .header a {
   display: inline-block;
   padding: 10px 30px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;

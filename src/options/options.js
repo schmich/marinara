@@ -102,6 +102,9 @@ async function saveSettings() {
 function selectTab(id) {
   let active = id.substring(1);
 
+  let title = active[0].toUpperCase() + active.substr(1);
+  document.title = `${title} · Marinara`;
+
   ['settings', 'feedback'].forEach(name => {
     document.getElementById(`${name}-tab`).classList.remove('active');
     document.getElementById(`${name}-page`).classList.remove('active');
