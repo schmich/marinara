@@ -6,35 +6,6 @@ body, html {
 body {
   background: #fff;
 }
-.footer {
-  position: fixed;
-  margin: 5px 10px;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-}
-.footer img {
-  max-height: 60px;
-  max-width: 60px;
-}
-.footer .title-actions {
-  font-size: 15px;
-  margin-left: 10px;
-  display: inline-block;
-}
-.footer .title {
-  color: #aa0000;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.footer a {
-  color: #333;
-  text-decoration: none;
-}
-.footer a:hover {
-  color: #aa0000;
-  text-decoration: underline;
-}
 .dialog {
   position: relative;
   padding: 50px 0px;
@@ -102,4 +73,41 @@ body {
 }
 .button:not(.focus):not(.short-break):not(.long-break) {
   display: none;
+}
+.footer {
+  position: fixed;
+  margin: 5px 10px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.footer img {
+  max-height: 50px;
+}
+.footer .actions {
+  margin-left: 10px;
+}
+.footer .title {
+  font-size: 15px;
+  color: #aa0000;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+.actions button {
+  outline: 0 !important;
+  font-size: 15px;
+  cursor: pointer;
+  background: transparent;
+  color: #333;
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+.actions button:hover {
+  color: #aa0000;
+  border: 1px solid #aa0000;
+  text-decoration: none;
 }

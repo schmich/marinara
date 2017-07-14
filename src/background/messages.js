@@ -78,6 +78,10 @@ class BackgroundServer extends MessageServer
     return await this.history.stats(since);
   }
 
+  async showHistory() {
+    return await this.controller.showHistory();
+  }
+
   async setSettings(settings) {
     try {
       this._normalize(settings.focus);

@@ -21,8 +21,6 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   start.classList.add(request.phase);
 });
 
-document.addEventListener('DOMContentLoaded', load);
-
 async function load() {
   let start = document.getElementById('start-session');
   start.onclick = () => BackgroundClient.startSession();
@@ -32,4 +30,12 @@ async function load() {
     chrome.runtime.openOptionsPage();
     return false;
   };
+
+  let history = document.getElementById('history');
+  history.onclick = () => {
+    BackgroundClient.showHistory();
+    return false;
+  };
 };
+
+document.addEventListener('DOMContentLoaded', load);

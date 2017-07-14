@@ -1,101 +1,3 @@
-class Notification
-{
-  static async show(title, messages, action) {
-    let options = {
-      type: 'basic',
-      title: title,
-      message: messages.filter(m => m && m.trim() !== '').join("\n"),
-      iconUrl: 'icons/128.png',
-      isClickable: true,
-      buttons: [{ title: action, iconUrl: 'icons/start.png' }]
-    };
-
-    let notificationId = await AsyncChrome.notifications.create(options);
-    return new Notification(notificationId);
-  }
-
-  constructor(notificationId) {
-    this.notificationId = notificationId;
-
-    let notificationClicked = id => {
-      if (id === this.notificationId) {
-        this.controller.start();
-        chrome.notifications.clear(id);
-      }
-    };
-
-    let buttonClicked = id => {
-      if (id === this.notificationId) {
-        this.controller.start();
-        chrome.notifications.clear(id);
-      }
-    };
-
-    let notificationClosed = id => {
-      if (id === this.notificationId) {
-        chrome.notifications.onClicked.removeListener(notificationClicked);
-        chrome.notifications.onButtonClicked.removeListener(buttonClicked);
-        chrome.notifications.onClosed.removeListener(notificationClosed);
-        this.notificationId = null;
-      }
-    };
-
-    chrome.notifications.onClicked.addListener(notificationClicked);
-    chrome.notifications.onButtonClicked.addListener(buttonClicked);
-    chrome.notifications.onClosed.addListener(notificationClosed);
-  }
-
-  close() {
-    if (this.notificationId) {
-      chrome.notifications.clear(this.notificationId);
-    }
-  }
-}
-
-class ExpirationPage
-{
-  static async show(title, messages, action, pomodoros, phase) {
-    let tab = await AsyncChrome.tabs.create({ url: chrome.extension.getURL('expire/expire.html'), active: false });
-    return new ExpirationPage(tab.id, title, messages, action, pomodoros, phase);
-  }
-
-  constructor(tabId, title, messages, action, pomodoros, phase) {
-    let self = this;
-    let focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
-    let focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
-
-    this.tabId = tabId;
-
-    function updated(id, changeInfo, _) {
-      if (id === self.tabId && changeInfo.status === 'complete') {
-        chrome.tabs.sendMessage(id, {
-          title: title,
-          messages: messages,
-          pomodoros: pomodoros,
-          action: action,
-          phase: phase
-        }, {}, () => focusTab(id));
-      }
-    }
-
-    chrome.tabs.onRemoved.addListener(function removed(id) {
-      if (id === self.tabId) {
-        chrome.tabs.onRemoved.removeListener(removed);
-        chrome.tabs.onUpdated.removeListener(updated);
-        self.tabId = null;
-      }
-    });
-
-    chrome.tabs.onUpdated.addListener(updated);
-  }
-
-  close() {
-    if (this.tabId) {
-      chrome.tabs.remove(this.tabId, () => {});
-    }
-  }
-}
-
 class BadgeObserver
 {
   constructor(title, color) {
@@ -191,6 +93,12 @@ class Controller
         this.timer.start();
       }
     });
+  }
+
+  async showHistory() {
+    let manifest = chrome.runtime.getManifest();
+    let url = chrome.extension.getURL(manifest.options_page + '#history');
+    await SingletonPage.show(url);
   }
 
   get settings() {

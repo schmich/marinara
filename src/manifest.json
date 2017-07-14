@@ -21,6 +21,7 @@
     "scripts": [
       "lib/EventEmitter.min.js",
       "background/enum.js",
+      "background/notifications.js",
       "background/menu.js",
       "background/timer.js",
       "background/sounds.js",
