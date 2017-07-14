@@ -99,7 +99,7 @@ fieldset {
 }
 .feedback .title {
   text-align: center;
-  margin: 0 0 60px 0;
+  margin: 10px 0 60px 0;
 }
 .feedback .title p {
   margin-top: 10px;
@@ -112,13 +112,12 @@ fieldset {
 }
 .feedback h2 {
   color: #aa0000;
-  font-size: 14px;
-  text-transform: uppercase;
-  margin: 0;
+  font-size: 16px;
+  margin: 0 0 5px 0;
   padding: 0;
 }
 .feedback a {
-  color: #777;
+  color: #555;
   text-decoration: underline;
 }
 .feedback a:hover {
@@ -134,7 +133,7 @@ fieldset {
 }
 .feedback .links p {
   flex: 45%;
-  color: #555;
+  color: #333;
   font-weight: bold;
   font-size: smaller;
   text-transform: uppercase;
