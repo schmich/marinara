@@ -2,6 +2,9 @@ html, body {
   font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .field {
   margin-bottom: 10px;
@@ -69,12 +72,19 @@ input.duration {
   padding: 0;
   margin: 3px 0 0 0;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  padding: 50px 0 0 0;
+}
 .inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   width: 600px;
   margin: 0 auto;
-}
-.content {
-  padding: 50px 0 0 0;
 }
 .section h2 {
   margin: 0 0 15px 0;
@@ -92,7 +102,9 @@ fieldset {
   display: none;
 }
 .tab-page.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .feedback {
   font-size: 15px;
@@ -193,4 +205,30 @@ fieldset {
 .tippy-tooltip {
   opacity: 0.9 !important;
   padding: 10px 17px;
+}
+#history-page {
+  justify-content: space-between;
+}
+#history-page .actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+#history-page .actions button {
+  outline: 0 !important;
+  font-size: 15px;
+  cursor: pointer;
+  background: transparent;
+  color: #555;
+  padding: 10px 20px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+#history-page .actions button:hover {
+  color: #aa0000;
+  border: 1px solid #aa0000;
+  text-decoration: none;
 }

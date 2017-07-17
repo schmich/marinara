@@ -147,29 +147,35 @@
         </form>
       </div>
       <div class="tab-page" id="history-page">
-        <div class="stats">
-          <div class="stat">
-            <div class="value" id="stat-day">&ndash;</div>
-            <div class="bucket">Today</div>
+        <div class="summary">
+          <div class="stats">
+            <div class="stat">
+              <div class="value" id="stat-day">&ndash;</div>
+              <div class="bucket">Today</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="stat-week">&ndash;</div>
+              <div class="bucket">This Week</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="stat-month">&ndash;</div>
+              <div class="bucket" id="bucket-month">This Month</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="stat-year">&ndash;</div>
+              <div class="bucket" id="bucket-year">This Year</div>
+            </div>
+            <div class="stat">
+              <div class="value" id="stat-all">&ndash;</div>
+              <div class="bucket">Total</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="value" id="stat-week">&ndash;</div>
-            <div class="bucket">This Week</div>
-          </div>
-          <div class="stat">
-            <div class="value" id="stat-month">&ndash;</div>
-            <div class="bucket" id="bucket-month">This Month</div>
-          </div>
-          <div class="stat">
-            <div class="value" id="stat-year">&ndash;</div>
-            <div class="bucket" id="bucket-year">This Year</div>
-          </div>
-          <div class="stat">
-            <div class="value" id="stat-all">&ndash;</div>
-            <div class="bucket">Total</div>
-          </div>
+          <div id="heatmap"></div>
         </div>
-        <div id="heatmap"></div>
+        <div class="actions">
+          <button id="import-history">Import History</button>
+          <button id="export-history">Export History</button>
+        </div>
       </div>
       <div class="tab-page feedback" id="feedback-page">
         <div class="title">

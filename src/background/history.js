@@ -4,6 +4,14 @@ class History
     this.storage = new StorageManager(new HistorySchema(), AsyncChrome.storage.local);
   }
 
+  async raw() {
+    return await this.storage.get();
+  }
+
+  async import(history) {
+    await this.storage.set(history);
+  }
+
   async addPomodoro(when = null) {
     let local = await this.storage.get();
 

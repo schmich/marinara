@@ -17,6 +17,7 @@ class StorageManager extends EventEmitter
   }
 
   async set(payload) {
+    var [payload, _] = this._upgrade(payload);
     await this.storage.set(payload);
     this.emit('change', payload);
   }

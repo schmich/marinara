@@ -99,6 +99,42 @@ async function saveSettings() {
   }
 }
 
+async function exportHistory() {
+  let json = JSON.stringify(await BackgroundClient.getRawHistory());
+  let link = document.createElement('a');
+  link.download = 'history.json';
+  link.href = 'data:application/octet-stream,' + encodeURIComponent(json);
+  link.click();
+}
+
+function importHistory() {
+  let input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.click();
+  input.onchange = e => {
+    let file = e.target.files[0];
+    let reader = new FileReader();
+    reader.onload = async f => {
+      try {
+        let content = f.target.result;
+        let history = JSON.parse(content);
+        let result = await BackgroundClient.setRawHistory(history);
+        if (result !== true) {
+          alert(`Failed to import history: ${result}`);
+          return;
+        }
+      } catch (ex) {
+        alert(`Failed to import history: ${ex}`);
+        return;
+      }
+
+      await loadHistory(true);
+    };
+    reader.readAsText(file);
+  };
+}
+
 async function loadHistory(reload = false) {
   if (this.loaded && !reload) {
     return;
@@ -292,6 +328,12 @@ async function load() {
 
   let hash = window.location.hash || '#settings';
   selectTab(hash);
+
+  let exportButton = document.getElementById('export-history');
+  exportButton.onclick = exportHistory;
+
+  let importButton = document.getElementById('import-history');
+  importButton.onclick = importHistory;
 
   window.addEventListener('popstate', function(e) {
     selectTab(window.location.hash);
