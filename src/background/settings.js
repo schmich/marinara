@@ -1,50 +1,51 @@
-class SettingsManager extends EventEmitter
+class StorageManager extends EventEmitter
 {
-  constructor(schema) {
+  constructor(schema, storage) {
     super();
     this.schema = schema;
+    this.storage = storage;
   }
 
   async get() {
-    let [settings, modified] = this._upgrade(await AsyncChrome.storage.sync.get());
+    let [payload, modified] = this._upgrade(await this.storage.get());
     if (modified) {
-      await AsyncChrome.storage.sync.clear();
-      await AsyncChrome.storage.sync.set(settings);
+      await this.storage.clear();
+      await this.storage.set(payload);
     }
 
-    return settings;
+    return payload;
   }
 
-  async set(settings) {
-    await AsyncChrome.storage.sync.set(settings);
-    this.emit('change', settings);
+  async set(payload) {
+    await this.storage.set(payload);
+    this.emit('change', payload);
   }
 
-  _upgrade(settings) {
+  _upgrade(payload) {
     let modified = false;
 
-    if (Object.keys(settings).length === 0) {
+    if (Object.keys(payload).length === 0) {
       modified = true;
-      settings = this.schema.default;
+      payload = this.schema.default;
     }
 
-    if (!settings.version) {
+    if (!payload.version) {
       throw new Error('Missing version.');
     }
 
-    if (settings.version < this.schema.version) {
+    if (payload.version < this.schema.version) {
       modified = true;
-      for (let version = settings.version; version < this.schema.version; ++version) {
+      for (let version = payload.version; version < this.schema.version; ++version) {
         let method = `from${version}To${version + 1}`;
-        settings = this.schema[method](settings);
+        payload = this.schema[method](payload);
 
-        if (settings.version !== (version + 1)) {
+        if (payload.version !== (version + 1)) {
           throw new Error('Unexpected version.');
         }
       }
     }
 
-    return [settings, modified];
+    return [payload, modified];
   }
 }
 

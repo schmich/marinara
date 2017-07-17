@@ -1,19 +1,16 @@
 class History
 {
-  async addPomodoro(when = null) {
-    let local = await AsyncChrome.storage.local.get();
-    if (!local) {
-      local = { pomodoros: [] };
-    }
+  constructor() {
+    this.storage = new StorageManager(new HistorySchema(), AsyncChrome.storage.local);
+  }
 
-    if (!local.pomodoros) {
-      local.pomodoros = [];
-    }
+  async addPomodoro(when = null) {
+    let local = await this.storage.get();
 
     let timestamp = this.timestamp(when || new Date());
     local.pomodoros.push(timestamp);
     local.pomodoros.sort();
-    await AsyncChrome.storage.local.set(local);
+    await this.storage.set(local);
 
     return this.completedToday(local.pomodoros);
   }
@@ -28,13 +25,8 @@ class History
       daily: []
     };
 
-    let local = await AsyncChrome.storage.local.get();
-    if (!local) {
-      return empty;
-    }
-
-    let pomodoros = local.pomodoros;
-    if (!pomodoros) {
+    let { pomodoros } = await this.storage.get();
+    if (pomodoros.length === 0) {
       return empty;
     }
 
@@ -62,13 +54,8 @@ class History
 
   async completedToday(pomodoros = null) {
     if (!pomodoros) {
-      let local = await AsyncChrome.storage.local.get();
-      if (!local) {
-        return 0;
-      }
-
-      pomodoros = local.pomodoros;
-      if (!pomodoros) {
+      var { pomodoros } = await this.storage.get();
+      if (pomodoros.length === 0) {
         return 0;
       }
     }
@@ -134,6 +121,20 @@ class History
     year.setSeconds(0);
     year.setMilliseconds(0);
     return year;
+  }
+}
+
+class HistorySchema
+{
+  get version() {
+    return 1;
+  }
+
+  get default() {
+    return {
+      pomodoros: [],
+      version: this.version
+    };
   }
 }
 

@@ -277,7 +277,7 @@ class Controller
 }
 
 let history = new History();
-let settingsManager = new SettingsManager(new MarinaraSchema());
+let settingsManager = new StorageManager(new MarinaraSchema(), AsyncChrome.storage.sync);
 let controller = new Controller(settingsManager, history);
 let server = new BackgroundServer(controller, history, settingsManager);
 
