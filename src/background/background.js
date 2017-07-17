@@ -78,9 +78,12 @@ class Controller
         new StopTimerMenuItem(this)
       ),
       new MenuGroup(
-        new StartFocusingMenuItem(this),
-        new StartShortBreakMenuItem(this),
-        new StartLongBreakMenuItem(this)
+        new StartTimerParentMenu(
+          new StartFocusingMenuItem(this),
+          new StartShortBreakMenuItem(this),
+          new StartLongBreakMenuItem(this)
+        ),
+        new PomodoroHistoryMenuItem(this)
       )
     );
 

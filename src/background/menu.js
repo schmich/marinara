@@ -29,11 +29,31 @@ class Menu
         firstGroup = false;
         firstItem = false;
 
-        chrome.contextMenus.create({
-          title: item.title(),
-          contexts: this.contexts,
-          onclick: () => item.run()
-        });
+        if (item instanceof ParentMenu) {
+          let id = chrome.contextMenus.create({
+            title: item.title(),
+            contexts: this.contexts
+          });
+
+          for (let child of item.children) {
+            if (!child.visible()) {
+              continue;
+            }
+
+            chrome.contextMenus.create({
+              title: child.title(),
+              contexts: this.contexts,
+              onclick: () => child.run(),
+              parentId: id
+            });
+          }
+        } else {
+          chrome.contextMenus.create({
+            title: item.title(),
+            contexts: this.contexts,
+            onclick: () => item.run()
+          });
+        }
       }
     }
   }
@@ -47,6 +67,40 @@ class MenuGroup
 
   addItem(item) {
     this.items.push(item);
+  }
+}
+
+class ParentMenu
+{
+  constructor(...children) {
+    this.children = children;
+  }
+
+  addChild(child) {
+    this.children.push(child);
+  }
+
+  title() {
+    return '';
+  }
+
+  visible() {
+    return false;
+  }
+}
+
+class StartTimerParentMenu extends ParentMenu
+{
+  constructor(...children) {
+    super(...children)
+  }
+
+  title() {
+    return 'Start Timer';
+  }
+
+  visible() {
+    return true;
   }
 }
 
@@ -72,7 +126,7 @@ class StartFocusingMenuItem extends MenuItem
   }
 
   title() {
-    return 'Start Focusing';
+    return 'Focus';
   }
 
   visible() {
@@ -93,7 +147,7 @@ class StartShortBreakMenuItem extends MenuItem
 
   title() {
     let hasLong = this.controller.settings.longBreak.interval > 0;
-    return hasLong ? 'Start Short Break' : 'Start Break';
+    return hasLong ? 'Short Break' : 'Break';
   }
 
   visible() {
@@ -113,7 +167,7 @@ class StartLongBreakMenuItem extends MenuItem
   }
 
   title() {
-    return 'Start Long Break';
+    return 'Long Break';
   }
 
   visible() {
@@ -183,5 +237,25 @@ class ResumeTimerMenuItem extends MenuItem
 
   run() {
     this.controller.resume();
+  }
+}
+
+class PomodoroHistoryMenuItem extends MenuItem
+{
+  constructor(controller) {
+    super();
+    this.controller = controller;
+  }
+
+  title() {
+    return 'Pomodoro History';
+  }
+
+  visible() {
+    return true;
+  }
+
+  run() {
+    this.controller.showHistory();
   }
 }

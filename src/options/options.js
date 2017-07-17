@@ -238,7 +238,6 @@ function createHeatmap(data, start, el) {
       .attr('width', 800)
       .attr('height', 20)
     .append('g')
-      .attr('transform', 'translate(0,0)')
       .selectAll('.legend-grid')
       .data(() => d3.range(colorCount + 1))
       .enter()
