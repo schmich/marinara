@@ -89,7 +89,7 @@ input.duration {
 .section h2 {
   margin: 0 0 15px 0;
   font-weight: 500;
-  color: #aa0000;
+  color: #a00;
   border-bottom: 1px solid #ddcccc;
 }
 fieldset {
@@ -117,13 +117,13 @@ fieldset {
   margin-top: 10px;
 }
 .feedback h1 {
-  color: #aa0000;
+  color: #a00;
   font-weight: normal;
   margin: 0;
   padding: 0;
 }
 .feedback h2 {
-  color: #aa0000;
+  color: #a00;
   font-size: 16px;
   margin: 0 0 5px 0;
   padding: 0;
@@ -133,7 +133,7 @@ fieldset {
   text-decoration: underline;
 }
 .feedback a:hover {
-  color: #aa0000;
+  color: #a00;
 }
 .feedback .links {
   margin-bottom: 20px;
@@ -141,14 +141,20 @@ fieldset {
   justify-content: center;
 }
 .feedback .links p {
-  text-align: right;
-}
-.feedback .links p {
   flex: 45%;
+  text-align: right;
   color: #333;
   font-weight: bold;
   font-size: smaller;
   text-transform: uppercase;
+}
+.feedback .links a {
+  color: #555;
+  text-decoration: none;
+}
+.feedback .links a:hover {
+  color: #a00;
+  text-decoration: underline;
 }
 .feedback .links ul {
   flex: 55%;
@@ -228,7 +234,7 @@ fieldset {
   margin-left: 10px;
 }
 #history-page .actions button:hover {
-  color: #aa0000;
-  border: 1px solid #aa0000;
+  color: #a00;
+  border: 1px solid #a00;
   text-decoration: none;
 }
