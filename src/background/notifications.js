@@ -1,6 +1,6 @@
 class Notification
 {
-  static async show(title, messages, action) {
+  static async show(controller, title, messages, action) {
     let options = {
       type: 'basic',
       title: title,
@@ -11,10 +11,11 @@ class Notification
     };
 
     let notificationId = await AsyncChrome.notifications.create(options);
-    return new Notification(notificationId);
+    return new Notification(controller, notificationId);
   }
 
-  constructor(notificationId) {
+  constructor(controller, notificationId) {
+    this.controller = controller;
     this.notificationId = notificationId;
 
     let notificationClicked = id => {

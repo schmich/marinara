@@ -181,6 +181,7 @@ class Controller
 
       if (options.notification) {
         this.notification = await Notification.show(
+          this,
           options.notification.title,
           options.notification.messages(pomodorosToday),
           options.notification.action
