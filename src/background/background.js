@@ -105,10 +105,6 @@ class Controller
     await SingletonPage.show(url);
   }
 
-  startCycle() {
-    this.timer.startCycle();
-  }
-
   get settings() {
     return this._settings;
   }
@@ -135,6 +131,10 @@ class Controller
 
   resume() {
     this.timer.resume();
+  }
+
+  startCycle() {
+    this.timer.startCycle();
   }
 
   startFocus() {
@@ -195,6 +195,14 @@ class Controller
           pomodorosToday,
           options.tab.phase
         );
+      }
+
+      // Reload history on options page.
+      let views = chrome.extension.getViews({ type: 'tab' });
+      for (let view of views) {
+        if (view.loadHistory) {
+          view.loadHistory(true);
+        }
       }
     });
 

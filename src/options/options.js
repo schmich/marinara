@@ -99,8 +99,8 @@ async function saveSettings() {
   }
 }
 
-async function loadHistory() {
-  if (this.loaded) {
+async function loadHistory(reload = false) {
+  if (this.loaded && !reload) {
     return;
   } else {
     this.loaded = true;
@@ -159,6 +159,9 @@ function createHeatmap(data, start, el) {
     }
     cursor.setDate(cursor.getDate() + 7);
   }
+
+  // Clear heatmap.
+  d3.select(el).html(null);
 
   // Add month labels.
   d3.select(el).selectAll('svg.months')

@@ -3,7 +3,7 @@ class MessageServer
   constructor() {
     chrome.runtime.onMessage.addListener((request, sender, respond) => {
       setTimeout(async () => {
-        let method = request.command.replace(/-./g, (m) => m[1].toUpperCase())
+        let method = request.command;
         let result = await this[method](...request.params) || {};
         respond(result);
       });
@@ -29,27 +29,27 @@ class MessageClient
 class BackgroundClient extends MessageClient
 {
   static startSession() {
-    return this.request('start-session', arguments);
+    return this.request('startSession', arguments);
   }
 
   static getSounds() {
-    return this.request('get-sounds', arguments);
+    return this.request('getSounds', arguments);
   }
 
   static getSettings() {
-    return this.request('get-settings', arguments);
+    return this.request('getSettings', arguments);
   }
 
   static getHistory(since) {
-    return this.request('get-history', arguments);
+    return this.request('getHistory', arguments);
   }
 
   static showHistory() {
-    return this.request('show-history', arguments);
+    return this.request('showHistory', arguments);
   }
 
   static setSettings() {
-    return this.request('set-settings', arguments);
+    return this.request('setSettings', arguments);
   }
 }
 
