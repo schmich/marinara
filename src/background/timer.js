@@ -216,6 +216,11 @@ class PomodoroTimer
     }
   }
 
+  startCycle() {
+    this.breakCount = 0;
+    this.start(Phase.Focus);
+  }
+
   start(phase = null) {
     if (this.timer) {
       this.timer.stop();

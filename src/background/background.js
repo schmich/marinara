@@ -78,6 +78,7 @@ class Controller
         new StopTimerMenuItem(this)
       ),
       new MenuGroup(
+        new StartPomodoroCycleMenuItem(this),
         new StartTimerParentMenu(
           new StartFocusingMenuItem(this),
           new StartShortBreakMenuItem(this),
@@ -102,6 +103,10 @@ class Controller
     let manifest = chrome.runtime.getManifest();
     let url = chrome.extension.getURL(manifest.options_page + '#history');
     await SingletonPage.show(url);
+  }
+
+  startCycle() {
+    this.timer.startCycle();
   }
 
   get settings() {

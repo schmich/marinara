@@ -259,3 +259,23 @@ class PomodoroHistoryMenuItem extends MenuItem
     this.controller.showHistory();
   }
 }
+
+class StartPomodoroCycleMenuItem extends MenuItem
+{
+  constructor(controller) {
+    super();
+    this.controller = controller;
+  }
+
+  title() {
+    return 'Start Pomodoro Cycle';
+  }
+
+  visible() {
+    return this.controller.settings.longBreak.interval > 0;
+  }
+
+  run() {
+    this.controller.startCycle();
+  }
+}
