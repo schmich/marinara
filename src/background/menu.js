@@ -126,7 +126,7 @@ class StartFocusingMenuItem extends MenuItem
   }
 
   title() {
-    return 'Focus';
+    return 'Start Focusing';
   }
 
   visible() {
@@ -147,7 +147,7 @@ class StartShortBreakMenuItem extends MenuItem
 
   title() {
     let hasLong = this.controller.settings.longBreak.interval > 0;
-    return hasLong ? 'Short Break' : 'Break';
+    return hasLong ? 'Start Short Break' : 'Start Break';
   }
 
   visible() {
@@ -167,7 +167,7 @@ class StartLongBreakMenuItem extends MenuItem
   }
 
   title() {
-    return 'Long Break';
+    return 'Start Long Break';
   }
 
   visible() {
