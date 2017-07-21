@@ -48,10 +48,10 @@ class History
     let daily = {};
     let base = 0;
     let date = History.day;
-    while (date > start) {
-      let completed = this.completedSince(pomodoros, date);
-      daily[+date] = completed - base;
-      base = completed;
+    while (date >= start) {
+      let countSince = this.countSince(pomodoros, date);
+      daily[+date] = countSince - base;
+      base = countSince;
       date.setDate(date.getDate() - 1);
     }
 
