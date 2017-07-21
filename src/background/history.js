@@ -16,8 +16,13 @@ class History
     let local = await this.storage.get();
 
     let timestamp = this.timestamp(when || new Date());
-    local.pomodoros.push(timestamp);
-    local.pomodoros.sort();
+
+    let i = local.pomodoros.length - 1;
+    while (i >= 0 && local.pomodoros[i] > timestamp) {
+      --i;
+    }
+
+    local.pomodoros.splice(i + 1, 0, timestamp);
     await this.storage.set(local);
 
     return this.completedToday(local.pomodoros);
