@@ -170,7 +170,7 @@ class Controller
       if (phase === Phase.Focus) {
         var pomodorosToday = await this.history.addPomodoro();
       } else {
-        var pomodorosToday = await this.history.completedToday();
+        var pomodorosToday = await this.history.countToday();
       }
 
       if (options.sound) {

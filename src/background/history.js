@@ -25,7 +25,7 @@ class History
     local.pomodoros.splice(i + 1, 0, timestamp);
     await this.storage.set(local);
 
-    return this.completedToday(local.pomodoros);
+    return this.countToday(local.pomodoros);
   }
 
   async stats(since) {
@@ -65,7 +65,7 @@ class History
     };
   }
 
-  async completedToday(pomodoros = null) {
+  async countToday(pomodoros = null) {
     if (!pomodoros) {
       var { pomodoros } = await this.storage.get();
       if (pomodoros.length === 0) {
