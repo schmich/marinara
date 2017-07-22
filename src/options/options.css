@@ -1,5 +1,7 @@
+body, html, button {
+  font-family: 'Segoe UI', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+}
 html, body {
-  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -33,7 +35,7 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: #dd0000;
+  background: #d00;
   padding: 15px 0 0 0;
   box-shadow: 0 3px 10px #999;
 }
@@ -44,7 +46,7 @@ input.duration {
   display: inline-block;
   padding: 10px 30px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
@@ -52,7 +54,7 @@ input.duration {
 }
 .header a:hover {
   color: #fff;
-  background: #b33;
+  background: #a00;
   border-bottom: 4px solid #b33;
 }
 .header a.active {
@@ -150,10 +152,10 @@ fieldset {
   font-size: smaller;
   text-transform: uppercase;
   position: relative;
-  top: 1px;
+  top: 3px;
 }
 .feedback .links a {
-  color: #555;
+  color: #444;
   text-decoration: none;
 }
 .feedback .links a:hover {
@@ -247,7 +249,7 @@ fieldset {
   text-decoration: none;
 }
 .distribution rect {
-  fill: #57f;
+  fill: #49f;
   outline: 0 !important;
 }
 #history-page section {
@@ -265,14 +267,14 @@ fieldset {
   outline: 0 !important;
   padding: 1px 6px;
   border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0);
+  font-size: 12px;
   position: relative;
   top: -1px;
 }
 #history-page .title button.active {
-  color: #333;
-  border: 1px solid #333;
   border-radius: 3px;
+  background: #555;
+  color: #fff;
 }
 #history-page .title .options {
   float: right;

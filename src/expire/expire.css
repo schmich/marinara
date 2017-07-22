@@ -1,3 +1,6 @@
+body, html, button {
+  font-family: 'Segoe UI', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+}
 body, html {
   height: 100%;
   padding: 0;
@@ -25,7 +28,6 @@ body {
 }
 .button {
   margin: 30px 0 0 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
