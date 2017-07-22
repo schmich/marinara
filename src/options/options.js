@@ -119,6 +119,11 @@ function importHistory() {
       try {
         let content = f.target.result;
         let history = JSON.parse(content);
+
+        if (!confirm('Importing history overwrites all existing history. Continue?')) {
+          return;
+        }
+
         let result = await BackgroundClient.setRawHistory(history);
         if (result !== true) {
           alert(`Failed to import history: ${result}`);
