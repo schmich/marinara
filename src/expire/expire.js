@@ -1,3 +1,13 @@
+function pomodoroCount(count) {
+  if (count === 0) {
+    return 'No Pomodoros';
+  } else if (count === 1) {
+    return '1 Pomodoro';
+  } else {
+    return `${count.toLocaleString()} Pomodoros`;
+  }
+}
+
 chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond) {
   chrome.runtime.onMessage.removeListener(onMessage);
 
@@ -14,7 +24,7 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   messages.appendChild(p);
 
   let pomodoroLabel = document.getElementById('pomodoro-label');
-  pomodoroLabel.innerText = `${request.pomodoros} Pomodoro${request.pomodoros === 1 ? '' : 's'} completed today`;
+  pomodoroLabel.innerText = `${pomodoroCount(request.pomodoros)} completed today`;
 
   let pomodoros = document.getElementById('pomodoros');
   for (let i = 0; i < request.pomodoros; ++i) {

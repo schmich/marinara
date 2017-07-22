@@ -36,7 +36,7 @@ body {
   font-size: 16px;
   margin-top: 7px;
   letter-spacing: 1px;
-  color: #b00;
+  color: #c00;
 }
 #pomodoros img {
   max-height: 25px;
@@ -76,15 +76,14 @@ body {
   background: #ed510f;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed510f), color-stop(95%,#b51a00), color-stop(100%,#b51a00)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Chrome10+,Safari5.1+ */
-  background: #c00;
+  background: #e22;
   color: #fff;
 }
 .button.short-break:hover, .button.long-break:hover {
   background: #37f;
 }
 .button.focus:hover {
-  border-color: #e00;
-  background: #e00;
+  background: #c00;
 }
 .button:active {
   box-shadow: none;
