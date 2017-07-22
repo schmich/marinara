@@ -13,9 +13,13 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   p.innerHTML = message;
   messages.appendChild(p);
 
-  p = document.createElement('p');
-  p.innerHTML = `${request.pomodoros} Pomodoro${request.pomodoros === 1 ? '' : 's'} completed today`;
-  messages.appendChild(p);
+  let pomodoroLabel = document.getElementById('pomodoro-label');
+  pomodoroLabel.innerText = `${request.pomodoros} Pomodoro${request.pomodoros === 1 ? '' : 's'} completed today`;
+
+  let pomodoros = document.getElementById('pomodoros');
+  for (let i = 0; i < request.pomodoros; ++i) {
+    pomodoros.innerHTML += '&#x25cf; '
+  }
   
   let start = document.getElementById('start-session');
   start.classList.add(request.phase);

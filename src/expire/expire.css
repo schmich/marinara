@@ -26,8 +26,22 @@ body {
   font-size: 16px;
   margin: 0 0 10px 0;
 }
+#pomodoro-label {
+  color: #555;
+  margin-top: 70px;
+  font-size: 18px;
+}
+#pomodoros {
+  font-size: 18px;
+  margin-top: 7px;
+  letter-spacing: 1px;
+  color: #b00;
+}
+#pomodoros img {
+  max-height: 25px;
+}
 .button {
-  margin: 30px 0 0 0;
+  margin: 20px 0 0 0;
   font-size: 20px;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -38,8 +52,8 @@ body {
   color: #646464;
   cursor: pointer;
   border: 0;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
   padding: 15px 35px;
   text-align: center;
   text-decoration: none !important;
@@ -47,27 +61,29 @@ body {
   background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,174,255,1)), color-stop(92%, rgba(0,174,255,1)), color-stop(100%, rgba(0,144,234,1)));
   background: -webkit-linear-gradient(top, rgba(0,174,255,1) 0%, rgba(0,174,255,1) 92%, rgba(0,144,234,1) 100%);
   color: #fff;
-  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0.2s;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.1s linear;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: relative;
 }
 .button.short-break, .button.long-break {
-  background: #00d618;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00d618), color-stop(95%,#2da000), color-stop(100%,#2da000)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #00d618 0%,#2da000 95%,#2da000 100%); /* Chrome10+,Safari5.1+ */
+  background: #57f;
+  color: #fff;
 }
 .button.focus {
   background: #ed510f;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed510f), color-stop(95%,#b51a00), color-stop(100%,#b51a00)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Chrome10+,Safari5.1+ */
+  background: #c00;
+  color: #fff;
 }
-.button.short-break:active, .button.long-break:active {
-  background: #2da000;
+.button.short-break:hover, .button.long-break:hover {
+  background: #49f;
 }
-.button.focus:active {
-  background: #b51a00;
+.button.focus:hover {
+  border-color: #e00;
+  background: #e00;
 }
 .button:active {
   box-shadow: none;
@@ -91,7 +107,7 @@ body {
 }
 .footer .title {
   font-size: 15px;
-  color: #aa0000;
+  color: #b00;
   font-weight: bold;
   text-transform: uppercase;
   margin-right: 15px;
@@ -103,13 +119,12 @@ body {
   background: transparent;
   color: #333;
   padding: 10px 20px;
-  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   text-decoration: none;
   display: inline-block;
+  border: 0;
 }
 .actions button:hover {
-  color: #aa0000;
-  border: 1px solid #aa0000;
-  text-decoration: none;
+  color: #b00;
+  text-decoration: underline;
 }
