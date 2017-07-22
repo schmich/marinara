@@ -128,7 +128,6 @@ function importHistory() {
         alert(`Failed to import history: ${ex}`);
         return;
       }
-
       await loadHistory(true);
     };
     reader.readAsText(file);
@@ -149,148 +148,46 @@ async function loadHistory(reload = false) {
 
   let stats = await BackgroundClient.getHistory(+start);
 
-  ['day', 'week', 'month', 'year', 'all'].forEach(bucket => {
-    let value = document.getElementById(`stat-${bucket}`);
-    value.innerText = stats[bucket].toLocaleString();
-  });
+  for (let bucket of ['day', 'week', 'month', 'period', 'total']) {
+    let stat = document.getElementById(`stat-${bucket}`);
+    let count = stats[bucket];
+
+    if (bucket === 'period') {
+      stat.innerText = pomodoroCount(count);
+    } else {
+      stat.innerText = count.toLocaleString();
+    }
+
+    let el = document.getElementById(`average-${bucket}`);
+    if (el) {
+      let formatted = stats[`${bucket}Average`].toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      el.innerText = `${formatted} avg`;
+    }
+  };
 
   let month = document.getElementById('bucket-month');
   month.innerText = d3.timeFormat('In %B')(now);
 
-  let year = document.getElementById('bucket-year');
-  year.innerText = `In ${now.getFullYear()}`;
-
-  let data = stats.daily;
-  createHeatmap(data, start, '#heatmap');
+  createHeatmap(stats.daily, start, '#heatmap');
+  createWeekDistribution('#week-distribution', stats.pomodoros);
+  createOptionGroup('.day-distribution', 1, bucket =>
+    createDayDistribution('#day-distribution', bucket, stats.pomodoros)
+  );
 }
 
-function createHeatmap(data, start, el) {
-  // Inspired strongly by https://github.com/vinnyoodles/reddit-heatmap/blob/master/js/index.js.
-  let max = Math.max(...Object.values(data));
-
-  const cellSize = 14;
-  const colorCount = 4;
-  const cellClass = 'day';
-
-  const width = 700;
-  const height = 110;
-  const dx = 35;
-
-  let formatColor = d3.scaleQuantize()
-    .domain([0, max])
-    .range(d3.range(colorCount).map(d => `color${d}`));
-
-  let now = new Date();
-  let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-
-  // Determine month label positions.
-  let months = [];
-  let active = null;
-  let cursor = new Date(start);
-  for (let i = 0; cursor < end; ++i) {
-    let month = cursor.getMonth();
-    if (active !== month) {
-      active = month;
-      months.push([i, new Date(cursor)]);
-    }
-    cursor.setDate(cursor.getDate() + 7);
+function createOptionGroup(selector, initialActive, callback) {
+  let group = document.querySelectorAll(selector);
+  for (let el of group) {
+    el.onclick = e => {
+      for (let el of group) {
+        let action = el === e.target ? 'add' : 'remove';
+        el.classList[action]('active');
+      }
+      callback(el.dataset.value);
+    };
   }
 
-  // Clear heatmap.
-  d3.select(el).html(null);
-
-  // Add month labels.
-  d3.select(el).selectAll('svg.months')
-    .enter()
-    .append('svg')
-    .data([1])
-    .enter()
-    .append('svg')
-      .attr('width', 800)
-      .attr('height', 17)
-    .append('g')
-      .attr('transform', 'translate(0,10)')
-      .selectAll('.month')
-      .data(() => months)
-      .enter()
-      .append('text')
-        .attr('x', d => d[0] * cellSize + dx)
-        .attr('class', 'label')
-        .text(d => d3.timeFormat('%b')(d[1]));
-
-  let heatmap = d3.select(el).selectAll('svg.heatmap')
-    .enter()
-    .append('svg')
-    .data([1])
-    .enter()
-    .append('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .attr('class', 'color')
-    .append('g')
-    .attr('transform', `translate(${dx},0)`);
-
-  // Add day-of-week labels.
-  let labels = ['Mon', 'Wed', 'Fri'];
-  heatmap.selectAll('text.dow')
-    .data(() => d3.zip(d3.range(labels.length), labels))
-    .enter()
-    .append('text')
-      .attr('transform', d => `translate(-10,${cellSize * 2 * (d[0] + 1)})`)
-      .style('text-anchor', 'end')
-      .attr('class', 'label')
-      .text(d => d[1]);
-
-  let dayRange = d3.timeDays(start, end);
-  heatmap.selectAll('.day')
-    // Heatmap of all days in the range.
-    .data(d => d3.zip(d3.range(dayRange.length), dayRange))
-    .enter()
-    .append('rect')
-      .attr('class', cellClass)
-      .attr('width', cellSize)
-      .attr('height', cellSize)
-      .attr('x', d => Math.floor(d[0] / 7) * cellSize)
-      .attr('y', d => (d[0] % 7) * cellSize)
-      .datum(d => +d[1])
-      // Tooltip title.
-      .attr('title', d => {
-        let count = data[d];
-        let date = d3.timeFormat('%b %d, %Y')(new Date(d));
-        if (!count) {
-          return `<strong>No Pomodoros</strong> on ${date}`;
-        } else {
-          return `<strong>${count} Pomodoro${count === 1 ? '' : 's'}</strong> on ${date}`;
-        }
-      })
-      // Add the colors to the grids.
-      .filter(d => !!data[d])
-      .attr('class', d => `${cellClass} ${formatColor(data[d])}`)
-
-  // Add color legend.
-  d3.select(el).selectAll('svg.legend')
-    .enter()
-    .append('svg')
-    .data([1])
-    .enter()
-    .append('svg')
-      .attr('width', 800)
-      .attr('height', 20)
-    .append('g')
-      .selectAll('.legend-grid')
-      .data(() => d3.range(colorCount + 1))
-      .enter()
-      .append('rect')
-        .attr('width', cellSize)
-        .attr('height', cellSize)
-        .attr('x', d => d * (cellSize + 2) + dx)
-        .attr('class', d => `day color${d - 1}`);
-
-  tippy(`${el} .day`, {
-    arrow: true,
-    duration: 0,
-    animation: null
-  });
+  group[initialActive].click();
 }
 
 function selectTab(id) {
@@ -329,11 +226,8 @@ async function load() {
   let hash = window.location.hash || '#settings';
   selectTab(hash);
 
-  let exportButton = document.getElementById('export-history');
-  exportButton.onclick = exportHistory;
-
-  let importButton = document.getElementById('import-history');
-  importButton.onclick = importHistory;
+  document.getElementById('export-history').onclick = exportHistory;
+  document.getElementById('import-history').onclick = importHistory;
 
   window.addEventListener('popstate', function(e) {
     selectTab(window.location.hash);

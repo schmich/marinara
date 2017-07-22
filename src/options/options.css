@@ -34,11 +34,11 @@ input.duration {
 }
 .header {
   background: #dd0000;
-  padding: 10px 0 0 0;
+  padding: 15px 0 0 0;
   box-shadow: 0 3px 10px #999;
 }
 .header .tab-bar {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .header a {
   display: inline-block;
@@ -136,17 +136,21 @@ fieldset {
   color: #a00;
 }
 .feedback .links {
+  margin: 0;
+  padding: 0;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 .feedback .links p {
-  flex: 45%;
+  flex: 40%;
   text-align: right;
   color: #333;
   font-weight: bold;
   font-size: smaller;
   text-transform: uppercase;
+  position: relative;
+  top: 1px;
 }
 .feedback .links a {
   color: #555;
@@ -166,7 +170,7 @@ fieldset {
   margin-bottom: 7px;
 }
 .stats {
-  margin: 20px 30px 60px 30px;
+  margin: 20px 40px 60px 40px;
   display: flex;
   justify-content: space-between;
 }
@@ -176,12 +180,16 @@ fieldset {
   flex-flow: column;
 }
 .stats .stat .value {
-  color: #aa0000;
-  font-size: 25px;
+  color: #a00;
+  font-size: 30px;
 }
 .stats .stat .bucket {
-  color: #555;
-  font-size: 15px;
+  color: #333;
+  font-size: 17px;
+}
+.stats .stat .average {
+  color: #777;
+  font-size: 14px;
   margin-top: 5px;
 }
 #heatmap {
@@ -218,7 +226,7 @@ fieldset {
 #history-page .actions {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin: 25px 0 35px 0;
 }
 #history-page .actions button {
   outline: 0 !important;
@@ -227,14 +235,51 @@ fieldset {
   background: transparent;
   color: #555;
   padding: 10px 20px;
-  border: 1px solid #777;
+  border: 1px solid #555;
   border-radius: 5px;
   text-decoration: none;
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 #history-page .actions button:hover {
   color: #a00;
   border: 1px solid #a00;
   text-decoration: none;
+}
+.distribution rect {
+  fill: #57f;
+  outline: 0 !important;
+}
+#history-page section {
+  margin-bottom: 60px;
+}
+#history-page .title {
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #aaa;
+}
+#history-page .title button {
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  text-transform: uppercase;
+  outline: 0 !important;
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  position: relative;
+  top: -1px;
+}
+#history-page .title button.active {
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 3px;
+}
+#history-page .title .options {
+  float: right;
+}
+#history-page .title h2 {
+  color: #444;
+  font-size: 16px;
+  display: inline;
+  font-weight: normal;
 }

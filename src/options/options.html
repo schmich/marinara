@@ -9,6 +9,7 @@
   <script src="../background/messages.js"></script>
   <script src="d3.min.js"></script>
   <script src="tippy.min.js"></script>
+  <script src="charts.js"></script>
   <script src="options.js"></script>
 </head>
 <body>
@@ -147,31 +148,52 @@
         </form>
       </div>
       <div class="tab-page" id="history-page">
-        <div class="summary">
-          <div class="stats">
-            <div class="stat">
-              <div class="value" id="stat-day">&ndash;</div>
-              <div class="bucket">Today</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="stat-week">&ndash;</div>
-              <div class="bucket">This Week</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="stat-month">&ndash;</div>
-              <div class="bucket" id="bucket-month">This Month</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="stat-year">&ndash;</div>
-              <div class="bucket" id="bucket-year">This Year</div>
-            </div>
-            <div class="stat">
-              <div class="value" id="stat-all">&ndash;</div>
-              <div class="bucket">Total</div>
+        <div id="sparkline"></div>
+        <div class="stats">
+          <div class="stat">
+            <div class="value" id="stat-day">&ndash;</div>
+            <div class="bucket">Today</div>
+            <div class="average" id="average-day">&ndash;</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-week">&ndash;</div>
+            <div class="bucket">This Week</div>
+            <div class="average" id="average-week">&ndash;</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-month">&ndash;</div>
+            <div class="bucket" id="bucket-month">This Month</div>
+            <div class="average" id="average-month">&ndash;</div>
+          </div>
+          <div class="stat">
+            <div class="value" id="stat-total">&ndash;</div>
+            <div class="bucket">Total</div>
+          </div>
+        </div>
+        <section>
+          <div class="title">
+            <h2>Daily Distribution</h2>
+            <div class="options">
+              <button class="day-distribution" data-value="15">15 Min</button>
+              <button class="day-distribution" data-value="30">30 Min</button>
+              <button class="day-distribution" data-value="60">1 Hour</button>
+              <button class="day-distribution" data-value="120">2 Hour</button>
             </div>
           </div>
+          <div id="day-distribution"></div>
+        </section>
+        <section>
+          <div class="title">
+            <h2>Weekly Distribution</h2>
+          </div>
+          <div id="week-distribution"></div>
+        </section>
+        <section>
+          <div class="title">
+            <h2><span id="stat-period"></span> in the Last 9 Months</h2>
+          </div>
           <div id="heatmap"></div>
-        </div>
+        </section>
         <div class="actions">
           <button id="import-history">Import History</button>
           <button id="export-history">Export History</button>

@@ -15,8 +15,7 @@ class History
   async addPomodoro(when = null) {
     let local = await this.storage.get();
 
-    let timestamp = this.timestamp(when || new Date());
-
+    let timestamp = History.timestamp(when || new Date());
     let i = local.pomodoros.length - 1;
     while (i >= 0 && local.pomodoros[i] > timestamp) {
       --i;
@@ -29,39 +28,29 @@ class History
   }
 
   async stats(since) {
-    const empty = {
-      day: 0,
-      week: 0,
-      month: 0,
-      year: 0,
-      all: 0,
-      daily: []
-    };
-
     let { pomodoros } = await this.storage.get();
-    if (pomodoros.length === 0) {
-      return empty;
+
+    let dayCount = 0;
+    if (pomodoros.length > 0) {
+      let delta = new Date() - History.date(pomodoros[0]);
+      dayCount = Math.ceil(delta / 1000 / 60 / 60 / 24);
     }
 
-    let start = new Date(since);
-
-    let daily = {};
-    let base = 0;
-    let date = History.day;
-    while (date >= start) {
-      let countSince = this.countSince(pomodoros, date);
-      daily[+date] = countSince - base;
-      base = countSince;
-      date.setDate(date.getDate() - 1);
-    }
+    let total = pomodoros.length;
+    let weekCount = dayCount === 0 ? 0 : (dayCount / 7);
+    let monthCount = dayCount === 0 ? 0 : (dayCount / (365.25 / 12));
 
     return {
-      day: this.completedSince(pomodoros, History.day),
-      week: this.completedSince(pomodoros, History.week),
-      month: this.completedSince(pomodoros, History.month),
-      year: this.completedSince(pomodoros, History.year),
-      all: pomodoros.length,
-      daily: daily
+      day: this.countSince(pomodoros, History.today),
+      dayAverage: dayCount === 0 ? 0 : (total / dayCount),
+      week: this.countSince(pomodoros, History.thisWeek),
+      weekAverage: weekCount === 0 ? 0 : (total / weekCount),
+      month: this.countSince(pomodoros, History.thisMonth),
+      monthAverage: monthCount === 0 ? 0 : (total / monthCount),
+      period: this.countSince(pomodoros, new Date(since)),
+      total: total,
+      daily: this.dailyGroups(pomodoros, since),
+      pomodoros: pomodoros.map(p => +History.date(p))
     };
   }
 
@@ -73,7 +62,11 @@ class History
       }
     }
 
-    let timestamp = this.timestamp(History.day);
+    return this.countSince(pomodoros, History.today);
+  }
+
+  countSince(pomodoros, date) {
+    let timestamp = History.timestamp(date);
     let index = search(pomodoros, timestamp);
     if (index === null) {
       return 0;
@@ -82,21 +75,31 @@ class History
     return pomodoros.length - index;
   }
 
-  completedSince(pomodoros, date) {
-    let timestamp = this.timestamp(date);
-    let index = search(pomodoros, timestamp);
-    if (index === null) {
-      return 0;
+  dailyGroups(pomodoros, since) {
+    let start = new Date(since);
+
+    let daily = {};
+    let base = 0;
+    let date = History.today;
+    while (date >= start) {
+      let countSince = this.countSince(pomodoros, date);
+      daily[+date] = countSince - base;
+      base = countSince;
+      date.setDate(date.getDate() - 1);
     }
 
-    return pomodoros.length - index;
+    return daily;
   }
 
-  timestamp(date) {
+  static timestamp(date) {
     return Math.floor(+date / 1000 / 60);
   }
 
-  static get day() {
+  static date(timestamp) {
+    return new Date(timestamp * 60 * 1000);
+  }
+
+  static get today() {
     let today = new Date();
     today.setHours(0);
     today.setMinutes(0);
@@ -105,7 +108,7 @@ class History
     return today;
   }
 
-  static get week() {
+  static get thisWeek() {
     let week = new Date();
     week.setDate(week.getDate() - week.getDay());
     week.setHours(0);
@@ -115,7 +118,7 @@ class History
     return week;
   }
 
-  static get month() {
+  static get thisMonth() {
     let month = new Date();
     month.setDate(1);
     month.setHours(0);
@@ -123,17 +126,6 @@ class History
     month.setSeconds(0);
     month.setMilliseconds(0);
     return month;
-  }
-
-  static get year() {
-    let year = new Date();
-    year.setDate(1);
-    year.setMonth(0);
-    year.setHours(0);
-    year.setMinutes(0);
-    year.setSeconds(0);
-    year.setMilliseconds(0);
-    return year;
   }
 }
 
