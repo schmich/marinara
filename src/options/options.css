@@ -207,16 +207,16 @@ fieldset {
   fill: #777;
 }
 #heatmap .color0 {
-  fill: #c6e48b;
+  fill: #cce3ff;
 }
 #heatmap .color1 {
-  fill: #7bc96f;
+  fill: #99c8ff;
 }
 #heatmap .color2 {
-  fill: #239a3b;
+  fill: #4c9fff;
 }
 #heatmap .color3 {
-  fill: #196127;
+  fill: #005fcc;
 }
 .tippy-tooltip {
   opacity: 0.9 !important;
