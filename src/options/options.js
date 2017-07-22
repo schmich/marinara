@@ -58,6 +58,8 @@ async function loadSettings() {
   longBreakInterval.value = settings.longBreak.interval;
   longBreakInterval.addEventListener('change', updateLongBreak);
   updateLongBreak();
+
+  return settings;
 }
 
 function getSettingGroup(name) {
@@ -83,17 +85,15 @@ function getSettingGroup(name) {
   };
 }
 
-async function saveSettings() {
-  let params = {
-    focus: getSettingGroup('focus'),
-    shortBreak: getSettingGroup('short-break'),
-    longBreak: getSettingGroup('long-break')
-  };
+async function saveSettings(settings) {
+  settings.focus = getSettingGroup('focus');
+  settings.shortBreak = getSettingGroup('short-break');
+  settings.longBreak = getSettingGroup('long-break');
 
   let longBreakInterval = document.getElementById('long-break-interval');
-  params.longBreak.interval = longBreakInterval.value;
+  settings.longBreak.interval = longBreakInterval.value;
 
-  let result = await BackgroundClient.setSettings(params);
+  let result = await BackgroundClient.setSettings(settings);
   if (result.error) {
     // TODO
   }
@@ -211,17 +211,17 @@ function selectTab(id) {
 }
 
 async function load() {
-  await loadSettings();
+  let settings = await loadSettings();
 
   let manifest = chrome.runtime.getManifest();
   let version = document.getElementById('version');
   version.innerText = manifest.version;
 
   let inputs = document.querySelectorAll('#settings input[type="checkbox"], #settings select');
-  inputs.forEach(input => input.addEventListener('change', saveSettings));
+  inputs.forEach(input => input.addEventListener('change', () => saveSettings(settings)));
 
   let texts = document.querySelectorAll('#settings input[type="text"]');
-  texts.forEach(text => text.addEventListener('input', saveSettings));
+  texts.forEach(text => text.addEventListener('input', () => saveSettings(settings)));
 
   let hash = window.location.hash || '#settings';
   selectTab(hash);
