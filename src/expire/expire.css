@@ -1,5 +1,5 @@
 body, html, button {
-  font-family: 'Segoe UI', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
 }
 body, html {
   height: 100%;
@@ -32,7 +32,8 @@ body {
   font-size: 18px;
 }
 #pomodoros {
-  font-size: 18px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
   margin-top: 7px;
   letter-spacing: 1px;
   color: #b00;
@@ -68,7 +69,7 @@ body {
   position: relative;
 }
 .button.short-break, .button.long-break {
-  background: #57f;
+  background: #49f;
   color: #fff;
 }
 .button.focus {
@@ -79,7 +80,7 @@ body {
   color: #fff;
 }
 .button.short-break:hover, .button.long-break:hover {
-  background: #49f;
+  background: #37f;
 }
 .button.focus:hover {
   border-color: #e00;

@@ -18,9 +18,9 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
 
   let pomodoros = document.getElementById('pomodoros');
   for (let i = 0; i < request.pomodoros; ++i) {
-    pomodoros.innerHTML += '&#x25cf; '
+    pomodoros.innerHTML += '&#x2B24; '
   }
-  
+
   let start = document.getElementById('start-session');
   start.classList.add(request.phase);
 });

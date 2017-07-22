@@ -1,5 +1,5 @@
 body, html, button {
-  font-family: 'Segoe UI', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
 }
 html, body {
   margin: 0;
@@ -252,6 +252,9 @@ fieldset {
   fill: #49f;
   outline: 0 !important;
 }
+.distribution .domain {
+  stroke: #777;
+}
 #history-page section {
   margin-bottom: 60px;
 }
@@ -273,7 +276,7 @@ fieldset {
 }
 #history-page .title button.active {
   border-radius: 3px;
-  background: #555;
+  background: #777;
   color: #fff;
 }
 #history-page .title .options {
