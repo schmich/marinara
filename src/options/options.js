@@ -183,12 +183,12 @@ async function loadHistory(reload = false) {
 
   createHeatmap(stats.daily, start, '#heatmap');
   createWeekDistribution('#week-distribution', stats.pomodoros);
-  createOptionGroup('.day-distribution', 1, bucket =>
+  createOptionGroup('.day-distribution', bucket =>
     createDayDistribution('#day-distribution', bucket, stats.pomodoros)
   );
 }
 
-function createOptionGroup(selector, initialActive, callback) {
+function createOptionGroup(selector, callback) {
   let group = document.querySelectorAll(selector);
   for (let el of group) {
     el.onclick = e => {
@@ -200,7 +200,7 @@ function createOptionGroup(selector, initialActive, callback) {
     };
   }
 
-  group[initialActive].click();
+  document.querySelector(`${selector}.active`).click();
 }
 
 function selectTab(id) {
