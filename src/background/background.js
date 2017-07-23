@@ -99,9 +99,18 @@ class Controller
     });
   }
 
-  async showHistory() {
+  async showOptionsPage(hash) {
     let manifest = chrome.runtime.getManifest();
-    let url = chrome.extension.getURL(manifest.options_page + '#history');
+
+    let views = chrome.extension.getViews({ type: 'tab' });
+    for (let view of views) {
+      if (view.location.toString().indexOf(manifest.options_page) >= 0 && view.focus) {
+        view.focus(hash);
+        return;
+      }
+    }
+
+    let url = chrome.extension.getURL(manifest.options_page + hash);
     await SingletonPage.show(url);
   }
 
@@ -258,7 +267,7 @@ class Controller
 
     case Phase.ShortBreak:
     case Phase.LongBreak:
-      var length = (phase === Phase.ShortBreak) ? 'Short' : 'Long'; 
+      var length = (phase === Phase.ShortBreak) ? 'Short' : 'Long';
       let breakSettings = (phase === Phase.ShortBreak) ? settings.shortBreak : settings.longBreak;
       var notificationMessages = count => {
         return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];

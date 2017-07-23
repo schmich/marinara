@@ -41,7 +41,7 @@ async function load() {
 
   let settings = document.getElementById('settings');
   settings.onclick = () => {
-    chrome.runtime.openOptionsPage();
+    BackgroundClient.showSettings();
     return false;
   };
 

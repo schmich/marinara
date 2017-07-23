@@ -1,3 +1,11 @@
+// Support for focus/navigation from an external source.
+async function focus(hash) {
+  let tab = await AsyncChrome.tabs.getCurrent();
+  await AsyncChrome.tabs.update(tab.id, { active: true, highlighted: true });
+  await AsyncChrome.windows.update(tab.windowId, { focused: true });
+  window.location.hash = hash;
+}
+
 function appendSounds(elem, sounds, selected) {
   for (let sound of sounds) {
     let option = document.createElement('option');

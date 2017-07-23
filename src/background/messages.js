@@ -59,6 +59,10 @@ class BackgroundClient extends MessageClient
   static setSettings() {
     return this.request('setSettings', arguments);
   }
+
+  static showSettings() {
+    return this.request('showSettings', arguments);
+  }
 }
 
 class BackgroundServer extends MessageServer
@@ -100,7 +104,7 @@ class BackgroundServer extends MessageServer
   }
 
   async showHistory() {
-    return await this.controller.showHistory();
+    return await this.controller.showOptionsPage('#history');
   }
 
   async setSettings(settings) {
@@ -115,6 +119,10 @@ class BackgroundServer extends MessageServer
     settings.longBreak.interval = +settings.longBreak.interval;
 
     await this.settingsManager.set(settings);
+  }
+
+  async showSettings(settings) {
+    return await this.controller.showOptionsPage('#settings');
   }
 
   _normalize(phase) {

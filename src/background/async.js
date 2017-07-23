@@ -4,6 +4,10 @@ class AsyncChrome
     return AsyncTabs;
   }
 
+  static get windows() {
+    return AsyncWindows;
+  }
+
   static get notifications() {
     return AsyncNotifications;
   }
@@ -17,9 +21,28 @@ class AsyncTabs
 {
   static async create(options) {
     return new Promise((resolve, reject) => {
-      chrome.tabs.create(options, tab => {
-        resolve(tab);
-      });
+      chrome.tabs.create(options, tab => resolve(tab));
+    });
+  }
+
+  static async getCurrent() {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.getCurrent(tab => resolve(tab));
+    });
+  }
+
+  static async update(tabId, updateProperties) {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.update(tabId, updateProperties, tab => resolve(tab));
+    });
+  }
+}
+
+class AsyncWindows
+{
+  static async update(windowId, updateInfo) {
+    return new Promise((resolve, reject) => {
+      chrome.windows.update(windowId, updateInfo, win => resolve(win));
     });
   }
 }
