@@ -256,7 +256,7 @@ class PomodoroHistoryMenuItem extends MenuItem
   }
 
   run() {
-    this.controller.showHistory();
+    this.controller.showOptionsPage('#history');
   }
 }
 
