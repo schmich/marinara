@@ -23,17 +23,17 @@ body {
 }
 .dialog p {
   color: #555;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0 0 10px 0;
 }
 #pomodoro-label {
   color: #555;
   margin-top: 70px;
-  font-size: 18px;
+  font-size: 16px;
 }
 #pomodoros {
   font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 7px;
   letter-spacing: 1px;
   color: #c00;

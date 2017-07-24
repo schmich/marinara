@@ -240,26 +240,24 @@ class Controller
       var hasLong = settings.longBreak.interval > 0;
       var length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
       let lengthTitle = length.replace(/^./, c => c.toUpperCase());
-      let nextDuration = settings[`${length}Break`].duration;
       let brk = hasLong ? `${length} break` : 'break';
       var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
       var notificationMessages = count => {
         return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
       };
-      var tabMessages = [`${nextDuration} minute break`, pomodorosLeft];
       return {
         phase: 'Focus',
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
-          title: `Take a ${brkTitle} (${nextDuration}m)`,
+          title: `Take a ${brkTitle}`,
           messages: notificationMessages,
           action: `Start ${brk} now`
         },
         tab: !settings.focus.notifications.tab ? null : {
           title: `Take a ${brkTitle}`,
-          messages: tabMessages,
+          messages: [pomodorosLeft],
           action: `Start ${brkTitle}`,
           phase: `${length}-break`
         }
@@ -272,20 +270,19 @@ class Controller
       var notificationMessages = count => {
         return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
       };
-      var tabMessages = [`${settings.focus.duration} minute focus session`, pomodorosLeft];
       return {
         phase: `${length} Break`,
         duration: breakSettings.duration,
         sound: breakSettings.notifications.sound,
         badgeColor: '#3388ff',
         notification: !breakSettings.notifications.desktop ? null : {
-          title: `Start Focusing (${settings.focus.duration}m)`,
+          title: `Start Focusing`,
           messages: notificationMessages,
           action: 'Start focusing now'
         },
         tab: !breakSettings.notifications.tab ? null : {
           title: 'Start Focusing',
-          messages: tabMessages,
+          messages: [pomodorosLeft],
           action: 'Start Focusing',
           phase: 'focus'
         }
