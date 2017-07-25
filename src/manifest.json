@@ -1,7 +1,7 @@
 {
   "name": "Marinara: Pomodoro Timer",
   "short_name": "Marinara",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "manifest_version": 2,
   "description": "Pomodoro time management assistant.",
   "author": "Chris Schmich <schmch@gmail.com>",
@@ -38,5 +38,6 @@
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
+  "minimum_chrome_version": "55",
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }
