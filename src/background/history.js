@@ -12,7 +12,7 @@ class History
     await this.storage.set(history);
   }
 
-  async addPomodoro(when = null) {
+  async addPomodoro(duration, when = null) {
     let local = await this.storage.get();
 
     let timestamp = History.timestamp(when || new Date());
@@ -21,14 +21,24 @@ class History
       --i;
     }
 
+    let durations = Rle.decode(local.durations);
+    let timezones = Rle.decode(local.timezones);
+    let timezone = (new Date()).getTimezoneOffset();
+
+    durations.splice(i + 1, 0, duration);
+    timezones.splice(i + 1, 0, timezone);
     local.pomodoros.splice(i + 1, 0, timestamp);
+
+    local.durations = Rle.encode(durations);
+    local.timezones = Rle.encode(timezones);
+
     await this.storage.set(local);
 
     return this.countToday(local.pomodoros);
   }
 
   async stats(since) {
-    let { pomodoros } = await this.storage.get();
+    let { pomodoros } = await this.storage.get('pomodoros');
 
     let dayCount = 0;
     if (pomodoros.length > 0) {
@@ -56,7 +66,7 @@ class History
 
   async countToday(pomodoros = null) {
     if (!pomodoros) {
-      var { pomodoros } = await this.storage.get();
+      var { pomodoros } = await this.storage.get('pomodoros');
       if (pomodoros.length === 0) {
         return 0;
       }
@@ -138,6 +148,8 @@ class HistorySchema
   get default() {
     return {
       pomodoros: [],
+      durations: [],
+      timezones: [],
       version: this.version
     };
   }

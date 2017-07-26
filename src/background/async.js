@@ -62,9 +62,9 @@ class AsyncStorage
     this.store = store;
   }
 
-  get() {
+  get(keys = null) {
     return new Promise((resolve, reject) => {
-      this.store.get(result => resolve(result));
+      this.store.get(keys, result => resolve(result));
     });
   }
 

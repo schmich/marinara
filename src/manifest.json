@@ -27,6 +27,7 @@
       "background/sounds.js",
       "background/async.js",
       "background/settings.js",
+      "background/rle.js",
       "background/history.js",
       "background/messages.js",
       "background/background.js"

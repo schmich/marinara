@@ -169,7 +169,8 @@ class Controller
 
   createTimer(phase, nextPhase) {
     let options = this.timerOptions(phase, nextPhase, this.settings);
-    let timer = new Timer(options.duration * 60, 60);
+    let duration = Math.floor(options.duration * 60);
+    let timer = new Timer(duration, 60);
 
     timer.observe(new BadgeObserver(options.phase, options.badgeColor));
 
@@ -177,7 +178,7 @@ class Controller
 
     timer.once('expire', async () => {
       if (phase === Phase.Focus) {
-        var pomodorosToday = await this.history.addPomodoro();
+        var pomodorosToday = await this.history.addPomodoro(duration);
       } else {
         var pomodorosToday = await this.history.countToday();
       }
