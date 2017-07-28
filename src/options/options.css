@@ -185,13 +185,14 @@ fieldset {
 .stats .stat .value {
   color: #a00;
   font-size: 30px;
+  margin-bottom: 5px;
 }
 .stats .stat .bucket {
   color: #333;
   font-size: 17px;
 }
 .stats .stat .average {
-  color: #777;
+  color: #555;
   font-size: 14px;
   margin-top: 5px;
 }

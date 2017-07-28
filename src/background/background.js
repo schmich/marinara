@@ -235,6 +235,9 @@ class Controller
   timerOptions(phase, nextPhase, settings) {
     let pomodoros = this.timer.longBreakPomodoros;
     let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomodoro${pomodoros === 1 ? '' : 's'} until long break`;
+    let notificationMessages = count => {
+      return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
+    };
 
     switch (phase) {
     case Phase.Focus:
@@ -243,9 +246,6 @@ class Controller
       let lengthTitle = length.replace(/^./, c => c.toUpperCase());
       let brk = hasLong ? `${length} break` : 'break';
       var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
-      var notificationMessages = count => {
-        return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
-      };
       return {
         phase: 'Focus',
         duration: settings.focus.duration,
@@ -268,9 +268,6 @@ class Controller
     case Phase.LongBreak:
       var length = (phase === Phase.ShortBreak) ? 'Short' : 'Long';
       let breakSettings = (phase === Phase.ShortBreak) ? settings.shortBreak : settings.longBreak;
-      var notificationMessages = count => {
-        return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
-      };
       return {
         phase: `${length} Break`,
         duration: breakSettings.duration,
