@@ -198,6 +198,11 @@ function createHeatmap(data, start, el) {
   for (let i = 0; cursor < end; ++i) {
     let month = cursor.getMonth();
     if (active !== month) {
+      // Avoid label overlaps.
+      if (i === 1) {
+        months.shift();
+      }
+
       active = month;
       months.push([i, new Date(cursor)]);
     }

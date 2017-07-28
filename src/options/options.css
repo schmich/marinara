@@ -224,6 +224,9 @@ fieldset {
   opacity: 0.9 !important;
   padding: 10px 17px;
 }
+#settings-page {
+  font-size: 13px;
+}
 #history-page {
   justify-content: space-between;
 }
