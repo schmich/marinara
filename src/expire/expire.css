@@ -17,7 +17,7 @@ body {
   text-align: center;
 }
 .dialog h1 {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   font-weight: normal;
   font-size: 28px;
 }
@@ -29,20 +29,20 @@ body {
 #pomodoro-label {
   color: #555;
   margin-top: 70px;
-  font-size: 16px;
+  font-size: 18px;
 }
 #pomodoros {
   font-family: Arial, sans-serif;
   font-size: 14px;
   margin-top: 7px;
   letter-spacing: 1px;
-  color: #c00;
+  color: #e22;
 }
 #pomodoros img {
   max-height: 25px;
 }
 .button {
-  margin: 20px 0 0 0;
+  margin: 0;
   font-size: 20px;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -63,8 +63,7 @@ body {
   background: -webkit-linear-gradient(top, rgba(0,174,255,1) 0%, rgba(0,174,255,1) 92%, rgba(0,144,234,1) 100%);
   color: #fff;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.1s linear;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 5px -10px rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: relative;
 }
@@ -73,9 +72,6 @@ body {
   color: #fff;
 }
 .button.focus {
-  background: #ed510f;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed510f), color-stop(95%,#b51a00), color-stop(100%,#b51a00)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #ed510f 0%,#b51a00 95%,#b51a00 100%); /* Chrome10+,Safari5.1+ */
   background: #e22;
   color: #fff;
 }
@@ -92,6 +88,9 @@ body {
 .button:not(.focus):not(.short-break):not(.long-break) {
   display: none;
 }
+#start-session {
+  margin-top: 10px;
+}
 .footer {
   position: fixed;
   margin: 5px 10px;
@@ -100,14 +99,17 @@ body {
   align-items: center;
 }
 .footer img {
-  max-height: 50px;
+  max-height: 60px;
 }
 .footer .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 10px;
 }
 .footer .title {
   font-size: 15px;
-  color: #b00;
+  color: #c00;
   font-weight: bold;
   text-transform: uppercase;
   margin-right: 15px;
@@ -118,11 +120,16 @@ body {
   cursor: pointer;
   background: transparent;
   color: #333;
-  padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
-  display: inline-block;
+  padding: 5px 0 0 0;
   border: 0;
+}
+#settings {
+  padding-right: 5px;
+}
+#history {
+  padding-left: 5px;
 }
 .actions button:hover {
   color: #b00;

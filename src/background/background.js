@@ -234,7 +234,7 @@ class Controller
 
   timerOptions(phase, nextPhase, settings) {
     let pomodoros = this.timer.longBreakPomodoros;
-    let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomodoro${pomodoros === 1 ? '' : 's'} left until long break`;
+    let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomodoro${pomodoros === 1 ? '' : 's'} until long break`;
 
     switch (phase) {
     case Phase.Focus:
