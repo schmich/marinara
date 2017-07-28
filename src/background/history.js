@@ -9,6 +9,29 @@ class History
   }
 
   async import(history) {
+    if (!history.pomodoros) {
+      throw new Error('Missing Pomodoro data.');
+    }
+
+    if (!history.durations) {
+      throw new Error('Missing duration data.');
+    }
+
+    if (!history.timezones) {
+      throw new Error('Missing timezone data.');
+    }
+
+    let durations = Rle.decode(history.durations);
+    let timezones = Rle.decode(history.timezones);
+
+    if (history.pomodoros.length !== durations.length) {
+      throw new Error('Mismatched Pomodoro/duration data.');
+    }
+
+    if (history.pomodoros.length !== timezones.length) {
+      throw new Error('Mismatched Pomodoro/timezone data.');
+    }
+
     await this.storage.set(history);
   }
 
