@@ -21,16 +21,27 @@ class History
       --i;
     }
 
-    let durations = Rle.decode(local.durations);
-    let timezones = Rle.decode(local.timezones);
     let timezone = (new Date()).getTimezoneOffset();
 
-    durations.splice(i + 1, 0, duration);
-    timezones.splice(i + 1, 0, timezone);
-    local.pomodoros.splice(i + 1, 0, timestamp);
+    if (i >= local.pomodoros.length - 1) {
+      // Timestamps *should* be monotonically increasing, so we should
+      // always be able to quickly append new values.
+      Rle.append(local.durations, duration);
+      Rle.append(local.timezones, timezone);
+      local.pomodoros.push(timestamp);
+    } else {
+      // If there is a timestamp inversion for some reason, insert values
+      // at the correct sorted position.
+      let durations = Rle.decode(local.durations);
+      durations.splice(i + 1, 0, duration);
+      local.durations = Rle.encode(durations);
 
-    local.durations = Rle.encode(durations);
-    local.timezones = Rle.encode(timezones);
+      let timezones = Rle.decode(local.timezones);
+      timezones.splice(i + 1, 0, timezone);
+      local.timezones = Rle.encode(timezones);
+
+      local.pomodoros.splice(i + 1, 0, timestamp);
+    }
 
     await this.storage.set(local);
 

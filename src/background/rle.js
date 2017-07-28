@@ -30,4 +30,14 @@ class Rle
 
     return result;
   }
+
+  static append(arr, el) {
+    if (arr.length > 0 && el === arr[arr.length - 1]) {
+      arr[arr.length - 2]++;
+    } else {
+      arr.push(1, el);
+    }
+
+    return arr;
+  }
 }
