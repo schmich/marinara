@@ -38,13 +38,15 @@ class History
   async addPomodoro(duration, when = null) {
     let local = await this.storage.get();
 
-    let timestamp = History.timestamp(when || new Date());
+    when = when || new Date();
+    let timestamp = History.timestamp(when);
+
     let i = local.pomodoros.length - 1;
     while (i >= 0 && local.pomodoros[i] > timestamp) {
       --i;
     }
 
-    let timezone = (new Date()).getTimezoneOffset();
+    let timezone = when.getTimezoneOffset();
 
     if (i >= local.pomodoros.length - 1) {
       // Timestamps *should* be monotonically increasing, so we should
