@@ -4,8 +4,9 @@ Marinara is a [time management extension for Chrome](https://chrome.google.com/w
 
 ## Features
 
-- Support for focusing, short breaks, and long breaks
-- Toolbar icon with visible countdown timer
+- Support for short & long breaks
+- Toolbar icon with countdown timer
+- Track Pomodoro history & stats
 - Configurable long break intervals
 - Configurable timer durations
 - Desktop notifications
