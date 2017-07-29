@@ -15,9 +15,11 @@ Marinara is a [time management extension for Chrome](https://chrome.google.com/w
 ## Screenshots
 
 ![](assets/screenshots/focus.png)
+![](assets/screenshots/stats-1.png)
+![](assets/screenshots/stats-2.png)
 ![](assets/screenshots/settings.png)
-![](assets/screenshots/notification.png)
 ![](assets/screenshots/menu.png)
+![](assets/screenshots/notification.png)
 ![](assets/screenshots/break.png)
 
 ## License
