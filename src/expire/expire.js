@@ -23,9 +23,6 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   p.innerHTML = message;
   messages.appendChild(p);
 
-  let pomodoroLabel = document.getElementById('pomodoro-label');
-  pomodoroLabel.innerText = `${pomodoroCount(request.pomodoros)} completed today`;
-
   let pomodoros = document.getElementById('pomodoros');
   for (let i = 0; i < request.pomodoros; ++i) {
     pomodoros.innerHTML += '&#x2B24; '

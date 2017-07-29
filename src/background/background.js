@@ -272,7 +272,7 @@ class Controller
         phase: `${length} Break`,
         duration: breakSettings.duration,
         sound: breakSettings.notifications.sound,
-        badgeColor: '#3388ff',
+        badgeColor: '#11aa11',
         notification: !breakSettings.notifications.desktop ? null : {
           title: `Start Focusing`,
           messages: notificationMessages,

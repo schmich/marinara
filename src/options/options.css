@@ -209,16 +209,16 @@ fieldset {
   fill: #777;
 }
 #heatmap .color0 {
-  fill: #cce3ff;
+  fill: #c6e48b;
 }
 #heatmap .color1 {
-  fill: #99c8ff;
+  fill: #7bc96f;
 }
 #heatmap .color2 {
-  fill: #4c9fff;
+  fill: #239a3b;
 }
 #heatmap .color3 {
-  fill: #005fcc;
+  fill: #196127;
 }
 .tippy-tooltip {
   opacity: 0.9 !important;
@@ -254,7 +254,7 @@ fieldset {
   text-decoration: none;
 }
 .distribution rect {
-  fill: #49f;
+  fill: #2b2;
   outline: 0 !important;
 }
 .distribution .domain {
