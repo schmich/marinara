@@ -76,18 +76,21 @@ body {
 #start-session {
   margin-top: 10px;
 }
-.pomodoros {
+.pomodoros-today {
   margin-top: 110px;
   line-height: 100%;
 }
-.pomodoro {
+#pomodoros {
   font-family: Arial, sans-serif;
-  font-size: smaller;
+  font-size: 18px;
   margin-top: 7px;
   letter-spacing: 1px;
   color: #e22 !important;
   position: relative;
   top: -2px;
+}
+#pomodoros:empty + p {
+  display: none;
 }
 .footer {
   display: flex;
