@@ -234,9 +234,10 @@ class Controller
 
   timerOptions(phase, nextPhase, settings) {
     let pomodoros = this.timer.longBreakPomodoros;
-    let pomodorosLeft = pomodoros === 0 ? '' : `${pomodoros} Pomodoro${pomodoros === 1 ? '' : 's'} until long break`;
+    let pomodorosLeft = pomodoros === 0 ? '' : `${this.pomodoroCount(pomodoros)} until long break`;
     let notificationMessages = count => {
-      return [pomodorosLeft, `${count} Pomodoro${count === 1 ? '' : 's'} completed today`];
+      let pomodorosToday = count === 0 ? '' : `${this.pomodoroCount(count)} completed today`;
+      return [pomodorosLeft, pomodorosToday];
     };
 
     switch (phase) {
@@ -285,6 +286,16 @@ class Controller
           phase: 'focus'
         }
       };
+    }
+  }
+
+  pomodoroCount(count) {
+    if (count === 0) {
+      return 'No Pomodoros';
+    } else if (count === 1) {
+      return '1 Pomodoro';
+    } else {
+      return `${count.toLocaleString()} Pomodoros`;
     }
   }
 }

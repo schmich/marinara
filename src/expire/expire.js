@@ -1,13 +1,3 @@
-function pomodoroCount(count) {
-  if (count === 0) {
-    return 'No Pomodoros';
-  } else if (count === 1) {
-    return '1 Pomodoro';
-  } else {
-    return `${count.toLocaleString()} Pomodoros`;
-  }
-}
-
 chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond) {
   chrome.runtime.onMessage.removeListener(onMessage);
 
