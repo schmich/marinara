@@ -128,7 +128,6 @@ function importHistory() {
   let input = document.createElement('input');
   input.type = 'file';
   input.accept = '.json';
-  input.click();
   input.onchange = e => {
     let file = e.target.files[0];
     let reader = new FileReader();
@@ -154,6 +153,7 @@ function importHistory() {
     };
     reader.readAsText(file);
   };
+  input.click();
 }
 
 async function loadHistory(reload = false) {
