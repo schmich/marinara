@@ -1,9 +1,18 @@
-// Support for focus/navigation from an external source.
+// Support for focus/navigation from an external source (e.g. background script).
 async function focus(hash) {
   let tab = await AsyncChrome.tabs.getCurrent();
   await AsyncChrome.tabs.update(tab.id, { active: true, highlighted: true });
   await AsyncChrome.windows.update(tab.windowId, { focused: true });
   window.location.hash = hash;
+}
+
+function isEmpty(obj) {
+  for (let prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function appendSounds(elem, sounds, selected) {
@@ -156,6 +165,8 @@ async function loadHistory(reload = false) {
 
   let now = new Date();
   let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  // Start at the first Sunday at least 39 weeks (~9 months) ago.
   start.setDate(start.getDate() - 273);
   start.setDate(start.getDate() - start.getDay());
 
@@ -181,11 +192,22 @@ async function loadHistory(reload = false) {
   let month = document.getElementById('bucket-month');
   month.innerText = d3.timeFormat('In %B')(now);
 
-  createHeatmap(stats.daily, start, '#heatmap');
+  let daySection = document.getElementById('day-distribution-section');
+  let weekSection = document.getElementById('week-distribution-section');
+  let heatmapSection = document.getElementById('heatmap-section');
+
+  let verb = (stats.pomodoros.length === 0) ? 'add' : 'remove';
+  [daySection, weekSection].forEach(s => s.classList[verb]('empty'));
+
   createWeekDistribution('#week-distribution', stats.pomodoros);
   createOptionGroup('.day-distribution', bucket =>
     createDayDistribution('#day-distribution', bucket, stats.pomodoros)
   );
+
+  verb = isEmpty(stats.daily) ? 'add' : 'remove';
+  heatmapSection.classList[verb]('empty');
+
+  createHeatmap(stats.daily, start, '#heatmap');
 }
 
 function createOptionGroup(selector, callback) {

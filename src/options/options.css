@@ -293,3 +293,18 @@ fieldset {
   display: inline;
   font-weight: normal;
 }
+.chart.empty .chart-content {
+  display: none;
+}
+.chart .empty-content {
+  display: none;
+}
+.chart.empty .empty-content {
+  display: flex;
+  justify-content: center;
+  padding: 50px 100px;
+  font-size: 15px;
+  background: #eee;
+  color: #333;
+  border-radius: 5px;
+}

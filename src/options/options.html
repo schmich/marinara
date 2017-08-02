@@ -171,29 +171,38 @@
             <div class="bucket">Total</div>
           </div>
         </div>
-        <section>
+        <section id="day-distribution-section" class="chart">
           <div class="title">
             <h2>Daily Distribution</h2>
-            <div class="options">
+            <div class="options chart-content">
               <button class="day-distribution" data-value="15" title="Group Pomodoros into 15 minute buckets">15 Min</button>
               <button class="day-distribution active" data-value="30" title="Group Pomodoros into 30 minute buckets">30 Min</button>
               <button class="day-distribution" data-value="60" title="Group Pomodoros into 1 hour buckets">1 Hr</button>
               <button class="day-distribution" data-value="120" title="Group Pomodoros into 2 hour buckets">2 Hr</button>
             </div>
           </div>
-          <div id="day-distribution"></div>
+          <div id="day-distribution" class="chart-content"></div>
+          <div class="empty-content">
+            Finish a Pomodoro to see your daily stats
+          </div>
         </section>
-        <section>
+        <section id="week-distribution-section" class="chart">
           <div class="title">
             <h2>Weekly Distribution</h2>
           </div>
-          <div id="week-distribution"></div>
+          <div id="week-distribution" class="chart-content"></div>
+          <div class="empty-content">
+            Finish a Pomodoro to see your weekly stats
+          </div>
         </section>
-        <section>
+        <section id="heatmap-section" class="chart">
           <div class="title">
             <h2><span id="stat-period"></span> in the Last 9 Months</h2>
           </div>
-          <div id="heatmap"></div>
+          <div id="heatmap" class="chart-content"></div>
+          <div class="empty-content">
+            Finish a Pomodoro to see your history
+          </div>
         </section>
         <div class="actions">
           <button id="import-history">Import History</button>
