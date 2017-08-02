@@ -129,8 +129,11 @@ class History
     let date = History.today;
     while (date >= start) {
       let countSince = this.countSince(pomodoros, date);
-      daily[+date] = countSince - base;
-      base = countSince;
+      let count = countSince - base;
+      if (count > 0) {
+        daily[+date] = count;
+        base = countSince;
+      }
       date.setDate(date.getDate() - 1);
     }
 
