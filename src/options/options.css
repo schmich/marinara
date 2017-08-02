@@ -27,10 +27,6 @@ input[type="checkbox"] {
   top: -1px;
   margin: 5px 0;
 }
-p {
-  display: inline-block;
-  margin: 0;
-}
 input.duration {
   width: 50px;
 }
@@ -113,7 +109,7 @@ fieldset {
 }
 .feedback .title {
   text-align: center;
-  margin: 10px 0 60px 0;
+  margin: 10px 0 50px 0;
 }
 .feedback .title p {
   margin-top: 10px;
@@ -137,6 +133,11 @@ fieldset {
 .feedback a:hover {
   color: #a00;
 }
+.feedback .inspiration {
+  text-align: center;
+  line-height: 150%;
+  margin: 40px 0;
+}
 .feedback .links {
   margin: 0;
   padding: 0;
@@ -154,6 +155,8 @@ fieldset {
   text-transform: uppercase;
   position: relative;
   top: 1px;
+  display: inline-block;
+  margin: 0;
 }
 .feedback .links a {
   color: #444;
