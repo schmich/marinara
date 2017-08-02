@@ -33,10 +33,10 @@ class BadgeObserver
     var text, tooltip;
 
     if (minutes != null) {
-      text = ((minutes == 0) ? '<1' : minutes)  + 'm';
-      tooltip = this.title + ': ' + minutes + 'm remaining.';
+      text = (+minutes || '<1') + 'm';
+      tooltip = `${this.title}: ${text} Remaining`;
     } else {
-      tooltip = this.title + ': ' + tooltip;
+      tooltip = `${this.title}: ${tooltip}`;
     }
 
     chrome.browserAction.setTitle({ title: tooltip });
