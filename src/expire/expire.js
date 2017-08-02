@@ -26,14 +26,8 @@ async function load() {
   let start = document.getElementById('start-session');
   start.onclick = () => BackgroundClient.startSession();
 
-  let settings = document.getElementById('settings');
-  settings.onclick = () => {
-    BackgroundClient.showSettings();
-    return false;
-  };
-
-  let history = document.getElementById('history');
-  history.onclick = () => {
+  let stats = document.getElementById('view-stats');
+  stats.onclick = () => {
     BackgroundClient.showHistory();
     return false;
   };
