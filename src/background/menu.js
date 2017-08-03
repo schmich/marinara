@@ -3,22 +3,20 @@ class Menu
   constructor(contexts, ...groups) {
     this.contexts = contexts;
     this.groups = groups;
-    this.refresh();
   }
 
   addGroup(group) {
     this.groups.push(group);
-    this.refresh();
   }
 
-  refresh() {
+  apply() {
     chrome.contextMenus.removeAll();
 
     let firstGroup = true;
     for (let group of this.groups) {
       let firstItem = true;
       for (let item of group.items) {
-        if (!item.visible()) {
+        if (!item.visible) {
           continue;
         }
 
@@ -31,17 +29,17 @@ class Menu
 
         if (item instanceof ParentMenu) {
           let id = chrome.contextMenus.create({
-            title: item.title(),
+            title: item.title,
             contexts: this.contexts
           });
 
           for (let child of item.children) {
-            if (!child.visible()) {
+            if (!child.visible) {
               continue;
             }
 
             chrome.contextMenus.create({
-              title: child.title(),
+              title: child.title,
               contexts: this.contexts,
               onclick: () => child.run(),
               parentId: id
@@ -49,7 +47,7 @@ class Menu
           }
         } else {
           chrome.contextMenus.create({
-            title: item.title(),
+            title: item.title,
             contexts: this.contexts,
             onclick: () => item.run()
           });
@@ -80,37 +78,37 @@ class ParentMenu
     this.children.push(child);
   }
 
-  title() {
+  get title() {
     return '';
   }
 
-  visible() {
+  get visible() {
     return false;
   }
 }
 
-class StartTimerParentMenu extends ParentMenu
+class RestartTimerParentMenu extends ParentMenu
 {
   constructor(...children) {
-    super(...children)
+    super(...children);
   }
 
-  title() {
-    return 'Start Timer';
+  get title() {
+    return 'Restart Timer';
   }
 
-  visible() {
+  get visible() {
     return true;
   }
 }
 
-class MenuItem
+class Action
 {
-  title() {
+  get title() {
     return '';
   }
 
-  visible() {
+  get visible() {
     return false;
   }
 
@@ -118,18 +116,18 @@ class MenuItem
   }
 }
 
-class StartFocusingMenuItem extends MenuItem
+class StartFocusingAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Start Focusing';
   }
 
-  visible() {
+  get visible() {
     return true;
   }
 
@@ -138,19 +136,19 @@ class StartFocusingMenuItem extends MenuItem
   }
 }
 
-class StartShortBreakMenuItem extends MenuItem
+class StartShortBreakAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     let hasLong = this.controller.settings.longBreak.interval > 0;
     return hasLong ? 'Start Short Break' : 'Start Break';
   }
 
-  visible() {
+  get visible() {
     return true;
   }
 
@@ -159,18 +157,18 @@ class StartShortBreakMenuItem extends MenuItem
   }
 }
 
-class StartLongBreakMenuItem extends MenuItem
+class StartLongBreakAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Start Long Break';
   }
 
-  visible() {
+  get visible() {
     return this.controller.settings.longBreak.interval > 0;
   }
 
@@ -179,18 +177,18 @@ class StartLongBreakMenuItem extends MenuItem
   }
 }
 
-class StopTimerMenuItem extends MenuItem
+class StopTimerAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Stop Timer';
   }
 
-  visible() {
+  get visible() {
     let state = this.controller.state;
     return (state === TimerState.Running) || (state === TimerState.Paused);
   }
@@ -200,18 +198,18 @@ class StopTimerMenuItem extends MenuItem
   }
 }
 
-class PauseTimerMenuItem extends MenuItem
+class PauseTimerAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Pause Timer';
   }
 
-  visible() {
+  get visible() {
     return this.controller.state === TimerState.Running;
   }
 
@@ -220,18 +218,18 @@ class PauseTimerMenuItem extends MenuItem
   }
 }
 
-class ResumeTimerMenuItem extends MenuItem
+class ResumeTimerAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Resume Timer';
   }
 
-  visible() {
+  get visible() {
     return this.controller.state === TimerState.Paused;
   }
 
@@ -240,18 +238,18 @@ class ResumeTimerMenuItem extends MenuItem
   }
 }
 
-class PomodoroHistoryMenuItem extends MenuItem
+class PomodoroHistoryAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
+  get title() {
     return 'Pomodoro History';
   }
 
-  visible() {
+  get visible() {
     return true;
   }
 
@@ -260,22 +258,42 @@ class PomodoroHistoryMenuItem extends MenuItem
   }
 }
 
-class StartPomodoroCycleMenuItem extends MenuItem
+class StartPomodoroCycleAction extends Action
 {
   constructor(controller) {
     super();
     this.controller = controller;
   }
 
-  title() {
-    return 'Start Pomodoro Cycle';
+  get title() {
+    const state = this.controller.state;
+    if (state === TimerState.Running || state === TimerState.Paused) {
+      return 'Restart Pomodoro Cycle';
+    } else {
+      return 'Start Pomodoro Cycle';
+    }
   }
 
-  visible() {
+  get visible() {
     return this.controller.settings.longBreak.interval > 0;
   }
 
   run() {
     this.controller.startCycle();
+  }
+}
+
+class PomodoroMenuSelector
+{
+  constructor(controller, inactive, active) {
+    this.controller = controller;
+    this.inactive = inactive;
+    this.active = active;
+  }
+
+  apply() {
+    let state = this.controller.state;
+    let menu = (state === TimerState.Running || state === TimerState.Paused) ? this.active : this.inactive;
+    menu.apply();
   }
 }

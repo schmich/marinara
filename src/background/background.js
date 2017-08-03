@@ -60,7 +60,7 @@ class Controller
       this._settings = settings;
       let phase = this.timer ? this.timer.phase : Phase.Focus;
       this.loadTimer(settings, phase);
-      this.menu.refresh();
+      this.menu.apply();
     });
 
     this.expiration = null;
@@ -70,23 +70,8 @@ class Controller
   async run() {
     this._settings = await this.settingsManager.get();
     this.loadTimer(this._settings, Phase.Focus);
-
-    this.menu = new Menu(['browser_action'],
-      new MenuGroup(
-        new PauseTimerMenuItem(this),
-        new ResumeTimerMenuItem(this),
-        new StopTimerMenuItem(this)
-      ),
-      new MenuGroup(
-        new StartPomodoroCycleMenuItem(this),
-        new StartTimerParentMenu(
-          new StartFocusingMenuItem(this),
-          new StartShortBreakMenuItem(this),
-          new StartLongBreakMenuItem(this)
-        ),
-        new PomodoroHistoryMenuItem(this)
-      )
-    );
+    this.menu = this.createMenu();
+    this.menu.apply();
 
     chrome.browserAction.onClicked.addListener(() => {
       if (this.timer.isRunning) {
@@ -158,6 +143,50 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
+  createMenu() {
+    let pause = new PauseTimerAction(this);
+    let resume = new ResumeTimerAction(this);
+    let stop = new StopTimerAction(this);
+
+    let startCycle = new StartPomodoroCycleAction(this);
+    let startFocus = new StartFocusingAction(this);
+    let startShortBreak = new StartShortBreakAction(this);
+    let startLongBreak = new StartLongBreakAction(this);
+
+    let viewHistory = new PomodoroHistoryAction(this);
+
+    let inactive = new Menu(['browser_action'],
+      new MenuGroup(
+        startCycle,
+        startFocus,
+        startShortBreak,
+        startLongBreak
+      ),
+      new MenuGroup(
+        viewHistory
+      )
+    );
+
+    let active = new Menu(['browser_action'],
+      new MenuGroup(
+        pause,
+        resume,
+        stop,
+        new RestartTimerParentMenu(
+          startFocus,
+          startShortBreak,
+          startLongBreak
+        ),
+        startCycle
+      ),
+      new MenuGroup(
+        viewHistory
+      )
+    );
+
+    return new PomodoroMenuSelector(controller, inactive, active);
+  }
+
   loadTimer(settings, startPhase) {
     if (this.timer) {
       this.timer.dispose();
@@ -174,7 +203,7 @@ class Controller
 
     timer.observe(new BadgeObserver(options.phase, options.badgeColor));
 
-    timer.on('change', () => this.menu.refresh());
+    timer.on('change', () => this.menu.apply());
 
     timer.once('expire', async () => {
       if (phase === Phase.Focus) {
