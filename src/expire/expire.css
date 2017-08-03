@@ -80,7 +80,7 @@ body {
   margin-top: 110px;
   line-height: 100%;
 }
-#view-stats {
+#view-history {
   cursor: pointer;
   font-size: 15px;
   background: #fff;
@@ -91,7 +91,7 @@ body {
   margin: 5px 0 0 0;
   outline: 0 !important;
 }
-#view-stats:hover {
+#view-history:hover {
   color: #a00;
   border: 1px solid #a00;
   text-decoration: none;
