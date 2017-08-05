@@ -105,6 +105,6 @@ body {
   position: relative;
   top: -2px;
 }
-#pomodoros:empty + p {
+#pomodoros:empty ~ * {
   display: none;
 }
