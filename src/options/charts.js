@@ -8,6 +8,18 @@ function pomodoroCount(count) {
   }
 }
 
+function currentLocale() {
+  if (!this.locale) {
+    const nav = window.navigator;
+    this.locale = (nav.languages ? nav.languages[0] : null)
+        || nav.userLanguage
+        || nav.language
+        || 'en-US';
+  }
+
+  return this.locale;
+}
+
 function createWeekDistribution(el, data) {
   let buckets = {};
   for (let date of data) {
@@ -112,8 +124,12 @@ function createDayDistribution(el, bucketSize, data) {
     .attr('height', height)
     .attr('class', 'distribution');
 
-  let hourFormat = h => {
-    return [h % 12 || 12, (h % 24) < 12 ? 'a' : 'p'];
+  let timeFormat = (h, m) => {
+    let options = { hour: 'numeric', minute: (m != null) ? 'numeric' : undefined };
+    let formatted = new Date(0, 0, 0, h, m || 0).toLocaleString(currentLocale(), options);
+    return formatted.replace(/\s+(am|pm)/i, function (_, indicator) {
+      return indicator[0].toLowerCase();
+    });
   };
  
   let xScale = d3.scaleLinear().domain([0, bucketCount]).range([0, width]);
@@ -122,8 +138,7 @@ function createDayDistribution(el, bucketSize, data) {
   let xAxis = d3.axisBottom(xScale)
     .tickSize(5)
     .tickFormat(t => {
-      let [hr, ap] = hourFormat(t / bucketsPerHour);
-      return `${hr}${ap}`;
+      return timeFormat(t / bucketsPerHour);
     })
     .tickValues(d3.range(0, bucketCount + 1, bucketsPerHour));
 
@@ -144,8 +159,7 @@ function createDayDistribution(el, bucketSize, data) {
   let timeLabel = bucket => {
     let hour = Math.floor(bucket / bucketsPerHour);
     let min = (bucket % bucketsPerHour) * bucketSize;
-    let [hr, ap] = hourFormat(hour);
-    return `${hr}:${min || '00'}${ap}`;
+    return timeFormat(hour, min);
   };
 
   svg.append('g')
