@@ -25,5 +25,7 @@ Marinara is a [time management assistant for Chrome](https://chrome.google.com/w
 
 ## License
 
+Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.
+
 Copyright &copy; 2015 Chris Schmich  
 MIT License. See [LICENSE](LICENSE) for details.
