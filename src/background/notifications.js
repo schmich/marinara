@@ -94,7 +94,15 @@ class SingletonPage
 
   focus() {
     const focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
-    const focusTab = id => chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
+    const focusTab = id => {
+      try {
+        chrome.tabs.update(id, { active: true, highlighted: true }, focusWindow);
+      } catch (e) {
+        // Firefox doesn't currently allow setting highlighted for chrome.tabs.update()
+        // TODO: File a FF bug for this
+        chrome.tabs.update(id, { active: true }, focusWindow);
+      }
+    };
     focusTab(this._tabId);
   }
 
