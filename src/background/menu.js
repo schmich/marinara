@@ -94,7 +94,7 @@ class RestartTimerParentMenu extends ParentMenu
   }
 
   get title() {
-    return 'Restart Timer';
+    return L('restart_timer');
   }
 
   get visible() {
@@ -124,7 +124,7 @@ class StartFocusingAction extends Action
   }
 
   get title() {
-    return 'Start Focusing';
+    return L('start_focusing');
   }
 
   get visible() {
@@ -145,7 +145,7 @@ class StartShortBreakAction extends Action
 
   get title() {
     let hasLong = this.controller.settings.longBreak.interval > 0;
-    return hasLong ? 'Start Short Break' : 'Start Break';
+    return hasLong ? L('start_short_break') : L('start_break');
   }
 
   get visible() {
@@ -165,7 +165,7 @@ class StartLongBreakAction extends Action
   }
 
   get title() {
-    return 'Start Long Break';
+    return L('start_long_break');
   }
 
   get visible() {
@@ -185,7 +185,7 @@ class StopTimerAction extends Action
   }
 
   get title() {
-    return 'Stop Timer';
+    return L('stop_timer');
   }
 
   get visible() {
@@ -206,7 +206,7 @@ class PauseTimerAction extends Action
   }
 
   get title() {
-    return 'Pause Timer';
+    return L('pause_timer');
   }
 
   get visible() {
@@ -226,7 +226,7 @@ class ResumeTimerAction extends Action
   }
 
   get title() {
-    return 'Resume Timer';
+    return L('resume_timer');
   }
 
   get visible() {
@@ -246,7 +246,7 @@ class PomodoroHistoryAction extends Action
   }
 
   get title() {
-    return 'Pomodoro History';
+    return L('pomodoro_history');
   }
 
   get visible() {
@@ -268,9 +268,9 @@ class StartPomodoroCycleAction extends Action
   get title() {
     const state = this.controller.state;
     if (state === TimerState.Running || state === TimerState.Paused) {
-      return 'Restart Pomodoro Cycle';
+      return L('restart_pomodoro_cycle');
     } else {
-      return 'Start Pomodoro Cycle';
+      return L('start_pomodoro_cycle');
     }
   }
 

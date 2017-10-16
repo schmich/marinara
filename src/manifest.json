@@ -1,7 +1,7 @@
 {
-  "name": "__MSG_appName__",
-  "short_name": "__MSG_appNameShort__",
-  "description": "__MSG_appDesc__",
+  "name": "__MSG_app_name__",
+  "short_name": "__MSG_app_name_short__",
+  "description": "__MSG_app_desc__",
   "default_locale": "en",
   "version": "2.1.1",
   "manifest_version": 2,
@@ -21,6 +21,7 @@
     "persistent": true,
     "scripts": [
       "lib/EventEmitter.min.js",
+      "background/L.js",
       "background/enum.js",
       "background/notifications.js",
       "background/menu.js",
