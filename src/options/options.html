@@ -33,31 +33,31 @@
       <div class="tab-page" id="settings-page">
         <form id="settings">
           <div class="section">
-            <h2>Focus</h2>
+            <h2 data-t="focus"></h2>
             <div class="field">
               <label>
-                <span data-t="duration_label"></span>
+                <span data-t="duration"></span>
                 <input type="text" class="duration" id="focus-duration" autofocus> <span data-t="minutes"></span>
               </label>
             </div>
             <div class="complete">
-              <p data-t="when_complete_label"></p>
+              <p data-t="when_complete"></p>
               <div class="field">
                 <label>
                   <input type="checkbox" id="focus-desktop-notification">
-                  Show desktop notification
+                  <span data-t="show_desktop_notification"></span>
                 </label>
               </div>
               <div class="field">
                 <label>
                   <input type="checkbox" id="focus-new-tab-notification">
-                  Show new tab notification
+                  <span data-t="show_new_tab_notification"></span>
                 </label>
               </div>
               <div class="field">
                 <label>
                   <input type="checkbox" id="focus-audio-notification">
-                  Play audio notification:
+                  <span data-t="play_audio_notification"></span>
                   <select id="focus-sounds">
                   </select>
                 </label>
@@ -65,31 +65,31 @@
             </div>
           </div>
           <div class="section">
-            <h2>Short Break</h2>
+            <h2 data-t="short_break"></h2>
             <div class="field">
               <label>
-                Duration:
-                <input type="text" class="duration" id="short-break-duration"> minutes
+                <span data-t="duration"></span>
+                <input type="text" class="duration" id="short-break-duration"> <span data-t="minutes"></span>
               </label>
             </div>
             <div class="complete">
-              <p data-t="when_complete_label"></p>
+              <p data-t="when_complete"></p>
               <div class="field">
                 <label>
                   <input type="checkbox" id="short-break-desktop-notification">
-                  Show desktop notification
+                  <span data-t="show_desktop_notification"></span>
                 </label>
               </div>
               <div class="field">
                 <label>
                   <input type="checkbox" id="short-break-new-tab-notification">
-                  Show new tab notification
+                  <span data-t="show_new_tab_notification"></span>
                 </label>
               </div>
               <div class="field">
                 <label>
                   <input type="checkbox" id="short-break-audio-notification">
-                  Play audio notification:
+                  <span data-t="play_audio_notification"></span>
                   <select id="short-break-sounds">
                   </select>
                 </label>
@@ -97,49 +97,49 @@
             </div>
           </div>
           <div class="section">
-            <h2>Long Break</h2>
+            <h2 data-t="long_break"></h2>
             <div class="field">
               <label>
-                Take a long break
+                <span data-t="take_a_long_break"></span>
                 <select id="long-break-interval">
-                  <option value="0">never</option>
-                  <option value="2">every 2nd break (alternating)</option>
-                  <option value="3">every 3rd break</option>
-                  <option value="4">every 4th break</option>
-                  <option value="5">every 5th break</option>
-                  <option value="6">every 6th break</option>
-                  <option value="7">every 7th break</option>
-                  <option value="8">every 8th break</option>
-                  <option value="9">every 9th break</option>
-                  <option value="10">every 10th break</option>
+                  <option value="0" data-t="never"></option>
+                  <option value="2" data-t="every_2nd_break"></option>
+                  <option value="3" data-t="every_3rd_break"></option>
+                  <option value="4" data-t="every_4th_break"></option>
+                  <option value="5" data-t="every_5th_break"></option>
+                  <option value="6" data-t="every_6th_break"></option>
+                  <option value="7" data-t="every_7th_break"></option>
+                  <option value="8" data-t="every_8th_break"></option>
+                  <option value="9" data-t="every_9th_break"></option>
+                  <option value="10" data-t="every_10th_break"></option>
                 </select>
               </label>
             </div>
             <fieldset id="long-break">
               <div class="field">
                 <label>
-                  Duration:
-                  <input type="text" class="duration" id="long-break-duration"> minutes
+                  <span data-t="duration"></span>
+                  <input type="text" class="duration" id="long-break-duration"> <span data-t="minutes"></span>
                 </label>
               </div>
               <div class="complete">
-                <p data-t="when_complete_label"></p>
+                <p data-t="when_complete"></p>
                 <div class="field">
                   <label>
                     <input type="checkbox" id="long-break-desktop-notification">
-                    Show desktop notification
+                    <span data-t="show_desktop_notification"></span>
                   </label>
                 </div>
                 <div class="field">
                   <label>
                     <input type="checkbox" id="long-break-new-tab-notification">
-                    Show new tab notification
+                    <span data-t="show_new_tab_notification"></span>
                   </label>
                 </div>
                 <div class="field">
                   <label>
                     <input type="checkbox" id="long-break-audio-notification">
-                    Play audio notification:
+                    <span data-t="play_audio_notification"></span>
                     <select id="long-break-sounds">
                     </select>
                   </label>

@@ -93,7 +93,19 @@
     "message": "Feedback",
     "description": "Feedback tab. Shown on the settings page."
   },
-  "duration_label": {
+  "focus": {
+    "message": "Focus",
+    "description": "Focus section header. Shown on the settings page."
+  },
+  "short_break": {
+    "message": "Short Break",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break": {
+    "message": "Long Break",
+    "description": "Long Break section header. Shown on the settings page."
+  },
+  "duration": {
     "message": "Duration:",
     "description": "Timer duration label. Shown on the settings page."
   },
@@ -101,9 +113,69 @@
     "message": "minutes",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
-  "when_complete_label": {
+  "when_complete": {
     "message": "When complete:",
-    "description": "Section title for events to fire when timer completes. Shown on the settings page."
+    "description": "Section label for events to fire when timer completes. Shown on the settings page."
+  },
+  "show_desktop_notification": {
+    "message": "Show desktop notification",
+    "description": "Desktop notification option. Shown on the settings page."
+  },
+  "show_new_tab_notification": {
+    "message": "Show new tab notification",
+    "description": "New tab notification option. Shown on the settings page."
+  },
+  "play_audio_notification": {
+    "message": "Play audio notification:",
+    "description": "Audio notification label. Shown on the settings page."
+  },
+  "take_a_long_break": {
+    "message": "Take a long break",
+    "description": "Long break settings label. Shown on the settings page."
+  },
+  "never": {
+    "message": "never",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "never": {
+    "message": "never",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_2nd_break": {
+    "message": "every 2nd break (alternating)",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_3rd_break": {
+    "message": "every 3rd break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_4th_break": {
+    "message": "every 4th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_5th_break": {
+    "message": "every 5th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_6th_break": {
+    "message": "every 6th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_7th_break": {
+    "message": "every 7th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_8th_break": {
+    "message": "every 8th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_9th_break": {
+    "message": "every 9th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_10th_break": {
+    "message": "every 10th break",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
     "message": "Tone",
