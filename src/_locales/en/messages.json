@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Marinara: Pomodoro® Assistant",
+    "description": "The name of the application. Displayed in the web store."
+  },
+  "appNameShort": {
+    "message": "Marinara",
+    "description": "The short name of the application. Displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Pomodoro® time management assistant.",
+    "description":"The description of the application. Displayed in the web store."
+  }
+}
