@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Marinara</title>
+  <title data-t="app_name_short"></title>
   <link rel="stylesheet" type="text/css" href="tippy.css"/>
   <link rel="stylesheet" type="text/css" href="options.css"/>
+  <script src="../common/localize.js"></script>
   <script src="../background/messages.js"></script>
   <script src="../background/async.js"></script>
   <script src="d3.min.js"></script>
@@ -18,12 +19,12 @@
     <div class="inner">
       <div>
         <img src="../icons/48.png">
-        <h1>Marinara: Pomodoro Assistant</h1>
+        <h1 data-t="marinara_pomodoro_assistant"></h1>
       </div>
       <div class="tab-bar">
-        <a id="settings-tab" href="#settings">Settings</a>
-        <a id="history-tab" href="#history">History</a>
-        <a id="feedback-tab" href="#feedback">Feedback</a>
+        <a id="settings-tab" href="#settings" data-t="settings"></a>
+        <a id="history-tab" href="#history" data-t="history"></a>
+        <a id="feedback-tab" href="#feedback" data-t="feedback"></a>
       </div>
     </div>
   </div>
@@ -35,12 +36,12 @@
             <h2>Focus</h2>
             <div class="field">
               <label>
-                Duration:
-                <input type="text" class="duration" id="focus-duration" autofocus> minutes
+                <span data-t="duration_label"></span>
+                <input type="text" class="duration" id="focus-duration" autofocus> <span data-t="minutes"></span>
               </label>
             </div>
             <div class="complete">
-              <p>When complete:</p>
+              <p data-t="when_complete_label"></p>
               <div class="field">
                 <label>
                   <input type="checkbox" id="focus-desktop-notification">
@@ -72,7 +73,7 @@
               </label>
             </div>
             <div class="complete">
-              <p>When complete:</p>
+              <p data-t="when_complete_label"></p>
               <div class="field">
                 <label>
                   <input type="checkbox" id="short-break-desktop-notification">
@@ -122,7 +123,7 @@
                 </label>
               </div>
               <div class="complete">
-                <p>When complete:</p>
+                <p data-t="when_complete_label"></p>
                 <div class="field">
                   <label>
                     <input type="checkbox" id="long-break-desktop-notification">
