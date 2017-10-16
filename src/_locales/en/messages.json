@@ -55,6 +55,28 @@
     "message": "Pomodoro History",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
+  "timer_paused": {
+    "message": "Timer Paused",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "No Pomodoros",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "1 Pomodoro",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$ Pomodoros",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "tone": {
     "message": "Tone",
     "description": "Sound name. Shown in the audio notification dropdown in settings."

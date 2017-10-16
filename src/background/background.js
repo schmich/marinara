@@ -18,7 +18,7 @@ class BadgeObserver
   }
 
   pause() {
-    this.updateBadge({ text: '—', tooltip: 'Timer Paused' });
+    this.updateBadge({ text: '—', tooltip: L('timer_paused') });
   }
 
   resume(elapsed, remaining) {
@@ -321,11 +321,11 @@ class Controller
 
   pomodoroCount(count) {
     if (count === 0) {
-      return 'No Pomodoros';
+      return L('pomodoro_count_zero');
     } else if (count === 1) {
-      return '1 Pomodoro';
+      return L('pomodoro_count_one');
     } else {
-      return `${count.toLocaleString()} Pomodoros`;
+      return L('pomodoro_count_many', count.toLocaleString());
     }
   }
 }
