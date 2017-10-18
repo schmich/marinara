@@ -9,3 +9,7 @@ run-loc:
 # Validate (sanity check) en localized messages.
 validate-en:
 	ruby scripts/validate-en-messages.rb
+
+# Merge en messages into another locale.
+merge-locale:
+	ruby scripts/merge-locale.rb
