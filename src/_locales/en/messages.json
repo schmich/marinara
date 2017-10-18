@@ -97,15 +97,15 @@
     "message": "Feedback",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus": {
+  "focus_title": {
     "message": "Focus",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break": {
+  "short_break_title": {
     "message": "Short Break",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break": {
+  "long_break_title": {
     "message": "Long Break",
     "description": "Long Break section header. Shown on the settings page."
   },
@@ -582,6 +582,78 @@
   "contributors": {
     "message": "Contributors",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "completed_today": {
+    "message": "Completed Today",
+    "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
+  },
+  "view_history": {
+    "message": "View History",
+    "description": "View History button text. Shown on the timer expiration page."
+  },
+  "pomodoros_until_long_break": {
+    "message": "$pomodoros$ until long break",
+    "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "5 Pomodoros"
+      }
+    }
+  },
+  "pomodoros_completed_today": {
+    "message": "$pomodoros$ completed today",
+    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "1 Pomodoro"
+      }
+    }
+  },
+  "start_focusing": {
+    "message": "Start Focusing",
+    "description": "Shown on the timer expiration page and in browser notifications."
+  },
+  "start_focusing_now": {
+    "message": "Start focusing now",
+    "description": "Notification button text when break timer expires."
+  },
+  "take_a_break": {
+    "message": "Take a Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_short_break": {
+    "message": "Take a Short Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_long_break": {
+    "message": "Take a Long Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_break": {
+    "message": "Start Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_break_now": {
+    "message": "Start break now",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_short_break": {
+    "message": "Start Short Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_short_break_now": {
+    "message": "Start short break now",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_long_break": {
+    "message": "Start Long Break",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_long_break_now": {
+    "message": "Start long break now",
+    "description": "Notification button text when focus timer expires."
   },
   "gong_1": {
     "message": "Gong 1",
