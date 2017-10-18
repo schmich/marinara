@@ -21,7 +21,7 @@
     "persistent": true,
     "scripts": [
       "lib/EventEmitter.min.js",
-      "background/T.js",
+      "common/T.js",
       "background/enum.js",
       "background/notifications.js",
       "background/menu.js",
