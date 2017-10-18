@@ -571,9 +571,9 @@
     "message": "Version",
     "description": "Version section header. Shown on the settings-feedback page."
   },
-  "inspired_by": {
-    "message": "Inspired by Francesco Cirillo's",
-    "description": "Inspiration footer text, followed by linked pomodoro_technique text. Shown on the settings-feedback page."
+  "disclaimer": {
+    "message": "Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.",
+    "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
     "message": "&",
@@ -582,10 +582,6 @@
   "contributors": {
     "message": "Contributors",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
-  },
-  "pomodoro_technique": {
-    "message": "Pomodoro Technique",
-    "description": "Pomodoro Technique link text, follows inspired_by text. Shown on the settings-feedback page."
   },
   "gong_1": {
     "message": "Gong 1",

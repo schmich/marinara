@@ -133,10 +133,12 @@ fieldset {
 .feedback a:hover {
   color: #a00;
 }
-.feedback .inspiration {
+.feedback .disclaimer {
+  font-size: smaller;
   text-align: center;
   line-height: 150%;
-  margin: 40px 0;
+  margin: 60px 0 30px 0;
+  color: #444;
 }
 .feedback .links {
   margin: 0;
