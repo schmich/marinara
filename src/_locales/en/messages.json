@@ -515,6 +515,26 @@
       }
     }
   },
+  "group_pomodoros_minute_buckets": {
+    "message": "Group Pomodoros into $count$ minute buckets",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "group_pomodoros_hour_buckets": {
+    "message": "Group Pomodoros into $count$ hour buckets",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
   "min_suffix": {
     "message": "$count$ Min",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
