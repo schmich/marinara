@@ -655,6 +655,44 @@
     "message": "Start long break now",
     "description": "Notification button text when focus timer expires."
   },
+  "browser_action_tooltip": {
+    "message": "$title$: $text$",
+    "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Short Break"
+      },
+      "text": {
+        "content": "$2",
+        "example": "5m remaining"
+      }
+    }
+  },
+  "n_minutes": {
+    "message": "$count$m",
+    "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "less_than_minute": {
+    "message": "<1m",
+    "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
+  },
+  "time_remaining": {
+    "message": "$time$ Remaining",
+    "description": "Badge tooltip to show time remaining for current timer.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5m"
+      }
+    }
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."

@@ -6,11 +6,11 @@ class BadgeObserver
   }
 
   start(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   tick(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   stop() {
@@ -22,7 +22,7 @@ class BadgeObserver
   }
 
   resume(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   expire() {
@@ -31,12 +31,11 @@ class BadgeObserver
 
   updateBadge({ minutes, tooltip, text }) {
     var text, tooltip;
-
     if (minutes != null) {
-      text = (+minutes || '<1') + 'm';
-      tooltip = `${this.title}: ${text} Remaining`;
+      text = minutes < 1 ? T('less_than_minute') : T('n_minutes', minutes);
+      tooltip = T('browser_action_tooltip', this.title, T('time_remaining', text));
     } else {
-      tooltip = `${this.title}: ${tooltip}`;
+      tooltip = T('browser_action_tooltip', this.title, tooltip);
     }
 
     chrome.browserAction.setTitle({ title: tooltip });
