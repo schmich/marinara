@@ -4,6 +4,9 @@ class Sounds
     if (!this.sounds) {
       this.sounds = [
         { name: T('tone'), file: 'tone.mp3' },
+        { name: T('digital_watch'), file: 'cc8b3236-66b6-43f6-be5f-6a74746320de.mp3' },
+        { name: T('analog_alarm_clock'), file: '3a68a1ea-5b07-426e-b9f4-cab9773eba89.mp3' },
+        { name: T('digital_alarm_clock'), file: '7a539d94-6290-48fa-935f-1685d77ecce2.mp3' },
         { name: T('electronic_chime'), file: 'electronic-chime.mp3' },
         { name: T('gong_1'), file: 'gong-1.mp3' },
         { name: T('gong_2'), file: 'gong-2.mp3' },

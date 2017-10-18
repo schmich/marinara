@@ -52,7 +52,7 @@ body {
   z-index: 1;
   position: relative;
 }
-.button.short-break, .button.long-break {
+.button.break, .button.short-break, .button.long-break {
   background: #2b2;
   color: #fff;
 }
@@ -60,7 +60,7 @@ body {
   background: #e22;
   color: #fff;
 }
-.button.short-break:hover, .button.long-break:hover {
+.button.break:hover, .button.short-break:hover, .button.long-break:hover {
   background: #2c2;
 }
 .button.focus:hover {
@@ -70,7 +70,7 @@ body {
   box-shadow: none;
   transition-delay: 0s;
 }
-.button:not(.focus):not(.short-break):not(.long-break) {
+.button:not(.focus):not(.break):not(.short-break):not(.long-break) {
   display: none;
 }
 #start-session {

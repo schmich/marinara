@@ -136,17 +136,17 @@ function importHistory() {
         let content = f.target.result;
         let history = JSON.parse(content);
 
-        if (!confirm('Importing history overwrites all existing history. Continue?')) {
+        if (!confirm(T('confirm_import'))) {
           return;
         }
 
         let result = await BackgroundClient.setRawHistory(history);
         if (result !== true) {
-          alert(`Failed to import history: ${result}`);
+          alert(T('import_failed', `${result}`));
           return;
         }
       } catch (ex) {
-        alert(`Failed to import history: ${ex}`);
+        alert(T('import_failed', `${ex}`));
         return;
       }
       await loadHistory(true);
@@ -177,7 +177,7 @@ async function loadHistory(reload = false) {
     let count = stats[bucket];
 
     if (bucket === 'period') {
-      stat.innerText = pomodoroCount(count);
+      stat.innerText = T('last_9_months', pomodoroCount(count));
     } else {
       stat.innerText = count.toLocaleString();
     }
@@ -185,12 +185,12 @@ async function loadHistory(reload = false) {
     let el = document.getElementById(`average-${bucket}`);
     if (el) {
       let formatted = stats[`${bucket}Average`].toLocaleString(navigator.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      el.innerText = `${formatted} avg`;
+      el.innerText = T('average_stat', formatted);
     }
   };
 
-  let month = document.getElementById('bucket-month');
-  month.innerText = d3.timeFormat('In %B')(now);
+  let monthEl = document.getElementById('bucket-month');
+  monthEl.innerText = T('in_month', Locale.format('%B')(now));
 
   let daySection = document.getElementById('day-distribution-section');
   let weekSection = document.getElementById('week-distribution-section');
@@ -226,13 +226,12 @@ function createOptionGroup(selector, callback) {
 }
 
 function selectTab(id) {
-  let active = id.substring(1);
+  let active = id.substring(1).toLowerCase();
   if (active === 'history') {
     loadHistory();
   }
 
-  let title = active[0].toUpperCase() + active.substr(1);
-  document.title = `${title} · Marinara`;
+  document.title = `${T(active)} · ${T('app_name_short')}`;
 
   ['settings', 'history', 'feedback'].forEach(name => {
     document.getElementById(`${name}-tab`).classList.remove('active');

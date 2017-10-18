@@ -51,7 +51,19 @@ class AsyncNotifications
 {
   static async create(options) {
     return new Promise((resolve, reject) => {
-      chrome.notifications.create('', options, id => resolve(id));
+      try {
+        chrome.notifications.create('', options, id => resolve(id));        
+      } catch (e) {
+        // This is failing on Firefox as it doesn't support the buttons option for the notification and raises an exception when this is called. (see http://bugzil.la/1190681)
+        // Try again with a subset of options that are more broadly supported
+        const compatible_options = {
+          type: options.type,
+          iconUrl: options.iconUrl,
+          title: options.title,
+          message: options.message
+        };
+        chrome.notifications.create('', compatible_options, id => resolve(id));
+      }
     });
   }
 }

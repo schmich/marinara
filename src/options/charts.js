@@ -1,23 +1,11 @@
 function pomodoroCount(count) {
   if (count === 0) {
-    return 'No Pomodoros';
+    return T('pomodoro_count_zero');
   } else if (count === 1) {
-    return '1 Pomodoro';
+    return T('pomodoro_count_one');
   } else {
-    return `${count.toLocaleString()} Pomodoros`;
+    return T('pomodoro_count_many', count.toLocaleString());
   }
-}
-
-function currentLocale() {
-  if (!this.locale) {
-    const nav = window.navigator;
-    this.locale = (nav.languages ? nav.languages[0] : null)
-        || nav.userLanguage
-        || nav.language
-        || 'en-US';
-  }
-
-  return this.locale;
 }
 
 function createWeekDistribution(el, data) {
@@ -43,15 +31,12 @@ function createWeekDistribution(el, data) {
     .attr('height', height)
     .attr('class', 'distribution');
 
-  let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  let long = ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
-
   let x = d3.scaleBand().domain(d3.range(0, 7)).rangeRound([0, width - pad]).padding(0.5);
   let y = d3.scaleLinear().domain([0, max]).range([height - 30, 0]);
 
   let xAxis = d3.axisBottom(x)
     .tickSize(5)
-    .tickFormat(t => days[t]);
+    .tickFormat(t => Locale.shortDays[t]);
 
   let step = Math.max(max / 4, 1);
   let yAxis = d3.axisLeft(y)
@@ -75,7 +60,7 @@ function createWeekDistribution(el, data) {
     .append('rect')
       .datum(d => +d)
       .attr('title', d => {
-        return `<strong>${pomodoroCount(buckets[d])}</strong> on ${long[d]}`;
+        return T('weekly_tooltip', `<strong>${pomodoroCount(buckets[d])}</strong>`, Locale.days[d]);
       })
       .attr('x', d => x(d))
       .attr('y', d => y(buckets[d]))
@@ -125,11 +110,12 @@ function createDayDistribution(el, bucketSize, data) {
     .attr('class', 'distribution');
 
   let timeFormat = (h, m) => {
-    let options = { hour: 'numeric', minute: (m != null) ? 'numeric' : undefined };
-    let formatted = new Date(0, 0, 0, h, m || 0).toLocaleString(currentLocale(), options);
-    return formatted.replace(/\s+(am|pm)/i, function (_, indicator) {
-      return indicator[0].toLowerCase();
-    });
+    const date = new Date(0, 0, 0, h, m || 0);
+    if (m === undefined) {
+      return Locale.format(T('hour_format'))(date);
+    } else {
+      return Locale.format(T('hour_minute_format'))(date);
+    }
   };
  
   let xScale = d3.scaleLinear().domain([0, bucketCount]).range([0, width]);
@@ -172,7 +158,7 @@ function createDayDistribution(el, bucketSize, data) {
       .attr('title', d => {
         let start = timeLabel(d);
         let end = timeLabel(d + 1);
-        return `<strong>${pomodoroCount(buckets[d])}</strong> between ${start}&ndash;${end}`;
+        return T('daily_tooltip', `<strong>${pomodoroCount(buckets[d])}</strong>`, start, end);
       })
       .attr('x', d => d * (width / bucketCount))
       .attr('y', d => yScale(buckets[d]))
@@ -243,7 +229,7 @@ function createHeatmap(data, start, el) {
       .append('text')
         .attr('x', d => d[0] * cellSize + dx)
         .attr('class', 'label')
-        .text(d => d3.timeFormat('%b')(d[1]));
+        .text(d => Locale.format('%b')(d[1]));
 
   let heatmap = d3.select(el).selectAll('svg.heatmap')
     .enter()
@@ -259,7 +245,7 @@ function createHeatmap(data, start, el) {
 
   // Add day-of-week labels.
   heatmap.selectAll('text.dow')
-    .data(['Mon', 'Wed', 'Fri'])
+    .data([1, 3, 5].map(d => Locale.shortDays[d]))
     .enter()
     .append('text')
       .attr('transform', (d, i) => `translate(-10,${cellSize * 2 * (i + 1)})`)
@@ -282,8 +268,8 @@ function createHeatmap(data, start, el) {
       // Tooltip title.
       .attr('title', d => {
         let count = data[d] || 0;
-        let date = d3.timeFormat('%b %d, %Y')(new Date(d));
-        return `<strong>${pomodoroCount(count)}</strong> on ${date}`;
+        let date = Locale.format(T('heatmap_date_format'))(new Date(d));
+        return T('heatmap_tooltip', `<strong>${pomodoroCount(count)}</strong>`, `${date}`);
       })
       // Add the colors to the grids.
       .filter(d => !!data[d])

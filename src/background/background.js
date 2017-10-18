@@ -6,11 +6,11 @@ class BadgeObserver
   }
 
   start(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   tick(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   stop() {
@@ -22,7 +22,7 @@ class BadgeObserver
   }
 
   resume(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.round(remaining / 60) });
+    this.updateBadge({ minutes: Math.floor(remaining / 60) });
   }
 
   expire() {
@@ -31,12 +31,11 @@ class BadgeObserver
 
   updateBadge({ minutes, tooltip, text }) {
     var text, tooltip;
-
     if (minutes != null) {
-      text = (+minutes || '<1') + 'm';
-      tooltip = `${this.title}: ${text} Remaining`;
+      text = minutes < 1 ? T('less_than_minute') : T('n_minutes', minutes);
+      tooltip = T('browser_action_tooltip', this.title, T('time_remaining', text));
     } else {
-      tooltip = `${this.title}: ${tooltip}`;
+      tooltip = T('browser_action_tooltip', this.title, tooltip);
     }
 
     chrome.browserAction.setTitle({ title: tooltip });
@@ -264,55 +263,55 @@ class Controller
 
   timerOptions(phase, nextPhase, settings) {
     let pomodoros = this.timer.longBreakPomodoros;
-    let pomodorosLeft = pomodoros === 0 ? '' : `${this.pomodoroCount(pomodoros)} until long break`;
+    let pomodorosLeft = pomodoros === 0 ? '' : T('pomodoros_until_long_break', this.pomodoroCount(pomodoros));
     let notificationMessages = count => {
-      let pomodorosToday = count === 0 ? '' : `${this.pomodoroCount(count)} completed today`;
+      let pomodorosToday = count === 0 ? '' : T('pomodoros_completed_today', this.pomodoroCount(count));
       return [pomodorosLeft, pomodorosToday];
     };
 
     switch (phase) {
     case Phase.Focus:
-      var hasLong = settings.longBreak.interval > 0;
-      var length = (nextPhase === Phase.ShortBreak) ? 'short' : 'long';
-      let lengthTitle = length.replace(/^./, c => c.toUpperCase());
-      let brk = hasLong ? `${length} break` : 'break';
-      var brkTitle = hasLong ? `${lengthTitle} Break` : 'Break';
+      let breakId = 'break';
+      if (settings.longBreak.interval > 0) {
+        breakId = (nextPhase == Phase.ShortBreak) ? 'short_break' : 'long_break';
+      }
+      let title = T(`take_a_${breakId}`)
       return {
-        phase: 'Focus',
+        phase: T('focus_title'),
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
         notification: !settings.focus.notifications.desktop ? null : {
-          title: `Take a ${brkTitle}`,
+          title: title,
           messages: notificationMessages,
-          action: `Start ${brk} now`
+          action: T(`start_${breakId}_now`)
         },
         tab: !settings.focus.notifications.tab ? null : {
-          title: `Take a ${brkTitle}`,
+          title: title,
           messages: [pomodorosLeft],
-          action: `Start ${brkTitle}`,
-          phase: `${length}-break`
+          action: T(`start_${breakId}`),
+          phase: breakId.replace('_', '-')
         }
       };
 
     case Phase.ShortBreak:
     case Phase.LongBreak:
-      var length = (phase === Phase.ShortBreak) ? 'Short' : 'Long';
+      let phaseTitle = T(phase === Phase.ShortBreak ? 'short_break_title' : 'long_break_title');
       let breakSettings = (phase === Phase.ShortBreak) ? settings.shortBreak : settings.longBreak;
       return {
-        phase: `${length} Break`,
+        phase: phaseTitle,
         duration: breakSettings.duration,
         sound: breakSettings.notifications.sound,
         badgeColor: '#11aa11',
         notification: !breakSettings.notifications.desktop ? null : {
-          title: `Start Focusing`,
+          title: T('start_focusing'),
           messages: notificationMessages,
-          action: 'Start focusing now'
+          action: T('start_focusing_now')
         },
         tab: !breakSettings.notifications.tab ? null : {
-          title: 'Start Focusing',
+          title: T('start_focusing'),
           messages: [pomodorosLeft],
-          action: 'Start Focusing',
+          action: T('start_focusing'),
           phase: 'focus'
         }
       };

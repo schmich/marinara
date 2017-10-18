@@ -3,6 +3,8 @@
 <head>
   <title>Time's Up &middot; Marinara</title>
   <link rel="stylesheet" type="text/css" href="expire.css" />
+  <script src="../common/T.js"></script>
+  <script src="../common/localize.js"></script>
   <script src="../background/messages.js"></script>
   <script src="expire.js"></script>
 </head>
@@ -15,8 +17,8 @@
     </button>
     <div class="pomodoros-today">
       <p id="pomodoros"></p>
-      <p>Completed Today</p>
-      <button id="view-history">View History</button>
+      <p data-t="completed_today"></p>
+      <button id="view-history" data-t="view_history"></button>
     </div>
   </div>
 </body>
