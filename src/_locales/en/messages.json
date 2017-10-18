@@ -33,19 +33,19 @@
   },
   "start_focusing": {
     "message": "Start Focusing",
-    "description": "Menu entry to start a Focus session. Shown in the dropdown menu."
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
     "message": "Start Short Break",
-    "description": "Menu entry to start a Short Break session. Shown in the dropdown menu."
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
     "message": "Start Break",
-    "description": "Menu entry to start a Break session. Shown in the dropdown menu."
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
     "message": "Start Long Break",
-    "description": "Menu entry to start a Long Break session. Shown in the dropdown menu."
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
     "message": "Stop Timer",
@@ -137,13 +137,9 @@
     "message": "Play audio notification:",
     "description": "Audio notification label. Shown on the settings page."
   },
-  "take_a_long_break": {
-    "message": "Take a long break",
+  "take_a_long_break_setting": {
+    "message": "Take a long break:",
     "description": "Long break settings label. Shown on the settings page."
-  },
-  "never": {
-    "message": "never",
-    "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "never": {
     "message": "never",
@@ -543,10 +539,6 @@
     "message": "Write a Review",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
-  "write_a_review": {
-    "message": "Write a Review",
-    "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
-  },
   "report_an_issue": {
     "message": "Report an Issue",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
@@ -615,10 +607,6 @@
       }
     }
   },
-  "start_focusing": {
-    "message": "Start Focusing",
-    "description": "Shown on the timer expiration page and in browser notifications."
-  },
   "start_focusing_now": {
     "message": "Start focusing now",
     "description": "Notification button text when break timer expires."
@@ -635,25 +623,13 @@
     "message": "Take a Long Break",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
-  "start_break": {
-    "message": "Start Break",
-    "description": "Action title. Shown on the timer expiration page and in browser notifications."
-  },
   "start_break_now": {
     "message": "Start break now",
     "description": "Notification button text when focus timer expires."
   },
-  "start_short_break": {
-    "message": "Start Short Break",
-    "description": "Action title. Shown on the timer expiration page and in browser notifications."
-  },
   "start_short_break_now": {
     "message": "Start short break now",
     "description": "Notification button text when focus timer expires."
-  },
-  "start_long_break": {
-    "message": "Start Long Break",
-    "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_long_break_now": {
     "message": "Start long break now",

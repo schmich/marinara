@@ -129,8 +129,8 @@
     "message": "Reproducir notificaciones de audio:",
     "description": "Audio notification label. Shown on the settings page."
   },
-  "take_a_long_break": {
-    "message": "Toma un largo descanso",
+  "take_a_long_break_setting": {
+    "message": "Toma un largo descanso:",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
