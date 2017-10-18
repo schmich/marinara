@@ -666,5 +666,17 @@
   "airplane": {
     "message": "Airplane",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_watch": {
+    "message": "Digital Watch",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "analog_alarm_clock": {
+    "message": "Analog Alarm Clock",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_alarm_clock": {
+    "message": "Digital Alarm Clock",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   }
 }
