@@ -8,10 +8,11 @@
   <link rel="stylesheet" type="text/css" href="options.css"/>
   <script src="../common/T.js"></script>
   <script src="../common/localize.js"></script>
+  <script src="../common/d3.js"></script>
+  <script src="../common/formatter.js"></script>
   <script src="../background/messages.js"></script>
   <script src="../background/async.js"></script>
-  <script src="d3.min.js"></script>
-  <script src="tippy.min.js"></script>
+  <script src="tippy.js"></script>
   <script src="charts.js"></script>
   <script src="options.js"></script>
 </head>
@@ -155,94 +156,91 @@
         <div class="stats">
           <div class="stat">
             <div class="value" id="stat-day">&ndash;</div>
-            <div class="bucket">Today</div>
+            <div class="bucket" data-t="today"></div>
             <div class="average" id="average-day">&ndash;</div>
           </div>
           <div class="stat">
             <div class="value" id="stat-week">&ndash;</div>
-            <div class="bucket">This Week</div>
+            <div class="bucket" data-t="this_week"></div>
             <div class="average" id="average-week">&ndash;</div>
           </div>
           <div class="stat">
             <div class="value" id="stat-month">&ndash;</div>
-            <div class="bucket" id="bucket-month">This Month</div>
+            <div class="bucket" id="bucket-month" data-t="this_month"></div>
             <div class="average" id="average-month">&ndash;</div>
           </div>
           <div class="stat">
             <div class="value" id="stat-total">&ndash;</div>
-            <div class="bucket">Total</div>
+            <div class="bucket" data-t="total"></div>
           </div>
         </div>
         <section id="day-distribution-section" class="chart">
           <div class="title">
-            <h2>Daily Distribution</h2>
+            <h2 data-t="daily_distribution"></h2>
             <div class="options chart-content">
-              <button class="day-distribution" data-value="15" title="Group Pomodoros into 15 minute buckets">15 Min</button>
-              <button class="day-distribution active" data-value="30" title="Group Pomodoros into 30 minute buckets">30 Min</button>
-              <button class="day-distribution" data-value="60" title="Group Pomodoros into 1 hour buckets">1 Hr</button>
-              <button class="day-distribution" data-value="120" title="Group Pomodoros into 2 hour buckets">2 Hr</button>
+              <button class="day-distribution" data-value="15" title="Group Pomodoros into 15 minute buckets" data-t="min_suffix" data-tp="15"></button>
+              <button class="day-distribution active" data-value="30" title="Group Pomodoros into 30 minute buckets" data-t="min_suffix" data-tp="30"></button>
+              <button class="day-distribution" data-value="60" title="Group Pomodoros into 1 hour buckets" data-t="hr_suffix" data-tp="1"></button>
+              <button class="day-distribution" data-value="120" title="Group Pomodoros into 2 hour buckets" data-t="hr_suffix" data-tp="2"></button>
             </div>
           </div>
           <div id="day-distribution" class="chart-content"></div>
-          <div class="empty-content">
-            Finish a Pomodoro to see your daily stats
-          </div>
+          <div class="empty-content" data-t="daily_empty_placeholder"></div>
         </section>
         <section id="week-distribution-section" class="chart">
           <div class="title">
-            <h2>Weekly Distribution</h2>
+            <h2 data-t="weekly_distribution"></h2>
           </div>
           <div id="week-distribution" class="chart-content"></div>
-          <div class="empty-content">
-            Finish a Pomodoro to see your weekly stats
-          </div>
+          <div class="empty-content" data-t="weekly_empty_placeholder"></div>
         </section>
         <section id="heatmap-section" class="chart">
           <div class="title">
-            <h2><span id="stat-period"></span> in the Last 9 Months</h2>
+            <h2><span id="stat-period" data-t="last_9_months"></span></h2>
           </div>
           <div id="heatmap" class="chart-content"></div>
-          <div class="empty-content">
-            Finish a Pomodoro to see your history
-          </div>
+          <div class="empty-content" data-t="history_empty_placeholder"></div>
         </section>
         <div class="actions">
-          <button id="import-history">Import History</button>
-          <button id="export-history">Export History</button>
+          <button id="import-history" data-t="import_history"></button>
+          <button id="export-history" data-t="export_history"></button>
         </div>
       </div>
       <div class="tab-page feedback" id="feedback-page">
         <div class="title">
-          <h1>Marinara</h1>
-          <h2>Pomodoro Assistant</h2>
+          <h1 data-t="app_name_short"></h1>
+          <h2 data-t="pomodoro_assistant"></h2>
           <p>
             <a href="https://twitter.com/schmich" target="_blank">Chris Schmich</a>
-            &amp; <a href="https://github.com/schmich/marinara/graphs/contributors" target="_blank">Contributors</a>
+            <span data-t="and"></span>
+            <a href="https://github.com/schmich/marinara/graphs/contributors" target="_blank" data-t="contributors"></a>
           </p>
         </div>
         <div class="links">
-          <p>Feedback</p>
+          <p data-t="feedback"></p>
           <ul>
-            <li><a href="https://chrome.google.com/webstore/detail/marinara-pomodoro-timer/lojgmehidjdhhbmpjfamhpkpodfcodef/reviews" target="_blank">Write a Review</a></li>
-            <li><a href="https://github.com/schmich/marinara/issues" target="_blank">Report an Issue</a></li>
+            <li><a href="https://chrome.google.com/webstore/detail/marinara-pomodoro-timer/lojgmehidjdhhbmpjfamhpkpodfcodef/reviews" target="_blank" data-t="write_a_review"></a></li>
+            <li><a href="https://github.com/schmich/marinara/issues" target="_blank" data-t="report_an_issue"></a></li>
           </ul>
         </div>
         <div class="links">
-          <p>View</p>
+          <p data-t="view"></p>
           <ul>
-            <li><a href="https://github.com/schmich/marinara/releases" target="_blank">Release Notes</a></li>
-            <li><a href="https://github.com/schmich/marinara" target="_blank">Source Code</a></li>
-            <li><a href="../ATTRIBUTION" target="_blank">Attributions</a></li>
-            <li><a href="../LICENSE" target="_blank">License</a></li>
+            <li><a href="https://github.com/schmich/marinara/releases" target="_blank" data-t="release_notes"></a></li>
+            <li><a href="https://github.com/schmich/marinara" target="_blank" data-t="source_code"></a></li>
+            <li><a href="../ATTRIBUTION" target="_blank" data-t="attributions"></a></li>
+            <li><a href="../LICENSE" target="_blank" data-t="license"></a></li>
           </ul>
         </div>
         <div class="links">
-          <p>Version</p>
+          <p data-t="version"></p>
           <ul>
             <li id="version"></li>
           </ul>
         </div>
-        <p class="inspiration">Inspired by Francesco Cirillo's<br><a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a></p>
+        <p class="inspiration">
+          <span data-t="inspired_by"></span><br><a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" data-t="pomodoro_technique"></a>
+        </p>
       </div>
     </div>
   </div>
