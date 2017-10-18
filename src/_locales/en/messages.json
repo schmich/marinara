@@ -693,6 +693,26 @@
       }
     }
   },
+  "missing_pomodoro_data": {
+    "message": "Missing Pomodoro data.",
+    "description": "Error when imported history has no Pomodoro information."
+  },
+  "missing_duration_data": {
+    "message": "Missing duration data.",
+    "description": "Error when imported history has no Pomodoro duration information."
+  },
+  "missing_timezone_data": {
+    "message": "Missing timezone data.",
+    "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "mismatched_pomodoro_duration_data": {
+    "message": "Mismatched Pomodoro/duration data.",
+    "description": "Error when imported history has mismatched Pomodoro/duration data."
+  },
+  "mismatched_pomodoro_timezone_data": {
+    "message": "Mismatched Pomodoro/timezone data.",
+    "description": "Error when imported history has mismatched Pomodoro/timezone data."
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."

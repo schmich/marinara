@@ -10,15 +10,15 @@ class History
 
   async import(history) {
     if (!history.pomodoros) {
-      throw new Error('Missing Pomodoro data.');
+      throw new Error(T('missing_pomodoro_data'));
     }
 
     if (!history.durations) {
-      throw new Error('Missing duration data.');
+      throw new Error(T('missing_duration_data'));
     }
 
     if (!history.timezones) {
-      throw new Error('Missing timezone data.');
+      throw new Error(T('missing_timezone_data'));
     }
 
     let durations = Rle.decode(history.durations);
