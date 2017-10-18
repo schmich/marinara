@@ -8,7 +8,7 @@ locales = Dir["#{locales_dir}/*"]
   .map { |d| d.split(/[\\\/]/).last }
   .select { |n| n != 'en' }
 
-puts 'Merge en into which locale?'
+puts 'Sync en messages into which locale?'
 locales.each_with_index do |locale, i|
   puts "#{i + 1}. #{locale}"
 end
@@ -48,11 +48,11 @@ if added.any?
 end
 
 if !removed.any? && !added.any?
-  puts 'Nothing to merge. Exiting.'
+  puts 'Nothing to sync. Exiting.'
   exit
 end
 
-print "Do you want to merge en into #{locale} (y/n)? "
+print "Do you want to sync en messages into #{locale} (y/n)? "
 if gets.strip.downcase[0] != 'y'
   puts 'Canceled. Exiting.'
   exit
@@ -62,4 +62,4 @@ File.open(to_file, 'w') do |file|
   file.write(JSON.pretty_generate(en))
 end
 
-puts "Merged en into #{locale} at #{to_file}.\nUntranslated messages will be marked FIXME."
+puts "Updated #{locale} at #{to_file}.\nUntranslated messages will be marked FIXME."

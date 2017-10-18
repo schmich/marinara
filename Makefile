@@ -10,6 +10,6 @@ run-loc:
 validate-en:
 	ruby scripts/validate-en-messages.rb
 
-# Merge en messages into another locale.
-merge-locale:
-	ruby scripts/merge-locale.rb
+# Sycn en messages into another locale.
+sync-locale:
+	ruby scripts/sync-locale.rb
