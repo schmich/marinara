@@ -2,8 +2,12 @@
 package:
 	ruby scripts/make-package.rb
 
-# Run Chrome with psuedo-localized messages.
+# Run Chrome under a different locale.
 run-loc:
+	ruby scripts/run-localized.rb
+
+# Run Chrome with psuedo-localized messages.
+run-pseudo:
 	ruby scripts/run-pseudo-localized.rb
 
 # Validate (sanity check) en localized messages.
