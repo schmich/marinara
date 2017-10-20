@@ -8,7 +8,7 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro® βοηθός διαχείρισης χρόνου.",
+    "message": "Pomodoro® Βοηθός Διαχείρισης Χρόνου.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
@@ -102,7 +102,7 @@
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Focus",
+    "message": "Συγκέντρωση",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
@@ -122,7 +122,7 @@
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
   "when_complete": {
-    "message": "When complete:",
+    "message": "Όταν ολοκληρωθεί:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
@@ -206,7 +206,7 @@
     "description": "Pomdoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ ~",
+    "message": "$average$ περίπου",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -516,7 +516,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Ομαδοποίηση Pomodoros σε $count$ λεπτά",
+    "message": "Ομαδοποίηση Pomodoros ανά $count$ λεπτά",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -526,7 +526,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Ομαδοποίηση Pomodoros σε $count$ ώρες",
+    "message": "Ομαδοποίηση Pomodoros ανά $count$ ώρες",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -536,7 +536,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ Min",
+    "message": "$count$ λεπτά",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -546,7 +546,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$count$ Hr",
+    "message": "$count$ ώρες",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -588,7 +588,7 @@
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.",
+    "message": "Το Pomodoro® και η Pomodoro Technique® είναι εμπορικά προϊόντα του Francesco Cirillo. Η Marinara δε συνδέεται ή σχετίζεται με το Pomodoro®, την Pomodoro Technique® ή τον Francesco Cirillo.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
@@ -628,7 +628,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "Συγκεντρωθείτε τώρα",
+    "message": "Συγκεντρωθείτε",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
@@ -680,7 +680,7 @@
     }
   },
   "less_than_minute": {
-    "message": "<1m",
+    "message": "<1λ",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
@@ -722,7 +722,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Computer Magic",
+    "message": "Μαγεία Η/Υ",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
@@ -770,7 +770,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Toaster Oven",
+    "message": "Τοστιέρα",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
