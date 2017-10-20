@@ -1,0 +1,808 @@
+{
+  "app_name": {
+    "message": "Marinara: Pomodoro® Assistant",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "Marinara(ম্যারিনারা)",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "Pomodoro® time management assistant (পমোদরো সময় ব্যবস্থাপনা সহায়ক)",
+    "description": "The short description of the application. Shown in the web store."
+  },
+  "chrome_web_store_description": {
+    "message": "• অল্প ও দীর্ঘ বিরতির সুবিধা\n• টুলবার আইকন ও কাউন্টডাউন টাইমার\n• পমোদরোর ইতিহাস ও উপাত্ত অনুসরণ\n• দীর্ঘ বিরতির সময় ব্যবধান কনফিগারযোগ্য\n• কনফিগারযোগ্য টাইমারের ব্যাপ্তিকাল\n• ডেস্কটপ বিজ্ঞপ্তি\n• নতুন ট্যাবে বিজ্ঞপ্তি\n• ২০টিরও বেশি শব্দের মাধ্যমে অডিও বিজ্ঞপ্তি\n• উন্মুক্ত সোর্স সফটওয়্যার",
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
+  },
+  "pomodoro_assistant": {
+    "message": "পমোদরো সহায়ক",
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
+  },
+  "start_pomodoro_cycle": {
+    "message": "পমোদরো চক্র শুরু করুন",
+    "description": "Menu entry to start a new Pomdoro cycle. Shown in the dropdown menu."
+  },
+  "restart_pomodoro_cycle": {
+    "message": "পমোদরো চক্র পুনরায় শুরু করুন",
+    "description": "Menu entry to restart the current Pomdoro cycle. Shown in the dropdown menu."
+  },
+  "restart_timer": {
+    "message": "পুনরায় টাইমার চালু করুন",
+    "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+  },
+  "start_focusing": {
+    "message": "ফোকাসিং শুরু করুন",
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_short_break": {
+    "message": "অল্পবিরতি শুরু",
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_break": {
+    "message": "বিরতি শুরু",
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_long_break": {
+    "message": "দীর্ঘ বিরতি শুরু",
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "stop_timer": {
+    "message": "টাইমার বন্ধ করুন",
+    "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "pause_timer": {
+    "message": "টাইমারে বিরতি দিন",
+    "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+  },
+  "resume_timer": {
+    "message": "টাইমার চালু করুন",
+    "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+  },
+  "pomodoro_history": {
+    "message": "পমোদরোর ইতিহাস",
+    "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+  },
+  "timer_paused": {
+    "message": "টাইমারে বিরতি চলছে",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "কোন পমোদরো নেই",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "১টি পমোদরো",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$টি পমোদরো",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "marinara_pomodoro_assistant": {
+    "message": "ম্যারিনারা: পমোদরো সহায়ক",
+    "description": "Settings page title."
+  },
+  "settings": {
+    "message": "সেটিংস",
+    "description": "Settings tab. Shown on the settings page."
+  },
+  "history": {
+    "message": "ইতিহাস",
+    "description": "History tab. Shown on the settings page."
+  },
+  "feedback": {
+    "message": "প্রতিক্রিয়া",
+    "description": "Feedback tab and section header. Shown on the settings page."
+  },
+  "focus_title": {
+    "message": "ফোকাস",
+    "description": "Focus section header. Shown on the settings page."
+  },
+  "short_break_title": {
+    "message": "অল্প বিরতি",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break_title": {
+    "message": "দীর্ঘ বিরতি",
+    "description": "Long Break section header. Shown on the settings page."
+  },
+  "duration": {
+    "message": "ব্যাপ্তিকাল:",
+    "description": "Timer duration label. Shown on the settings page."
+  },
+  "minutes": {
+    "message": "মিনিট",
+    "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "when_complete": {
+    "message": "যখন সমাপ্ত:",
+    "description": "Section label for events to fire when timer completes. Shown on the settings page."
+  },
+  "show_desktop_notification": {
+    "message": "ডেস্কটপে বিজ্ঞপ্তি দেখাও",
+    "description": "Desktop notification option. Shown on the settings page."
+  },
+  "show_new_tab_notification": {
+    "message": "নতুন ট্যাবে বিজ্ঞপ্তি দেখাও",
+    "description": "New tab notification option. Shown on the settings page."
+  },
+  "play_audio_notification": {
+    "message": "অডিও বিজ্ঞপ্তি বাজাও:",
+    "description": "Audio notification label. Shown on the settings page."
+  },
+  "take_a_long_break_setting": {
+    "message": "দীর্ঘ বিরতি নিন:",
+    "description": "Long break settings label. Shown on the settings page."
+  },
+  "never": {
+    "message": "কখনোই নয়",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_2nd_break": {
+    "message": "প্রতি ২টি বিরতির পর (পালাক্রমে)",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_3rd_break": {
+    "message": "প্রতি ৩টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_4th_break": {
+    "message": "প্রতি ৪টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_5th_break": {
+    "message": "প্রতি ৫টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_6th_break": {
+    "message": "প্রতি ৬টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_7th_break": {
+    "message": "প্রতি ৭টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_8th_break": {
+    "message": "প্রতি ৮টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_9th_break": {
+    "message": "প্রতি ৯টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_10th_break": {
+    "message": "প্রতি ১০টি বিরতির পর",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "tone": {
+    "message": "টোন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "electronic_chime": {
+    "message": "ইলেকট্রনিক ঐকতান",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "today": {
+    "message": "আজ",
+    "description": "Pomdoro stats label. Shown on the settings-history page."
+  },
+  "this_week": {
+    "message": "এই সপ্তাহ",
+    "description": "Pomdoro stats label. Shown on the settings-history page."
+  },
+  "this_month": {
+    "message": "এই মাস",
+    "description": "Pomdoro stats label. Shown on the settings-history page."
+  },
+  "total": {
+    "message": "মোট",
+    "description": "Pomdoro stats label. Shown on the settings-history page."
+  },
+  "average_stat": {
+    "message": "গড়: $average$",
+    "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "average": {
+        "content": "$1",
+        "example": "7.33"
+      }
+    }
+  },
+  "daily_distribution": {
+    "message": "প্রাত্যহিক বিন্যাস",
+    "description": "Daily distribution section header. Shown on the settings-history page."
+  },
+  "weekly_distribution": {
+    "message": "সাপ্তাহিক বিন্যাস",
+    "description": "Weekly distribution section header. Shown on the settings-history page."
+  },
+  "last_9_months": {
+    "message": "গত ৯ মাসে $count$",
+    "description": "Last 9 months section header. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "No Pomodoros"
+      }
+    }
+  },
+  "daily_empty_placeholder": {
+    "message": "আপনার প্রাত্যহিক পরিসংখ্যান দেখতে একটি পমোদরো সম্পন্ন করুন",
+    "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "weekly_empty_placeholder": {
+    "message": "আপনার সাপ্তাহিক পরিসংখ্যান দেখতে একটি পমোদরো সম্পন্ন করুন",
+    "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "history_empty_placeholder": {
+    "message": "আপনার ইতিহাস দেখতে একটি পমোদরো সম্পন্ন করুন",
+    "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "daily_tooltip": {
+    "message": "$start$—$end$ সময়ে $pomodoros$",
+    "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "15 Pomodoros"
+      },
+      "start": {
+        "content": "$2",
+        "example": "9:00a"
+      },
+      "end": {
+        "content": "$3",
+        "example": "10:00a"
+      }
+    }
+  },
+  "weekly_tooltip": {
+    "message": "$day$-এ $pomodoros$",
+    "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "day": {
+        "content": "$2",
+        "example": "Mondays"
+      }
+    }
+  },
+  "heatmap_tooltip": {
+    "message": "$date$-এ $pomodoros$",
+    "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "date": {
+        "content": "$2",
+        "example": "Jun 07, 2017"
+      }
+    }
+  },
+  "decimal_separator": {
+    "message": ".",
+    "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
+  },
+  "thousands_separator": {
+    "message": ",",
+    "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
+  },
+  "heatmap_date_format": {
+    "message": "%d %b, %Y",
+    "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
+  },
+  "hour_format": {
+    "message": "%-I%p",
+    "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
+  },
+  "hour_minute_format": {
+    "message": "%-I:%M%p",
+    "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
+  },
+  "date_format": {
+    "message": "%-d/%-m/%Y",
+    "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "date_time_format": {
+    "message": "%x, %X",
+    "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_format": {
+    "message": "%-I:%M:%S %p",
+    "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_period_am": {
+    "message": "পূর্বাহ্ন",
+    "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_period_pm": {
+    "message": "অপরাহ্ন",
+    "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "sunday": {
+    "message": "রবিবার",
+    "description": "Sunday. Shown on the settings-history page."
+  },
+  "monday": {
+    "message": "সোমবার",
+    "description": "Monday. Shown on the settings-history page."
+  },
+  "tuesday": {
+    "message": "মঙ্গলবার",
+    "description": "Tuesday. Shown on the settings-history page."
+  },
+  "wednesday": {
+    "message": "বুধবার",
+    "description": "Wednesday. Shown on the settings-history page."
+  },
+  "thursday": {
+    "message": "বৃহস্পতিবার",
+    "description": "Thursday. Shown on the settings-history page."
+  },
+  "friday": {
+    "message": "শুক্রবার",
+    "description": "Friday. Shown on the settings-history page."
+  },
+  "saturday": {
+    "message": "শনিবার",
+    "description": "Saturday. Shown on the settings-history page."
+  },
+  "sunday_short": {
+    "message": "রবি",
+    "description": "Sunday abbreviated. Shown on the settings-history page."
+  },
+  "monday_short": {
+    "message": "সোম",
+    "description": "Monday abbreviated. Shown on the settings-history page."
+  },
+  "tuesday_short": {
+    "message": "মঙ্গল",
+    "description": "Tuesday abbreviated. Shown on the settings-history page."
+  },
+  "wednesday_short": {
+    "message": "বুধ",
+    "description": "Wednesday abbreviated. Shown on the settings-history page."
+  },
+  "thursday_short": {
+    "message": "বৃহঃ",
+    "description": "Thursday abbreviated. Shown on the settings-history page."
+  },
+  "friday_short": {
+    "message": "শুক্র",
+    "description": "Friday abbreviated. Shown on the settings-history page."
+  },
+  "saturday_short": {
+    "message": "শনি",
+    "description": "Saturday abbreviated. Shown on the settings-history page."
+  },
+  "january": {
+    "message": "জানুয়ারী",
+    "description": "January. Shown on the settings-history page."
+  },
+  "february": {
+    "message": "ফেব্রুয়ারী",
+    "description": "February. Shown on the settings-history page."
+  },
+  "march": {
+    "message": "মার্চ",
+    "description": "March. Shown on the settings-history page."
+  },
+  "april": {
+    "message": "এপ্রিল",
+    "description": "April. Shown on the settings-history page."
+  },
+  "may": {
+    "message": "মে",
+    "description": "May. Shown on the settings-history page."
+  },
+  "june": {
+    "message": "জুন",
+    "description": "June. Shown on the settings-history page."
+  },
+  "july": {
+    "message": "জুলাই",
+    "description": "July. Shown on the settings-history page."
+  },
+  "august": {
+    "message": "আগস্ট",
+    "description": "August. Shown on the settings-history page."
+  },
+  "september": {
+    "message": "সেপ্টেম্বর",
+    "description": "September. Shown on the settings-history page."
+  },
+  "october": {
+    "message": "অক্টোবর",
+    "description": "October. Shown on the settings-history page."
+  },
+  "november": {
+    "message": "নভেম্বর",
+    "description": "November. Shown on the settings-history page."
+  },
+  "december": {
+    "message": "ডিসেম্বর",
+    "description": "December. Shown on the settings-history page."
+  },
+  "january_short": {
+    "message": "জানু",
+    "description": "January abbreviated. Shown on the settings-history page."
+  },
+  "february_short": {
+    "message": "ফেব্রু",
+    "description": "February abbreviated. Shown on the settings-history page."
+  },
+  "march_short": {
+    "message": "মার্চ",
+    "description": "March abbreviated. Shown on the settings-history page."
+  },
+  "april_short": {
+    "message": "এপ্রি",
+    "description": "April abbreviated. Shown on the settings-history page."
+  },
+  "may_short": {
+    "message": "মে",
+    "description": "May abbreviated. Shown on the settings-history page."
+  },
+  "june_short": {
+    "message": "জুন",
+    "description": "June abbreviated. Shown on the settings-history page."
+  },
+  "july_short": {
+    "message": "জুলা",
+    "description": "July abbreviated. Shown on the settings-history page."
+  },
+  "august_short": {
+    "message": "আগ",
+    "description": "August abbreviated. Shown on the settings-history page."
+  },
+  "september_short": {
+    "message": "সেপ্টে",
+    "description": "September abbreviated. Shown on the settings-history page."
+  },
+  "october_short": {
+    "message": "অক্টো",
+    "description": "October abbreviated. Shown on the settings-history page."
+  },
+  "november_short": {
+    "message": "নভে",
+    "description": "November abbreviated. Shown on the settings-history page."
+  },
+  "december_short": {
+    "message": "ডিসে",
+    "description": "December abbreviated. Shown on the settings-history page."
+  },
+  "in_month": {
+    "message": "$month$ মাসে",
+    "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
+    "placeholders": {
+      "month": {
+        "content": "$1",
+        "example": "January"
+      }
+    }
+  },
+  "import_history": {
+    "message": "ইতিহাস ইমপোর্ট করুন",
+    "description": "Import History button. Shown on the settings-history page."
+  },
+  "export_history": {
+    "message": "ইতিহাস এক্সপোর্ট করুন",
+    "description": "Export History button. Shown on the settings-history page."
+  },
+  "confirm_import": {
+    "message": "ইতিহাস ইমপোর্ট করলে বর্তমান ইতিহাস মুছে যাবে। সামনে চলুন?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
+  },
+  "import_failed": {
+    "message": "ইতিহাস ইমপোর্ট করতে ব্যর্থ: $error$",
+    "description": "Error message shown when history import fails. Shown on the settings-history page.",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Missing Pomodoro data."
+      }
+    }
+  },
+  "group_pomodoros_minute_buckets": {
+    "message": "পমোদরোগুলো $count$ মিনিটের দলে দলবদ্ধ করুন",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "group_pomodoros_hour_buckets": {
+    "message": "পমোদরোগুলো $count$ ঘণ্টার দলে দলবদ্ধ করুন",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "min_suffix": {
+    "message": "$count$ মি.",
+    "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "hr_suffix": {
+    "message": "$count$ ঘ.",
+    "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "write_a_review": {
+    "message": "রিভিউ লিখুন",
+    "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
+  },
+  "report_an_issue": {
+    "message": "ইস্যু রিপোর্ট করুন",
+    "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
+  },
+  "release_notes": {
+    "message": "রিলিজ নোটস",
+    "description": "Link to GitHub release notes. Shown on the settings-feedback page."
+  },
+  "source_code": {
+    "message": "সোর্স কোড",
+    "description": "Link to GitHub source code. Shown on the settings-feedback page."
+  },
+  "attributions": {
+    "message": "অ্যাট্রিবিউশন",
+    "description": "Link to audio attributions. Shown on the settings-feedback page."
+  },
+  "license": {
+    "message": "লাইসেন্স",
+    "description": "Link to source license. Shown on the settings-feedback page."
+  },
+  "view": {
+    "message": "দেখা",
+    "description": "View section header. Shown on the settings-feedback page."
+  },
+  "version": {
+    "message": "ভার্সন",
+    "description": "Version section header. Shown on the settings-feedback page."
+  },
+  "disclaimer": {
+    "message": "Pomodoro® এবং The Pomodoro Technique® হচ্ছে Francesco Cirillo-এর ট্রেডমার্ক। Marinara(ম্যারিনারা) Pomodoro®, The Pomodoro Technique® অথবা Francesco Cirillo-এর সাথে সংশ্লিষ্ট/-এর দ্বারা অনুমোদিত নয়।",
+    "description": "Disclaimer footer text. Shown on the settings-feedback page."
+  },
+  "and": {
+    "message": "&",
+    "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "contributors": {
+    "message": "অবদান রেখেছেন",
+    "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "completed_today": {
+    "message": "আজ সম্পন্ন",
+    "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
+  },
+  "view_history": {
+    "message": "ইতিহাস দেখুন",
+    "description": "View History button text. Shown on the timer expiration page."
+  },
+  "pomodoros_until_long_break": {
+    "message": "দীর্ঘ বিরতি পর্যন্ত $pomodoros$",
+    "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "5 Pomodoros"
+      }
+    }
+  },
+  "pomodoros_completed_today": {
+    "message": "আজ সম্পন্ন হল $pomodoros$",
+    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "1 Pomodoro"
+      }
+    }
+  },
+  "start_focusing_now": {
+    "message": "এখন ফোকাস করা শুরু করুন",
+    "description": "Notification button text when break timer expires."
+  },
+  "take_a_break": {
+    "message": "বিরতি নিন",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_short_break": {
+    "message": "অল্প বিরতি নিন",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_long_break": {
+    "message": "দীর্ঘ বিরতি নিন",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_break_now": {
+    "message": "বিরতি শুরু করুন",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_short_break_now": {
+    "message": "এখন অল্প বিরতি শুরু করুন",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_long_break_now": {
+    "message": "এখন দীর্ঘ বিরতি শুরু করুন",
+    "description": "Notification button text when focus timer expires."
+  },
+  "browser_action_tooltip": {
+    "message": "$title$: $text$",
+    "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Short Break"
+      },
+      "text": {
+        "content": "$2",
+        "example": "5m remaining"
+      }
+    }
+  },
+  "n_minutes": {
+    "message": "$count$মি",
+    "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "less_than_minute": {
+    "message": "<১ মিনিট",
+    "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
+  },
+  "time_remaining": {
+    "message": "$time$ বাকি আছে",
+    "description": "Badge tooltip to show time remaining for current timer.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5m"
+      }
+    }
+  },
+  "missing_pomodoro_data": {
+    "message": "পমোদরোর তথ্য পাওয়া যাচ্ছে না।",
+    "description": "Error when imported history has no Pomodoro information."
+  },
+  "missing_duration_data": {
+    "message": "ব্যাপ্তিকাল সংক্রান্ত তথ্য পাওয়া যাচ্ছে না।",
+    "description": "Error when imported history has no Pomodoro duration information."
+  },
+  "missing_timezone_data": {
+    "message": "টাইমজোনের তথ্য পাওয়া যাচ্ছে না।",
+    "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "mismatched_pomodoro_duration_data": {
+    "message": "পমোদরো/ব্যাপ্তিকালের তথ্যে গরমিল।",
+    "description": "Error when imported history has mismatched Pomodoro/duration data."
+  },
+  "mismatched_pomodoro_timezone_data": {
+    "message": "পমোদরো/টাইমজোনের তথ্যে গরমিল",
+    "description": "Error when imported history has mismatched Pomodoro/timezone data."
+  },
+  "gong_1": {
+    "message": "ঘণ্টা ১",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "gong_2": {
+    "message": "ঘণ্টা ২",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "computer_magic": {
+    "message": "কম্পিউটার ম্যাজিক",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "fire_pager": {
+    "message": "ফায়ার পেজার",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "glass_ping": {
+    "message": "গ্লাস পিং",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "music_box": {
+    "message": "মিউজিক বক্স",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "pin_drop": {
+    "message": "পিন পতন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "robot_blip_1": {
+    "message": "রোবট ব্লিপ ১",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "robot_blip_2": {
+    "message": "রোবট ব্লিপ ২",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ship_bell": {
+    "message": "জাহাজের ঘণ্টা",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "train_horn": {
+    "message": "ট্রেনের হর্ন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "bike_horn": {
+    "message": "বাইকের হর্ন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "bell_ring": {
+    "message": "বেল রিং",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "reception_bell": {
+    "message": "রিসিপশন বেল",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "toaster_oven": {
+    "message": "টোস্টার ওভেন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "battle_horn": {
+    "message": "ব্যাটল হর্ন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ding": {
+    "message": "ডিং",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "dong": {
+    "message": "ডং",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ding_dong": {
+    "message": "ডিং ডং",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "airplane": {
+    "message": "অ্যারোপ্লেন",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_watch": {
+    "message": "ডিজিটাল ঘড়ি",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "analog_alarm_clock": {
+    "message": "অ্যানালগ অ্যালার্ম ঘড়ি",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_alarm_clock": {
+    "message": "ডিজিটাল অ্যালার্ম ঘড়ি",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  }
+}
