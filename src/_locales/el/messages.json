@@ -536,7 +536,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ λεπτά",
+    "message": "$count$ λ",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -546,7 +546,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$count$ ώρες",
+    "message": "$count$ ωρ",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -714,11 +714,11 @@
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "gong_1": {
-    "message": "Gong 1",
+    "message": "Γκονγκ 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
-    "message": "Gong 2",
+    "message": "Γκονγκ 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
@@ -774,19 +774,19 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Battle Horn",
+    "message": "Εναρκτήριος Ήχος Μάχης",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
-    "message": "Ding",
+    "message": "Ντινγκ",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "dong": {
-    "message": "Dong",
+    "message": "Ντονγκ",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding_dong": {
-    "message": "Ding Dong",
+    "message": "Ντινγκ Ντονγκ",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
