@@ -713,6 +713,10 @@
     "message": "Mismatched Pomodoro/timezone data.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "help_translate": {
+    "message": "Help Translate",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."

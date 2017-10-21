@@ -137,8 +137,9 @@ fieldset {
   font-size: smaller;
   text-align: center;
   line-height: 150%;
-  margin: 60px 0 30px 0;
+  margin: 60px auto 30px auto;
   color: #444;
+  width: 75%;
 }
 .feedback .links {
   margin: 0;
