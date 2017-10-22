@@ -713,6 +713,10 @@
     "message": "পমোদরো/টাইমজোনের তথ্যে গরমিল",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "help_translate": {
+    "message": "অনুবাদে সহায়তা করুন",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
   "gong_1": {
     "message": "ঘণ্টা ১",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
