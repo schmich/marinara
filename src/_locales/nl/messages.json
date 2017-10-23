@@ -52,7 +52,7 @@
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Timer Pauseren",
+    "message": "Timer Pauzeren",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
@@ -64,7 +64,7 @@
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "Timer gepauseerd",
+    "message": "Timer gepauzeeerd",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
@@ -516,7 +516,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Groupeer Pomodoros in $count$ minuut groupen",
+    "message": "Groupeer Pomodoros in $count$ minuut groepen",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -526,7 +526,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Groupeer Pomodoros in $count$ uur groupen",
+    "message": "Groupeer Pomodoros in $count$ uur groepen",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -536,7 +536,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ Min",
+    "message": "$count$ min",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -556,7 +556,7 @@
     }
   },
   "write_a_review": {
-    "message": "Schrijf een Review",
+    "message": "Schrijf een Recensie",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
@@ -572,11 +572,11 @@
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "Attributions",
+    "message": "Attributies",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "Licienties",
+    "message": "Licenties",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
