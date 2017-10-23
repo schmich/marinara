@@ -12,11 +12,11 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "FIXME",
+    "message": "• Soporte para descansos breves y largos.\n• Icono en barra de herammientas con temporizador.\n• Historial Pomodoro y estadísticas \n• Intervalos de largos descansos configurables.\n• Duración de temporizador configurable.\n• Notificaciones de escritorio\n• Notificaciones en nueva pestaña.\n• Alertas sonoras con más de 20 sonidos.\n• Software de código abierto.",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "FIXME",
+    "message": "Asistente Pomodoro",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
@@ -190,23 +190,23 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "FIXME",
+    "message": "Hoy",
     "description": "Pomdoro stats label. Shown on the settings-history page."
   },
   "this_week": {
-    "message": "FIXME",
+    "message": "Esta Semana",
     "description": "Pomdoro stats label. Shown on the settings-history page."
   },
   "this_month": {
-    "message": "FIXME",
+    "message": "Este Mes",
     "description": "Pomdoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "FIXME",
+    "message": "total",
     "description": "Pomdoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "FIXME",
+    "message": "$average$ avg",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -216,15 +216,15 @@
     }
   },
   "daily_distribution": {
-    "message": "FIXME",
+    "message": "Distribución Diaria",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "FIXME",
+    "message": "Distribución Semanal",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "FIXME",
+    "message": "$count$ en los Últimos 9 Meses",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -234,19 +234,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "FIXME",
+    "message": "Finaliza un Pomodoro para ver tus estadísticas diarias.",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "FIXME",
+    "message": "Finaliza un Pomodoro para ver tus estadísticas semanales.",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "FIXME",
+    "message": "Finaliza un Pomodoro para ver tu historial.",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "FIXME",
+    "message": "$pomodoros$ entre $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -264,7 +264,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "FIXME",
+    "message": "$pomodoros$ en $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -278,7 +278,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "FIXME",
+    "message": "$pomodoros$ este $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -292,199 +292,199 @@
     }
   },
   "decimal_separator": {
-    "message": "FIXME",
+    "message": ".",
     "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
   },
   "thousands_separator": {
-    "message": "FIXME",
+    "message": ",",
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "FIXME",
+    "message": "%d %b, %Y",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
-    "message": "FIXME",
+    "message": "%-I%p",
     "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
   },
   "hour_minute_format": {
-    "message": "FIXME",
+    "message": "%-I:%M%p",
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
-    "message": "FIXME",
+    "message":  "%-d/%-m/%Y",
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
-    "message": "FIXME",
+    "message": "%x, %X",
     "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_format": {
-    "message": "FIXME",
+    "message": "%-I:%M:%S %p",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
-    "message": "FIXME",
+    "message":  "a",
     "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_pm": {
-    "message": "FIXME",
+    "message": "p",
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "FIXME",
+    "message": "Domingo",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "FIXME",
+    "message": "Lunes",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "FIXME",
+    "message": "Martes",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "FIXME",
+    "message": "Miercoles",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "FIXME",
+    "message": "Jueves",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "FIXME",
+    "message": "Viernes",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "FIXME",
+    "message": "Sábado",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "FIXME",
+    "message": "Dom",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "FIXME",
+    "message": "Lun",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "FIXME",
+    "message": "Mar",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "FIXME",
+    "message": "Mie",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "FIXME",
+    "message": "Jue",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "FIXME",
+    "message": "Vie",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "FIXME",
+    "message": "Sab",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
-    "message": "FIXME",
+    "message": "Enero",
     "description": "January. Shown on the settings-history page."
   },
   "february": {
-    "message": "FIXME",
+    "message": "Febrero",
     "description": "February. Shown on the settings-history page."
   },
   "march": {
-    "message": "FIXME",
+    "message": "Marzo",
     "description": "March. Shown on the settings-history page."
   },
   "april": {
-    "message": "FIXME",
+    "message": "Abril",
     "description": "April. Shown on the settings-history page."
   },
   "may": {
-    "message": "FIXME",
+    "message": "Mayo",
     "description": "May. Shown on the settings-history page."
   },
   "june": {
-    "message": "FIXME",
+    "message": "Junio",
     "description": "June. Shown on the settings-history page."
   },
   "july": {
-    "message": "FIXME",
+    "message": "Julio",
     "description": "July. Shown on the settings-history page."
   },
   "august": {
-    "message": "FIXME",
+    "message": "Agosto",
     "description": "August. Shown on the settings-history page."
   },
   "september": {
-    "message": "FIXME",
+    "message": "Septiembre",
     "description": "September. Shown on the settings-history page."
   },
   "october": {
-    "message": "FIXME",
+    "message": "Octubre",
     "description": "October. Shown on the settings-history page."
   },
   "november": {
-    "message": "FIXME",
+    "message": "Noviembre",
     "description": "November. Shown on the settings-history page."
   },
   "december": {
-    "message": "FIXME",
+    "message": "Diciembre",
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "FIXME",
+    "message": "Ene",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "FIXME",
+    "message": "Feb",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "FIXME",
+    "message": "Mar",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "FIXME",
+    "message": "Abr",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "FIXME",
+    "message": "May",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "FIXME",
+    "message": "Jun",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "FIXME",
+    "message": "Jul",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "FIXME",
+    "message": "Ago",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "FIXME",
+    "message": "Sep",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "FIXME",
+    "message": "Oct",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "FIXME",
+    "message": "Nov",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "FIXME",
+    "message": "Dic",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "FIXME",
+    "message": "En $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -494,19 +494,19 @@
     }
   },
   "import_history": {
-    "message": "FIXME",
+    "message": "Importar Historial",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "FIXME",
+    "message": "Exportar Historial",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "FIXME",
+    "message": "Importar el historial sobrescribe todo historial existente. ¿Desea continuar?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "FIXME",
+    "message": "El historial no pudo ser importado: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -516,7 +516,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "FIXME",
+    "message": "Agrupar Pomodoros en grupos de $count$ minutos",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -526,7 +526,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "FIXME",
+    "message": "Agrupar Pomodoros en grupos de $count$ horas",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -536,7 +536,7 @@
     }
   },
   "min_suffix": {
-    "message": "FIXME",
+    "message": "$count$ Min",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -546,7 +546,7 @@
     }
   },
   "hr_suffix": {
-    "message": "FIXME",
+    "message": "$count$ Hr",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -556,59 +556,59 @@
     }
   },
   "write_a_review": {
-    "message": "FIXME",
+    "message": "Escribe un comentario",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
-    "message": "FIXME",
+    "message": "Reporta un problema",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "FIXME",
+    "message": "Notas de la Versión",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "FIXME",
+    "message": "Código Fuente",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "FIXME",
+    "message": "Atribuciones",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "FIXME",
+    "message": "Licencia",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "FIXME",
+    "message": "Ver",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "FIXME",
+    "message": "Versión",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "FIXME",
+    "message": "Aviso Legal",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
-    "message": "FIXME",
+    "message": "&",
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
-    "message": "FIXME",
+    "message": "Colaboradores",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "FIXME",
+    "message": "$pomodoros$ completados hoy",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "FIXME",
+    "message": "Ver Historial",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "FIXME",
+    "message": "$pomodoros$ para un largo descanso.",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -618,7 +618,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "FIXME",
+    "message": "$pomodoros$ completados hoy",
     "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -628,35 +628,35 @@
     }
   },
   "start_focusing_now": {
-    "message": "FIXME",
+    "message": "Comienza a Concetrarte",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "FIXME",
+    "message": "Toma un Descanso",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "FIXME",
+    "message": "Toma un Breve Descanso",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "FIXME",
+    "message": "Toma un Largo Descanso",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "FIXME",
+    "message": "Ahora Toma un Descanso",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "FIXME",
+    "message": "Toma Ahora un Breve Descanso",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "FIXME",
+    "message": "Toma Ahora un Largo Descanso",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
-    "message": "FIXME",
+    "message": "$title$: $text$",
     "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
     "placeholders": {
       "title": {
@@ -670,7 +670,7 @@
     }
   },
   "n_minutes": {
-    "message": "FIXME",
+    "message": "$count$m",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -680,11 +680,11 @@
     }
   },
   "less_than_minute": {
-    "message": "FIXME",
+    "message": "<1m",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "FIXME",
+    "message": "$time$ Restante(s)",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -694,24 +694,25 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "FIXME",
+    "message": "Faltan Datos Pomodoro que Importar.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "FIXME",
+    "message": "Faltan Datos de Duración.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "FIXME",
+    "message": "Faltan Datos de Zona Horaria",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "FIXME",
+    "message": "Datos Incompatibles de Duración.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "FIXME",
+    "message": "Datos Incompatibles de Zona Horaria.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
+  },
   },
   "gong_1": {
     "message": "Gong 1",
@@ -722,7 +723,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Magía Computacional",
+    "message": "Pc Mágico",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
@@ -794,15 +795,15 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "FIXME",
+    "message": "Reloj Digital",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "FIXME",
+    "message": "Alarma de Reloj Análogo",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "FIXME",
+    "message": "Alarma de Reloj Digital",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   }
 }
