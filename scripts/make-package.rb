@@ -10,4 +10,7 @@ if version.empty?
   exit 1
 end
 
-`(cd src && zip -r - . -x '*.swp' -x '*.DS_Store') > marinara-#{version}.zip`
+out = "marinara-#{version}.zip"
+`(cd src && zip -r - .) > #{out}`
+
+puts "Package created: #{out}."
