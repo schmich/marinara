@@ -21,11 +21,11 @@
   },
   "start_pomodoro_cycle": {
     "message": "Start Pomodoro Cycle",
-    "description": "Menu entry to start a new Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
     "message": "Restart Pomodoro Cycle",
-    "description": "Menu entry to restart the current Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
     "message": "Restart Timer",
@@ -191,19 +191,19 @@
   },
   "today": {
     "message": "Today",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
     "message": "This Week",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
     "message": "This Month",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
     "message": "Total",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
     "message": "$average$ avg",

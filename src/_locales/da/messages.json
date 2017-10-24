@@ -21,11 +21,11 @@
   },
   "start_pomodoro_cycle": {
     "message": "Start Pomodoro Cyklus",
-    "description": "Menu entry to start a new Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
     "message": "Genstart Pomodoro Cyklus",
-    "description": "Menu entry to restart the current Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
     "message": "Genstart Timeren",
@@ -191,19 +191,19 @@
   },
   "today": {
     "message": "I dag",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
     "message": "Denne Uge",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
     "message": "Denne Måned",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
     "message": "I alt",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
     "message": "$average$ i gennemsnit",

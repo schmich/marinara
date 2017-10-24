@@ -21,11 +21,11 @@
   },
   "start_pomodoro_cycle": {
     "message": "পমোদরো চক্র শুরু করুন",
-    "description": "Menu entry to start a new Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
     "message": "পমোদরো চক্র পুনরায় শুরু করুন",
-    "description": "Menu entry to restart the current Pomdoro cycle. Shown in the dropdown menu."
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
     "message": "পুনরায় টাইমার চালু করুন",
@@ -191,19 +191,19 @@
   },
   "today": {
     "message": "আজ",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
     "message": "এই সপ্তাহ",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
     "message": "এই মাস",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
     "message": "মোট",
-    "description": "Pomdoro stats label. Shown on the settings-history page."
+    "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
     "message": "গড়: $average$",
