@@ -717,6 +717,10 @@
     "message": "Help Translate",
     "description": "Feedback link. Shown on settings-feedback page."
   },
+  "expire_title": {
+    "message": "Time's Up · Marinara",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
