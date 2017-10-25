@@ -7,11 +7,11 @@ locales = Dir["#{locales_dir}/*"]
 
 puts 'Run Chrome under which locale?'
 locales.each_with_index do |locale, i|
-  puts "#{(i + 1).to_s(26)}. #{locale}"
+  puts "#{(i + 1).to_s(36)}. #{locale}"
 end
 
 print '> '
-locale = locales[gets.strip.to_i(26) - 1]
+locale = locales[gets.strip.to_i(36) - 1]
 if locale.nil?
   puts 'Invalid choice. Exiting.'
   exit
