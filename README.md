@@ -29,7 +29,7 @@ Currently, Marinara is configured for developers working and packaging releases 
 
 Marinara uses the system `ruby` and `make` tools to build releases.
 
-It also uses [jq](https://stedolan.github.io/jq/) to manipulate the `manifest.json`. You can quickly install it using Homebrew:
+It also uses [jq](https://stedolan.github.io/jq/) to manipulate the `manifest.json`. You can quickly install it using [Homebrew](https://brew.sh/):
 
     brew install jq
 
