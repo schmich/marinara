@@ -1,4 +1,4 @@
-version := $(shell jq -r .version manifest/common.json)
+version := $(shell git tag | tail -n1)
 
 # Create extension packages (.zip).
 package: package-chrome package-firefox
@@ -17,11 +17,11 @@ marinara-firefox-$(version).zip: dev-firefox
 
 # Update manifest.json for Chrome development.
 dev-chrome: manifest/common.json manifest/chrome.json
-	jq -s ".[0] * .[1]" $^ > src/manifest.json
+	m4 -DVERSION="$(version)" $< | jq -s ".[0] * .[1]" - manifest/chrome.json > src/manifest.json
 
 # Update manifest.json for Firefox development.
 dev-firefox: manifest/common.json manifest/firefox.json
-	jq -s ".[0] * .[1]" $^ > src/manifest.json
+	m4 -DVERSION="$(version)" $< | jq -s ".[0] * .[1]" - manifest/firefox.json > src/manifest.json
 
 # Run Chrome with a new (temporary) user profile with Marinara loaded.
 run:
