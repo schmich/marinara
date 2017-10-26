@@ -1,28 +1,9 @@
+require 'locales'
 require 'json'
 require 'set'
 
-locales_dir = 'src/_locales'
-
-locales = Dir["#{locales_dir}/*"]
-  .select { |f| File.directory?(f) }
-  .map { |d| d.split(/[\\\/]/).last }
-  .select { |n| n != 'en' }
-
-puts 'Sync en messages into which locale?'
-locales.each_with_index do |locale, i|
-  puts "#{(i + 1).to_s(36)}. #{locale}"
-end
-
-print '> '
-locale = locales[gets.strip.to_i(36) - 1]
-puts
-if locale.nil?
-  puts 'Invalid choice. Exiting.'
-  exit
-end
-
-en_file = File.join(locales_dir, 'en', 'messages.json')
-to_file = File.join(locales_dir, locale, 'messages.json')
+en_file = all_locales['en']
+locale, to_file = choose_locale('Sync en messages into which locale?')
 
 en = JSON.parse(File.read(en_file))
 to = JSON.parse(File.read(to_file))
