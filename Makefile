@@ -1,6 +1,27 @@
-# Create Chrome extension package (.zip).
-package:
-	ruby -Iscripts scripts/make-package.rb
+version := $(shell jq -r .version manifest/common.json)
+
+# Create extension packages (.zip).
+package: package-chrome package-firefox
+
+# Chrome package.
+package-chrome: marinara-chrome-$(version).zip
+
+# Firefox package.
+package-firefox: marinara-firefox-$(version).zip
+
+marinara-chrome-$(version).zip: dev-chrome
+	ruby -Iscripts scripts/make-package.rb $@
+
+marinara-firefox-$(version).zip: dev-firefox
+	ruby -Iscripts scripts/make-package.rb $@
+
+# Update manifest.json for Chrome development.
+dev-chrome: manifest/common.json manifest/chrome.json
+	jq -s ".[0] * .[1]" $^ > src/manifest.json
+
+# Update manifest.json for Firefox development.
+dev-firefox: manifest/common.json manifest/firefox.json
+	jq -s ".[0] * .[1]" $^ > src/manifest.json
 
 # Run Chrome with a new (temporary) user profile with Marinara loaded.
 run:
@@ -18,6 +39,6 @@ run-pseudo:
 validate-messages:
 	ruby -Iscripts scripts/validate-messages.rb
 
-# Sycn en messages into another locale.
+# Sync en messages into another locale.
 sync-locale:
 	ruby -Iscripts scripts/sync-locale.rb

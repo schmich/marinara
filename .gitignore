@@ -1,2 +1,5 @@
 *.zip
 /.idea/
+
+# manifest.json is generated through make commands.
+src/manifest.json
