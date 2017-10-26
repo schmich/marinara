@@ -10,11 +10,11 @@ locales = Dir["#{locales_dir}/*"]
 
 puts 'Sync en messages into which locale?'
 locales.each_with_index do |locale, i|
-  puts "#{i + 1}. #{locale}"
+  puts "#{(i + 1).to_s(36)}. #{locale}"
 end
 
 print '> '
-locale = locales[gets.strip.to_i - 1]
+locale = locales[gets.strip.to_i(36) - 1]
 puts
 if locale.nil?
   puts 'Invalid choice. Exiting.'
