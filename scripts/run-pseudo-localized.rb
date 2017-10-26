@@ -1,3 +1,4 @@
+require 'chrome'
 require 'json'
 
 def pseudolocalize(string)
@@ -31,6 +32,4 @@ File.open('src/_locales/en_GB/messages.json', 'w') do |file|
   file.puts(JSON.pretty_generate(messages))
 end
 
-`defaults write com.google.Chrome.canary AppleLanguages '("en-GB")'`
-`open -a "Google Chrome Canary"`
-`defaults delete com.google.Chrome.canary AppleLanguages`
+run_chrome('en-GB')
