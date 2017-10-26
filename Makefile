@@ -18,6 +18,6 @@ run-pseudo:
 validate-messages:
 	ruby -Iscripts scripts/validate-messages.rb
 
-# Sycn en messages into another locale.
+# Sync en messages into another locale.
 sync-locale:
 	ruby -Iscripts scripts/sync-locale.rb
