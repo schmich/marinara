@@ -14,10 +14,10 @@ project=$(basename "$url" .git)
 repo="git@github.com:$user/$project-localization"
 sha=`git rev-parse --verify HEAD`
 
-git clone "$repo" deploy
-ruby gen-status.rb > deploy/status.json
+git clone --depth 1 "$repo" out
+ruby gen-status.rb > out/status.json
 
-cd deploy
+cd out && git add status.json
 if [ -z "$(git diff --cached)" ]; then
   echo 'No changes to deploy.'
   exit 0
