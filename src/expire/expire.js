@@ -31,6 +31,13 @@ async function load() {
     BackgroundClient.showHistory();
     return false;
   };
+
+  // On Enter keypress, start next session.
+  document.body.addEventListener('keypress', e => {
+    if (e.keyCode === 13) {
+      BackgroundClient.startSession();
+    }
+  });
 };
 
 document.addEventListener('DOMContentLoaded', load);
