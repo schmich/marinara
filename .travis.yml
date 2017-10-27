@@ -1,3 +1,4 @@
+script: true
 env:
   global:
   - COMMIT_AUTHOR_NAME: "'Chris Schmich'"
