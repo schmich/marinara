@@ -1,0 +1,14 @@
+env:
+  global:
+  - COMMIT_AUTHOR_NAME: "'Chris Schmich'"
+  - COMMIT_AUTHOR_EMAIL: schmch@gmail.com
+  - LOCALES_PATH: src/_locales
+deploy:
+  provider: script
+  script: bash ./deploy/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_0cfb57c34e7b_key -iv $encrypted_0cfb57c34e7b_iv
+  -in deploy_key.enc -out deploy_key -d
