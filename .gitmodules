@@ -1,0 +1,3 @@
+[submodule "deploy/chrome-extension-localization"]
+	path = deploy/chrome-extension-localization
+	url = https://github.com/schmich/chrome-extension-localization

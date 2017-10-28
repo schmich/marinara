@@ -6,10 +6,11 @@ env:
   - LOCALES_PATH: src/_locales
 deploy:
   provider: script
-  script: bash ./deploy/deploy.sh
+  script: bash ./deploy/chrome-extension-localization/deploy.sh
   skip_cleanup: true
   on:
     branch: master
 before_install:
+- git submodule update --init --recursive
 - openssl aes-256-cbc -K $encrypted_0cfb57c34e7b_key -iv $encrypted_0cfb57c34e7b_iv
   -in deploy/deploy_key.enc -out deploy/deploy_key -d
