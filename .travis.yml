@@ -6,7 +6,7 @@ env:
   - LOCALES_PATH: src/_locales
 deploy:
   provider: script
-  script: bash ./deploy/chrome-extension-localization/deploy.sh
+  script: bash ./deploy/chrome-extension-localization/deploy/deploy.sh
   skip_cleanup: true
   on:
     branch: master
