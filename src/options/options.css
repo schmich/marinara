@@ -204,6 +204,7 @@ fieldset {
 }
 #heatmap {
   margin-left: -10px;
+  /* font-size: 12px; */
 }
 #heatmap .day {
   fill: #eee;
