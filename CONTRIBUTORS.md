@@ -23,3 +23,4 @@ Marinara is open source software and is built by volunteers from around the worl
 - [frozzie](https://github.com/frozzie): Chinese (China) translation
 - [Julianna Brandão](https://github.com/JuhBass): Brazilian Portugues translation
 - [Teerapong Chantakard](https://github.com/azygous13): Thai translation
+- [Sarp Başaraner](https://github.com/sgbasaraner): Turkish translation
