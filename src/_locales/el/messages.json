@@ -293,11 +293,11 @@
   },
   "decimal_separator": {
     "message": ",",
-    "description": "Separator for fractional numbers (e.g. three-and-a-half: 3,5)."
+    "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
   },
   "thousands_separator": {
     "message": ".",
-    "description": "Group separator for large numbers (e.g. two thousand: 2.000)."
+    "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
     "message": "%b %d, %Y",

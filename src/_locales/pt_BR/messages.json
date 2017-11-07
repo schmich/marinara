@@ -1,23 +1,23 @@
 {
   "app_name": {
     "message": "Marinara: Assistente Pomodoro®",
-    "description": "O nome da aplicação. Apresentado na loja web."
+    "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
     "message": "Marinara",
-    "description": "O apelido da aplicação. Apresentado no topo do menu suspenso."
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
     "message": "Assistente Pomodoro® para gestão de tempo.",
-    "description": "Curta descrição da aplicação. Apresentado na loja web."
+    "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
     "message": "• Suporte para curtos e longos intervalos\n• Ícone na barra de ferramentas com temporizador\n• Histórico e estatísticas do Pomodoro\n• Longos intervalos customizáveis\n• Duração do temporizador customizável\n• Notificações na Área de Trabalho\n• Notificações numa nova aba\n• Notificações de áudio com mais de 20 sons diferentes\n• Código aberto",
-    "description": "Descrição detalhada da extensão. Mostrada aos usuários no loja web do Chrome."
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
     "message": "Assitente Pomodoro",
-    "description": "Slogan do Marinara. Mostrado na página settings-feedback."
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
     "message": "Começar um Ciclo Pomodoro",
@@ -229,7 +229,7 @@
     "placeholders": {
       "count": {
         "content": "$1",
-        "example": "Sem Pomodoros"
+        "example": "No Pomodoros"
       }
     }
   },
@@ -255,11 +255,11 @@
       },
       "start": {
         "content": "$2",
-        "example": "9:00"
+        "example": "9:00a"
       },
       "end": {
         "content": "$3",
-        "example": "10:00"
+        "example": "10:00a"
       }
     }
   },
@@ -273,7 +273,7 @@
       },
       "day": {
         "content": "$2",
-        "example": "Segundas-feiras"
+        "example": "Mondays"
       }
     }
   },
@@ -287,7 +287,7 @@
       },
       "date": {
         "content": "$2",
-        "example": "07 de Junho de 2017"
+        "example": "Jun 07, 2017"
       }
     }
   },
@@ -511,7 +511,7 @@
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "Faltando dados do Pomodoro."
+        "example": "Missing Pomodoro data."
       }
     }
   },
@@ -661,11 +661,11 @@
     "placeholders": {
       "title": {
         "content": "$1",
-        "example": "Intervalo curto"
+        "example": "Short Break"
       },
       "text": {
         "content": "$2",
-        "example": "5 minutos restando"
+        "example": "5m remaining"
       }
     }
   },
@@ -689,7 +689,7 @@
     "placeholders": {
       "time": {
         "content": "$1",
-        "example": "5min"
+        "example": "5m"
       }
     }
   },

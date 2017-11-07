@@ -312,7 +312,7 @@
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
-    "message":  "%-d/%-m/%Y",
+    "message": "%-d/%-m/%Y",
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
@@ -324,7 +324,7 @@
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
-    "message":  "a",
+    "message": "a",
     "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_pm": {

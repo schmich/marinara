@@ -1,15 +1,15 @@
 {
   "app_name": {
     "message": "Marinara: Pomodoro® Assistant",
-    "description": "Le nom de l'application. Montré dans le magasin en ligne."
+    "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
     "message": "Marinara",
-    "description": "Le nom court de l'application. Montré en haut du menu déroulant."
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
     "message": "Pomodoro® time management assistant.",
-    "description": "La courte description de l'application. Montré dans le magasin en ligne."
+    "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
     "message": "• Support for short & long breaks\n• Toolbar icon with countdown timer\n• Track Pomodoro history & stats\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop notifications\n• New tab notifications\n• Audio notifications with over 20 sounds\n• Open source software",
@@ -183,11 +183,11 @@
   },
   "tone": {
     "message": "Tone",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
     "message": "Electronic Chime",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
     "message": "Today",
@@ -645,15 +645,15 @@
   },
   "start_break_now": {
     "message": "Start break now",
-    "description": "Texte du bouton de notification lorsque la minuterie de mise au point expire."
+    "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
     "message": "Start short break now",
-    "description": "Texte du bouton de notification lorsque la minuterie de mise au point expire."
+    "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
     "message": "Start long break now",
-    "description": "Texte du bouton de notification lorsque la minuterie de mise au point expire."
+    "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
     "message": "$title$: $text$",
@@ -715,94 +715,94 @@
   },
   "gong_1": {
     "message": "Gong 1",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
     "message": "Gong 2",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
     "message": "Computer Magic",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
     "message": "Fire Pager",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
     "message": "Glass Ping",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
     "message": "Music Box",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
     "message": "Pin Drop",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
     "message": "Robot Blip 1",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
     "message": "Robot Blip 2",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
     "message": "Ship Bell",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
     "message": "Train Horn",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
     "message": "Bike Horn",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
     "message": "Bell Ring",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
     "message": "Reception Bell",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
     "message": "Grille-pain",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
     "message": "Battle Horn",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
     "message": "Ding",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "dong": {
     "message": "Dong",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding_dong": {
     "message": "Ding Dong",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
     "message": "Avion",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
     "message": "Montre digitale",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
     "message": "Réveil analogique",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
     "message": "Réveil numérique",
-    "description": "Nom du son. Montré dans la liste déroulante de notification audio dans les paramètres."
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
   }
 }

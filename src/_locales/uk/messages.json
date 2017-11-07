@@ -41,7 +41,7 @@
   },
   "start_break": {
     "message": "Почати Перерву",
-    "description": "Sрtart a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
     "message": "Почати Довгу Перерву",

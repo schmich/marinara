@@ -517,7 +517,7 @@
   },
   "group_pomodoros_minute_buckets": {
     "message": "รวม Pomodoros ไปยัง $count$ ถังนาที",
-    "description": "Daily distribution bbucketsucket tooltip. Shown on the settings-history page.",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
         "content": "$1",

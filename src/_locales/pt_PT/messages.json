@@ -229,7 +229,7 @@
     "placeholders": {
       "count": {
         "content": "$1",
-        "example": "Sem Pomodoros"
+        "example": "No Pomodoros"
       }
     }
   },
@@ -255,11 +255,11 @@
       },
       "start": {
         "content": "$2",
-        "example": "9:00"
+        "example": "9:00a"
       },
       "end": {
         "content": "$3",
-        "example": "10:00"
+        "example": "10:00a"
       }
     }
   },
@@ -273,7 +273,7 @@
       },
       "day": {
         "content": "$2",
-        "example": "Segundas"
+        "example": "Mondays"
       }
     }
   },
@@ -287,7 +287,7 @@
       },
       "date": {
         "content": "$2",
-        "example": "7 de Junho de 2017"
+        "example": "Jun 07, 2017"
       }
     }
   },
@@ -511,7 +511,7 @@
     "placeholders": {
       "error": {
         "content": "$1",
-        "example": "Falta a data Pomodoro."
+        "example": "Missing Pomodoro data."
       }
     }
   },
@@ -661,11 +661,11 @@
     "placeholders": {
       "title": {
         "content": "$1",
-        "example": "Curta pausa"
+        "example": "Short Break"
       },
       "text": {
         "content": "$2",
-        "example": "5min restantes"
+        "example": "5m remaining"
       }
     }
   },
@@ -689,7 +689,7 @@
     "placeholders": {
       "time": {
         "content": "$1",
-        "example": "5min"
+        "example": "5m"
       }
     }
   },

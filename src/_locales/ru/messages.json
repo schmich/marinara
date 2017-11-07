@@ -251,7 +251,7 @@
     "placeholders": {
       "pomodoros": {
         "content": "$1",
-        "example": "15 «Помидоров»"
+        "example": "15 Pomodoros"
       },
       "start": {
         "content": "$2",
@@ -269,7 +269,7 @@
     "placeholders": {
       "pomodoros": {
         "content": "$1",
-        "example": "25 «Помидоров»"
+        "example": "25 Pomodoros"
       },
       "day": {
         "content": "$2",
