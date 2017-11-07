@@ -1,4 +1,16 @@
 {
+  "app_name": {
+    "message": "Marinara: Pomodoro® Assistant",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "Marinara",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "Pomodoro® time management assistant.",
+    "description": "The short description of the application. Shown in the web store."
+  },
   "toaster_oven": {
     "message": "Grille-pain",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
