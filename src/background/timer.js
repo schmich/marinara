@@ -221,7 +221,7 @@ class PomodoroTimer
     this.start(Phase.Focus);
   }
 
-  start(phase = null) {
+  async start(phase = null) {
     if (this.timer) {
       this.timer.stop();
       this.timer.removeAllListeners();
@@ -248,7 +248,7 @@ class PomodoroTimer
       nextPhase = (nextBreakCount === 0) ? Phase.LongBreak : Phase.ShortBreak;
     }
 
-    this.timer = this.timerFactory(this._phase, nextPhase);
+    this.timer = await this.timerFactory(this._phase, nextPhase);
     this.timer.on('expire', () => {
       this.breakCount = nextBreakCount;
       this._phase = nextPhase;

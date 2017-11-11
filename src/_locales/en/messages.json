@@ -121,6 +121,26 @@
     "message": "minutes",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
+  "timer_sound_label": {
+    "message": "Timer sound:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "Hover to preview",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "Speed:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "beats per minute",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "None",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
   "when_complete": {
     "message": "When complete:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
@@ -134,7 +154,7 @@
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Play audio notification:",
+    "message": "Play sound:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
@@ -812,5 +832,21 @@
   "digital_alarm_clock": {
     "message": "Digital Alarm Clock",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "Stopwatch",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "Metronome",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "Pulse",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }

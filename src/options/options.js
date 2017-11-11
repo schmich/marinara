@@ -15,12 +15,29 @@ function isEmpty(obj) {
   return true;
 }
 
-function appendSounds(elem, sounds, selected) {
+function appendNotificationSounds(elem, sounds, selected) {
   for (let sound of sounds) {
     let option = document.createElement('option');
     option.appendChild(document.createTextNode(sound.name));
     option.dataset.file = sound.file;
     option.selected = (sound.file == selected);
+    elem.appendChild(option);
+  }
+}
+
+function arraysEqual(p, q) {
+  p = p || [];
+  q = q || [];
+  return p.length === q.length
+      && p.every((e, i) => e == q[i]);
+}
+
+function appendTimerSounds(elem, sounds, selected) {
+  for (let sound of sounds) {
+    let option = document.createElement('option');
+    option.appendChild(document.createTextNode(sound.name));
+    option.dataset.files = JSON.stringify(sound.files);
+    option.selected = arraysEqual(sound.files, selected);
     elem.appendChild(option);
   }
 }
@@ -32,38 +49,117 @@ function playSound(control) {
   audio.play();
 }
 
-function loadSettingGroup(name, settings, soundOptions) {
+async function createMetronome(soundControl, bpmControl) {
+  let option = soundControl.options[soundControl.selectedIndex];
+  let files = JSON.parse(option.dataset.files);
+  if (!files) {
+    return null;
+  }
+
+  let bpm = +bpmControl.value;
+  if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
+    return null;
+  }
+
+  return await Metronome.create(files, (60 / bpm) * 1000);
+}
+
+function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
   let duration = document.getElementById(`${name}-duration`);
   let desktopNotification = document.getElementById(`${name}-desktop-notification`);
   let newTabNotification = document.getElementById(`${name}-new-tab-notification`);
   let audioNotification = document.getElementById(`${name}-audio-notification`);
-  let sounds = document.getElementById(`${name}-sounds`);
+  let soundsSelect = document.getElementById(`${name}-sounds`);
+
+  let timerSoundSelect = document.getElementById(`${name}-timer-sounds`);
+  if (timerSoundSelect != null) {
+    let metronome = null;
+    let timerSoundBpm = document.getElementById(`${name}-timer-sound-bpm`);
+    let timerSoundPreview = document.getElementById(`${name}-timer-sound-preview`);
+    let timerSoundIcon = document.querySelector(`#${name}-timer-sound-preview i`);
+
+    const updatePreview = () => {
+      if (+timerSoundBpm.value && !timerSoundBpm.disabled) {
+        timerSoundPreview.style.display = null;
+      } else {
+        timerSoundPreview.style.display = 'none';
+      }
+    };
+
+    timerSoundBpm.disabled = !settings.timerSound;
+    timerSoundBpm.value = settings.timerSound ? settings.timerSound.bpm : '';
+    timerSoundBpm.addEventListener('input', () => {
+      updatePreview();
+    });
+
+    timerSoundSelect.addEventListener('change', () => {
+      if (timerSoundBpm.value === '') {
+        timerSoundBpm.value = 60;
+      }
+      timerSoundBpm.disabled = timerSoundSelect.selectedIndex == 0;
+      if (timerSoundBpm.disabled) {
+        timerSoundBpm.value = '';
+      }
+      updatePreview();
+    });
+
+    let mutex = new Mutex();
+    timerSoundPreview.addEventListener('mouseover', async () => {
+      await mutex.exclusive(async () => {
+        timerSoundIcon.classList.remove('icon-play');
+        timerSoundIcon.classList.add('icon-spin', 'animate-spin');
+        if (metronome) {
+          await metronome.close();
+        }
+        metronome = await createMetronome(timerSoundSelect, timerSoundBpm);
+        if (metronome) {
+          await metronome.start();
+        }
+      });
+    });
+
+    timerSoundPreview.addEventListener('mouseout', async () => {
+      await mutex.exclusive(async () => {
+        timerSoundIcon.classList.remove('icon-spin', 'animate-spin');
+        timerSoundIcon.classList.add('icon-play');
+        if (metronome) {
+          await metronome.close();
+        }
+      });
+    });
+
+    let sounds = [{ name: T('none'), files: null }].concat(timerSounds);
+    let selectedSounds = settings.timerSound ? settings.timerSound.files : null;
+    appendTimerSounds(timerSoundSelect, sounds, selectedSounds);
+    updatePreview();
+  }
 
   audioNotification.addEventListener('change', () => {
-    sounds.disabled = !audioNotification.checked;
+    soundsSelect.disabled = !audioNotification.checked;
     if (audioNotification.checked) {
-      playSound(sounds);
+      playSound(soundsSelect);
     }
   });
 
-  sounds.addEventListener('change', () => playSound(sounds));
+  soundsSelect.addEventListener('change', () => playSound(soundsSelect));
 
   duration.value = settings.duration;
   desktopNotification.checked = settings.notifications.desktop;
   newTabNotification.checked = settings.notifications.tab;
   audioNotification.checked = settings.notifications.sound !== null;
-  sounds.disabled = !audioNotification.checked;
+  soundsSelect.disabled = !audioNotification.checked;
 
-  appendSounds(sounds, soundOptions, settings.notifications.sound);
+  appendNotificationSounds(soundsSelect, notificationSounds, settings.notifications.sound);
 }
 
 async function loadSettings() {
   let settings = await BackgroundClient.getSettings();
-  let sounds = await BackgroundClient.getSounds();
+  let notificationSounds = await BackgroundClient.getNotificationSounds();
+  let timerSounds = await BackgroundClient.getTimerSounds();
 
-  loadSettingGroup('focus', settings.focus, sounds);
-  loadSettingGroup('short-break', settings.shortBreak, sounds);
-  loadSettingGroup('long-break', settings.longBreak, sounds);
+  loadSettingGroup('focus', settings.focus, notificationSounds, timerSounds);
+  loadSettingGroup('short-break', settings.shortBreak, notificationSounds, timerSounds);
+  loadSettingGroup('long-break', settings.longBreak, notificationSounds, timerSounds);
 
   let longBreakInterval = document.getElementById('long-break-interval');
 
@@ -84,16 +180,31 @@ function getSettingGroup(name) {
   let desktopNotification = document.getElementById(`${name}-desktop-notification`);
   let newTabNotification = document.getElementById(`${name}-new-tab-notification`);
   let audioNotification = document.getElementById(`${name}-audio-notification`);
-  let sounds = document.getElementById(`${name}-sounds`);
+  let notificationSounds = document.getElementById(`${name}-sounds`);
+  let timerSounds = document.getElementById(`${name}-timer-sounds`);
 
   let soundFile = null;
   if (audioNotification.checked) {
-    let option = sounds.options[sounds.selectedIndex];
+    let option = notificationSounds.options[notificationSounds.selectedIndex];
     soundFile = option.dataset.file;
+  }
+
+  let timerSound = null;
+  if (timerSounds) {
+    let timerSoundBpm = document.getElementById(`${name}-timer-sound-bpm`);
+    let bpm = +timerSoundBpm.value;
+    if (timerSounds.selectedIndex > 0 && bpm > 0) {
+      let selectedSound = timerSounds.options[timerSounds.selectedIndex];
+      timerSound = {
+        files: JSON.parse(selectedSound.dataset.files),
+        bpm: bpm
+      };
+    }
   }
 
   return {
     duration: duration.value,
+    timerSound: timerSound,
     notifications: {
       desktop: desktopNotification.checked,
       tab: newTabNotification.checked,

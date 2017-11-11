@@ -1,0 +1,13 @@
+require 'securerandom'
+
+dir :pwd
+run :convert do |file|
+  name = SecureRandom.uuid.split('-').first
+  out = "#{name}.mp3"
+  `ffmpeg -i "#{file}" -b:a 96k "#{out}"`
+  unless $?.success?
+    $stderr.puts 'Failed to convert.'
+    next
+  end
+  puts "#{file} -> #{out}"
+end

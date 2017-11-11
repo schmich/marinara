@@ -32,8 +32,12 @@ class BackgroundClient extends MessageClient
     return this.request('startSession', arguments);
   }
 
-  static getSounds() {
-    return this.request('getSounds', arguments);
+  static getNotificationSounds() {
+    return this.request('getNotificationSounds', arguments);
+  }
+
+  static getTimerSounds() {
+    return this.request('getTimerSounds', arguments);
   }
 
   static getSettings() {
@@ -78,8 +82,12 @@ class BackgroundServer extends MessageServer
     this.controller.start();
   }
 
-  async getSounds() {
-    return Sounds.all;
+  async getNotificationSounds() {
+    return Sounds.notification;
+  }
+
+  async getTimerSounds() {
+    return Sounds.timer;
   }
 
   async getSettings() {
@@ -134,6 +142,14 @@ class BackgroundServer extends MessageServer
     let durationParsed = +duration;
     if (durationParsed <= 0 || isNaN(durationParsed)) {
       throw new Error('Duration must be a positive number.');
+    }
+
+    let timerSound = phase.timerSound;
+    if (timerSound) {
+      let bpm = +timerSound.bpm;
+      if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
+        throw new Error('BPM must be a number between 1-1000.');
+      }
     }
 
     phase.duration = durationParsed;

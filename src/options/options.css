@@ -1,5 +1,6 @@
-body, html, button {
+body, html, button, select, input {
   font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
 }
 html, body {
   margin: 0;
@@ -9,16 +10,16 @@ html, body {
   flex-direction: column;
 }
 .field {
-  margin-bottom: 10px;
+  display: block;
 }
-.complete {
-  margin: 5px 0 0 10px;
+.group {
+  padding: 0 0 0 15px;
 }
-.complete p {
+.group p {
   padding: 0;
-  margin: 3px 0 13px -10px;
 }
 .section {
+  line-height: 120%;
   margin-bottom: 40px;
 }
 input[type="checkbox"] {
@@ -86,13 +87,14 @@ input.duration {
 }
 .section h2 {
   margin: 0 0 15px 0;
+  padding: 0 0 5px 0;
   font-weight: 500;
   color: #a00;
-  border-bottom: 1px solid #ddcccc;
+  border-bottom: 1px solid #dbb;
 }
 fieldset {
   border: 0;
-  margin: 0;
+  margin: -17px 0 0 0;
   padding: 0;
   display: inline;
 }
@@ -230,9 +232,6 @@ fieldset {
   opacity: 0.9 !important;
   padding: 10px 17px;
 }
-#settings-page {
-  font-size: 13px;
-}
 #history-page {
   justify-content: space-between;
 }
@@ -313,4 +312,12 @@ fieldset {
   background: #eee;
   color: #333;
   border-radius: 5px;
+}
+.preview {
+  padding-left: 5px;
+  cursor: default;
+  color: #a00;
+}
+.preview i {
+  color: #900;
 }

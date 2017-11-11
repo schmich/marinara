@@ -15,6 +15,10 @@ class AsyncChrome
   static get storage() {
     return AsyncStorage;
   }
+
+  static get files() {
+    return AsyncFiles;
+  }
 }
 
 class AsyncTabs
@@ -104,5 +108,28 @@ class AsyncStorage
       this._local = new AsyncStorage(chrome.storage.local);
     }
     return this._local;
+  }
+}
+
+class AsyncFiles
+{
+  static async readFile(file, type = null) {
+    return new Promise((resolve, reject) => {
+      let req = new XMLHttpRequest();
+      if (type) {
+        req.responseType = type;
+      }
+
+      req.onload = () => resolve(req.response);
+      req.onerror = error => reject(error);
+
+      const url = chrome.runtime.getURL(file);
+      req.open('GET', url, true);
+      req.send(null);
+    });
+  }
+
+  static async readBinary(file) {
+    return this.readFile(file, 'arraybuffer');
   }
 }

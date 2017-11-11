@@ -1,8 +1,8 @@
 class Sounds
 {
-  static get all() {
-    if (!this.sounds) {
-      this.sounds = [
+  static get notification() {
+    if (!this.notificationSounds) {
+      this.notificationSounds = [
         { name: T('tone'), file: 'f62b45bc.mp3' },
         { name: T('digital_watch'), file: 'be75f155.mp3' },
         { name: T('analog_alarm_clock'), file: '0f034826.mp3' },
@@ -30,11 +30,28 @@ class Sounds
         { name: T('airplane'), file: '72cb1b7f.mp3' }
       ];
 
-      for (let sound of this.sounds) {
+      for (let sound of this.notificationSounds) {
         sound.file = `/audio/${sound.file}`;
       }
     }
 
-    return this.sounds;
+    return this.notificationSounds;
+  }
+
+  static get timer() {
+    if (!this.timerSounds) {
+      this.timerSounds = [
+        { name: T('stopwatch'), files: ['4cf03078.mp3', 'edab7b0d.mp3'] },
+        { name: T('clock'), files: ['af607ff1.mp3', 'fd23aaf3.mp3'] },
+        { name: T('metronome'), files: ['ad6eac9e.mp3'] },
+        { name: T('pulse'), files: ['fe5d2a62.mp3'] }
+      ];
+
+      for (let sound of this.timerSounds) {
+        sound.files = sound.files.map(file => `/audio/${file}`);
+      }
+    }
+
+    return this.timerSounds;
   }
 }

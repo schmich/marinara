@@ -49,6 +49,33 @@ class BadgeObserver
   }
 }
 
+class TimerSoundObserver
+{
+  constructor(metronome) {
+    this.metronome = metronome;
+  }
+
+  start(elapsed, remaining) {
+    this.metronome.start();
+  }
+
+  stop() {
+    this.metronome.close();
+  }
+
+  pause() {
+    this.metronome.stop();
+  }
+
+  resume(elapsed, remaining) {
+    this.metronome.start();
+  }
+
+  expire() {
+    this.metronome.close();
+  }
+}
+
 class Controller
 {
   constructor(settingsManager, history) {
@@ -191,16 +218,24 @@ class Controller
       this.timer.dispose();
     }
 
-    let factory = (phase, nextPhase) => this.createTimer(phase, nextPhase);
+    const factory = async (phase, nextPhase) => {
+      return await this.createTimer(phase, nextPhase);
+    };
     this.timer = new PomodoroTimer(factory, startPhase, settings.longBreak.interval);
   }
 
-  createTimer(phase, nextPhase) {
+  async createTimer(phase, nextPhase) {
     let options = this.timerOptions(phase, nextPhase, this.settings);
     let duration = Math.floor(options.duration * 60);
     let timer = new Timer(duration, 60);
 
     timer.observe(new BadgeObserver(options.phase, options.badgeColor));
+
+    let timerSound = options.timerSound;
+    if (timerSound) {
+      let metronome = await Metronome.create(timerSound.files, (60 / timerSound.bpm) * 1000);
+      timer.observe(new TimerSoundObserver(metronome));
+    }
 
     timer.on('change', () => this.menu.apply());
 
@@ -281,6 +316,7 @@ class Controller
         duration: settings.focus.duration,
         sound: settings.focus.notifications.sound,
         badgeColor: '#bb0000',
+        timerSound: settings.focus.timerSound,
         notification: !settings.focus.notifications.desktop ? null : {
           title: title,
           messages: notificationMessages,
@@ -303,6 +339,7 @@ class Controller
         duration: breakSettings.duration,
         sound: breakSettings.notifications.sound,
         badgeColor: '#11aa11',
+        timerSound: null,
         notification: !breakSettings.notifications.desktop ? null : {
           title: T('start_focusing'),
           messages: notificationMessages,

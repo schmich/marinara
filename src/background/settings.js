@@ -66,13 +66,14 @@ class StorageManager extends EventEmitter
 class MarinaraSchema
 {
   get version() {
-    return 3;
+    return 4;
   }
 
   get default() {
     return {
       focus: {
         duration: 25,
+        timerSound: null,
         notifications: {
           desktop: true,
           tab: true,
@@ -81,6 +82,7 @@ class MarinaraSchema
       },
       shortBreak: {
         duration: 5,
+        timerSound: null,
         notifications: {
           desktop: true,
           tab: true,
@@ -90,6 +92,7 @@ class MarinaraSchema
       longBreak: {
         duration: 15,
         interval: 4,
+        timerSound: null,
         notifications: {
           desktop: true,
           tab: true,
@@ -168,5 +171,16 @@ class MarinaraSchema
     }
 
     return v3;
+  }
+
+  from3To4(v3) {
+    let v4 = clone(v3);
+    v4.version = 4;
+
+    v4.focus.timerSound = null;
+    v4.shortBreak.timerSound = null;
+    v4.longBreak.timerSound = null;
+
+    return v4;
   }
 }
