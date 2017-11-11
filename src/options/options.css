@@ -32,7 +32,10 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: #d00;
+  background: -webkit-linear-gradient(top, #d00, #c00);
+  background: -moz-linear-gradient(top, #d00, #c00);
+  background: -ms-linear-gradient(top, #d00, #c00);
+  background: linear-gradient(top, #d00, #c00);
   padding: 15px 0 0 0;
   box-shadow: 0 3px 10px #999;
 }
