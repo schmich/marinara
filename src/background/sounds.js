@@ -43,6 +43,7 @@ class Sounds
       this.timerSounds = [
         { name: T('stopwatch'), files: ['4cf03078.mp3', 'edab7b0d.mp3'] },
         { name: T('clock'), files: ['af607ff1.mp3', 'fd23aaf3.mp3'] },
+        { name: T('wind_up_clock'), files: ['bc4e3db2.mp3', 'f9efd11b.mp3'] },
         { name: T('metronome'), files: ['ad6eac9e.mp3'] },
         { name: T('pulse'), files: ['fe5d2a62.mp3'] }
       ];

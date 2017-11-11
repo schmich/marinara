@@ -1,11 +1,26 @@
 require 'securerandom'
+require 'fileutils'
 require 'tempfile'
+
+def sound_name
+  SecureRandom.uuid.split('-').first
+end
+
+dir :pwd
+run :rename do |file|
+  parts = file.split('.')
+  dir = File.dirname(file)
+  new_name = [sound_name(), *parts.slice(1, parts.length)].compact.join('.')
+  out = File.join(dir, new_name)
+  FileUtils.mv(file, out)
+  puts "#{file} -> #{out}"
+end
 
 dir :pwd
 run :convert do |file|
-  name = SecureRandom.uuid.split('-').first
+  name = sound_name()
   out = "#{name}.mp3"
-  `ffmpeg -i "#{file}" -b:a 96k "#{out}"`
+  `ffmpeg -i "#{file}" -q:a 6 "#{out}"`
   unless $?.success?
     $stderr.puts 'Failed to convert.'
     next

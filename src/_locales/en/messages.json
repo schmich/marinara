@@ -841,6 +841,10 @@
     "message": "Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "wind_up_clock": {
+    "message": "Wind-up Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "metronome": {
     "message": "Metronome",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
