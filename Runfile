@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'tempfile'
 
 dir :pwd
 run :convert do |file|
@@ -10,4 +11,22 @@ run :convert do |file|
     next
   end
   puts "#{file} -> #{out}"
+end
+
+dir :pwd
+run :waveform do |file|
+  temp = Tempfile.new(["#{File.basename(file)}-", '.png'])
+  path = temp.path
+  temp.close(true)
+
+  `ffmpeg -i "#{file}" -filter_complex \
+    "[0:a]aformat=channel_layouts=mono, \
+     compand=gain=-6, \
+     showwavespic=s=600x120:colors=#9cf42f[fg]; \
+     color=s=600x120:color=#44582c, \
+     drawgrid=width=iw/10:height=ih/5:color=#9cf42f@0.1[bg]; \
+     [bg][fg]overlay=format=rgb,drawbox=x=(iw-w)/2:y=(ih-h)/2:w=iw:h=1:color=#9cf42f" \
+    -vframes 1 "#{path}"`
+
+  `open "#{path}"` if $?.success?
 end
