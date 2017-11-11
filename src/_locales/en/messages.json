@@ -849,6 +849,10 @@
     "message": "Metronome",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "wood_block": {
+    "message": "Wood Block",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "pulse": {
     "message": "Pulse",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
