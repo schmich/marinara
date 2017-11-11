@@ -849,6 +849,10 @@
     "message": "Antique Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "small_clock": {
+    "message": "Small Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "wind_up_clock": {
     "message": "Wind-up Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
