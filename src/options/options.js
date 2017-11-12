@@ -94,7 +94,7 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
         await metronome.close();
       }
       metronome = await createMetronome(timerSoundSelect, timerSoundBpm);
-      if (metronome) {
+      if (metronome && timerSoundIcon.classList.contains('icon-spin')) {
         await metronome.start();
       }
     };
