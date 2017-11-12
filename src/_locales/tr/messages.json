@@ -278,7 +278,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$$date$ tarihlerinde $pomodoros$",
+    "message": "$date$ tarihlerinde $pomodoros$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
