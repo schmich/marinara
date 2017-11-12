@@ -42,6 +42,7 @@ class Sounds
     if (!this.timerSounds) {
       this.timerSounds = [
         { name: T('stopwatch'), files: ['4cf03078.mp3', 'edab7b0d.mp3'] },
+        { name: T('wristwatch'), files: ['8dc834f8.mp3', '831a5549.mp3'] },
         { name: T('clock'), files: ['af607ff1.mp3', 'fd23aaf3.mp3'] },
         { name: T('desk_clock'), files: ['6a981bfc.mp3', 'fd64de98.mp3'] },
         { name: T('wind_up_clock'), files: ['bc4e3db2.mp3', 'f9efd11b.mp3'] },

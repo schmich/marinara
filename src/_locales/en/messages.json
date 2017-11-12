@@ -853,6 +853,10 @@
     "message": "Small Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "wristwatch": {
+    "message": "Wristwatch",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "wind_up_clock": {
     "message": "Wind-up Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
