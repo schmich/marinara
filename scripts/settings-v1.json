@@ -1,0 +1,15 @@
+{
+  "focus": {
+    "duration": 25,
+    "desktopNotification": true,
+    "newTabNotification": true,
+    "sound": null
+  },
+  "break": {
+    "duration": 5,
+    "desktopNotification": true,
+    "newTabNotification": true,
+    "sound": null
+  },
+  "version": 1
+}
