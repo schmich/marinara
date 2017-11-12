@@ -17,6 +17,12 @@
       "css": "play",
       "code": 59393,
       "src": "entypo"
+    },
+    {
+      "uid": "130380e481a7defc690dfb24123a1f0c",
+      "css": "circle",
+      "code": 61713,
+      "src": "fontawesome"
     }
   ]
 }
