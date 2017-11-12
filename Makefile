@@ -17,7 +17,3 @@ run-pseudo:
 # Sanity check all messages.json files.
 validate-messages:
 	ruby -Iscripts scripts/validate-messages.rb
-
-# Sync en messages into another locale.
-sync-locale:
-	ruby -Iscripts scripts/sync-locale.rb
