@@ -1,5 +1,5 @@
 body, html, button {
-  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 body, html {
   height: 100%;
@@ -40,7 +40,7 @@ body {
   border: 0;
   border-radius: 6px;
   -webkit-border-radius: 6px;
-  padding: 15px 35px;
+  padding: 15px 45px;
   text-align: center;
   text-decoration: none !important;
   background: rgba(0,174,255,1);
@@ -48,7 +48,7 @@ body {
   background: -webkit-linear-gradient(top, rgba(0,174,255,1) 0%, rgba(0,174,255,1) 92%, rgba(0,144,234,1) 100%);
   color: #fff;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.1s linear;
-  box-shadow: 0 10px 5px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 8px -10px rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: relative;
 }
@@ -87,7 +87,7 @@ body {
   color: #555;
   border: 1px solid #555;
   border-radius: 3px;
-  padding: 8px 20px;
+  padding: 8px 25px;
   margin: 5px 0 0 0;
   outline: 0 !important;
 }

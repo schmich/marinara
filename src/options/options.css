@@ -1,6 +1,6 @@
 body, html, button, select, input {
-  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
 }
 html, body {
   margin: 0;
@@ -13,13 +13,13 @@ html, body {
   display: block;
 }
 .group {
-  padding: 0 0 0 15px;
+  padding: 0 0 0 25px;
 }
 .group p {
   padding: 0;
 }
 .section {
-  line-height: 120%;
+  line-height: 110%;
   margin-bottom: 40px;
 }
 input[type="checkbox"] {
@@ -45,7 +45,6 @@ input.duration {
 .header a {
   display: inline-block;
   padding: 10px 30px;
-  font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
@@ -159,7 +158,6 @@ fieldset {
   text-align: right;
   color: #333;
   font-weight: bold;
-  font-size: smaller;
   text-transform: uppercase;
   position: relative;
   top: 1px;
