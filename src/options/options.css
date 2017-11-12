@@ -206,6 +206,7 @@ fieldset {
   margin-top: 5px;
 }
 #heatmap {
+  font-size: 14px;
   margin-left: -10px;
 }
 #heatmap .day {

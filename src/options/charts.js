@@ -182,7 +182,7 @@ function createHeatmap(data, start, el) {
 
   const width = 700;
   const height = 110;
-  const dx = 35;
+  const dx = 40;
 
   let formatColor = d3.scaleQuantize()
     .domain([0, max])
@@ -248,7 +248,7 @@ function createHeatmap(data, start, el) {
     .data([1, 3, 5].map(d => Locale.shortDays[d]))
     .enter()
     .append('text')
-      .attr('transform', (d, i) => `translate(-10,${cellSize * 2 * (i + 1)})`)
+      .attr('transform', (d, i) => `translate(-5,${cellSize * 2 * (i + 1)})`)
       .style('text-anchor', 'end')
       .attr('class', 'label')
       .text(d => d);
