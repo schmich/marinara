@@ -841,6 +841,10 @@
     "message": "Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "wall_clock": {
+    "message": "Wall Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "desk_clock": {
     "message": "Desk Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
