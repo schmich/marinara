@@ -1,5 +1,5 @@
 # Create Chrome extension package (.zip).
-package:
+package: validate-messages
 	ruby -Iscripts scripts/make-package.rb
 
 # Run Chrome with a new (temporary) user profile with Marinara loaded.
