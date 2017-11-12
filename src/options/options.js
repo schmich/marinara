@@ -89,21 +89,37 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
       }
     };
 
+    const reloadMetronome = async () => {
+      if (metronome) {
+        await metronome.close();
+      }
+      metronome = await createMetronome(timerSoundSelect, timerSoundBpm);
+      if (metronome) {
+        await metronome.start();
+      }
+    };
+
     timerSoundBpm.disabled = !settings.timerSound;
     timerSoundBpm.value = settings.timerSound ? settings.timerSound.bpm : '';
-    timerSoundBpm.addEventListener('input', () => {
-      updatePreview();
+    timerSoundBpm.addEventListener('input', async () => {
+      await mutex.exclusive(async () => {
+        updatePreview();
+        await reloadMetronome();
+      });
     });
 
-    timerSoundSelect.addEventListener('change', () => {
-      if (timerSoundBpm.value === '') {
-        timerSoundBpm.value = 60;
-      }
-      timerSoundBpm.disabled = timerSoundSelect.selectedIndex == 0;
-      if (timerSoundBpm.disabled) {
-        timerSoundBpm.value = '';
-      }
-      updatePreview();
+    timerSoundSelect.addEventListener('change', async () => {
+      await mutex.exclusive(async () => {
+        if (timerSoundBpm.value === '') {
+          timerSoundBpm.value = 60;
+        }
+        timerSoundBpm.disabled = timerSoundSelect.selectedIndex == 0;
+        if (timerSoundBpm.disabled) {
+          timerSoundBpm.value = '';
+        }
+        updatePreview();
+        await reloadMetronome();
+      });
     });
 
     let mutex = new Mutex();
@@ -111,13 +127,7 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
       await mutex.exclusive(async () => {
         timerSoundIcon.classList.remove('icon-play');
         timerSoundIcon.classList.add('icon-spin', 'animate-spin');
-        if (metronome) {
-          await metronome.close();
-        }
-        metronome = await createMetronome(timerSoundSelect, timerSoundBpm);
-        if (metronome) {
-          await metronome.start();
-        }
+        await reloadMetronome();
       });
     });
 
