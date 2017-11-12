@@ -8,15 +8,15 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro® ассистент для тайм-менеджмента.",
+    "message": "Pomodoro® ассистент по управлению временем.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Поддержка коротких и длительных отрезков времени\n• Панель инструментов с таймером\n• Отслеживание истории и статистики в «Помидорах»\n• Настраиваемые длительные интервалы\n• Настраиваемая длительность таймера\n• Уведомления на рабочий стол\n• Уведомления о новых вкладках\n• Звуковые нотификации с более 20 мелодиями\n• Открытый исходный код",
+    "message": "• Поддержка коротких и длительных перерывов\n• Иконка с таймером на панели\n• Отслеживание истории и статистики «Помидоров»\n• Настраиваемые интервалы длительных перерывов\n• Настраиваемая длительность таймера\n• Уведомления на рабочем столе\n• Уведомления в новой вкладке\n• Звуковые уведомления с более, чем 20 звуками\n• Открытый исходный код",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Pomodoro Ассистент",
+    "message": "Ассистент Pomodoro",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
@@ -24,39 +24,39 @@
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Перезапустить «Помидорный» Цикл",
+    "message": "Перезапустить «Помидорный» цикл",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "Перезапустить Таймер",
+    "message": "Сбросить таймер",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "Начать Сосредоточение",
+    "message": "Начать фокусироваться",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Начать Короткий перерыв",
+    "message": "Начать короткий перерыв",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "Начать Перерыв",
+    "message": "Начать перерыв",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "Начать Длительный перерыв",
+    "message": "Начать длительный перерыв",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "Остановить Таймер",
+    "message": "Остановить таймер",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Поставить Таймер на паузу",
+    "message": "Приостановить таймер",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "Возобновить Таймер",
+    "message": "Возобновить таймер",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
@@ -86,7 +86,7 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: Pomodoro Assistant",
+    "message": "Marinara: Ассистент Pomodoro",
     "description": "Settings page title."
   },
   "settings": {
@@ -102,7 +102,7 @@
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Сосредоточение",
+    "message": "Фокусировка",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
@@ -121,20 +121,40 @@
     "message": "минуты",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
+  "timer_sound_label": {
+    "message": "Звук таймера",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "Наведите для просмотра",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "Скорость:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "ударов в минуту",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "Нет",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
   "when_complete": {
-    "message": "Закончится:",
+    "message": "Когда закончится:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
-    "message": "Показывать уведомления на рабочий стол",
+    "message": "Показывать уведомления на рабочем столе",
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Показывать уведомления о новых вкладках",
+    "message": "Показывать уведомления в новой вклаке",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Звуковые уведомления:",
+    "message": "Проиграть звук:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
@@ -182,11 +202,11 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "Тон:",
+    "message": "Тон",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Звуковой сигнал",
+    "message": "Электронный звонок",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
@@ -206,7 +226,7 @@
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ в среднем",
+    "message": "в среднем $average$",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -216,15 +236,15 @@
     }
   },
   "daily_distribution": {
-    "message": "Распределение по дням",
+    "message": "Распределение по дню",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "Распределение по неделям",
+    "message": "Распределение по неделе",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$ за Последние 9 Месяцев",
+    "message": "$count$ за последние 9 месяцев",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -246,7 +266,7 @@
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ между $start$—$end$",
+    "message": "$pomodoros$ между $start$ и $end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -331,6 +351,10 @@
     "message": "p",
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
+  "sunday": {
+    "message": "Воскресенье",
+    "description": "Sunday. Shown on the settings-history page."
+  },
   "monday": {
     "message": "Понедельник",
     "description": "Monday. Shown on the settings-history page."
@@ -355,9 +379,9 @@
     "message": "Суббота",
     "description": "Saturday. Shown on the settings-history page."
   },
-  "sunday": {
-    "message": "Воскресенье",
-    "description": "Sunday. Shown on the settings-history page."
+  "sunday_short": {
+    "message": "Вс",
+    "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
     "message": "Пн",
@@ -382,10 +406,6 @@
   "saturday_short": {
     "message": "Сб",
     "description": "Saturday abbreviated. Shown on the settings-history page."
-  },
-  "sunday_short": {
-    "message": "Вс",
-    "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "january": {
     "message": "Январь",
@@ -484,7 +504,7 @@
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "В $month$",
+    "message": "$month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -564,11 +584,11 @@
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Release Notes",
+    "message": "Примечания к выпуску",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "Исходный Код",
+    "message": "Исходный код",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
@@ -600,11 +620,11 @@
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "Завершено Сегодня",
+    "message": "Завершено сегодня",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "Посмотреть Историю",
+    "message": "Посмотреть историю",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
@@ -628,7 +648,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "Начать Сосредоточение сейчас",
+    "message": "Начать фокусироваться сейчас",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
@@ -644,7 +664,7 @@
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Начать Перерыв сейчас",
+    "message": "Начать перерыв сейчас",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
@@ -680,11 +700,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1 мин",
+    "message": "<1м",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "$time$ Осталось",
+    "message": "осталось $time$",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -694,7 +714,7 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Нет информации о Помидорах.",
+    "message": "Нет информации о «Помидорах».",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
@@ -710,12 +730,16 @@
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Несовпадающие данные о Помидорах/временной зоне.",
+    "message": "Несовпадающие данные о «Помидорах»/временной зоне.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
-    "message": "Помочь с Переводом",
+    "message": "Помочь с переводом",
     "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "expire_title": {
+    "message": "Время вышло · Marinara",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
     "message": "Гонг 1",
@@ -730,7 +754,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Звонок Пейджера",
+    "message": "Звонок пейджера",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
@@ -742,7 +766,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Падение капли",
+    "message": "Падение булавки",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
@@ -762,11 +786,11 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Велосипедный звонок",
+    "message": "Велосипедный гудок",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Телефонный звонок",
+    "message": "Звон колокола",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
@@ -808,5 +832,53 @@
   "digital_alarm_clock": {
     "message": "Цифровой будильник",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "Таймер",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "Часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "Настенные часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "Настольные часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "Антикварные часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "Маленькие часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "Большие часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "Ручные часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "Заводные часы",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "Метроном",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "Деревяный блок",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "Пульс",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }
