@@ -853,6 +853,10 @@
     "message": "Small Clock",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "large_clock": {
+    "message": "Large Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "wristwatch": {
     "message": "Wristwatch",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
