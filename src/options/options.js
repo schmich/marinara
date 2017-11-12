@@ -43,6 +43,10 @@ function appendTimerSounds(elem, sounds, selected) {
 }
 
 function playSound(control) {
+  if (control.selectedIndex === 0) {
+    return;
+  }
+
   let option = control.options[control.selectedIndex];
   let audio = new Audio();
   audio.src = option.dataset.file;
@@ -68,7 +72,6 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
   let duration = document.getElementById(`${name}-duration`);
   let desktopNotification = document.getElementById(`${name}-desktop-notification`);
   let newTabNotification = document.getElementById(`${name}-new-tab-notification`);
-  let audioNotification = document.getElementById(`${name}-audio-notification`);
   let soundsSelect = document.getElementById(`${name}-sounds`);
 
   let timerSoundSelect = document.getElementById(`${name}-timer-sounds`);
@@ -134,22 +137,14 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
     updatePreview();
   }
 
-  audioNotification.addEventListener('change', () => {
-    soundsSelect.disabled = !audioNotification.checked;
-    if (audioNotification.checked) {
-      playSound(soundsSelect);
-    }
-  });
-
   soundsSelect.addEventListener('change', () => playSound(soundsSelect));
 
   duration.value = settings.duration;
   desktopNotification.checked = settings.notifications.desktop;
   newTabNotification.checked = settings.notifications.tab;
-  audioNotification.checked = settings.notifications.sound !== null;
-  soundsSelect.disabled = !audioNotification.checked;
 
-  appendNotificationSounds(soundsSelect, notificationSounds, settings.notifications.sound);
+  let sounds = [{ name: T('none'), file: null }].concat(notificationSounds);
+  appendNotificationSounds(soundsSelect, sounds, settings.notifications.sound);
 }
 
 async function loadSettings() {
@@ -179,12 +174,11 @@ function getSettingGroup(name) {
   let duration = document.getElementById(`${name}-duration`);
   let desktopNotification = document.getElementById(`${name}-desktop-notification`);
   let newTabNotification = document.getElementById(`${name}-new-tab-notification`);
-  let audioNotification = document.getElementById(`${name}-audio-notification`);
   let notificationSounds = document.getElementById(`${name}-sounds`);
   let timerSounds = document.getElementById(`${name}-timer-sounds`);
 
   let soundFile = null;
-  if (audioNotification.checked) {
+  if (notificationSounds.selectedIndex > 0) {
     let option = notificationSounds.options[notificationSounds.selectedIndex];
     soundFile = option.dataset.file;
   }
