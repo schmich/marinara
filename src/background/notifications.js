@@ -7,6 +7,7 @@ class Notification
       message: messages.filter(m => m && m.trim() !== '').join("\n"),
       iconUrl: 'icons/128.png',
       isClickable: true,
+      requireInteraction: true,
       buttons: [{ title: action, iconUrl: 'icons/start.png' }]
     };
 
