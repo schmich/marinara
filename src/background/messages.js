@@ -2,11 +2,11 @@ class MessageServer
 {
   constructor() {
     chrome.runtime.onMessage.addListener((request, sender, respond) => {
-      setTimeout(async () => {
+      (async () => {
         let method = request.command;
         let result = await this[method](...request.params) || {};
         respond(result);
-      });
+      })();
 
       // Response is async.
       return true;
