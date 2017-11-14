@@ -4,6 +4,72 @@ const TimerState = new Enum({
   Paused: 2
 });
 
+class Alarm extends EventEmitter
+{
+  static run(duration, callback) {
+    let alarm = new Alarm(duration);
+    alarm.once('expire', callback);
+    alarm.start();
+    return alarm;
+  }
+
+  constructor(duration) {
+    super();
+
+    if (!Alarm.currentId) {
+      Alarm.currentId = 0;
+    }
+
+    this.name = `Alarm:${Alarm.currentId++}`;
+    this.duration = duration;
+
+    chrome.alarms.onAlarm.addListener(e => {
+      if (e.name === this.name) {
+        chrome.alarms.clear(this.name, () => {});
+        this.emit('expire');
+      }
+    });
+  }
+
+  start() {
+    let when = Date.now() + this.duration;
+    chrome.alarms.create(this.name, { when });
+  }
+
+  stop() {
+    this.removeAllListeners();
+    chrome.alarms.clear(this.name, () => {});
+  }
+}
+
+class Interval extends EventEmitter
+{
+  static run(duration, callback) {
+    let interval = new Interval(duration);
+    interval.on('tick', callback);
+    interval.start();
+    return interval;
+  }
+
+  constructor(duration) {
+    super();
+    this.alarm = new Alarm(duration);
+    this.alarm.on('expire', () => {
+      this.emit('tick');
+      this.alarm.start();
+    });
+  }
+
+  start() {
+    this.alarm.start();
+  }
+
+  stop() {
+    this.removeAllListeners();
+    this.alarm.stop();
+  }
+}
+
 class Timer extends EventEmitter
 {
   constructor(durationSec, tickSec) {
@@ -15,7 +81,7 @@ class Timer extends EventEmitter
     this.tickSec = tickSec;
 
     this.tickInterval = null;
-    this.expireTimeout = null;
+    this.expireAlarm = null;
 
     this.periodStartTime = null;
     this.remainingSec = null;
@@ -66,7 +132,7 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireTimeout(this.durationSec);
+    this.setExpireAlarm(this.durationSec);
     this.setTickInterval(this.tickSec);
 
     this.remainingSec = this.durationSec;
@@ -82,11 +148,11 @@ class Timer extends EventEmitter
       return;
     }
 
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
+    this.tickInterval.stop();
+    this.expireAlarm.stop();
 
     this.tickInterval = null;
-    this.expireTimeout = null;
+    this.expireAlarm = null;
     this.periodStartTime = null;
     this.remainingSec = null;
 
@@ -100,8 +166,8 @@ class Timer extends EventEmitter
       return;
     }
 
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
+    this.tickInterval.stop();
+    this.expireAlarm.stop();
 
     let periodSec = (Date.now() - this.periodStartTime) / 1000;
     this.remainingSec -= periodSec;
@@ -119,7 +185,7 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireTimeout(this.remainingSec);
+    this.setExpireAlarm(this.remainingSec);
     this.setTickInterval(this.tickSec);
 
     this._state = TimerState.Running;
@@ -135,10 +201,10 @@ class Timer extends EventEmitter
     this.start();
   }
 
-  setExpireTimeout(seconds) {
-    this.expireTimeout = setTimeout(() => {
-      clearInterval(this.tickInterval);
-      clearTimeout(this.expireTimeout);
+  setExpireAlarm(seconds) {
+    this.expireAlarm = Alarm.run(seconds * 1000, () => {
+      this.tickInterval.stop();
+      this.expireAlarm.stop();
 
       this.tickInterval = null;
       this.expireTimeout = null;
@@ -149,17 +215,17 @@ class Timer extends EventEmitter
 
       this.emit('expire', this.durationSec, 0);
       this.emit('change');
-    }, seconds * 1000);
+    });
   }
 
   setTickInterval(seconds) {
-    this.tickInterval = setInterval(() => {
+    this.tickInterval = Interval.run(seconds * 1000, () => {
       let periodSec = (Date.now() - this.periodStartTime) / 1000;
       let remainingSec = this.remainingSec - periodSec;
 
       let elapsed = this.durationSec - remainingSec;
       this.emit('tick', elapsed, remainingSec);
-    }, seconds * 1000);
+    });
   }
 }
 
