@@ -72,18 +72,18 @@ class Interval extends EventEmitter
 
 class Timer extends EventEmitter
 {
-  constructor(durationSec, tickSec) {
+  constructor(duration, tick) {
     super();
 
     this.state = TimerState.Stopped;
-    this.durationSec = durationSec;
-    this.tickSec = tickSec;
+    this.duration = duration;
+    this.tick = tick;
 
     this.tickInterval = null;
     this.expireAlarm = null;
 
     this.periodStartTime = null;
-    this.remainingSec = null;
+    this.remaining = null;
   }
 
   observe(observer) {
@@ -127,14 +127,14 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireAlarm(this.durationSec);
-    this.setTickInterval(this.tickSec);
+    this.setExpireAlarm(this.duration);
+    this.setTickInterval(this.tick);
 
-    this.remainingSec = this.durationSec;
+    this.remaining = this.duration;
 
     this.state = TimerState.Running;
     this.periodStartTime = Date.now();
-    this.emit('start', 0, this.remainingSec);
+    this.emit('start', 0, this.remaining);
     this.emit('change');
   }
 
@@ -149,7 +149,7 @@ class Timer extends EventEmitter
     this.tickInterval = null;
     this.expireAlarm = null;
     this.periodStartTime = null;
-    this.remainingSec = null;
+    this.remaining = null;
 
     this.state = TimerState.Stopped;
     this.emit('stop');
@@ -164,14 +164,14 @@ class Timer extends EventEmitter
     this.tickInterval.stop();
     this.expireAlarm.stop();
 
-    let periodSec = (Date.now() - this.periodStartTime) / 1000;
-    this.remainingSec -= periodSec;
+    let periodLength = (Date.now() - this.periodStartTime) / 1000;
+    this.remaining -= periodLength;
 
     this.state = TimerState.Paused;
     this.periodStartTime = null;
 
-    let elapsed = this.durationSec - this.remainingSec;
-    this.emit('pause', elapsed, this.remainingSec);
+    let elapsed = this.duration - this.remaining;
+    this.emit('pause', elapsed, this.remaining);
     this.emit('change');
   }
 
@@ -180,14 +180,14 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireAlarm(this.remainingSec);
-    this.setTickInterval(this.tickSec);
+    this.setExpireAlarm(this.remaining);
+    this.setTickInterval(this.tick);
 
     this.state = TimerState.Running;
     this.periodStartTime = Date.now();
 
-    let elapsed = this.durationSec - this.remainingSec;
-    this.emit('resume', elapsed, this.remainingSec);
+    let elapsed = this.duration - this.remaining;
+    this.emit('resume', elapsed, this.remaining);
     this.emit('change');
   }
 
@@ -204,22 +204,22 @@ class Timer extends EventEmitter
       this.tickInterval = null;
       this.expireTimeout = null;
       this.periodStartTime = null;
-      this.remainingSec = null;
+      this.remaining = null;
 
       this.state = TimerState.Stopped;
 
-      this.emit('expire', this.durationSec, 0);
+      this.emit('expire', this.duration, 0);
       this.emit('change');
     });
   }
 
   setTickInterval(seconds) {
     this.tickInterval = Interval.run(seconds * 1000, () => {
-      let periodSec = (Date.now() - this.periodStartTime) / 1000;
-      let remainingSec = this.remainingSec - periodSec;
+      let periodLength = (Date.now() - this.periodStartTime) / 1000;
+      let remaining = this.remaining - periodLength;
 
-      let elapsed = this.durationSec - remainingSec;
-      this.emit('tick', elapsed, remainingSec);
+      let elapsed = this.duration - remaining;
+      this.emit('tick', elapsed, remaining);
     });
   }
 }
