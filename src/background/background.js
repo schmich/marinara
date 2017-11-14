@@ -6,11 +6,11 @@ class BadgeObserver
   }
 
   start(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.floor(remaining / 60) });
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 
   tick(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.floor(remaining / 60) });
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 
   stop() {
@@ -22,7 +22,7 @@ class BadgeObserver
   }
 
   resume(elapsed, remaining) {
-    this.updateBadge({ minutes: Math.floor(remaining / 60) });
+    this.updateBadge({ minutes: Math.round(remaining / 60) });
   }
 
   expire() {
@@ -41,7 +41,7 @@ class BadgeObserver
     chrome.browserAction.setTitle({ title: tooltip });
     chrome.browserAction.setBadgeText({ text: text });
     chrome.browserAction.setBadgeBackgroundColor({ color: this.color });
-  };
+  }
 
   removeBadge() {
     chrome.browserAction.setTitle({ title: '' });
