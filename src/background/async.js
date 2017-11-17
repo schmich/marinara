@@ -26,21 +26,21 @@ class AsyncChrome
   static get files() {
     return AsyncFiles;
   }
+}
 
-  static handle(fn) {
-    return new Promise((resolve, reject) => {
-      const callback = result => {
-        const err = chrome.runtime.lastError;
-        if (err) {
-          reject(new ChromeError(err.message));
-        } else {
-          resolve(result);
-        }
-      };
+function promise(fn) {
+  return new Promise((resolve, reject) => {
+    const callback = (...results) => {
+      const err = chrome.runtime.lastError;
+      if (err) {
+        reject(new ChromeError(err.message));
+      } else {
+        resolve(...results);
+      }
+    };
 
-      fn(callback);
-    });
-  }
+    fn(callback);
+  });
 }
 
 class AsyncTabs
@@ -65,19 +65,19 @@ class AsyncTabs
   }
 
   static async tryCreate(options) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       chrome.tabs.create(options, callback);
     });
   }
 
   static async getCurrent() {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       chrome.tabs.getCurrent(callback);
     });
   }
 
   static async update(tabId, updateProperties) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       chrome.tabs.update(tabId, updateProperties, callback);
     });
   }
@@ -86,13 +86,13 @@ class AsyncTabs
 class AsyncWindows
 {
   static async create(createData) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       chrome.windows.create(createData, callback);
     });
   }
 
   static async update(windowId, updateInfo) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       chrome.windows.update(windowId, updateInfo, callback);
     });
   }
@@ -101,7 +101,7 @@ class AsyncWindows
 class AsyncNotifications
 {
   static async create(options) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       try {
         chrome.notifications.create('', options, callback);        
       } catch (e) {
@@ -126,19 +126,19 @@ class AsyncStorage
   }
 
   get(keys = null) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       this.store.get(keys, callback);
     });
   }
 
   set(obj) {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       this.store.set(obj, callback);
     });
   }
 
   clear() {
-    return AsyncChrome.handle(callback => {
+    return promise(callback => {
       this.store.clear(callback);
     });
   }
