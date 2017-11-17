@@ -4,14 +4,15 @@ Marinara is a [time management assistant for Chrome](https://chrome.google.com/w
 
 ## Features
 
-- Support for short & long breaks
+- Short & long breaks
 - Toolbar icon with countdown timer
 - Track Pomodoro history & stats
 - Configurable long break intervals
 - Configurable timer durations
-- Desktop notifications
-- New tab notifications
+- Desktop & tab notifications
 - Audio notifications with over 20 sounds
+- Ticking timer sounds
+- Open source software
 
 ## Screenshots
 
