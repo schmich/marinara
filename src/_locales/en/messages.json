@@ -638,8 +638,8 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ completed today",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "message": "$pomodoros$ today",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
