@@ -11,8 +11,7 @@
   "permissions": [
     "contextMenus",
     "storage",
-    "notifications",
-    "alarms"
+    "notifications"
   ],
   "browser_action": {
     "default_title": "Marinara",
