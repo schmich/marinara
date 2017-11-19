@@ -320,5 +320,8 @@ fieldset {
   color: #a00;
 }
 .preview i {
+   /* Font-size must be a multiple of 14px to prevent spin wobble.
+   See https://github.com/FortAwesome/Font-Awesome/issues/671 */
+  font-size: 14px;
   color: #900;
 }
