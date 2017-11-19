@@ -39,7 +39,7 @@ class Metronome
       return;
     }
 
-    const schedulePeriod = 1000;
+    const schedulePeriod = 15 * 1000;
     const scheduleSize = Math.max(2, 2 * (schedulePeriod / this.period));
 
     const schedule = () => {
