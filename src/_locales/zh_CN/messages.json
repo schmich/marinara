@@ -1,6 +1,6 @@
 {
   "app_name": {
-    "message": "Marinara: Pomodoro®助理",
+    "message": "Marinara: 番茄工作法（Pomodoro®）助理",
     "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
@@ -8,35 +8,35 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro®时间管理助理.",
+    "message": "番茄工作法（Pomodoro®）时间管理助理。",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• 支持短期和长期休息时间\n• 倒计时器图标\n• 追踪Pomodoro历史统计讯息\n• 可配置的长休隔\n• 可配置的定时器时间\n• 桌面通知\n• 新标签页通知\n• 超过20个音频通知\n• 开源软件",
+    "message": "• 长短两种休息时间\n• 带有倒计时显示的工具栏图标\n• 追踪Pomodoro历史和统计讯息\n• 可配置的长休间隔\n• 可配置的定时器时长\n• 桌面与新标签页通知\n• 超过20种音效可选的声音通知\n• 计时器秒针走动音效\n• 开源软件",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Pomodoro助理",
+    "message": "番茄工作法助理",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "开始Pomodoro循环",
+    "message": "开始番茄工作循环",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "重新开始Pomodoro循环",
+    "message": "重新开始番茄工作循环",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "重启定时器",
+    "message": "重新开始计时器",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "开始聚焦",
+    "message": "开始集中精力",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "开始短休",
+    "message": "开始短暂休息",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
@@ -44,11 +44,11 @@
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "开始长休",
+    "message": "开始长时间休息",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "停止计时器",
+    "message": "终止计时器",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
@@ -56,27 +56,27 @@
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "恢复定时器",
+    "message": "恢复计时器",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Pomodoro历史",
+    "message": "番茄工作时段历史",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "计时器暂停",
+    "message": "计时器已暂停",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "没有 Pomodoros",
+    "message": "零个番茄工作时段",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
-    "message": "1 Pomodoro",
+    "message": "1 个番茄工作时段",
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Pomodoros",
+    "message": "$count$ 个番茄工作时段",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,7 +86,7 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: Pomodoro助理",
+    "message": "Marinara：番茄工作法助理",
     "description": "Settings page title."
   },
   "settings": {
@@ -102,27 +102,47 @@
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "焦点",
+    "message": "集中精力时间",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "短休",
+    "message": "短暂休息",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "长休",
+    "message": "长时间休息",
     "description": "Long Break section header. Shown on the settings page."
   },
   "duration": {
-    "message": "为期:",
+    "message": "持续时间：",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
     "message": "分钟",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
+  "timer_sound_label": {
+    "message": "计时器背景音",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "悬停预览",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "速度：",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "拍/分钟",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "无",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
   "when_complete": {
-    "message": "完成后:",
+    "message": "完成时：",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
@@ -134,63 +154,63 @@
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "播放音频通知:",
+    "message": "播放声音：",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "长时间休息:",
+    "message": "长时间休息：",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
-    "message": "决不",
+    "message": "从不",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "每隔2断(轮流)",
+    "message": "每隔 1 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "每隔3断",
+    "message": "每隔 2 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "每隔4断",
+    "message": "每隔 3 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "每隔5断",
+    "message": "每隔 4 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "每隔6断",
+    "message": "每隔 5 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "每隔7断",
+    "message": "每隔 6 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "每隔8断",
+    "message": "每隔 7 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "每隔9断",
+    "message": "每隔 8 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "每隔10断",
+    "message": "每隔 9 次短休",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "音",
+    "message": "音符",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "电子钟",
+    "message": "电子按钮",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "今天",
+    "message": "本日",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
@@ -202,11 +222,11 @@
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "总",
+    "message": "总计",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ 平均",
+    "message": "平均 $average$",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -216,15 +236,15 @@
     }
   },
   "daily_distribution": {
-    "message": "每日分配",
+    "message": "日分布",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "每周分配",
+    "message": "周分布",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$在过去9个月",
+    "message": "在过去的 9 个月里共有 $count$",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -234,19 +254,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "完成Pomodoro再查每日统计",
+    "message": "请先完成一个工作时段再查看每日统计信息",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "完成Pomodoro再查每周统计",
+    "message": "请先完成一个工作时段再查看每周统计信息",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "完成Pomodoro再查历史",
+    "message": "请先完成一个工作时段再查看历史记录",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$在$start$—$end$",
+    "message": "$start$—$end$：$pomodoros$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -264,7 +284,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$在$day$",
+    "message": "$day$：$pomodoros$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -278,7 +298,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$在$date$",
+    "message": "$date$：$pomodoros$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -300,19 +320,19 @@
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "%b %d, %Y",
+    "message": "%Y年%b%d日 ",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
-    "message": "%-I%p",
+    "message": "%H",
     "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
   },
   "hour_minute_format": {
-    "message": "%-I:%M%p",
+    "message": "%H:%M",
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
-    "message": "%-m/%-d/%Y",
+    "message": "%Y-%m-%d",
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
@@ -320,7 +340,7 @@
     "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_format": {
-    "message": "%-I:%M:%S %p",
+    "message": "%H:%M:%S",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
@@ -484,7 +504,7 @@
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "在 $month$",
+    "message": "在$month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -494,19 +514,19 @@
     }
   },
   "import_history": {
-    "message": "进口历史",
+    "message": "导入历史",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "出口历史",
+    "message": "导出历史",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "导入历史将覆盖所有现记录.继续?",
+    "message": "导入历史将覆盖现存的所有记录。继续？",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "无法导入历史记录: $error$",
+    "message": "无法导入历史记录：$error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -516,7 +536,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "将Pomodoros组合成$count$分桶",
+    "message": "将工作时段以 $count$分钟 为单位计数",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -526,7 +546,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "将Pomodoros组合成$count$时桶",
+    "message": "将工作时段以 $count$小时 为单位计数",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -556,7 +576,7 @@
     }
   },
   "write_a_review": {
-    "message": "写评论",
+    "message": "留下评论",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
@@ -572,27 +592,27 @@
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "归因",
+    "message": "版权信息",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "执照",
+    "message": "许可证",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "视",
+    "message": "查看",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "版",
+    "message": "版本",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® and The Pomodoro Technique® 是Francesco Cirillo的商标. Marinara 不隶属于或由 Pomodoro®, The Pomodoro Technique® 或 Francesco Cirillo 有任何关联.",
+    "message": "Pomodoro® 和 The Pomodoro Technique® 是由 Francesco Cirillo 所有的商标。Marinara 与 Pomodoro®、The Pomodoro Technique® 或 Francesco Cirillo 之间没有隶属或关联的关系。",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
-    "message": "&",
+    "message": "与",
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
@@ -600,7 +620,7 @@
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "今天完成",
+    "message": "今天已完成",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
@@ -608,7 +628,7 @@
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$直到长时间休息",
+    "message": "离长休还有$pomodoros$",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -618,8 +638,8 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "今天完成$pomodoros$",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "message": "今天已完成$pomodoros$",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
@@ -628,11 +648,11 @@
     }
   },
   "start_focusing_now": {
-    "message": "现在开始聚焦",
+    "message": "开始集中精力",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "休息",
+    "message": "休息一下",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
@@ -644,19 +664,19 @@
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "现在开始休息",
+    "message": "开始休息",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "现在开始短暂休息",
+    "message": "开始短休息",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "现在开始长时间休息",
+    "message": "开始长休息",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
-    "message": "$title$: $text$",
+    "message": "$title$：$text$",
     "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
     "placeholders": {
       "title": {
@@ -670,7 +690,7 @@
     }
   },
   "n_minutes": {
-    "message": "$count$m",
+    "message": "$count$分",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -680,7 +700,7 @@
     }
   },
   "less_than_minute": {
-    "message": "<1m",
+    "message": "<1分",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
@@ -694,23 +714,23 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "缺少Pomodoro数据.",
+    "message": "缺少番茄工作数据。",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "缺少持续时间数据.",
+    "message": "缺少持续时间数据。",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "缺少时区数据.",
+    "message": "缺少时区数据。",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Pomodoro/时间数据不匹配.",
+    "message": "番茄工作/持续时间数据不匹配。",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Mismatched Pomodoro/timezone data.",
+    "message": "番茄工作/时区数据不匹配。",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
@@ -722,11 +742,11 @@
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
-    "message": "钟1",
+    "message": "锣 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
-    "message": "钟2",
+    "message": "锣 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
@@ -734,11 +754,11 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "火传呼机",
+    "message": "语音对讲机",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "玻璃平",
+    "message": "玻璃",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
@@ -746,15 +766,15 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "针掉落",
+    "message": "大头针",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "机器人Blip1",
+    "message": "机器人 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "机器人Blip2",
+    "message": "机器人 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
@@ -778,11 +798,11 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "烤箱",
+    "message": "烤面包机",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "战斗喇叭",
+    "message": "号角",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -798,19 +818,67 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "飞机",
+    "message": "飞机广播",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "数码手表",
+    "message": "电子手表",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "模拟闹钟",
+    "message": "传统闹钟",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
     "message": "数码闹钟",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "秒表",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "时钟",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "挂钟",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "桌钟",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "老爷钟",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "小钟表",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "大钟表",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "手表",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "发条钟",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "节拍器",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "木鱼",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "脉冲",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }
