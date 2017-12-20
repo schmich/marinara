@@ -628,7 +628,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "Comienza a Concetrarte",
+    "message": "Comienza a Concentrarte",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
