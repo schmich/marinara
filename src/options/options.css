@@ -315,13 +315,17 @@ fieldset {
   border-radius: 5px;
 }
 .preview {
-  padding-left: 5px;
+  margin-left: 10px;
   cursor: default;
   color: #a00;
 }
-.preview i {
-   /* Font-size must be a multiple of 14px to prevent spin wobble.
-   See https://github.com/FortAwesome/Font-Awesome/issues/671 */
-  font-size: 14px;
-  color: #900;
+.preview img {
+  vertical-align: middle;
+  margin-left: 10px;
+  height: 8px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.preview img:not(.active) {
+  opacity: 0;
 }

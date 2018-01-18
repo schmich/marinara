@@ -79,7 +79,7 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
     let metronome = null;
     let timerSoundBpm = document.getElementById(`${name}-timer-sound-bpm`);
     let timerSoundPreview = document.getElementById(`${name}-timer-sound-preview`);
-    let timerSoundIcon = document.querySelector(`#${name}-timer-sound-preview i`);
+    let timerActive = document.querySelector(`#${name}-timer-sound-preview img`);
 
     const updatePreview = () => {
       if (+timerSoundBpm.value && !timerSoundBpm.disabled) {
@@ -94,7 +94,7 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
         await metronome.close();
       }
       metronome = await createMetronome(timerSoundSelect, timerSoundBpm);
-      if (metronome && timerSoundIcon.classList.contains('icon-spin')) {
+      if (metronome && timerActive.classList.contains('active')) {
         await metronome.start();
       }
     };
@@ -125,16 +125,14 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
     let mutex = new Mutex();
     timerSoundPreview.addEventListener('mouseover', async () => {
       await mutex.exclusive(async () => {
-        timerSoundIcon.classList.remove('icon-play');
-        timerSoundIcon.classList.add('icon-spin', 'animate-spin');
+        timerActive.classList.add('active');
         await reloadMetronome();
       });
     });
 
     timerSoundPreview.addEventListener('mouseout', async () => {
       await mutex.exclusive(async () => {
-        timerSoundIcon.classList.remove('icon-spin', 'animate-spin');
-        timerSoundIcon.classList.add('icon-play');
+        timerActive.classList.remove('active');
         if (metronome) {
           await metronome.close();
         }
