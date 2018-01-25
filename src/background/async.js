@@ -81,6 +81,12 @@ class AsyncTabs
       chrome.tabs.update(tabId, updateProperties, callback);
     });
   }
+
+  static async query(queryInfo) {
+    return promise(callback => {
+      chrome.tabs.query(queryInfo, callback);
+    });
+  }
 }
 
 class AsyncWindows
