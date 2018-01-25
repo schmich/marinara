@@ -68,7 +68,7 @@ class SingletonPage
       let tabs = await AsyncChrome.tabs.query({ active: true, currentWindow: true });
       let openerTabId = (tabs && tabs.length > 0) ? tabs[0].id : null;
 
-      let tab = await AsyncChrome.tabs.create({ url, openerTabId, active: true });
+      let tab = await AsyncChrome.tabs.create({ url, openerTabId, active: false });
       page = new SingletonPage(url, tab.id);
       this.pages[url] = page;
     }
