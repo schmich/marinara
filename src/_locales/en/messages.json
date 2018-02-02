@@ -113,6 +113,14 @@
     "message": "Long Break",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "startup_title": {
+    "message": "Start up",
+    "description": "Start up section header. Shown on the settings page."
+  },
+  "time": {
+    "message": "Time:",
+    "description": "Time input label. Shown on the settings page."
+  },
   "duration": {
     "message": "Duration:",
     "description": "Timer duration label. Shown on the settings page."
