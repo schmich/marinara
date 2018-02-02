@@ -86,6 +86,7 @@ class Controller
       this._settings = settings;
       let phase = this.timer ? this.timer.phase : Phase.Focus;
       this.loadTimer(settings, phase);
+      this.createAlarms(settings);
       this.menu.apply();
     });
 
@@ -95,9 +96,16 @@ class Controller
 
   async run() {
     this._settings = await this.settingsManager.get();
+    this.createAlarms(this._settings);
     this.loadTimer(this._settings, Phase.Focus);
     this.menu = this.createMenu();
     this.menu.apply();
+
+    chrome.alarms.onAlarm.addListener((alarm) => {
+      if (alarm.name == 'startup' && !this.timer.isRunning && !this.timer.isPaused) {
+        this.timer.start();
+      }
+    });
 
     chrome.browserAction.onClicked.addListener(() => {
       if (this.timer.isRunning) {
@@ -167,6 +175,22 @@ class Controller
 
   startLongBreak() {
     this.timer.start(Phase.LongBreak);
+  }
+
+  createAlarm(name, when) {
+    return chrome.alarms.create(name, {
+      'when': when,
+    });
+  }
+
+  createAlarms(settings) {
+    let startup_time = settings.startUp.time;
+
+    if (startup_time) {
+      let startup_date = new Date(),
+          startup_ts = startup_date.setHours(...startup_time.split(':'), 0);
+      this.createAlarm('startup', startup_ts);
+    }
   }
 
   createMenu() {

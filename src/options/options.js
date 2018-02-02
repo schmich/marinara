@@ -155,6 +155,11 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
   appendNotificationSounds(soundsSelect, sounds, settings.notifications.sound);
 }
 
+function loadSettingGroupStartUp(settings) {
+  let time = document.getElementById(`startup-time`);
+  time.value = settings.time;
+}
+
 async function loadSettings() {
   let settings = await BackgroundClient.getSettings();
   let notificationSounds = await BackgroundClient.getNotificationSounds();
@@ -163,6 +168,7 @@ async function loadSettings() {
   loadSettingGroup('focus', settings.focus, notificationSounds, timerSounds);
   loadSettingGroup('short-break', settings.shortBreak, notificationSounds, timerSounds);
   loadSettingGroup('long-break', settings.longBreak, notificationSounds, timerSounds);
+  loadSettingGroupStartUp(settings.startUp);
 
   let longBreakInterval = document.getElementById('long-break-interval');
 
@@ -215,10 +221,19 @@ function getSettingGroup(name) {
   };
 }
 
+function getSettingGroupStartUp() {
+  let time = document.getElementById(`startup-time`);
+
+  return {
+    time: time.value,
+  };
+}
+
 async function saveSettings(settings) {
   settings.focus = getSettingGroup('focus');
   settings.shortBreak = getSettingGroup('short-break');
   settings.longBreak = getSettingGroup('long-break');
+  settings.startUp = getSettingGroupStartUp();
 
   let longBreakInterval = document.getElementById('long-break-interval');
   settings.longBreak.interval = longBreakInterval.value;
@@ -364,11 +379,9 @@ async function load() {
   let version = document.getElementById('version');
   version.innerText = manifest.version;
 
-  let inputs = document.querySelectorAll('#settings input[type="checkbox"], #settings select');
-  inputs.forEach(input => input.addEventListener('change', () => saveSettings(settings)));
-
-  let texts = document.querySelectorAll('#settings input[type="text"]');
-  texts.forEach(text => text.addEventListener('input', () => saveSettings(settings)));
+  let settings_el = document.getElementById('settings');
+  settings_el.addEventListener('input', () => saveSettings(settings));
+  settings_el.addEventListener('change', () => saveSettings(settings));
 
   let hash = window.location.hash || '#settings';
   selectTab(hash);

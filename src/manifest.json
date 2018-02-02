@@ -9,6 +9,7 @@
   "homepage_url": "https://github.com/schmich/marinara",
   "offline_enabled": true,
   "permissions": [
+    "alarms",
     "contextMenus",
     "storage",
     "notifications"
