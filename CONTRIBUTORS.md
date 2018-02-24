@@ -7,6 +7,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Mark Bennett](https://github.com/MarkBennett): Firefox compatibility
 - [José Varela](https://github.com/joselcvarela): Portuguese translation
 - [Omar Francisco](https://github.com/ofou): Spanish translation
+- [Maite Clausell](https://github.com/mcmtradu): Spanish translation
 - [Mathieu Lescaudron](https://github.com/MLescaudron): French translation
 - [Nicolai Hoilund](https://github.com/nicolaihoilund): Danish translation
 - [Jeroen Deviaene](https://github.com/jerodev): Dutch translation
@@ -26,3 +27,4 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Teerapong Chantakard](https://github.com/azygous13): Thai translation
 - [Sarp Başaraner](https://github.com/sgbasaraner): Turkish translation
 - [L1Q](https://github.com/L1Q): Russian translation
+- [Maite Clausell](https://github.com/mcmtradu): Catalan translation
