@@ -63,12 +63,7 @@ class SingletonPage
 
     let page = this.pages[url];
     if (!page) {
-      // Associate the new tab with the currently active tab.
-      // When the new tab is closed, the currently active tab will be reactivated.
-      let tabs = await AsyncChrome.tabs.query({ active: true, currentWindow: true });
-      let openerTabId = (tabs && tabs.length > 0) ? tabs[0].id : null;
-
-      let tab = await AsyncChrome.tabs.create({ url, openerTabId, active: false });
+      let tab = await AsyncChrome.tabs.create({ url, active: false });
       page = new SingletonPage(url, tab.id);
       this.pages[url] = page;
     }

@@ -46,22 +46,38 @@ function promise(fn) {
 class AsyncTabs
 {
   static async create(options) {
+    // Create tab in specific window.
+    const createInWindow = async windowId => {
+      // Get the currently active tab in this window and make it the 'opener'
+      // of the tab we're creating. When our tab is closed, the opener tab will
+      // be reactivated.
+      let tabs = await AsyncChrome.tabs.query({ active: true, windowId });
+      let openerTabId = (tabs && tabs.length > 0) ? tabs[0].id : null;
+
+      let tabOptions = { ...options, windowId, openerTabId };
+      return promise(callback => {
+        chrome.tabs.create(tabOptions, callback);
+      });
+    };
+ 
     try {
-      return await this.tryCreate(options);
+      let targetWindow = await AsyncChrome.windows.getLastFocused({ windowTypes: ['normal'] });
+      if (targetWindow) {
+        return createInWindow(targetWindow.id);
+      }
     } catch (e) {
       if (e instanceof ChromeError) {
-        // We cannot create a tab if no windows are open. In this case, we must
-        // create a window with the desired URL instead.
-        const windowOptions = {
-          url: options.url,
-          focused: !!options.active
-        };
-        let win = await AsyncChrome.windows.create(windowOptions);
-        return win.tabs[0];
+        // We assume there was no last focused window, ignore.
+        console.error(e);
       } else {
         throw e;
       }
     }
+
+    // No active window for our tab, so we must create our own.
+    let windowOptions = { focused: !!options.active };
+    let newWindow = await AsyncChrome.windows.create(windowOptions);
+    return createInWindow(newWindow.id);
   }
 
   static async tryCreate(options) {
@@ -91,6 +107,18 @@ class AsyncTabs
 
 class AsyncWindows
 {
+  static async getAll(getInfo) {
+    return promise(callback => {
+      chrome.windows.getAll(getInfo, callback);
+    });
+  }
+
+  static async getLastFocused(getInfo) {
+    return promise(callback => {
+      chrome.windows.getLastFocused(getInfo, callback);
+    });
+  }
+
   static async create(createData) {
     return promise(callback => {
       chrome.windows.create(createData, callback);
