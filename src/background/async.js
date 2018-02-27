@@ -80,12 +80,6 @@ class AsyncTabs
     return createInWindow(newWindow.id);
   }
 
-  static async tryCreate(options) {
-    return promise(callback => {
-      chrome.tabs.create(options, callback);
-    });
-  }
-
   static async getCurrent() {
     return promise(callback => {
       chrome.tabs.getCurrent(callback);
