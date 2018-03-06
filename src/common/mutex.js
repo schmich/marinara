@@ -8,7 +8,7 @@ class Mutex
   async exclusive(fn) {
     try {
       var release = await this.acquire();
-      await fn();
+      return await fn();
     } finally {
       release();
     }
