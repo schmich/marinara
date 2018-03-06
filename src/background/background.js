@@ -101,8 +101,8 @@ class Controller
     this.menu = this.createMenu();
     this.menu.apply();
 
-    chrome.alarms.onAlarm.addListener((alarm) => {
-      if (alarm.name == 'startup' && !this.timer.isRunning && !this.timer.isPaused) {
+    chrome.alarms.onAlarm.addListener(alarm => {
+      if (alarm.name === 'autostart' && this.timer.isStopped) {
         this.timer.start();
       }
     });
@@ -177,20 +177,18 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
-  createAlarm(name, when) {
-    return chrome.alarms.create(name, {
-      'when': when,
-    });
-  }
+  async createAlarms(settings) {
+    await AsyncChrome.alarms.clearAll();
 
-  createAlarms(settings) {
-    let startup_time = settings.startUp.time;
-
-    if (startup_time) {
-      let startup_date = new Date(),
-          startup_ts = startup_date.setHours(...startup_time.split(':'), 0);
-      this.createAlarm('startup', startup_ts);
+    let time = settings.autostart && settings.autostart.time;
+    if (!time) {
+      return;
     }
+
+    AsyncChrome.alarms.create('autostart', {
+      when: (new Date()).setHours(...time.split(':'), 0),
+      periodInMinutes: 24 * 60 // Alarm should fire every 24 hours.
+    });
   }
 
   createMenu() {

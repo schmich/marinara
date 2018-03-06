@@ -99,8 +99,8 @@ class MarinaraSchema
           sound: null
         }
       },
-      startUp: {
-        time: '',
+      autostart: {
+        time: null,
       },
       version: this.version
     };
@@ -191,9 +191,10 @@ class MarinaraSchema
     let v5 = clone(v4);
     v5.version = 5;
 
-    v5.startUp = {
-      time: '',
+    v5.autostart = {
+      time: null,
     };
+
     return v5;
   }
 }

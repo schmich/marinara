@@ -26,6 +26,10 @@ class AsyncChrome
   static get files() {
     return AsyncFiles;
   }
+
+  static get alarms() {
+    return AsyncAlarms;
+  }
 }
 
 function promise(fn) {
@@ -206,5 +210,16 @@ class AsyncFiles
 
   static async readBinary(file) {
     return this.readFile(file, 'arraybuffer');
+  }
+}
+
+class AsyncAlarms
+{
+  static create(name, alarmInfo) {
+    return chrome.alarms.create(name, alarmInfo);
+  }
+
+  static async clearAll() {
+    return promise(callback => chrome.alarms.clearAll(callback));
   }
 }

@@ -155,8 +155,8 @@ function loadSettingGroup(name, settings, notificationSounds, timerSounds) {
   appendNotificationSounds(soundsSelect, sounds, settings.notifications.sound);
 }
 
-function loadSettingGroupStartUp(settings) {
-  let time = document.getElementById(`startup-time`);
+function loadSettingGroupAutostart(settings) {
+  let time = document.getElementById(`autostart-time`);
   time.value = settings.time;
 }
 
@@ -168,7 +168,7 @@ async function loadSettings() {
   loadSettingGroup('focus', settings.focus, notificationSounds, timerSounds);
   loadSettingGroup('short-break', settings.shortBreak, notificationSounds, timerSounds);
   loadSettingGroup('long-break', settings.longBreak, notificationSounds, timerSounds);
-  loadSettingGroupStartUp(settings.startUp);
+  loadSettingGroupAutostart(settings.autostart);
 
   let longBreakInterval = document.getElementById('long-break-interval');
 
@@ -221,11 +221,10 @@ function getSettingGroup(name) {
   };
 }
 
-function getSettingGroupStartUp() {
-  let time = document.getElementById(`startup-time`);
-
+function getSettingGroupAutostart() {
+  let time = document.getElementById(`autostart-time`);
   return {
-    time: time.value,
+    time: time.value || null
   };
 }
 
@@ -233,7 +232,7 @@ async function saveSettings(settings) {
   settings.focus = getSettingGroup('focus');
   settings.shortBreak = getSettingGroup('short-break');
   settings.longBreak = getSettingGroup('long-break');
-  settings.startUp = getSettingGroupStartUp();
+  settings.autostart = getSettingGroupAutostart();
 
   let longBreakInterval = document.getElementById('long-break-interval');
   settings.longBreak.interval = longBreakInterval.value;
@@ -379,9 +378,9 @@ async function load() {
   let version = document.getElementById('version');
   version.innerText = manifest.version;
 
-  let settings_el = document.getElementById('settings');
-  settings_el.addEventListener('input', () => saveSettings(settings));
-  settings_el.addEventListener('change', () => saveSettings(settings));
+  let settingsEl = document.getElementById('settings');
+  settingsEl.addEventListener('input', () => saveSettings(settings));
+  settingsEl.addEventListener('change', () => saveSettings(settings));
 
   let hash = window.location.hash || '#settings';
   selectTab(hash);

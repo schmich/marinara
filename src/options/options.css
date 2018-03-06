@@ -78,7 +78,7 @@ input.duration {
   flex-direction: column;
   flex: 1;
   height: 100%;
-  padding: 50px 0 0 0;
+  padding: 50px 0 30px 0;
 }
 .inner {
   display: flex;

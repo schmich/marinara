@@ -113,9 +113,9 @@
     "message": "Long Break",
     "description": "Long Break section header. Shown on the settings page."
   },
-  "startup_title": {
-    "message": "Start up",
-    "description": "Start up section header. Shown on the settings page."
+  "autostart_title": {
+    "message": "Autostart",
+    "description": "Autostart section header. Shown on the settings page."
   },
   "time": {
     "message": "Time:",

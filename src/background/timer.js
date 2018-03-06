@@ -180,7 +180,7 @@ class PomodoroTimer
   }
 
   get state() {
-    return this.timer ? this.timer.state : null;
+    return this.timer ? this.timer.state : TimerState.Stopped;
   }
 
   get isRunning() {
@@ -188,7 +188,7 @@ class PomodoroTimer
   }
 
   get isStopped() {
-    return this.timer ? this.timer.isStopped : false;
+    return this.timer ? this.timer.isStopped : true;
   }
 
   get isPaused() {
