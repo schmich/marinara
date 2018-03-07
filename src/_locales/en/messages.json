@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Short & long breaks\n• Toolbar icon with countdown timer\n• Track Pomodoro history & stats\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Open source software",
+    "message": "• Short & long breaks\n• Toolbar icon with countdown timer\n• Track Pomodoro history & stats\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Scheduled automatic timers\n• Open source software",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -118,7 +118,7 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Automatically start the first Pomodoro of the day at the specified time.",
+    "message": "Schedule the first Pomodoro of the day to automatically start at the specified time.",
     "description": "Autostart setting description. Shown on the settings page."
   },
   "time": {

@@ -14,6 +14,7 @@ Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Mar
 - Desktop & tab notifications
 - Audio notifications with over 20 sounds
 - Ticking timer sounds
+- Scheduled automatic timers
 - Open source software
 
 ## Screenshots
