@@ -12,7 +12,6 @@ class MessageServer
       return true;
     });
   }
-
 }
 
 class MessageClient
@@ -125,6 +124,11 @@ class BackgroundServer extends MessageServer
     }
 
     settings.longBreak.interval = +settings.longBreak.interval;
+
+    let autostart = settings.autostart && settings.autostart.time;
+    if (autostart && !autostart.match(/^\d+:\d+$/)) {
+      throw new Error('Invalid autostart time.');
+    }
 
     await this.settingsManager.set(settings);
   }

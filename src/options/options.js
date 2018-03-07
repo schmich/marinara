@@ -378,9 +378,11 @@ async function load() {
   let version = document.getElementById('version');
   version.innerText = manifest.version;
 
-  let settingsEl = document.getElementById('settings');
-  settingsEl.addEventListener('input', () => saveSettings(settings));
-  settingsEl.addEventListener('change', () => saveSettings(settings));
+  let inputs = document.querySelectorAll('#settings input[type="checkbox"], #settings select');
+  inputs.forEach(input => input.addEventListener('change', () => saveSettings(settings)));
+
+  let texts = document.querySelectorAll('#settings input[type="text"], #settings input[type="time"]');
+  texts.forEach(text => text.addEventListener('input', () => saveSettings(settings)));
 
   let hash = window.location.hash || '#settings';
   selectTab(hash);
