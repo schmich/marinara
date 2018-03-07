@@ -185,8 +185,18 @@ class Controller
       return;
     }
 
+    const now = new Date();
+
+    let trigger = new Date();
+    trigger.setHours(...time.split(':'), 0);
+    if (trigger < now) {
+      // The trigger is in the past. Set it for tomorrow instead.
+      trigger.setDate(trigger.getDate() + 1);
+    }
+
+    console.log(trigger);
     AsyncChrome.alarms.create('autostart', {
-      when: (new Date()).setHours(...time.split(':'), 0),
+      when: +trigger,
       periodInMinutes: 24 * 60 // Alarm should fire every 24 hours.
     });
   }
