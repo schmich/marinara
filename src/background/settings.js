@@ -1,6 +1,12 @@
-// Deep clone an object. Assumes only simple types and object aggregates of simple types.
+// Deep clone an object. Assumes only simple types and array/object aggregates of simple types.
 function clone(obj) {
-  if (obj instanceof Object) {
+  if (obj instanceof Array) {
+    let copy = [];
+    for (let el of obj) {
+      copy.push(clone(el));
+    }
+    return copy;
+  } else if (obj instanceof Object) {
     let copy = {};
     for (let prop in obj) {
       copy[prop] = clone(obj[prop]);
