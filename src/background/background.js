@@ -194,7 +194,6 @@ class Controller
       trigger.setDate(trigger.getDate() + 1);
     }
 
-    console.log(trigger);
     AsyncChrome.alarms.create('autostart', {
       when: +trigger,
       periodInMinutes: 24 * 60 // Alarm should fire every 24 hours.
