@@ -21,11 +21,11 @@ class Mutex
       next && next();
     };
 
-    if (!this.pending) {
-      this.pending = true;
+    if (this.pending) {
+      await new Promise(resolve => this.queue.push(resolve));
       return release;
     } else {
-      await new Promise(resolve => this.queue.push(resolve));
+      this.pending = true;
       return release;
     }
   }
