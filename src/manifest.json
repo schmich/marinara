@@ -24,6 +24,7 @@
       "lib/EventEmitter.min.js",
       "common/T.js",
       "common/metronome.js",
+      "common/mutex.js",
       "background/enum.js",
       "background/notifications.js",
       "background/menu.js",

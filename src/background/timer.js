@@ -172,6 +172,8 @@ class PomodoroTimer
     this.breakCount = 0;
 
     this.timer = null;
+    this.timerLock = new Mutex();
+
     this._phase = phase;
   }
 
@@ -217,39 +219,41 @@ class PomodoroTimer
   }
 
   async start(phase = null) {
-    if (this.timer) {
-      this.timer.stop();
-      this.timer.removeAllListeners();
-    }
-
-    if (phase) {
-      this._phase = phase;
-      if (phase === Phase.LongBreak) {
-        this.breakCount = 0;
+    await this.timerLock.exclusive(async () => {
+      if (this.timer) {
+        this.timer.stop();
+        this.timer.removeAllListeners();
       }
-    }
 
-    var nextBreakCount;
-    var nextPhase;
+      if (phase) {
+        this._phase = phase;
+        if (phase === Phase.LongBreak) {
+          this.breakCount = 0;
+        }
+      }
 
-    if (this._phase !== Phase.Focus) {
-      nextBreakCount = this.breakCount;
-      nextPhase = Phase.Focus;
-    } else if (this.longBreakInterval === 0) {
-      nextBreakCount = this.breakCount;
-      nextPhase = Phase.ShortBreak;
-    } else {
-      nextBreakCount = (this.breakCount + 1) % this.longBreakInterval;
-      nextPhase = (nextBreakCount === 0) ? Phase.LongBreak : Phase.ShortBreak;
-    }
+      var nextBreakCount;
+      var nextPhase;
 
-    this.timer = await this.timerFactory(this._phase, nextPhase);
-    this.timer.on('expire', () => {
-      this.breakCount = nextBreakCount;
-      this._phase = nextPhase;
+      if (this._phase !== Phase.Focus) {
+        nextBreakCount = this.breakCount;
+        nextPhase = Phase.Focus;
+      } else if (this.longBreakInterval === 0) {
+        nextBreakCount = this.breakCount;
+        nextPhase = Phase.ShortBreak;
+      } else {
+        nextBreakCount = (this.breakCount + 1) % this.longBreakInterval;
+        nextPhase = (nextBreakCount === 0) ? Phase.LongBreak : Phase.ShortBreak;
+      }
+
+      this.timer = await this.timerFactory(this._phase, nextPhase);
+      this.timer.on('expire', () => {
+        this.breakCount = nextBreakCount;
+        this._phase = nextPhase;
+      });
+
+      this.timer.start();
     });
-
-    this.timer.start();
   }
 
   pause() {
