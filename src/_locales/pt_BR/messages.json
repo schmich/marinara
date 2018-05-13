@@ -113,6 +113,18 @@
     "message": "Intervalo Longo",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "reminders_title": {
+    "message": "Lembretes",
+    "description": "Reminders section header. Shown on the settings page."
+  },
+  "reminders_description": {
+    "message": "Lembretes para começar um novo ciclo",
+    "description": "Reminders section description. Shown on the settings page."
+  },
+  "reminder_on_start": {
+    "message": "Quando abrir o navegador:",
+    "description": "Reminder options for when Chrome starts. Shown on the settings page."
+  },
   "duration": {
     "message": "Duração:",
     "description": "Timer duration label. Shown on the settings page."

@@ -121,6 +121,18 @@
     "message": "Schedule the first Pomodoro of the day to automatically start at the specified time.",
     "description": "Autostart setting description. Shown on the settings page."
   },
+  "reminders_title": {
+    "message": "Reminders",
+    "description": "Reminders section header. Shown on the settings page."
+  },
+  "reminders_description": {
+    "message": "Reminders to start a new cycle.",
+    "description": "Reminders section description. Shown on the settings page."
+  },
+  "reminder_on_start": {
+    "message": "When Chrome starts:",
+    "description": "Reminder options for when Chrome starts. Shown on the settings page."
+  },
   "time": {
     "message": "Time:",
     "description": "Time input label. Shown on the settings page."
