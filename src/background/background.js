@@ -116,6 +116,20 @@ class Controller
         this.timer.start();
       }
     });
+
+    chrome.commands.onCommand.addListener((command) => {
+      if(command === 'toggle-start-pause'){
+        if (this.timer.isRunning) {
+          this.timer.pause();
+        } else if (this.timer.isPaused) {
+          this.timer.resume();
+        } else {
+          this.timer.start();
+        }
+      } else if (command === 'reset-timer'){
+        this.timer.start(Phase.Focus);
+      }
+    });
   }
 
   async showOptionsPage(hash) {

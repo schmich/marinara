@@ -44,6 +44,22 @@
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
+  "commands": {
+    "toggle-start-pause": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space",
+        "mac": "Command+Shift+Space"
+      },
+      "description": "Toggle feature for start and pause of timer"
+    },
+    "reset-timer": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Reset timer to start focusing"
+    }
+  },
   "minimum_chrome_version": "55",
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }
