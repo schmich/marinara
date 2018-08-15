@@ -37,6 +37,11 @@ It also uses [jq](https://stedolan.github.io/jq/) to manipulate the `manifest.js
 
     brew install jq
 
+For Linux run:
+
+    sudo apt-get install jq
+    sudo apt-get install ruby-full
+
 Once installed you can package a release by running:
 
     make package
