@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Поддержка коротких и длительных перерывов\n• Иконка с таймером на панели\n• Отслеживание истории и статистики «Помидоров»\n• Настраиваемые интервалы длительных перерывов\n• Настраиваемая длительность таймера\n• Уведомления на рабочем столе\n• Уведомления в новой вкладке\n• Звуковые уведомления с более, чем 20 звуками\n• Открытый исходный код",
+    "message": "• Поддержка коротких и длительных перерывов\n• Иконка с таймером на панели\n• Отслеживание истории и статистики «Помидоров»\n• Настраиваемые интервалы перерывов\n• Настраиваемая длительность таймера\n• Уведомления на рабочем столе и в новой вкладке\n• Звуковые уведомления с более, чем 20 звуками\n• Тикающие звуки таймера\n• Планируемые автоматические таймеры\n• Открытый исходный код",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -112,6 +112,18 @@
   "long_break_title": {
     "message": "Длительный перерыв",
     "description": "Long Break section header. Shown on the settings page."
+  },
+  "autostart_title": {
+    "message": "Автостарт",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "Запланируйте первый помидор дня на заданное время.",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "time": {
+    "message": "Время:",
+    "description": "Time input label. Shown on the settings page."
   },
   "duration": {
     "message": "Длительность:",
@@ -638,8 +650,8 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ завершено сегодня",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "message": "$pomodoros$ сегодня",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
