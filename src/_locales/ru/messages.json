@@ -162,7 +162,7 @@
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Показывать уведомления в новой вклаке",
+    "message": "Показывать уведомления в новой вкладке",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
