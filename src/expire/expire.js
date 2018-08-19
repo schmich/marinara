@@ -8,6 +8,14 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
   title.innerText = request.title;
   action.innerText = request.action;
 
+  if(request.phase === "focus"){
+    document.getElementById('skip-break').style.display = 'none';
+    document.getElementById('skip-focus-action').innerText = 'Skip Focus';
+  } else {
+    document.getElementById('skip-focus').style.display = 'none';
+    document.getElementById('skip-break-action').innerText = 'Skip Break';
+  }
+
   let message = request.messages.filter(m => m && m.trim() !== '').join(' &mdash; ');
   let p = document.createElement('p');
   p.innerHTML = message;
@@ -24,7 +32,12 @@ chrome.runtime.onMessage.addListener(function onMessage(request, sender, respond
 
 async function load() {
   let start = document.getElementById('start-session');
+  let skipFocus = document.getElementById('skip-focus');
+  let skipBreak = document.getElementById('skip-break');
+
   start.onclick = () => BackgroundClient.startSession();
+  skipFocus.onclick = () => BackgroundClient.skipFocus();
+  skipBreak.onclick = () => BackgroundClient.skipBreak();
 
   let history = document.getElementById('view-history');
   history.onclick = () => {
