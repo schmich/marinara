@@ -160,6 +160,13 @@ function loadSettingGroupAutostart(settings) {
   time.value = settings.time;
 }
 
+function loadSettingGroupReminders(settings) {
+  let notif = document.getElementById('reminder-notification');
+  let tab = document.getElementById('reminder-tab');
+  notif.checked = settings.notification;
+  tab.checked = settings.tab;
+}
+
 async function loadSettings() {
   let settings = await BackgroundClient.getSettings();
   let notificationSounds = await BackgroundClient.getNotificationSounds();
@@ -169,6 +176,7 @@ async function loadSettings() {
   loadSettingGroup('short-break', settings.shortBreak, notificationSounds, timerSounds);
   loadSettingGroup('long-break', settings.longBreak, notificationSounds, timerSounds);
   loadSettingGroupAutostart(settings.autostart);
+  loadSettingGroupReminders(settings.reminders);
 
   let longBreakInterval = document.getElementById('long-break-interval');
 
@@ -228,11 +236,21 @@ function getSettingGroupAutostart() {
   };
 }
 
+function getSettingGroupReminders() {
+  let notif = document.getElementById('reminder-notification');
+  let tab = document.getElementById('reminder-tab');
+  return {
+    notification: notif.checked || null,
+    tab: notif.checked || null
+  };
+}
+
 async function saveSettings(settings) {
   settings.focus = getSettingGroup('focus');
   settings.shortBreak = getSettingGroup('short-break');
   settings.longBreak = getSettingGroup('long-break');
   settings.autostart = getSettingGroupAutostart();
+  settings.reminders = getSettingGroupReminders();
 
   let longBreakInterval = document.getElementById('long-break-interval');
   settings.longBreak.interval = longBreakInterval.value;

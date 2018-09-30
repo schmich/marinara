@@ -72,7 +72,7 @@ class StorageManager extends EventEmitter
 class MarinaraSchema
 {
   get version() {
-    return 5;
+    return 6;
   }
 
   get default() {
@@ -107,6 +107,10 @@ class MarinaraSchema
       },
       autostart: {
         time: null,
+      },
+      reminders: {
+        notification: true,
+        tab: true
       },
       version: this.version
     };
@@ -202,5 +206,17 @@ class MarinaraSchema
     };
 
     return v5;
+  }
+
+  from5To6(v5) {
+    let v6 = clone(v5);
+    v6.version = 6;
+
+    v6.reminders = {
+      notification: null,
+      tab: null
+    };
+
+    return v6;
   }
 }

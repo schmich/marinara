@@ -100,6 +100,7 @@ class Controller
     this.loadTimer(this._settings, Phase.Focus);
     this.menu = this.createMenu();
     this.menu.apply();
+    this.showInitialReminders(this._settings)
 
     chrome.alarms.onAlarm.addListener(alarm => {
       if (alarm.name === 'autostart' && this.timer.isStopped) {
@@ -393,6 +394,35 @@ class Controller
       return T('pomodoro_count_one');
     } else {
       return T('pomodoro_count_many', count.toLocaleString());
+    }
+  }
+
+  async showInitialReminders(settings) {
+    const pomodoros = this.timer.longBreakPomodoros;
+    const pomodorosLeftMsg = pomodoros === 0 ? '' : T('pomodoros_until_long_break', this.pomodoroCount(pomodoros));
+
+    const notificationMessages = count => {
+      const pomodorosTodayMsg = count === 0 ? '' : T('pomodoros_completed_today', this.pomodoroCount(count));
+      return [pomodorosLeftMsg, pomodorosTodayMsg];
+    };
+
+    const pomodorosTodayCount = await this.history.countToday();
+    if (settings.reminders.notification) {
+      this.notification = await Notification.show(
+        this,
+        T('start_focusing'),
+        notificationMessages(pomodorosTodayCount),
+        T('start_focusing_now')
+      );
+    }
+    if (settings.reminders.tab) {
+      this.expiration = await ExpirationPage.show(
+        T('start_focusing'),
+        [pomodorosLeftMsg],
+        T('start_focusing'),
+        pomodorosTodayCount,
+        'focus'
+      );
     }
   }
 }
