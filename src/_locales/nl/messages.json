@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Ondersteuning voor korte & lange pauzes\n• Toolbar icoon met afteller\n• Pomodoro geschiedenis & statistieken\n• Configureerbare pauze intervallen\n• Configureerbare timer lengtes\n• Desktop notificaties\n• Niewue tab notificaties\n• Geluidsnotificaties met 20 verschillende geluiden\n• Volledig open source",
+    "message": "• Ondersteuning voor korte & lange pauzes\n• Toolbar icoon met afteller\n• Pomodoro geschiedenis & statistieken\n• Configureerbare pauze intervallen\n• Configureerbare timer lengtes\n• Desktop en tabblad notificaties\n• Geluidsnotificaties met 20 verschillende geluiden\n• Tikkende timer geluiden\n• Plan automatische timers\n• Volledig open source",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -113,6 +113,18 @@
     "message": "Lange Pauze",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "autostart_title": {
+    "message": "Automatische start",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "Plan de eerste Pomodoro van de dag automatisch op het opgegeven tijdstip.",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "time": {
+    "message": "Tijd:",
+    "description": "Time input label. Shown on the settings page."
+  },
   "duration": {
     "message": "Looptijd:",
     "description": "Timer duration label. Shown on the settings page."
@@ -120,6 +132,26 @@
   "minutes": {
     "message": "minuten",
     "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "Timer geluid:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "Aanwijzen voor voorbeeld",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "Snelheid:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "slagen per minuut",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "Geen",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
     "message": "Wanneer compleet:",
@@ -588,7 +620,7 @@
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® en de Pomodoro Technique® zijn trademarks van Francesco Cirillo. Marinara is niet gelinkt aan Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.",
+    "message": "Pomodoro® en de Pomodoro Technique® zijn trademarks van Francesco Cirillo. Marinara is niet gelinkt aan Pomodoro®, The Pomodoro Technique® of Francesco Cirillo.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
@@ -619,7 +651,7 @@
   },
   "pomodoros_completed_today": {
     "message": "$pomodoros$ afgewerkt vandaag",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
@@ -713,6 +745,14 @@
     "message": "Onvolledige Pomodoro/tijdzone data.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "help_translate": {
+    "message": "Help Vertalen",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "expire_title": {
+    "message": "Tijd Is Op · Marinara",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
@@ -774,7 +814,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Aanvals hoorn",
+    "message": "Gevechtshoorn",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -804,5 +844,53 @@
   "digital_alarm_clock": {
     "message": "Digitale Alarm Klok",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "Stopwatch",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "Wand Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "Bureau Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "Antieke Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "Kleine Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "Grote Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "Horloge",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "Opwind Klok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "Metronoom",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "Houten Blok",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "Pulse",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }
