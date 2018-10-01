@@ -1,0 +1,700 @@
+{
+  "app_name": {
+    "message": "Marinara: Asisten Pomodoro®",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "Marinara",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "Asisten manajemen waktu Pomodoro®.",
+    "description": "The short description of the application. Shown in the web store."
+  },
+  "chrome_web_store_description": {
+    "message": "• Istirahat pendek & panjang\n• Ikon toolbar dengan penghitung waktu mundur\n• Lacak riwayat dan statistik Podomoro\n• Selang istirahat panjang yang dapat diatur\n• Panjang penghitung waktu yang dapat diatur\n• Notifikasi desktop & tab\n• Notifikasi suara dengan lebih dari 20 macam suara\n• Suara penghitung waktu berdetik\n• Penghitung waktu otomatis yang terjadwal\n• Perangkat lunak open source",
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
+  },
+  "pomodoro_assistant": {
+    "message": "Asisten Podomoro",
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
+  },
+  "start_pomodoro_cycle": {
+    "message": "Mulai Siklus Podomoro",
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_pomodoro_cycle": {
+    "message": "Mulai Kembali Siklus Podomoro",
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_timer": {
+    "message": "Mulai Kembali Pengatur Waktu",
+    "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+  },
+  "start_focusing": {
+    "message": "Mulai Fokus",
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_short_break": {
+    "message": "Mulai Istirahat Pendek",
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_break": {
+    "message": "Mulai Istirahat",
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_long_break": {
+    "message": "Mulai Istirahat Panjang",
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "stop_timer": {
+    "message": "Hentikan Penghitung Waktu",
+    "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "pause_timer": {
+    "message": "Jeda Penghitung Waktu",
+    "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+  },
+  "resume_timer": {
+    "message": "Lanjutkan Penghitung Waktu",
+    "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+  },
+  "pomodoro_history": {
+    "message": "Riwayat Podomoro",
+    "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+  },
+  "timer_paused": {
+    "message": "Penghitung Waktu Berhenti Sebentar",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "Tidak Ada Podomoro",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "1 Podomoro",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$ Podomoro",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "marinara_pomodoro_assistant": {
+    "message": "Marinara: Asisten Podomoro",
+    "description": "Settings page title."
+  },
+  "settings": {
+    "message": "Pengaturan",
+    "description": "Settings tab. Shown on the settings page."
+  },
+  "history": {
+    "message": "Riwayat",
+    "description": "History tab. Shown on the settings page."
+  },
+  "feedback": {
+    "message": "Umpan Balik",
+    "description": "Feedback tab and section header. Shown on the settings page."
+  },
+  "focus_title": {
+    "message": "Fokus",
+    "description": "Focus section header. Shown on the settings page."
+  },
+  "short_break_title": {
+    "message": "Istirahat Pendek",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break_title": {
+    "message": "Istirahat Panjang",
+    "description": "Long Break section header. Shown on the settings page."
+  },
+  "autostart_title": {
+    "message": "Mulai Otomatis",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "Menjadwalkan Podomoro pertama tiap hari agar mulai secara otomatis pada waktu tertentu.",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "time": {
+    "message": "Waktu:",
+    "description": "Time input label. Shown on the settings page."
+  },
+  "duration": {
+    "message": "Durasi:",
+    "description": "Timer duration label. Shown on the settings page."
+  },
+  "minutes": {
+    "message": "menit",
+    "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "Suara penghitung waktu:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "Arahkan kursor di atas untuk pratinjau",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "Kecepatan:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "ketukan per menit",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "Tidak Ada",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "when_complete": {
+    "message": "Saat selesai:",
+    "description": "Section label for events to fire when timer completes. Shown on the settings page."
+  },
+  "show_desktop_notification": {
+    "message": "Tampilkan notifikasi dekstop",
+    "description": "Desktop notification option. Shown on the settings page."
+  },
+  "show_new_tab_notification": {
+    "message": "Tampilkan notifikasi tab baru",
+    "description": "New tab notification option. Shown on the settings page."
+  },
+  "play_audio_notification": {
+    "message": "Mainkan suara:",
+    "description": "Audio notification label. Shown on the settings page."
+  },
+  "take_a_long_break_setting": {
+    "message": "Memulai istirahat panjang:",
+    "description": "Long break settings label. Shown on the settings page."
+  },
+  "never": {
+    "message": "tidak pernah",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_2nd_break": {
+    "message": "setiap 2 istirahat (selang-seling)",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_3rd_break": {
+    "message": "setiap 3 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_4th_break": {
+    "message": "setiap 4 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_5th_break": {
+    "message": "setiap 5 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_6th_break": {
+    "message": "setiap 6 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_7th_break": {
+    "message": "setiap 7 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_8th_break": {
+    "message": "setiap 8 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_9th_break": {
+    "message": "setiap 9 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_10th_break": {
+    "message": "setiap 10 istirahat",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "tone": {
+    "message": "Nada",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "electronic_chime": {
+    "message": "Lonceng Elektronik",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "today": {
+    "message": "Hari Ini",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_week": {
+    "message": "Minggu Ini",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_month": {
+    "message": "Bulan Ini",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "total": {
+    "message": "Total",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "average_stat": {
+    "message": "$average$ rata-rata",
+    "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "average": {
+        "content": "$1",
+        "example": "7.33"
+      }
+    }
+  },
+  "daily_distribution": {
+    "message": "Distribusi Harian",
+    "description": "Daily distribution section header. Shown on the settings-history page."
+  },
+  "weekly_distribution": {
+    "message": "Distribusi Mingguan",
+    "description": "Weekly distribution section header. Shown on the settings-history page."
+  },
+  "last_9_months": {
+    "message": "$count$ dalam 9 Bulan Terakhir",
+    "description": "Last 9 months section header. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "No Pomodoros"
+      }
+    }
+  },
+  "daily_empty_placeholder": {
+    "message": "Selesaikan satu Podomoro untuk melihat statistik harian",
+    "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "weekly_empty_placeholder": {
+    "message": "Selesaikan satu Podomoro untuk melihat statistik mingguan",
+    "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "history_empty_placeholder": {
+    "message": "Selesaikan satu Podomoro untuk melihat riwayat",
+    "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "daily_tooltip": {
+    "message": "$podomoros$ antara $start$—$end$",
+    "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "15 Pomodoros"
+      },
+      "start": {
+        "content": "$2",
+        "example": "9:00a"
+      },
+      "end": {
+        "content": "$3",
+        "example": "10:00a"
+      }
+    }
+  },
+  "weekly_tooltip": {
+    "message": "$podomoros$ pada hari $day$",
+    "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "day": {
+        "content": "$2",
+        "example": "Mondays"
+      }
+    }
+  },
+  "heatmap_tooltip": {
+    "message": "$podomoros$ pada $date$",
+    "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "date": {
+        "content": "$2",
+        "example": "Jun 07, 2017"
+      }
+    }
+  },
+  "decimal_separator": {
+    "message": ",",
+    "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
+  },
+  "thousands_separator": {
+    "message": ".",
+    "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
+  },
+  "heatmap_date_format": {
+    "message": "%d %b, %Y",
+    "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
+  },
+  "hour_format": {
+    "message": "%-H",
+    "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
+  },
+  "hour_minute_format": {
+    "message": "%-H:%M",
+    "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
+  },
+  "date_format": {
+    "message": "%-d/%-m/%Y",
+    "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "date_time_format": {
+    "message": "%x, %X",
+    "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_format": {
+    "message": "%-H:%M:%S",
+    "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "sunday": {
+    "message": "Minggu",
+    "description": "Sunday. Shown on the settings-history page."
+  },
+  "monday": {
+    "message": "Senin",
+    "description": "Monday. Shown on the settings-history page."
+  },
+  "tuesday": {
+    "message": "Selasa",
+    "description": "Tuesday. Shown on the settings-history page."
+  },
+  "wednesday": {
+    "message": "Rabu",
+    "description": "Wednesday. Shown on the settings-history page."
+  },
+  "thursday": {
+    "message": "Kamis",
+    "description": "Thursday. Shown on the settings-history page."
+  },
+  "friday": {
+    "message": "Jumat",
+    "description": "Friday. Shown on the settings-history page."
+  },
+  "saturday": {
+    "message": "Sabut",
+    "description": "Saturday. Shown on the settings-history page."
+  },
+  "sunday_short": {
+    "message": "Ming",
+    "description": "Sunday abbreviated. Shown on the settings-history page."
+  },
+  "monday_short": {
+    "message": "Sen",
+    "description": "Monday abbreviated. Shown on the settings-history page."
+  },
+  "tuesday_short": {
+    "message": "Sel",
+    "description": "Tuesday abbreviated. Shown on the settings-history page."
+  },
+  "wednesday_short": {
+    "message": "Rab",
+    "description": "Wednesday abbreviated. Shown on the settings-history page."
+  },
+  "thursday_short": {
+    "message": "Kam",
+    "description": "Thursday abbreviated. Shown on the settings-history page."
+  },
+  "friday_short": {
+    "message": "Jum",
+    "description": "Friday abbreviated. Shown on the settings-history page."
+  },
+  "saturday_short": {
+    "message": "Sab",
+    "description": "Saturday abbreviated. Shown on the settings-history page."
+  },
+  "january": {
+    "message": "Januari",
+    "description": "January. Shown on the settings-history page."
+  },
+  "february": {
+    "message": "Februari",
+    "description": "February. Shown on the settings-history page."
+  },
+  "march": {
+    "message": "Maret",
+    "description": "March. Shown on the settings-history page."
+  },
+  "april": {
+    "message": "April",
+    "description": "April. Shown on the settings-history page."
+  },
+  "may": {
+    "message": "Mei",
+    "description": "May. Shown on the settings-history page."
+  },
+  "june": {
+    "message": "Juni",
+    "description": "June. Shown on the settings-history page."
+  },
+  "july": {
+    "message": "Juli",
+    "description": "July. Shown on the settings-history page."
+  },
+  "august": {
+    "message": "Agustus",
+    "description": "August. Shown on the settings-history page."
+  },
+  "september": {
+    "message": "September",
+    "description": "September. Shown on the settings-history page."
+  },
+  "october": {
+    "message": "Oktober",
+    "description": "October. Shown on the settings-history page."
+  },
+  "november": {
+    "message": "November",
+    "description": "November. Shown on the settings-history page."
+  },
+  "december": {
+    "message": "Desember",
+    "description": "December. Shown on the settings-history page."
+  },
+  "january_short": {
+    "message": "Jan",
+    "description": "January abbreviated. Shown on the settings-history page."
+  },
+  "february_short": {
+    "message": "Feb",
+    "description": "February abbreviated. Shown on the settings-history page."
+  },
+  "march_short": {
+    "message": "Mar",
+    "description": "March abbreviated. Shown on the settings-history page."
+  },
+  "april_short": {
+    "message": "Apr",
+    "description": "April abbreviated. Shown on the settings-history page."
+  },
+  "may_short": {
+    "message": "Mei",
+    "description": "May abbreviated. Shown on the settings-history page."
+  },
+  "june_short": {
+    "message": "Jun",
+    "description": "June abbreviated. Shown on the settings-history page."
+  },
+  "july_short": {
+    "message": "Jul",
+    "description": "July abbreviated. Shown on the settings-history page."
+  },
+  "august_short": {
+    "message": "Agt",
+    "description": "August abbreviated. Shown on the settings-history page."
+  },
+  "september_short": {
+    "message": "Sep",
+    "description": "September abbreviated. Shown on the settings-history page."
+  },
+  "october_short": {
+    "message": "Okt",
+    "description": "October abbreviated. Shown on the settings-history page."
+  },
+  "november_short": {
+    "message": "Nov",
+    "description": "November abbreviated. Shown on the settings-history page."
+  },
+  "december_short": {
+    "message": "Des",
+    "description": "December abbreviated. Shown on the settings-history page."
+  },
+  "in_month": {
+    "message": "Di Bulan $month$",
+    "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
+    "placeholders": {
+      "month": {
+        "content": "$1",
+        "example": "January"
+      }
+    }
+  },
+  "import_history": {
+    "message": "Impor Riwayat",
+    "description": "Import History button. Shown on the settings-history page."
+  },
+  "export_history": {
+    "message": "Ekspor Riwayat",
+    "description": "Export History button. Shown on the settings-history page."
+  },
+  "confirm_import": {
+    "message": "Mengimpor riwayat akan menghapus semua riwayat yang telah ada. Lanjutkan?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
+  },
+  "import_failed": {
+    "message": "Gagal mengimpor riwayar: $error$",
+    "description": "Error message shown when history import fails. Shown on the settings-history page.",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Missing Pomodoro data."
+      }
+    }
+  },
+  "group_pomodoros_minute_buckets": {
+    "message": "Kelompokkan Podomoro menjadi kelompok tiap $count$ menit",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "group_pomodoros_hour_buckets": {
+    "message": "Kelompokkan Podomoro menjadi kelompok tiap $count$ jam",
+    "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "min_suffix": {
+    "message": "$count$ Mnt",
+    "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "hr_suffix": {
+    "message": "$count$ Jam",
+    "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "write_a_review": {
+    "message": "Tulis Ulasan",
+    "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
+  },
+  "report_an_issue": {
+    "message": "Laporkan Masalah",
+    "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
+  },
+  "license": {
+    "message": "Lisensi",
+    "description": "Link to source license. Shown on the settings-feedback page."
+  },
+  "view": {
+    "message": "Tampilkan",
+    "description": "View section header. Shown on the settings-feedback page."
+  },
+  "version": {
+    "message": "Versi",
+    "description": "Version section header. Shown on the settings-feedback page."
+  },
+  "contributors": {
+    "message": "Kontributor",
+    "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "completed_today": {
+    "message": "Diselesaikan Hari Ini",
+    "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
+  },
+  "view_history": {
+    "message": "Tampilkan Riwayat",
+    "description": "View History button text. Shown on the timer expiration page."
+  },
+  "pomodoros_until_long_break": {
+    "message": "$podomoros$ hingga istirahat panjang",
+    "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "5 Pomodoros"
+      }
+    }
+  },
+  "pomodoros_completed_today": {
+    "message": "$podomoros$ hari ini",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "1 Pomodoro"
+      }
+    }
+  },
+  "start_focusing_now": {
+    "message": "Mulai fokus sekarang",
+    "description": "Notification button text when break timer expires."
+  },
+  "take_a_break": {
+    "message": "Mulai Istirahat",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_short_break": {
+    "message": "Mulai Istirahat Pendek",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_long_break": {
+    "message": "Mulai Istirahat Panjang",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_break_now": {
+    "message": "Mulai Istirahat Sekarang",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_short_break_now": {
+    "message": "Mulai Istirahat Pendek Sekarang",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_long_break_now": {
+    "message": "Mulai Istirahat Panjang Sekarang",
+    "description": "Notification button text when focus timer expires."
+  },
+  "time_remaining": {
+    "message": "$time$ Tersisa",
+    "description": "Badge tooltip to show time remaining for current timer.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5m"
+      }
+    }
+  },
+  "missing_pomodoro_data": {
+    "message": "Data Podomoro tidak ditemukan.",
+    "description": "Error when imported history has no Pomodoro information."
+  },
+  "missing_duration_data": {
+    "message": "Data durasi tidak ditemukan.",
+    "description": "Error when imported history has no Pomodoro duration information."
+  },
+  "missing_timezone_data": {
+    "message": "Data zona waktu tidak ditemukan.",
+    "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "mismatched_pomodoro_duration_data": {
+    "message": "Data Podomoro/durasi tidak cocok.",
+    "description": "Error when imported history has mismatched Pomodoro/duration data."
+  },
+  "mismatched_pomodoro_timezone_data": {
+    "message": "Data Podomoro/zona waktu tidak cocok.",
+    "description": "Error when imported history has mismatched Pomodoro/timezone data."
+  },
+  "help_translate": {
+    "message": "Bantu Terjemahkan",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "expire_title": {
+    "message": "Waktu Habis · Marinara",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  }
+}
