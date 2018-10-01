@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Unterstützt lange und kurze Pausen\n• Toolbar Icon Countdown-Timer\n• Pomodoro Verlauf & Statistiken verfolgen\n• lange Pause Intervalle konfigurierbar\n• Timer Dauer konfigurierbar\n• Desktop Benachrichtigungen\n• Neuer Tab Benachrichtigung\n• Audio Benachrichtigungen mit über 20 Töne\n• Open source software",
+    "message": "• Lange und kurze Pausen\n• Toolbar Icon Countdown-Timer\n• Pomodoro Verlauf & Statistiken\n• Lange Pause Intervalle konfigurierbar\n• Timer Dauer konfigurierbar\n• Desktop & Tab Benachrichtigungen\n• Audio Benachrichtigungen mit über 20 Tönen\n• Tickende Timer Klänge\n• Planbare Timer\n• Open source software",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -113,6 +113,18 @@
     "message": "Lange Pause",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "autostart_title": {
+    "message": "Autostart",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "Start des ersten Pomodoro des Tages für eine bestimmte Uhrzeit planen.",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "time": {
+    "message": "Zeit:",
+    "description": "Time input label. Shown on the settings page."
+  },
   "duration": {
     "message": "Dauer:",
     "description": "Timer duration label. Shown on the settings page."
@@ -120,6 +132,26 @@
   "minutes": {
     "message": "minuten",
     "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "Timer Klang:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "Maus-over für Vorschau",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "Geschwindigkeit:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "Schläge pro Minute",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "Keiner",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
     "message": "Wann Timer zu Ende ist:",
@@ -322,14 +354,6 @@
   "time_format": {
     "message": "%-H.%M:%S",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
-  },
-  "time_period_am": {
-    "message": "",
-    "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
-  },
-  "time_period_pm": {
-    "message": "",
-    "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
     "message": "Sonntag",
@@ -619,7 +643,7 @@
   },
   "pomodoros_completed_today": {
     "message": "$pomodoros$ heute geschafft",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
@@ -713,6 +737,14 @@
     "message": "Pomodoro/Zeitzone Daten passen nicht zusammen.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "help_translate": {
+    "message": "Hilf bei der Übersetzung",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "expire_title": {
+    "message": "Zeit abgelaufen · Marinara",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
   "gong_1": {
     "message": "Gong 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
@@ -804,5 +836,53 @@
   "digital_alarm_clock": {
     "message": "Digital Wecker",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "Stoppuhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "Uhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "Wanduhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "Tischuhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "Antike Uhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "Kleine Uhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "Große Uhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "Armbanduhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "Aufziehuhr",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "Metronom",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "Holzblock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "Puls",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }
