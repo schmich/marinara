@@ -31,3 +31,4 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Craig Loftus](https://github.com/craigloftus): Autostart timers
 - [Mathias Mikkelsen](https://github.com/Fysikeren): Danish translation
 - [TomG777](https://github.com/TomG777): Dutch translation
+- [João Pedro Sconetto](https://github.com/sconetto): Portuguese translation
