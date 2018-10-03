@@ -118,8 +118,16 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Schedule the first Pomodoro of the day to automatically start at the specified time.",
+    "message": "Schedule a Pomodoro to automatically start at the specified time.",
     "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "Autostart Pomodoro",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "This scheduled Pomodoro was automatically started",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
     "message": "Time:",
