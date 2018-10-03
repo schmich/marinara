@@ -12,19 +12,19 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Istirahat pendek & panjang\n• Ikon toolbar dengan penghitung waktu mundur\n• Lacak riwayat dan statistik Podomoro\n• Selang istirahat panjang yang dapat diatur\n• Panjang penghitung waktu yang dapat diatur\n• Notifikasi desktop & tab\n• Notifikasi suara dengan lebih dari 20 macam suara\n• Suara penghitung waktu berdetik\n• Penghitung waktu otomatis yang terjadwal\n• Perangkat lunak open source",
+    "message": "• Istirahat pendek & panjang\n• Ikon toolbar dengan penghitung waktu mundur\n• Lacak riwayat dan statistik Pomodoro\n• Selang istirahat panjang yang dapat diatur\n• Panjang penghitung waktu yang dapat diatur\n• Notifikasi desktop & tab\n• Notifikasi suara dengan lebih dari 20 macam suara\n• Suara penghitung waktu berdetik\n• Penghitung waktu otomatis yang terjadwal\n• Perangkat lunak open source",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Asisten Podomoro",
+    "message": "Asisten Pomodoro",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "Mulai Siklus Podomoro",
+    "message": "Mulai Siklus Pomodoro",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Mulai Kembali Siklus Podomoro",
+    "message": "Mulai Kembali Siklus Pomodoro",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
@@ -60,7 +60,7 @@
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Riwayat Podomoro",
+    "message": "Riwayat Pomodoro",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
@@ -68,15 +68,15 @@
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "Tidak Ada Podomoro",
+    "message": "Tidak Ada Pomodoro",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
-    "message": "1 Podomoro",
+    "message": "1 Pomodoro",
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Podomoro",
+    "message": "$count$ Pomodoro",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,7 +86,7 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: Asisten Podomoro",
+    "message": "Marinara: Asisten Pomodoro",
     "description": "Settings page title."
   },
   "settings": {
@@ -118,7 +118,7 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Menjadwalkan Podomoro pertama tiap hari agar mulai secara otomatis pada waktu tertentu.",
+    "message": "Menjadwalkan Pomodoro pertama tiap hari agar mulai secara otomatis pada waktu tertentu.",
     "description": "Autostart setting description. Shown on the settings page."
   },
   "time": {
@@ -266,19 +266,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "Selesaikan satu Podomoro untuk melihat statistik harian",
+    "message": "Selesaikan satu Pomodoro untuk melihat statistik harian",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "Selesaikan satu Podomoro untuk melihat statistik mingguan",
+    "message": "Selesaikan satu Pomodoro untuk melihat statistik mingguan",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "Selesaikan satu Podomoro untuk melihat riwayat",
+    "message": "Selesaikan satu Pomodoro untuk melihat riwayat",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$podomoros$ antara $start$—$end$",
+    "message": "$pomodoros$ antara $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -296,7 +296,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$podomoros$ pada hari $day$",
+    "message": "$pomodoros$ pada hari $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -310,7 +310,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$podomoros$ pada $date$",
+    "message": "$pomodoros$ pada $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -540,7 +540,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Kelompokkan Podomoro menjadi kelompok tiap $count$ menit",
+    "message": "Kelompokkan Pomodoro menjadi kelompok tiap $count$ menit",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -550,7 +550,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Kelompokkan Podomoro menjadi kelompok tiap $count$ jam",
+    "message": "Kelompokkan Pomodoro menjadi kelompok tiap $count$ jam",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -612,7 +612,7 @@
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$podomoros$ hingga istirahat panjang",
+    "message": "$pomodoros$ hingga istirahat panjang",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -622,7 +622,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$podomoros$ hari ini",
+    "message": "$pomodoros$ hari ini",
     "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -670,7 +670,7 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Data Podomoro tidak ditemukan.",
+    "message": "Data Pomodoro tidak ditemukan.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
@@ -682,11 +682,11 @@
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Data Podomoro/durasi tidak cocok.",
+    "message": "Data Pomodoro/durasi tidak cocok.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Data Podomoro/zona waktu tidak cocok.",
+    "message": "Data Pomodoro/zona waktu tidak cocok.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
