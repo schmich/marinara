@@ -5,7 +5,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Chris Schmich](https://github.com/schmich): Lead development & design
 - [Dmitry Muravyev](https://github.com/dimuravyev): Notification enhancements
 - [Mark Bennett](https://github.com/MarkBennett): Firefox compatibility
-- [José Varela](https://github.com/joselcvarela): Portuguese translation
+- [José Varela](https://github.com/joselcvarela): Portuguese (Portugal) translation
 - [Omar Francisco](https://github.com/ofou): Spanish translation
 - [Maite Clausell](https://github.com/mcmtradu): Spanish translation
 - [Mathieu Lescaudron](https://github.com/MLescaudron): French translation
@@ -23,7 +23,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Shashank SVRSN](https://github.com/fossterer): Telugu translation
 - [frozzie](https://github.com/frozzie): Chinese (China) translation
 - [myTimeGone](https://github.com/myTimeGone): Chinese (China) translation
-- [Julianna Brandão](https://github.com/JuhBass): Brazilian Portugues translation
+- [Julianna Brandão](https://github.com/JuhBass): Portuguese (Brazil) translation
 - [Teerapong Chantakard](https://github.com/azygous13): Thai translation
 - [Sarp Başaraner](https://github.com/sgbasaraner): Turkish translation
 - [L1Q](https://github.com/L1Q): Russian translation
@@ -31,5 +31,5 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Craig Loftus](https://github.com/craigloftus): Autostart timers
 - [Mathias Mikkelsen](https://github.com/Fysikeren): Danish translation
 - [TomG777](https://github.com/TomG777): Dutch translation
-- [João Pedro Sconetto](https://github.com/sconetto): Portuguese translation
+- [João Pedro Sconetto](https://github.com/sconetto): Portuguese (Brazil) translation
 - [Ridho Pratama](https://github.com/ridho9): Indonesian translation
