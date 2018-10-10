@@ -1,6 +1,6 @@
 {
   "app_name": {
-    "message": "Marinara: Pomodoro® Assistant",
+    "message": "Marinara: Pomodoro® Asistent",
     "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
@@ -8,67 +8,67 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro® time management assistant.",
+    "message": "Pomodoro® asistent za organizaciju vremena.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Short & long breaks\n• Toolbar icon with countdown timer\n• Track Pomodoro history & stats\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Scheduled automatic timers\n• Open source software",
+    "message": "• Kratke i duge pauze\n• Tulbar ikona sa odbrojavanjem unazad\n• Praćenje Pomodoro istorije i statistika\n• Podesivo trajanje dugih pauza\n• Podesivio trajanje tajmera\n• Desktop i tab notifikacije\n• Zvučne notifikacije sa preko 20 zvukova\n• Tajmer sa zvucima otkucaja\n• Definisanje plana za automatske tajmere\n• Open source softver",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Pomodoro Assistant",
+    "message": "Pomodoro Asistent",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "Start Pomodoro Cycle",
+    "message": "Započni Pomodoro Ciklus",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Restart Pomodoro Cycle",
+    "message": "Restartuj Pomodoro Ciklus",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "Restart Timer",
+    "message": "Restartuj Tajmer",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "Start Focusing",
+    "message": "Započni Usredsređivanje",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Start Short Break",
+    "message": "Započni Kratku Pauzu",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "Start Break",
+    "message": "Započni Pauzu",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "Start Long Break",
+    "message": "Započni Dugu Pauzu",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "Stop Timer",
+    "message": "Zaustavi Tajmer",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Pause Timer",
+    "message": "Pauziraj Tajmer",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "Resume Timer",
+    "message": "Odpauziraj Tajmer",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Pomodoro History",
+    "message": "Pomodoro Istorija",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "Timer Paused",
+    "message": "Tajmer Pauziran",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "No Pomodoros",
+    "message": "Nema Pomodora",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
@@ -76,7 +76,7 @@
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Pomodoros",
+    "message": "$count$ Pomodora",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,167 +86,167 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: Pomodoro Assistant",
+    "message": "Marinara: Pomodoro Asistent",
     "description": "Settings page title."
   },
   "settings": {
-    "message": "Settings",
+    "message": "Podešavanja",
     "description": "Settings tab. Shown on the settings page."
   },
   "history": {
-    "message": "History",
+    "message": "Istorija",
     "description": "History tab. Shown on the settings page."
   },
   "feedback": {
-    "message": "Feedback",
+    "message": "Vaše Mišljenje",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Focus",
+    "message": "Fokus",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "Short Break",
+    "message": "Kratka Pauza",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "Long Break",
+    "message": "Duga Pauza",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
-    "message": "Autostart",
+    "message": "Automatsko Pokretanje",
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Schedule a Pomodoro to automatically start at the specified time.",
+    "message": "Zakaži automatsko pokretanje Pomodora u određeno vreme.",
     "description": "Autostart setting description. Shown on the settings page."
   },
   "autostart_notification_title": {
-    "message": "Autostart Pomodoro",
+    "message": "Automatski Pokreni Pomodoro",
     "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "autostart_notification_message": {
-    "message": "This scheduled Pomodoro was automatically started",
+    "message": "Zakazani Pomodoro je automatski pokrenut",
     "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
-    "message": "Time:",
+    "message": "Vreme:",
     "description": "Time input label. Shown on the settings page."
   },
   "duration": {
-    "message": "Duration:",
+    "message": "Trajanje:",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
-    "message": "minutes",
+    "message": "minuta",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
   "timer_sound_label": {
-    "message": "Timer sound:",
+    "message": "Zvuk tajmera:",
     "description": "Timer sound label. Shown on the settings page."
   },
   "hover_preview": {
-    "message": "Hover to preview",
+    "message": "Napravi lebdeći gest za brzi prikaz",
     "description": "Hover to preview note. Shown on the settings page."
   },
   "speed_label": {
-    "message": "Speed:",
+    "message": "Brzina:",
     "description": "Timer sound speed label. Shown on the settings page."
   },
   "bpm": {
-    "message": "beats per minute",
+    "message": "otkucaja u minutu",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
   "none": {
-    "message": "None",
+    "message": "Prazno",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
-    "message": "When complete:",
+    "message": "Po završetku:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
-    "message": "Show desktop notification",
+    "message": "Prikaži desktop notifikacije",
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Show new tab notification",
+    "message": "Prikaži notifikacije kao novi tab",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Play sound:",
+    "message": "Pusti zvuk:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "Take a long break:",
+    "message": "Napravi dugačku pauzu:",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
-    "message": "never",
+    "message": "nikad",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "every 2nd break (alternating)",
+    "message": "svaka 2. pauza (naizmenično)",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "every 3rd break",
+    "message": "svaka 3. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "every 4th break",
+    "message": "svaka 4. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "every 5th break",
+    "message": "svaka 5. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "every 6th break",
+    "message": "svaka 6. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "every 7th break",
+    "message": "svaka 7. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "every 8th break",
+    "message": "svaka 8. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "every 9th break",
+    "message": "svaka 9. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "every 10th break",
+    "message": "svaka 10. pauza",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "Tone",
+    "message": "Ton",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Electronic Chime",
+    "message": "Elekrični Zvončići",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "Today",
+    "message": "Danas",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
-    "message": "This Week",
+    "message": "Ove Nedelje",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
-    "message": "This Month",
+    "message": "Ovog Meseca",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "Total",
+    "message": "Ukupno",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ avg",
+    "message": "$average$ prosek",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -256,15 +256,15 @@
     }
   },
   "daily_distribution": {
-    "message": "Daily Distribution",
+    "message": "Dnevna Raspodela",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "Weekly Distribution",
+    "message": "Nedeljna Raspodela",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$ in the Last 9 Months",
+    "message": "$count$ u poslednjih 9 meseci",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -274,19 +274,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "Finish a Pomodoro to see your daily stats",
+    "message": "Završi Pomodoro za prikaz dnevne statistike",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "Finish a Pomodoro to see your weekly stats",
+    "message": "Završi Pomodoro za prikaz nedeljne statistike",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "Finish a Pomodoro to see your history",
+    "message": "Završi Pomodoro za prikaz istorije",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ between $start$—$end$",
+    "message": "$pomodoros$ između $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -304,7 +304,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ on $day$",
+    "message": "$pomodoros$ u $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -318,7 +318,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ on $date$",
+    "message": "$pomodoros$ na $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -340,15 +340,15 @@
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "%b %d, %Y",
+    "message": "%b %d, %Y.",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
-    "message": "%-I%p",
+    "message": "%-H",
     "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
   },
   "hour_minute_format": {
-    "message": "%-I:%M%p",
+    "message": "%-H:%M",
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
@@ -360,7 +360,7 @@
     "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_format": {
-    "message": "%-I:%M:%S %p",
+    "message": "%-H:%M:%S",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
@@ -372,71 +372,71 @@
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "Sunday",
+    "message": "nedelja",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "Monday",
+    "message": "ponedeljak",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "Tuesday",
+    "message": "utorak",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "Wednesday",
+    "message": "sreda",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "Thursday",
+    "message": "četvrtak",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "Friday",
+    "message": "petak",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "Saturday",
+    "message": "subota",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "Sun",
+    "message": "ned",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "Mon",
+    "message": "pon",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "Tue",
+    "message": "uto",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "Wed",
+    "message": "sre",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "Thu",
+    "message": "čet",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "Fri",
+    "message": "pet",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "Sat",
+    "message": "sub",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
-    "message": "January",
+    "message": "Januar",
     "description": "January. Shown on the settings-history page."
   },
   "february": {
-    "message": "February",
+    "message": "Februar",
     "description": "February. Shown on the settings-history page."
   },
   "march": {
-    "message": "March",
+    "message": "Mart",
     "description": "March. Shown on the settings-history page."
   },
   "april": {
@@ -444,87 +444,87 @@
     "description": "April. Shown on the settings-history page."
   },
   "may": {
-    "message": "May",
+    "message": "Maj",
     "description": "May. Shown on the settings-history page."
   },
   "june": {
-    "message": "June",
+    "message": "Jun",
     "description": "June. Shown on the settings-history page."
   },
   "july": {
-    "message": "July",
+    "message": "Jul",
     "description": "July. Shown on the settings-history page."
   },
   "august": {
-    "message": "August",
+    "message": "Avgust",
     "description": "August. Shown on the settings-history page."
   },
   "september": {
-    "message": "September",
+    "message": "Septembar",
     "description": "September. Shown on the settings-history page."
   },
   "october": {
-    "message": "October",
+    "message": "Oktobar",
     "description": "October. Shown on the settings-history page."
   },
   "november": {
-    "message": "November",
+    "message": "Novembar",
     "description": "November. Shown on the settings-history page."
   },
   "december": {
-    "message": "December",
+    "message": "Decembar",
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "Jan",
+    "message": "jan",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "Feb",
+    "message": "feb",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "Mar",
+    "message": "mar",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "Apr",
+    "message": "apr",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "May",
+    "message": "maj",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "Jun",
+    "message": "jun",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "Jul",
+    "message": "jul",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "Aug",
+    "message": "avg",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "Sep",
+    "message": "sep",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "Oct",
+    "message": "okt",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "Nov",
+    "message": "nov",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "Dec",
+    "message": "dec",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "In $month$",
+    "message": "za mesec $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -534,19 +534,19 @@
     }
   },
   "import_history": {
-    "message": "Import History",
+    "message": "Uvezi Istoriju",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "Export History",
+    "message": "Izvezi Istoriju",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "Importing history overwrites all existing history. Continue?",
+    "message": "Uvezena istorija se upisuje preko postojeće. \nNastavi?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "Failed to import history: $error$",
+    "message": "Neuspešno uvoženje istorije: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -556,7 +556,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Group Pomodoros into $count$ minute buckets",
+    "message": "Grupiši Pomodore u grupe od $count$ minuta",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -566,7 +566,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Group Pomodoros into $count$ hour buckets",
+    "message": "Grupiši Pomodore u grupe od $count$ sati",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -576,7 +576,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ Min",
+    "message": "$count$ Min.",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -586,7 +586,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$count$ Hr",
+    "message": "$count$ Č.",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -596,59 +596,59 @@
     }
   },
   "write_a_review": {
-    "message": "Write a Review",
+    "message": "Napiši Recenziju",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
-    "message": "Report an Issue",
+    "message": "Prijavi Problem",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Release Notes",
+    "message": "Informacije o Izdanju",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "Source Code",
+    "message": "Izvorni Kod",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "Attributions",
+    "message": "Autorstvo",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "License",
+    "message": "Licenca",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "View",
+    "message": "Pogledaj",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "Version",
+    "message": "Verzija",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.",
+    "message": "Pomodoro® i The Pomodoro Technique® su zaštitini znak u vlasništvu Francesco Cirillo-a. Marinara nije povezana, ne sarađuje i nije preporučena od strane Pomodoro®-a, The Pomodoro Technique®-a niti Francesco Cirillo-a.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
-    "message": "&",
+    "message": "i",
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
-    "message": "Contributors",
+    "message": "Saradnici",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "Completed Today",
+    "message": "Završeno Danas",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "View History",
+    "message": "Pogledaj Istoriju",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$ until long break",
+    "message": "$pomodoros$ do dugačke pauze",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -658,7 +658,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ today",
+    "message": "$pomodoros$ danas",
     "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -668,31 +668,31 @@
     }
   },
   "start_focusing_now": {
-    "message": "Start focusing now",
+    "message": "Počni sa usredsređivanjem sada",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "Take a Break",
+    "message": "Napravi Pauzu",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "Take a Short Break",
+    "message": "Napravi Kratku Pauzu",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "Take a Long Break",
+    "message": "Napravi Dugačku Pauzu",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Start break now",
+    "message": "Započni pauzu sada",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "Start short break now",
+    "message": "Započni kratku pauzu",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "Start long break now",
+    "message": "Započni dugačku pauzu sada",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
@@ -710,7 +710,7 @@
     }
   },
   "n_minutes": {
-    "message": "$count$m",
+    "message": "$count$m.",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -720,11 +720,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1m",
+    "message": "<1m.",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "$time$ Remaining",
+    "message": "$time$ Preostalo",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -734,31 +734,31 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Missing Pomodoro data.",
+    "message": "Pomodoro podaci nisu pronađeni.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "Missing duration data.",
+    "message": "Podaci o trajanju nisu pronađeni.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "Missing timezone data.",
+    "message": "Podaci o vremenskoj zoni nisu pronađeni.",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Mismatched Pomodoro/duration data.",
+    "message": "Neusaglašeni Pomodoro podaci i podaci o trajanju.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Mismatched Pomodoro/timezone data.",
+    "message": "Neusaglašeni Pomodoro podaci i podaci o vremenskoj zoni.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
-    "message": "Help Translate",
+    "message": "Pomoć oko Prevoda",
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "Time's Up · Marinara",
+    "message": "Vreme je Isteklo · Marinara\n",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
@@ -770,59 +770,59 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Computer Magic",
+    "message": "Kompjuterska Magija",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Fire Pager",
+    "message": "Vatreni Pejdžer",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "Glass Ping",
+    "message": "Stakleni Ping",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
-    "message": "Music Box",
+    "message": "Muzička Kutija",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Pin Drop",
+    "message": "Ispuštena Iglica",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "Robot Blip 1",
+    "message": "Robotski Blip 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "Robot Blip 2",
+    "message": "Robotski Blip 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
-    "message": "Ship Bell",
+    "message": "Brodsko Zvono",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "Train Horn",
+    "message": "Sirena Lokomotive",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Bike Horn",
+    "message": "Truba za Bicikl",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Bell Ring",
+    "message": "Odzvanjanje Zvona",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
-    "message": "Reception Bell",
+    "message": "Zvono na Recepciji",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Toaster Oven",
+    "message": "Toster",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Battle Horn",
+    "message": "Borbeni Rog",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -838,67 +838,67 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "Airplane",
+    "message": "Avion",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "Digital Watch",
+    "message": "Digitalni Sat",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "Analog Alarm Clock",
+    "message": "Analogni Budilnik",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "Digital Alarm Clock",
+    "message": "Digitalni Budilnik",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "stopwatch": {
-    "message": "Stopwatch",
+    "message": "Štoperica",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "clock": {
-    "message": "Clock",
+    "message": "Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wall_clock": {
-    "message": "Wall Clock",
+    "message": "Zidni Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "desk_clock": {
-    "message": "Desk Clock",
+    "message": "Sat na Stolu",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Antique Clock",
+    "message": "Starinski Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
-    "message": "Small Clock",
+    "message": "Mali Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "large_clock": {
-    "message": "Large Clock",
+    "message": "Veliki Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wristwatch": {
-    "message": "Wristwatch",
+    "message": "Ručni Sat",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wind_up_clock": {
-    "message": "Wind-up Clock",
+    "message": "Sat na Navijanje",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "metronome": {
-    "message": "Metronome",
+    "message": "Metronom",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wood_block": {
-    "message": "Wood Block",
+    "message": "Komad Drveta",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pulse": {
-    "message": "Pulse",
+    "message": "Puls",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }
