@@ -118,8 +118,16 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Запланируйте первый помидор дня на заданное время.",
+    "message": "Запланируйте автозапуск помидора на заданное время.",
     "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "Автозапуск помидора",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Этот запланированный помидор начался автоматически",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
     "message": "Время:",
