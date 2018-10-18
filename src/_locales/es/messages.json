@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Descansos breves y largos\n• Icono en la barra de herammientas con temporizador\n• Historial Pomodoro y estadísticas \n• Intervalos de descansos largos configurables\n• Duración de temporizador configurable\n• Notificaciones de escritorio y en una pestaña nueva\n• Notificaciones auditivas con más de 20 sonidos\n• Temporizador con sonido\n• Software de código abierto",
+    "message": "• Descansos breves y largos\n• Icono en la barra de herammientas con temporizador\n• Historial Pomodoro y estadísticas \n• Intervalos de descansos largos configurables\n• Duración de temporizador configurable\n• Notificaciones de escritorio y en una pestaña nueva\n• Notificaciones auditivas con más de 20 sonidos\n• Temporizador con sonido\n• Temporizadores automáticos programados\n• Software de código abierto",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -113,9 +113,21 @@
     "message": "Descanso largo",
     "description": "Long Break section header. Shown on the settings page."
   },
-  "startup_title": {
-    "message": "Poner en marcha",
-    "description": "Start up section header. Shown on the settings page."
+  "autostart_title": {
+    "message": "Inicio automático",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "Programar un Pomodoro para que comience automáticamente a la hora especificada.",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "Inicio automático Pomodoro",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Este Pomodoro programado se inició automáticamente.",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
     "message": "Tiempo:",
