@@ -178,39 +178,39 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "ogni due pause (in alternanza)",
+    "message": "ogni 2 pause (alternato)",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "ogni tre pause",
+    "message": "ogni 3 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "ogni quattro pause",
+    "message": "ogni 4 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "ogni cinque pause",
+    "message": "ogni 5 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "ogni sei pause",
+    "message": "ogni 6 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "ogni sette pause",
+    "message": "ogni 7 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "ogni otto pause",
+    "message": "ogni 8 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "ogni nove pause",
+    "message": "ogni 9 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "ogni dieci pause",
+    "message": "ogni 10 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
