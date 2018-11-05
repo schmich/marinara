@@ -1,82 +1,78 @@
 {
-  "app_name": {
-    "message": "Marinara: Assistent Pomodoro® ",
-    "description": "The name of the application. Shown in the web store."
-  },
   "app_name_short": {
     "message": "Marinara",
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro® assistent de gestió del temps.",
+    "message": "Pomodoro® laiko valdymo pagalbininkas.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Descansos breus i llargs\n• Icona amb temporitzador a  la barra d'eines \n• Historial Pomodoro i estadístiques\n• Intervals de descans llarg configurable\n• Duració dels temporitzadors configurable\n• Notificacions d'escriptori i en una pestanya nova\n• Més de 20 notificacions auditives diferents\n• Temporitzador amb so\n• Temporitzadors automàtics programats\n• Programari de codi obert",
+    "message": "• Trumpos ir ilgos pertraukos\n• Įrankių juostos ikona su laikrodžiu\n• Galimybė sekti Pomodoro užduotis ir istoriją\n• Galimybė keisti pertraukų ilgį\n• galimybė keisti užduočių laiką\n• Darbalaukio ir kortelių pranešimai\n• Audio pranešimai.\n• Tiksintis laikmatis\n• Automatiniai laikmačiai nustatytu laiku\n• Atviro kodo programa",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Assistent Pomodoro",
+    "message": "Pomodoro užduočių pagalbininkas",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "Comença el cicle Pomodoro",
+    "message": "Pradėti užduotį",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Reinicia el cicle Pomodoro",
+    "message": "Pradėti užduotį iš naujo",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "Reinicia el temporitzador",
+    "message": "Restartuoti laikmatį",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "Comença el període de concentració",
+    "message": "Pradėti",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Comença el descans breu",
+    "message": "Trumpa pertrauka",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "Comença el descans",
+    "message": "Pradėti pertrauką",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "Comença el descans llarg",
+    "message": "Ilga pertrauka",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "Atura el temporitzador",
+    "message": "Sustabdyti laikmatį",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Pausa el temporitzador",
+    "message": "Pauzė",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "Reprèn el temporitzador",
+    "message": "Pradėti",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Historial Pomodoro",
+    "message": "Istorija",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "Temporitzador pausat",
+    "message": "Laikas sustabdytas",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "Cap Pomodoro",
+    "message": "Nėra užduočių",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
-    "message": "1 Pomodoro",
+    "message": "Viena užduotis",
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Pomodoros",
+    "message": "$count$ užduotys",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,167 +82,167 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: assistent Pomodoro",
+    "message": "Marinara : Pomodoro laikmatis",
     "description": "Settings page title."
   },
   "settings": {
-    "message": "Configuració",
+    "message": "Nustatymai",
     "description": "Settings tab. Shown on the settings page."
   },
   "history": {
-    "message": "Historial",
+    "message": "Istorija",
     "description": "History tab. Shown on the settings page."
   },
   "feedback": {
-    "message": "Comentaris",
+    "message": "Palikti atsiliepimą",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Concentració",
+    "message": "Pradėti",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "Descans breu",
+    "message": "Trumpa pertrauka",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "Descans llarg",
+    "message": "Ilga pertrauka",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
-    "message": "Inici automàtic",
+    "message": "Pradėti automatiškai",
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Programa un Pomodoro per començar automàticament a l'hora especificada.",
+    "message": "Užduotis prasidės numatytu laiku",
     "description": "Autostart setting description. Shown on the settings page."
   },
   "autostart_notification_title": {
-    "message": "Inici automàtic Pomodoro",
+    "message": "Pradėti automatiškai",
     "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "autostart_notification_message": {
-    "message": "Aquest Pomodoro programat s'ha iniciat automàticament",
+    "message": "Užduotis pradėta automatiškai",
     "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
-    "message": "Temps:",
+    "message": "Laikas:",
     "description": "Time input label. Shown on the settings page."
   },
   "duration": {
-    "message": "Duració:",
+    "message": "Trukmė:",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
-    "message": "minuts",
+    "message": "minutės",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
   "timer_sound_label": {
-    "message": "So del temporitzador:",
+    "message": "Laikmačio garsas:",
     "description": "Timer sound label. Shown on the settings page."
   },
   "hover_preview": {
-    "message": "Situa el cursor damunt per obtenir una vista prèvia",
+    "message": "Užveskite peržiūrai",
     "description": "Hover to preview note. Shown on the settings page."
   },
   "speed_label": {
-    "message": "Velocitat:",
+    "message": "Greitis",
     "description": "Timer sound speed label. Shown on the settings page."
   },
   "bpm": {
-    "message": "pulsacions per minut",
+    "message": "kartai per minutę",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
   "none": {
-    "message": "Cap",
+    "message": "Be garso",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
-    "message": "Al finalitzar:",
+    "message": "Įvykdžius užduotį:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
-    "message": "Mostra una notificació d'escriptori",
+    "message": "Pranešimas darbalaukyje",
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Mostra una notificació en una pestanya nova",
+    "message": "Kortelės pranešimas",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Reprodueix so:",
+    "message": "Groti garsą:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "Fes un descans llarg:",
+    "message": "Ilga pertrauka:",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
-    "message": "mai",
+    "message": "niekada",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "cada dos descansos (alternant)",
+    "message": "kas 2 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "cada tres descansos",
+    "message": "kas 3 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "cada quatre descansos",
+    "message": "kas 4 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "cada cinc descansos",
+    "message": "kas 5 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "cada sis descansos",
+    "message": "kas 6 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "cada set descasos",
+    "message": "kas 7 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "cada vuit descansos",
+    "message": "kas 8 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "cada nou descansos",
+    "message": "kas 9 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "cada deu descansos",
+    "message": "kas 10 kartą",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "To",
+    "message": "Tonas",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Campaneta electrònica",
+    "message": "Elektroninis skambutis",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "Avui",
+    "message": "Šiandien",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
-    "message": "Aquesta setmana",
+    "message": "Šią savaitę",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
-    "message": "Aquest mes",
+    "message": "Šį mėnesį",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "Total",
+    "message": "Iš viso",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "Mitjana: $average$",
+    "message": "vidutiniškai $average$",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -256,15 +252,15 @@
     }
   },
   "daily_distribution": {
-    "message": "Distribució diària",
+    "message": "Šiandienos pasiskirstymas",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "Distribució setmanal",
+    "message": "Savaitės pasiskirstymas",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$ en els nou últims mesos",
+    "message": "$count$ per paskutinius 9 mėnesius",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -274,19 +270,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure les estadístiques diàries",
+    "message": "Užbaikite užduotį, kad pamatytumėte dienos statistiką",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure les estadístiques setmanals",
+    "message": "Užbaikite užduotį, kad pamatytumėte savaitės statistiką",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure l'historial",
+    "message": "Užbaikite užduotį, kad pamatytumėte statistiką",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ entre $start$—$end$",
+    "message": "$pomodoros$ tarp $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -304,7 +300,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ el $day$",
+    "message": "$pomodoros$ per $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -318,7 +314,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ el $date$",
+    "message": "$pomodoros$ per $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -332,15 +328,15 @@
     }
   },
   "decimal_separator": {
-    "message": ",",
+    "message": ".",
     "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
   },
   "thousands_separator": {
-    "message": ".",
+    "message": ",",
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "el %d de %B de %Y",
+    "message": "%b %d, %Y",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
@@ -352,7 +348,7 @@
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
-    "message": "%-d/%-m/%Y",
+    "message": "%-m/%-d/%Y",
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
@@ -364,167 +360,167 @@
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
-    "message": "a.m.",
+    "message": "a",
     "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_pm": {
-    "message": "p.m.",
+    "message": "p",
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "Diumenge",
+    "message": "Sekmadienis",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "Dilluns",
+    "message": "Pirmadienis",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "Dimarts",
+    "message": "Antradienis",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "Dimecres",
+    "message": "Trečiadienis",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "Dijous",
+    "message": "Ketvirtadienis",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "Divendres",
+    "message": "Penktadienis",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "Dissabte",
+    "message": "Šeštadienis",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "dg.",
+    "message": "S",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "dl.",
+    "message": "P",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "dt.",
+    "message": "A",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "dc.",
+    "message": "T",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "dj.",
+    "message": "K",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "dv.",
+    "message": "P",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "ds.",
+    "message": "Š",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
-    "message": "gener",
+    "message": "Sausis",
     "description": "January. Shown on the settings-history page."
   },
   "february": {
-    "message": "febrer",
+    "message": "Vasaris",
     "description": "February. Shown on the settings-history page."
   },
   "march": {
-    "message": "març",
+    "message": "Kovas",
     "description": "March. Shown on the settings-history page."
   },
   "april": {
-    "message": "abril",
+    "message": "Balandis",
     "description": "April. Shown on the settings-history page."
   },
   "may": {
-    "message": "maig",
+    "message": "Gegužė",
     "description": "May. Shown on the settings-history page."
   },
   "june": {
-    "message": "juny",
+    "message": "Birželis",
     "description": "June. Shown on the settings-history page."
   },
   "july": {
-    "message": "juliol",
+    "message": "Liepa",
     "description": "July. Shown on the settings-history page."
   },
   "august": {
-    "message": "agost",
+    "message": "Rugpjūtis",
     "description": "August. Shown on the settings-history page."
   },
   "september": {
-    "message": "setembre",
+    "message": "Rugsėjis",
     "description": "September. Shown on the settings-history page."
   },
   "october": {
-    "message": "octubre",
+    "message": "Spalis",
     "description": "October. Shown on the settings-history page."
   },
   "november": {
-    "message": "novembre",
+    "message": "Lapkritis",
     "description": "November. Shown on the settings-history page."
   },
   "december": {
-    "message": "desembre",
+    "message": "Gruodis",
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "gen.",
+    "message": "S",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "febr.",
+    "message": "V",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "març",
+    "message": "K",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "abr.",
+    "message": "B",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "maig",
+    "message": "G",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "juny",
+    "message": "B",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "jul.",
+    "message": "L",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "ag.",
+    "message": "R",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "set.",
+    "message": "R",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "oct.",
+    "message": "S",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "nov.",
+    "message": "L",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "des.",
+    "message": "G",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "En $month$",
+    "message": "Per $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -534,19 +530,19 @@
     }
   },
   "import_history": {
-    "message": "Importa l'historial",
+    "message": "Importuoti istoriją",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "Exporta l'historial",
+    "message": "Eksportuoti istoriją",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "Importar l'historial sobreescriurà les dades existents. Voleu continuar?",
+    "message": "Importuojant neliks esamų duomenų. Tęsti?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "No s'ha pogut importar l'historial: $error$",
+    "message": "Nepavyko importuoti: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -556,7 +552,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Agrupa els Pomodoros en grups de $count$ minuts",
+    "message": "Sugrupuoti užduotis pagal $count$ minutes",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -566,7 +562,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Agrupa els Pomodoros en grups de $count$ hores",
+    "message": "Sugrupuoti užduotis pagal $count$ valandas",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -576,7 +572,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ min",
+    "message": "$count$ Min",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -586,7 +582,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$count$ h",
+    "message": "$count$ Val",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -596,59 +592,59 @@
     }
   },
   "write_a_review": {
-    "message": "Escriviu una ressenya",
+    "message": "Parašyti atsiliepimą",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
-    "message": "Informeu d'un problema",
+    "message": "Pranešti apie klaidą",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Notes de la versió",
+    "message": "Versijos naujienos",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "Codi font",
+    "message": "Šaltinio kodas",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "Atribucions",
+    "message": "Šaltiniai",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "Llicència",
+    "message": "Licencija",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "Visualitza",
+    "message": "Peržiūrėti",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "Versió",
+    "message": "Versija",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® i The Pomodoro Technique® són marques registrades de Francesco Cirillo. Marinara no té cap tipus de relació ni està associada ni recolzada per Pomodoro®, The Pomodoro Technique® o Francesco Cirillo.",
+    "message": "Pomodoro® ir The Pomodoro Technique® yra Francesco Cirillo prekės ženklai. Marinara yra nesusijusi ir nefinansuojama  Pomodoro®, The Pomodoro Technique® ar Francesco Cirillo.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
-    "message": "i",
+    "message": "ir",
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
-    "message": "Col·laboradors",
+    "message": "Bendraautoriai",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "Finalitzats avui",
+    "message": "Įvykdyta šiandien",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "Veure l'historial",
+    "message": "Peržiūrėti istoriją",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$ fins al descans llarg",
+    "message": "$pomodoros$ iki ilgosios pertraukos",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -658,7 +654,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ avui",
+    "message": "$pomodoros$ šiandien",
     "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -668,31 +664,31 @@
     }
   },
   "start_focusing_now": {
-    "message": "Comença ara el període de concentració ",
+    "message": "Pradėkite darbą",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "Fes un descans",
+    "message": "Pailsėkite",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "Fes un descans breu",
+    "message": "Trumpoji pertrauka",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "Fes un descans llarg",
+    "message": "Ilgoji pertrauka",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Comença un descans ara",
+    "message": "Pertrauka",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "Comença un descans breu ara",
+    "message": "Trumpoji pertrauka",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "Comença un descans llarg ara",
+    "message": "Ilgoji pertrauka",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
@@ -710,7 +706,7 @@
     }
   },
   "n_minutes": {
-    "message": "$count$ min",
+    "message": "$count$m",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -720,11 +716,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1 min",
+    "message": "<1min",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "Temps restant: $time$",
+    "message": "Liko $time$",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -734,95 +730,95 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Falten dades Pomodoro.",
+    "message": "Trūksta duomenų.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "Falten dades de duració.",
+    "message": "Trūksta trukmės duomenų.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "Falten dades de zona horària.",
+    "message": "Trūksta laiko zonos duomenų.",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Les dades Pomodoro i de duració no coincideixen.",
+    "message": "Duomenų neatitikimas",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Les dades Pomodoro i de zona horària no coincideixen.",
+    "message": "Duomenų neatitikimas",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
-    "message": "Ajudeu a traduir",
+    "message": "Padėti su vertimais",
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "S'ha acabat el temps · Marinara",
+    "message": "Laikas baigėsi  · Marinara",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
-    "message": "Gong 1",
+    "message": "Gonagas 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
-    "message": "Gong 2",
+    "message": "Gongas 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Màgia",
+    "message": "Kumpiuterinė Magija",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Alarma d'incendis",
+    "message": "Žinutė",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "Vidre",
+    "message": "Stuktėlėjimas į stiklą",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
-    "message": "Caixa de música",
+    "message": "Muzikinė dėžutė",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Agulla caient",
+    "message": "Krentantis segtukas",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "Xiulet robòtic 1",
+    "message": "Blip Blop",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "Xiulet robòtic 2",
+    "message": "Blip Blop 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
-    "message": "Campana de vaixell",
+    "message": "Laivo varpas",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "Botzina de tren",
+    "message": "Traukinys",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Botzina de bicicleta",
+    "message": "Dviračio skambutis",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Campana",
+    "message": "Varpelis",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
-    "message": "Campana de recepció",
+    "message": "Priimamojo skambutis",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Forn elèctric",
+    "message": "Viryklė",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Banya de batalla",
+    "message": "Karo ragas",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -838,67 +834,67 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "Avió",
+    "message": "Lėktuvas",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "Rellotge digital",
+    "message": "Rankinis laikrodis.",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "Alarma de rellotge analògic",
+    "message": "Analoginis laikrodis",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "Alarma de rellotge digital",
+    "message": "Skaitmeninis laikrodis.",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "stopwatch": {
-    "message": "Cronòmetre",
+    "message": "Laikmatis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "clock": {
-    "message": "Rellotge",
+    "message": "Laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wall_clock": {
-    "message": "Rellotge de paret",
+    "message": "Sieninis laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "desk_clock": {
-    "message": "Rellotge de taula",
+    "message": "Stalinis laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Rellotge antic",
+    "message": "Retro laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
-    "message": "Rellotge petit",
+    "message": "Mažas laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "large_clock": {
-    "message": "Rellotge gran",
+    "message": "Didėlis laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wristwatch": {
-    "message": "Rellotge de polsera",
+    "message": "Rankinis laikrodis 2",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wind_up_clock": {
-    "message": "Rellotge de corda",
+    "message": "Prisukamas laikrodis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "metronome": {
-    "message": "Metrònom",
+    "message": "Metronomas",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wood_block": {
-    "message": "Bloc de fusta",
+    "message": "Medinis kubelis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pulse": {
-    "message": "Pulsació",
+    "message": "Pulsuojantis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }

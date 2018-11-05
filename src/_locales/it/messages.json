@@ -1,6 +1,6 @@
 {
   "app_name": {
-    "message": "Marinara: Assistent Pomodoro® ",
+    "message": "Marinara: assistente per la Tecnica del Pomodoro®",
     "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
@@ -8,67 +8,67 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Pomodoro® assistent de gestió del temps.",
+    "message": "Assistente per la tecnica di gestione del tempo del Pomodoro®",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Descansos breus i llargs\n• Icona amb temporitzador a  la barra d'eines \n• Historial Pomodoro i estadístiques\n• Intervals de descans llarg configurable\n• Duració dels temporitzadors configurable\n• Notificacions d'escriptori i en una pestanya nova\n• Més de 20 notificacions auditives diferents\n• Temporitzador amb so\n• Temporitzadors automàtics programats\n• Programari de codi obert",
+    "message": "• Pause lunghe & brevi\n• Icona della toolbar con conto alla rovescia\n• Tiene traccia temporale e statistiche di Pomodoro\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Scheduled automatic timers\n• Open source software",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Assistent Pomodoro",
+    "message": "Assistente per la Tecnica del Pomodoro",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "Comença el cicle Pomodoro",
+    "message": "Comincia un ciclo Pomodoro",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Reinicia el cicle Pomodoro",
+    "message": "Riomincia un ciclo Pomodoro",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "Reinicia el temporitzador",
+    "message": "Azzera il timer",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "Comença el període de concentració",
+    "message": "Inizia un'attività",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Comença el descans breu",
+    "message": "Inizia una preve pausa",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "Comença el descans",
+    "message": "Inizia una pausa",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "Comença el descans llarg",
+    "message": "Inizia una lunga pausa",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "Atura el temporitzador",
+    "message": "Ferma il timer",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Pausa el temporitzador",
+    "message": "Metti in pausa il timer",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "Reprèn el temporitzador",
+    "message": "Riprendi il timer",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Historial Pomodoro",
+    "message": "Storico Pomodoro",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "Temporitzador pausat",
+    "message": "Timer in pausa",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "Cap Pomodoro",
+    "message": "Nessun Pomodoro",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
@@ -76,7 +76,7 @@
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Pomodoros",
+    "message": "$count$ Pomodori",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,99 +86,91 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara: assistent Pomodoro",
+    "message": "Marinara: assistente per la Tecnica del Pomodoro",
     "description": "Settings page title."
   },
   "settings": {
-    "message": "Configuració",
+    "message": "Impostazioni",
     "description": "Settings tab. Shown on the settings page."
   },
   "history": {
-    "message": "Historial",
+    "message": "Storico",
     "description": "History tab. Shown on the settings page."
   },
   "feedback": {
-    "message": "Comentaris",
+    "message": "Feedback",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Concentració",
+    "message": "Attività",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "Descans breu",
+    "message": "Breve pausa",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "Descans llarg",
+    "message": "Lunga pausa",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
-    "message": "Inici automàtic",
+    "message": "Inizio automatico",
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Programa un Pomodoro per començar automàticament a l'hora especificada.",
+    "message": "Pianifica il primo Pomodoto della giornata per cominciare automaticamente all'ora indicata:",
     "description": "Autostart setting description. Shown on the settings page."
   },
-  "autostart_notification_title": {
-    "message": "Inici automàtic Pomodoro",
-    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
-  },
-  "autostart_notification_message": {
-    "message": "Aquest Pomodoro programat s'ha iniciat automàticament",
-    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
-  },
   "time": {
-    "message": "Temps:",
+    "message": "Ora:",
     "description": "Time input label. Shown on the settings page."
   },
   "duration": {
-    "message": "Duració:",
+    "message": "Durata:",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
-    "message": "minuts",
+    "message": "minuti",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
   "timer_sound_label": {
-    "message": "So del temporitzador:",
+    "message": "Suono del timer:",
     "description": "Timer sound label. Shown on the settings page."
   },
   "hover_preview": {
-    "message": "Situa el cursor damunt per obtenir una vista prèvia",
+    "message": "Passa il cursore per l'anteprima",
     "description": "Hover to preview note. Shown on the settings page."
   },
   "speed_label": {
-    "message": "Velocitat:",
+    "message": "Velocità:",
     "description": "Timer sound speed label. Shown on the settings page."
   },
   "bpm": {
-    "message": "pulsacions per minut",
+    "message": "battiti al minuto",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
   "none": {
-    "message": "Cap",
+    "message": "Nessuno",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
-    "message": "Al finalitzar:",
+    "message": "Al termine:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
-    "message": "Mostra una notificació d'escriptori",
+    "message": "Mostra una notifica desktop",
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Mostra una notificació en una pestanya nova",
+    "message": "Mostra una nuova notifica tab",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Reprodueix so:",
+    "message": "Suono:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "Fes un descans llarg:",
+    "message": "Prendi una lunga pausa:",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
@@ -186,67 +178,67 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "cada dos descansos (alternant)",
+    "message": "ogni 2 pause (alternato)",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "cada tres descansos",
+    "message": "ogni 3 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "cada quatre descansos",
+    "message": "ogni 4 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "cada cinc descansos",
+    "message": "ogni 5 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "cada sis descansos",
+    "message": "ogni 6 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "cada set descasos",
+    "message": "ogni 7 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "cada vuit descansos",
+    "message": "ogni 8 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "cada nou descansos",
+    "message": "ogni 9 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "cada deu descansos",
+    "message": "ogni 10 pause",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "To",
+    "message": "Suono",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Campaneta electrònica",
+    "message": "Rintocco Elettronico",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "Avui",
+    "message": "Oggi",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
-    "message": "Aquesta setmana",
+    "message": "Questa settimana",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
-    "message": "Aquest mes",
+    "message": "Questo mese",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "Total",
+    "message": "Totale",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "Mitjana: $average$",
+    "message": "$average$ (media)",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -256,15 +248,15 @@
     }
   },
   "daily_distribution": {
-    "message": "Distribució diària",
+    "message": "Distribuzione giornaliera",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "Distribució setmanal",
+    "message": "Distribuzione settimanale",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$ en els nou últims mesos",
+    "message": "$count$ negli ultimi 9 mesi",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -274,19 +266,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure les estadístiques diàries",
+    "message": "Termina un Pomodoro per vedere le tue statistiche giornaliere",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure les estadístiques setmanals",
+    "message": "Termina un Pomodoro per vedere le tue statistiche settimanali",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "Finalitza un Pomodoro per veure l'historial",
+    "message": "Termina un Pomodoro per vedere il tuo storico",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ entre $start$—$end$",
+    "message": "$pomodoros$ fra $start$ e $end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -304,7 +296,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ el $day$",
+    "message": "$pomodoros$ il $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -318,7 +310,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ el $date$",
+    "message": "$pomodoros$ il $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -340,7 +332,7 @@
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "el %d de %B de %Y",
+    "message": "%d %b, %Y",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
@@ -364,167 +356,167 @@
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
-    "message": "a.m.",
+    "message": "am",
     "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_pm": {
-    "message": "p.m.",
+    "message": "pm",
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "Diumenge",
+    "message": "Domenica",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "Dilluns",
+    "message": "Lunedì",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "Dimarts",
+    "message": "Martedì",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "Dimecres",
+    "message": "Mercoledì",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "Dijous",
+    "message": "Giovedì",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "Divendres",
+    "message": "Venerdì",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "Dissabte",
+    "message": "Sabato",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "dg.",
+    "message": "Dom",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "dl.",
+    "message": "Lun",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "dt.",
+    "message": "Mar",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "dc.",
+    "message": "Mer",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "dj.",
+    "message": "Gio",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "dv.",
+    "message": "Ven",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "ds.",
+    "message": "Sab",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
-    "message": "gener",
+    "message": "Gennaio",
     "description": "January. Shown on the settings-history page."
   },
   "february": {
-    "message": "febrer",
+    "message": "Febbraio",
     "description": "February. Shown on the settings-history page."
   },
   "march": {
-    "message": "març",
+    "message": "Marzo",
     "description": "March. Shown on the settings-history page."
   },
   "april": {
-    "message": "abril",
+    "message": "Aprile",
     "description": "April. Shown on the settings-history page."
   },
   "may": {
-    "message": "maig",
+    "message": "Maggio",
     "description": "May. Shown on the settings-history page."
   },
   "june": {
-    "message": "juny",
+    "message": "Giugno",
     "description": "June. Shown on the settings-history page."
   },
   "july": {
-    "message": "juliol",
+    "message": "Luglio",
     "description": "July. Shown on the settings-history page."
   },
   "august": {
-    "message": "agost",
+    "message": "Agosto",
     "description": "August. Shown on the settings-history page."
   },
   "september": {
-    "message": "setembre",
+    "message": "Settembre",
     "description": "September. Shown on the settings-history page."
   },
   "october": {
-    "message": "octubre",
+    "message": "Ottobre",
     "description": "October. Shown on the settings-history page."
   },
   "november": {
-    "message": "novembre",
+    "message": "Novembre",
     "description": "November. Shown on the settings-history page."
   },
   "december": {
-    "message": "desembre",
+    "message": "Dicembre",
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "gen.",
+    "message": "Gen",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "febr.",
+    "message": "Feb",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "març",
+    "message": "Mar",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "abr.",
+    "message": "Apr",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "maig",
+    "message": "Mag",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "juny",
+    "message": "Giu",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "jul.",
+    "message": "Lug",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "ag.",
+    "message": "Ago",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "set.",
+    "message": "Set",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "oct.",
+    "message": "Ott",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "nov.",
+    "message": "Nov",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "des.",
+    "message": "Dic",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "En $month$",
+    "message": "In $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -534,19 +526,19 @@
     }
   },
   "import_history": {
-    "message": "Importa l'historial",
+    "message": "Importa lo storico",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "Exporta l'historial",
+    "message": "Esporta lo storico",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "Importar l'historial sobreescriurà les dades existents. Voleu continuar?",
+    "message": "Importare lo storico sovrascriverà tutti i dati presenti. Continuare?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "No s'ha pogut importar l'historial: $error$",
+    "message": "Errore nell'importazione dello storico: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -556,7 +548,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Agrupa els Pomodoros en grups de $count$ minuts",
+    "message": "Raggruppa Pomodori in blocchi di $count$ minuti",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -566,7 +558,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Agrupa els Pomodoros en grups de $count$ hores",
+    "message": "Raggruppa Pomodori in blocchi di $count$ ore",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -576,7 +568,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ min",
+    "message": "$count$ m",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -596,59 +588,59 @@
     }
   },
   "write_a_review": {
-    "message": "Escriviu una ressenya",
+    "message": "Scrivi una recensione",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
-    "message": "Informeu d'un problema",
+    "message": "Segnala un problema",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Notes de la versió",
+    "message": "Note di rilascio",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "Codi font",
+    "message": "Codice sorgente",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "Atribucions",
+    "message": "Attribuzioni",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "Llicència",
+    "message": "Licenza",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "Visualitza",
+    "message": "Vista",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "Versió",
+    "message": "Versione",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® i The Pomodoro Technique® són marques registrades de Francesco Cirillo. Marinara no té cap tipus de relació ni està associada ni recolzada per Pomodoro®, The Pomodoro Technique® o Francesco Cirillo.",
+    "message": "Pomodoro® e la Tecnica del Pomodoro® sono marchi di proprietà di Francesco Cirillo. Marinara non è affiliato, associato o sostenuto da Pomodoro®, dalla Tecnica del Pomodoro o da Francesco Cirillo.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
-    "message": "i",
+    "message": "&",
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
-    "message": "Col·laboradors",
+    "message": "Contributori",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "Finalitzats avui",
+    "message": "Completati oggi",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "Veure l'historial",
+    "message": "Apri storico",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$ fins al descans llarg",
+    "message": "$pomodoros$ prima della pausa lunga",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -658,7 +650,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ avui",
+    "message": "$pomodoros$ oggi",
     "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -668,31 +660,31 @@
     }
   },
   "start_focusing_now": {
-    "message": "Comença ara el període de concentració ",
+    "message": "Inizia un'attività ora",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "Fes un descans",
+    "message": "Prendi una pausa",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "Fes un descans breu",
+    "message": "Prendi una pausa breve",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "Fes un descans llarg",
+    "message": "Prendi una pausa lunga",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Comença un descans ara",
+    "message": "Inizia una pausa ora",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "Comença un descans breu ara",
+    "message": "Inizia una breve pausa ora",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "Comença un descans llarg ara",
+    "message": "Inizia una lunga pausa ora",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
@@ -710,7 +702,7 @@
     }
   },
   "n_minutes": {
-    "message": "$count$ min",
+    "message": "$count$m",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -720,11 +712,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1 min",
+    "message": "1m",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "Temps restant: $time$",
+    "message": "$time$ rimanenti",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -734,31 +726,31 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Falten dades Pomodoro.",
+    "message": "Dati Pomodoro mancanti",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "Falten dades de duració.",
+    "message": "Dati durata mancanti",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "Falten dades de zona horària.",
+    "message": "Dati timezone mancanti",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Les dades Pomodoro i de duració no coincideixen.",
+    "message": "Incoerenza nei dati Pomodoro/durata.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Les dades Pomodoro i de zona horària no coincideixen.",
+    "message": "Incoerenza nei dati Pomodoro/timezone.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
-    "message": "Ajudeu a traduir",
+    "message": "Migliora la traduzione",
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "S'ha acabat el temps · Marinara",
+    "message": "Il tempo è scaduto · Marinara",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
@@ -770,59 +762,59 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Màgia",
+    "message": "Magia del computer",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Alarma d'incendis",
+    "message": "Cercapersone infuocato",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "Vidre",
+    "message": "Tintinnio di vetro",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
-    "message": "Caixa de música",
+    "message": "Carillon",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Agulla caient",
+    "message": "Pin Drop",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "Xiulet robòtic 1",
+    "message": "Robot Blip 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "Xiulet robòtic 2",
+    "message": "Robot Blip 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
-    "message": "Campana de vaixell",
+    "message": "Campana della nave",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "Botzina de tren",
+    "message": "Fischio del treno",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Botzina de bicicleta",
+    "message": "Campanello della bici",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Campana",
+    "message": "Tintinnio della campana",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
-    "message": "Campana de recepció",
+    "message": "Campanello della reception",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Forn elèctric",
+    "message": "Tost",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Banya de batalla",
+    "message": "Corno da battaglia",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -838,67 +830,67 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "Avió",
+    "message": "Aereoplano",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "Rellotge digital",
+    "message": "Orologio digitale",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "Alarma de rellotge analògic",
+    "message": "Sveglia analogica",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "Alarma de rellotge digital",
+    "message": "Sveglia digitale",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "stopwatch": {
-    "message": "Cronòmetre",
+    "message": "Cronometro",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "clock": {
-    "message": "Rellotge",
+    "message": "Orologio",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wall_clock": {
-    "message": "Rellotge de paret",
+    "message": "Orologio da muro",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "desk_clock": {
-    "message": "Rellotge de taula",
+    "message": "Orologio da scrivania",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Rellotge antic",
+    "message": "Orologio antico",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
-    "message": "Rellotge petit",
+    "message": "Piccolo orologio",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "large_clock": {
-    "message": "Rellotge gran",
+    "message": "Grande orologio",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wristwatch": {
-    "message": "Rellotge de polsera",
+    "message": "Orologio da polso",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wind_up_clock": {
-    "message": "Rellotge de corda",
+    "message": "Orologio a molla",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "metronome": {
-    "message": "Metrònom",
+    "message": "Metronomo",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wood_block": {
-    "message": "Bloc de fusta",
+    "message": "Blocco di legno",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pulse": {
-    "message": "Pulsació",
+    "message": "Impulso",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }

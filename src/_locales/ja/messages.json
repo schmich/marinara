@@ -1,0 +1,226 @@
+{
+  "app_name": {
+    "message": "マリナラ：Pomodoro®  アシスタント\n",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "マリナラ",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "Pomodoro®時間管理アシスタント。",
+    "description": "The short description of the application. Shown in the web store."
+  },
+  "chrome_web_store_description": {
+    "message": "•  ショート＆ロングブレイク\n• カウントダウンタイマー付きのツールバーアイコン\n• Pomodoroの履歴と統計を追跡する\n• 構成可能な長いブレーク間隔\n• デスクトップとタブの通知\n• 20音以上の音声通知\n• タイマー音を点滅させる\n• スケジュールされた自動タイマー\n• オープンソースソフトウェア\n\n",
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
+  },
+  "pomodoro_assistant": {
+    "message": "ポモドーアシスタント",
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
+  },
+  "start_pomodoro_cycle": {
+    "message": "ポモドーロサイクルを開始する",
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_pomodoro_cycle": {
+    "message": "Pomodoroサイクルを再開する",
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_timer": {
+    "message": "再起動タイマー",
+    "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+  },
+  "start_focusing": {
+    "message": "フォーカスを開始する",
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_short_break": {
+    "message": "ショートブレークを開始",
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_break": {
+    "message": "ブレークを開始",
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_long_break": {
+    "message": "ロングブレークを開始する",
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "stop_timer": {
+    "message": "タイマーを止める",
+    "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "pause_timer": {
+    "message": "タイマーを一時停止する",
+    "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+  },
+  "resume_timer": {
+    "message": "タイマーを再開する",
+    "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+  },
+  "pomodoro_history": {
+    "message": "ポモドーロの歴史",
+    "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+  },
+  "timer_paused": {
+    "message": "タイマーの一時停止",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "ポモドーロはありません",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "1ポモドーロ",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "marinara_pomodoro_assistant": {
+    "message": "マリナラ：Pomodoroアシスタント",
+    "description": "Settings page title."
+  },
+  "settings": {
+    "message": "設定",
+    "description": "Settings tab. Shown on the settings page."
+  },
+  "history": {
+    "message": "歴史",
+    "description": "History tab. Shown on the settings page."
+  },
+  "feedback": {
+    "message": "フィードバック",
+    "description": "Feedback tab and section header. Shown on the settings page."
+  },
+  "focus_title": {
+    "message": "フォーカス",
+    "description": "Focus section header. Shown on the settings page."
+  },
+  "short_break_title": {
+    "message": "ショートブレーク",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break_title": {
+    "message": "ロングブレイク",
+    "description": "Long Break section header. Shown on the settings page."
+  },
+  "autostart_title": {
+    "message": "自動スタート",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "\n1日の最初のPomodoroが指定された時刻に自動的に開始するようにスケジュールを設定します。",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "time": {
+    "message": "時間：",
+    "description": "Time input label. Shown on the settings page."
+  },
+  "duration": {
+    "message": "期間：",
+    "description": "Timer duration label. Shown on the settings page."
+  },
+  "minutes": {
+    "message": "分",
+    "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "タイマー音：",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "ホバーしてプレビューする",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "速度：",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "1分あたりの拍数",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "なし",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "when_complete": {
+    "message": "完了したら：",
+    "description": "Section label for events to fire when timer completes. Shown on the settings page."
+  },
+  "show_desktop_notification": {
+    "message": "デスクトップ通知を表示する",
+    "description": "Desktop notification option. Shown on the settings page."
+  },
+  "show_new_tab_notification": {
+    "message": "新しいタブ通知を表示する",
+    "description": "New tab notification option. Shown on the settings page."
+  },
+  "play_audio_notification": {
+    "message": "音を出す：",
+    "description": "Audio notification label. Shown on the settings page."
+  },
+  "take_a_long_break_setting": {
+    "message": "長い休憩を取る：",
+    "description": "Long break settings label. Shown on the settings page."
+  },
+  "never": {
+    "message": "決して",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_2nd_break": {
+    "message": "2回目のブレーク（交互）",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_3rd_break": {
+    "message": "3回目の休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_4th_break": {
+    "message": "4回休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_5th_break": {
+    "message": "5-Kai kyūkei-goto",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_6th_break": {
+    "message": "6回休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_7th_break": {
+    "message": "7回休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_8th_break": {
+    "message": "8回休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_9th_break": {
+    "message": "9回の休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_10th_break": {
+    "message": "10回の休憩ごと",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "tone": {
+    "message": "トーン",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "electronic_chime": {
+    "message": "電子チャイム",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "today": {
+    "message": "今日",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_week": {
+    "message": "今週",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_month": {
+    "message": "今月",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  }
+}

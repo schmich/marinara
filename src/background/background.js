@@ -86,7 +86,7 @@ class Controller
       this._settings = settings;
       let phase = this.timer ? this.timer.phase : Phase.Focus;
       this.loadTimer(settings, phase);
-      this.createAlarms(settings);
+      this.setAlarm(settings);
       this.menu.apply();
     });
 
@@ -96,15 +96,34 @@ class Controller
 
   async run() {
     this._settings = await this.settingsManager.get();
-    this.createAlarms(this._settings);
+    this.setAlarm(this._settings);
     this.loadTimer(this._settings, Phase.Focus);
     this.menu = this.createMenu();
     this.menu.apply();
 
     chrome.alarms.onAlarm.addListener(alarm => {
-      if (alarm.name === 'autostart' && this.timer.isStopped) {
-        this.timer.start();
+      if (alarm.name !== 'autostart') {
+        return;
       }
+
+      // Set next autostart alarm.
+      this.setAlarm(this._settings);
+
+      if (!this.timer.isStopped) {
+        return;
+      }
+
+      // Start a new cycle.
+      this.timer.startCycle();
+
+      AsyncChrome.notifications.create({
+        type: 'basic',
+        title: T('autostart_notification_title'),
+        message: T('autostart_notification_message'),
+        iconUrl: 'icons/128.png',
+        isClickable: false,
+        requireInteraction: true
+      });
     });
 
     chrome.browserAction.onClicked.addListener(() => {
@@ -191,7 +210,7 @@ class Controller
     this.timer.start(Phase.LongBreak);
   }
 
-  async createAlarms(settings) {
+  async setAlarm(settings) {
     await AsyncChrome.alarms.clearAll();
 
     let time = settings.autostart && settings.autostart.time;
@@ -201,17 +220,14 @@ class Controller
 
     const now = new Date();
 
-    let trigger = new Date();
-    trigger.setHours(...time.split(':'), 0);
-    if (trigger < now) {
+    let startAt = new Date();
+    startAt.setHours(...time.split(':'), 0, 0);
+    if (startAt <= now) {
       // The trigger is in the past. Set it for tomorrow instead.
-      trigger.setDate(trigger.getDate() + 1);
+      startAt.setDate(startAt.getDate() + 1);
     }
 
-    AsyncChrome.alarms.create('autostart', {
-      when: +trigger,
-      periodInMinutes: 24 * 60 // Alarm should fire every 24 hours.
-    });
+    AsyncChrome.alarms.create('autostart', { when: +startAt, });
   }
 
   createMenu() {
@@ -263,9 +279,7 @@ class Controller
       this.timer.dispose();
     }
 
-    const factory = async (phase, nextPhase) => {
-      return await this.createTimer(phase, nextPhase);
-    };
+    const factory = async (phase, nextPhase) => await this.createTimer(phase, nextPhase);
     this.timer = new PomodoroTimer(factory, startPhase, settings.longBreak.interval);
   }
 
