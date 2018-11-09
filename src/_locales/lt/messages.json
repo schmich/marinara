@@ -1,4 +1,8 @@
 {
+  "app_name": {
+    "message": "Marinara: Pomodoro® Assistant",
+    "description": "The name of the application. Shown in the web store."
+  },
   "app_name_short": {
     "message": "Marinara",
     "description": "The short name of the application. Shown at the top of the dropdown menu."
