@@ -1,5 +1,5 @@
 require 'json'
-require 'zip/zip'
+require 'zip'
 
 unversioned = `git ls-files -o src`.strip
 if !unversioned.empty?
@@ -15,7 +15,7 @@ if File.exist?(out)
   exit 1
 end
 
-Zip::ZipFile::open(out, 'w') do |zip|
+Zip::File::open(out, 'w') do |zip|
   Dir['src/**/*'].each do |path|
     zip.add(path.sub(/^src\//, ''), path)
   end
