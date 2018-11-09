@@ -8,4 +8,4 @@
 - Push changes: `git push && git push --tags`
 - Publish package at https://chrome.google.com/webstore/devconsole
   - Upload updated package
-  - Update descriptions for each language
+  - Update descriptions for each language: `make show-descriptions`

@@ -17,3 +17,7 @@ run-pseudo:
 # Sanity check all messages.json files.
 validate-messages:
 	ruby -Iscripts scripts/validate-messages.rb
+
+# Show and copy descriptions for Chrome Web Store.
+show-descriptions:
+	ruby -Iscripts scripts/show-descriptions.rb
