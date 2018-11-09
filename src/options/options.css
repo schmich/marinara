@@ -22,6 +22,9 @@ html, body {
   line-height: 110%;
   margin-bottom: 40px;
 }
+.section.autostart {
+  display: none;
+}
 input[type="checkbox"] {
   vertical-align: middle;
   position: relative;
