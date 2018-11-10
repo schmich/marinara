@@ -66,6 +66,14 @@ class BackgroundClient extends MessageClient
   static showSettings() {
     return this.request('showSettings', arguments);
   }
+
+  static skipBreak() {
+    return this.request('skipBreak', arguments);
+  }
+
+  static skipFocus() {
+    return this.request('skipFocus', arguments);
+  }
 }
 
 class BackgroundServer extends MessageServer
@@ -135,6 +143,14 @@ class BackgroundServer extends MessageServer
 
   async showSettings(settings) {
     return await this.controller.showOptionsPage('#settings');
+  }
+
+  async skipBreak() {
+    this.controller.startFocus();
+  }
+
+  async skipFocus() {
+    this.controller.startShortBreak();
   }
 
   _normalize(phase) {

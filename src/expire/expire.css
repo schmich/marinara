@@ -56,6 +56,13 @@ body {
   background: #2b2;
   color: #fff;
 }
+.button.skip-break {
+  background: #ee2223;
+}
+
+.button.skip-focus {
+  background: #2b2;
+}
 .button.focus {
   background: #e22;
   color: #fff;
@@ -70,7 +77,7 @@ body {
   box-shadow: none;
   transition-delay: 0s;
 }
-.button:not(.focus):not(.break):not(.short-break):not(.long-break) {
+.button:not(.focus):not(.break):not(.short-break):not(.long-break):not(.skip-focus):not(.skip-break) {
   display: none;
 }
 #start-session {
