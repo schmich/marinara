@@ -48,9 +48,7 @@ function playSound(control) {
   }
 
   let option = control.options[control.selectedIndex];
-  let audio = new Audio();
-  audio.src = option.dataset.file;
-  audio.play();
+  Sounds.play(option.dataset.file);
 }
 
 async function createMetronome(soundControl, bpmControl) {

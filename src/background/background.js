@@ -292,10 +292,7 @@ class Controller
       }
 
       if (options.sound) {
-        let audio = new Audio();
-        audio.volume = 1;
-        audio.src = options.sound;
-        audio.play();
+        Sounds.play(options.sound);
       }
 
       if (options.notification) {
