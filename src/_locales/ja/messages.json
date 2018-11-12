@@ -12,11 +12,11 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "•  ショート＆ロングブレイク\n• カウントダウンタイマー付きのツールバーアイコン\n• Pomodoroの履歴と統計を追跡する\n• 構成可能な長いブレーク間隔\n• デスクトップとタブの通知\n• 20音以上の音声通知\n• タイマー音を点滅させる\n• スケジュールされた自動タイマー\n• オープンソースソフトウェア\n\n",
+    "message": "•  長短の休憩\n• カウントダウンタイマー付きのツールバーアイコン\n• Pomodoroの履歴と統計の追跡\n• 設定可能な長い休憩の間隔\n• 設定可能なタイマー間隔\n• デスクトップとタブの通知\n• 20種類以上の音声通知\n• タイマー音によるカウントダウン\n• スケジュールされた自動タイマー\n• オープンソースソフトウェア\n\n",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "ポモドーアシスタント",
+    "message": "ポモドーロアシスタント",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
@@ -24,11 +24,11 @@
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Pomodoroサイクルを再開する",
+    "message": "Pomodoroサイクルをリスタートする",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "再起動タイマー",
+    "message": "タイマーをリスタートする",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
@@ -36,19 +36,19 @@
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "ショートブレークを開始",
+    "message": "短い休憩を開始",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "ブレークを開始",
+    "message": "休憩を開始",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "ロングブレークを開始する",
+    "message": "長い休憩を開始する",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "タイマーを止める",
+    "message": "タイマーを停止する",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
@@ -60,7 +60,7 @@
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "ポモドーロの歴史",
+    "message": "ポモドーロの履歴",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
@@ -68,12 +68,22 @@
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "ポモドーロはありません",
+    "message": "0ポモドーロ",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
     "message": "1ポモドーロ",
     "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$ポモドーロ",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "marinara_pomodoro_assistant": {
     "message": "マリナラ：Pomodoroアシスタント",
@@ -84,7 +94,7 @@
     "description": "Settings tab. Shown on the settings page."
   },
   "history": {
-    "message": "歴史",
+    "message": "履歴",
     "description": "History tab. Shown on the settings page."
   },
   "feedback": {
@@ -96,11 +106,11 @@
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "ショートブレーク",
+    "message": "短い休憩",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "ロングブレイク",
+    "message": "長い休憩",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
@@ -108,8 +118,16 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "\n1日の最初のPomodoroが指定された時刻に自動的に開始するようにスケジュールを設定します。",
+    "message": "特定の時間にPomodoroが自動的に開始するようスケジュール設定します。",
     "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "Pomodoroの自動スタート",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "このスケジュールされたPomodoroは自動的にスタートします",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
     "message": "時間：",
@@ -128,7 +146,7 @@
     "description": "Timer sound label. Shown on the settings page."
   },
   "hover_preview": {
-    "message": "ホバーしてプレビューする",
+    "message": "プレビューのためのホバー",
     "description": "Hover to preview note. Shown on the settings page."
   },
   "speed_label": {
@@ -156,7 +174,7 @@
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "音を出す：",
+    "message": "再生音：",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
@@ -168,31 +186,31 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "2回目のブレーク（交互）",
+    "message": "2回の休憩ごと(交互)",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "3回目の休憩ごと",
+    "message": "3回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "4回休憩ごと",
+    "message": "4回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "5-Kai kyūkei-goto",
+    "message": "5回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "6回休憩ごと",
+    "message": "6回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "7回休憩ごと",
+    "message": "7回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "8回休憩ごと",
+    "message": "8回の休憩ごと",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
