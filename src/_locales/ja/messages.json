@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "•  長短の休憩\n• カウントダウンタイマー付きのツールバーアイコン\n• Pomodoroの履歴と統計の追跡\n• 設定可能な長い休憩の間隔\n• 設定可能なタイマー間隔\n• デスクトップとタブの通知\n• 20種類以上の音声通知\n• タイマー音によるカウントダウン\n• スケジュールされた自動タイマー\n• オープンソースソフトウェア\n\n",
+    "message": "• 長短の休憩\n• カウントダウンタイマー付きのツールバーアイコン\n• Pomodoroの履歴と統計の追跡\n• 設定可能な長い休憩の間隔\n• 設定可能なタイマー間隔\n• デスクトップとタブの通知\n• 20種類以上の音声通知\n• タイマー音によるカウントダウン\n• スケジュールされた自動タイマー\n• オープンソースソフトウェア\n\n",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
