@@ -39,3 +39,4 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Markus Deibel](https://github.com/msdeibel): German translation
 - [Pyrox](https://github.com/Pyr0x1): Italian translation
 - [kbigwheel](https://github.com/bigwheel): Japanese translation
+- [André Laszlo](https://github.com/andrelaszlo): Swedish translation
