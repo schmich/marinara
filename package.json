@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "vue-cli-service build --mode development --no-unsafe-inline --dest ../package/modules --watch",
-    "build": "vue-cli-service build --dest ../package/modules",
+    "dev": "vue-cli-service build --mode development --no-unsafe-inline --dest package/modules --watch",
+    "build": "vue-cli-service build --dest package/modules",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
