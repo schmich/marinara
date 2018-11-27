@@ -51,7 +51,6 @@ class BadgeObserver
   }
 
   updateBadge({ minutes, tooltip, text }) {
-    var text, tooltip;
     if (minutes != null) {
       text = minutes < 1 ? M.less_than_minute : M.n_minutes(minutes);
       tooltip = M.browser_action_tooltip(this.title, M.time_remaining(text));

@@ -106,7 +106,7 @@ class History
 
   async countToday(pomodoros = null) {
     if (!pomodoros) {
-      var { pomodoros } = await this.storage.get('pomodoros');
+      pomodoros = (await this.storage.get('pomodoros')).pomodoros;
       if (pomodoros.length === 0) {
         return 0;
       }
