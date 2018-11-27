@@ -13,16 +13,20 @@ class ServiceBroker
 
   _handleMessage(request, sender, respond) {
     (async () => {
-      let { service, command, params } = request;
+      try {
+        let { service, command, params } = request;
 
-      let handler = this.services[service];
-      if (!handler) {
-        respond({ error: 'Unknown service: ' + service });
-        return;
+        let handler = this.services[service];
+        if (!handler) {
+          // TODO: Extract to messages.json.
+          throw new Error('Unknown service: ' + service);
+        }
+
+        let value = await handler[command](...params);
+        respond({ value });
+      } catch (e) {
+        respond({ error: `${e}` });
       }
-
-      let result = await handler[command](...params) || {};
-      respond(result);
     })();
 
     // Response is async.
@@ -40,8 +44,12 @@ function serviceProxy(serviceClass) {
             command: prop,
             params: Array.from(arguments)
           };
-          chrome.runtime.sendMessage(message, result => {
-            resolve(result);
+          chrome.runtime.sendMessage(message, response => {
+            if (response.error) {
+              reject(response.error);
+            } else {
+              resolve(response.value);
+            }
           });
         });
       };
@@ -65,13 +73,9 @@ class SettingsService
   }
 
   async setSettings(settings) {
-    try {
-      this._normalize(settings.focus);
-      this._normalize(settings.shortBreak);
-      this._normalize(settings.longBreak);
-    } catch (e) {
-      return { error: e.message };
-    }
+    this._validate(settings.focus);
+    this._validate(settings.shortBreak);
+    this._validate(settings.longBreak);
 
     settings.longBreak.interval = +settings.longBreak.interval;
 
@@ -87,7 +91,7 @@ class SettingsService
     return await this.controller.showOptionsPage('#settings');
   }
 
-  _normalize(phase) {
+  _validate(phase) {
     let duration = phase.duration
     if (duration <= 0 || isNaN(duration)) {
       throw new Error('Duration must be a positive number.');
@@ -115,12 +119,7 @@ class HistoryService
   }
 
   async setRawHistory(history) {
-    try {
-      await this.history.import(history);
-      return true;
-    } catch (e) {
-      return e.toString();
-    }
+    await this.history.import(history);
   }
 
   async getHistory(since) {

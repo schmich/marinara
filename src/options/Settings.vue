@@ -265,11 +265,11 @@ export default {
   },
   methods: {
     async saveSettings() {
-      let result = await SettingsClient.setSettings(this.settings);
-      if (result.error) {
-        // TODO
-        alert('Error saving settings');
-        return;
+      try {
+        await SettingsClient.setSettings(this.settings);
+      } catch (e) {
+        // TODO: Extract to messages.json.
+        alert(`Error saving settings: ${e}`);
       }
 
       // Clone settings.

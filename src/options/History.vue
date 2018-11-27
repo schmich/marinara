@@ -222,8 +222,8 @@ export default {
       let input = document.createElement('input');
       input.type = 'file';
       input.accept = '.json';
-      input.onchange = e => {
-        let file = e.target.files[0];
+      input.onchange = ev => {
+        let file = ev.target.files[0];
         let reader = new FileReader();
         reader.onload = async f => {
           try {
@@ -234,13 +234,9 @@ export default {
               return;
             }
 
-            let result = await HistoryClient.setRawHistory(history);
-            if (result !== true) {
-              alert(M.import_failed(`${result}`));
-              return;
-            }
-          } catch (ex) {
-            alert(M.import_failed(`${ex}`));
+            await HistoryClient.setRawHistory(history);
+          } catch (e) {
+            alert(M.import_failed(`${e}`));
             return;
           }
           this.updateStats();
