@@ -179,8 +179,11 @@
 <style lang="scss">
 @import '../fontello.css';
 
-.slide-up-enter-active, .slide-up-leave-active {
+.slide-up-enter-active {
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.slide-up-leave-active {
+  transition: transform 0.3s cubic-bezier(0.755, 0.05, 0.855, 0.06);
 }
 .slide-up-enter, .slide-up-leave-to {
   transform: translateY(300%);
