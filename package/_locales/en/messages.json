@@ -931,13 +931,17 @@
       }
     }
   },
-  "unknown_service": {
-    "message": "Unknown service: $name$",
+  "invalid_service_request": {
+    "message": "Invalid service request: $service$.$command$.",
     "description": "Internal error message. Users should never see this message.",
     "placeholders": {
-      "name": {
+      "service": {
         "content": "$1",
-        "example": "invalid"
+        "example": "InvalidService"
+      },
+      "command": {
+        "content": "$2",
+        "example": "invalidCommand"
       }
     }
   }

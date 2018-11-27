@@ -252,6 +252,9 @@ class Messages
   get invalid_duration() {
     return chrome.i18n.getMessage('invalid_duration', []);
   }
+  invalid_service_request(service, command) {
+    return chrome.i18n.getMessage('invalid_service_request', [service, command]);
+  }
   get january() {
     return chrome.i18n.getMessage('january', []);
   }
@@ -560,9 +563,6 @@ class Messages
   }
   get tuesday_short() {
     return chrome.i18n.getMessage('tuesday_short', []);
-  }
-  unknown_service(name) {
-    return chrome.i18n.getMessage('unknown_service', [name]);
   }
   get version() {
     return chrome.i18n.getMessage('version', []);

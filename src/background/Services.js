@@ -5,32 +5,31 @@ class ServiceBroker
 {
   constructor() {
     this.services = {};
-    chrome.runtime.onMessage.addListener(this._handleMessage.bind(this));
+    chrome.runtime.onMessage.addListener((request, sender, respond) => {
+      this._handleMessage(request, respond);
+      // Response is async.
+      return true;
+    });
   }
 
   registerService(service) {
     this.services[service.constructor.name] = service;
   }
 
-  _handleMessage(request, sender, respond) {
-    (async () => {
-      try {
-        let { service, command, params } = request;
+  async _handleMessage(request, respond) {
+    try {
+      let { service, command, params } = request;
 
-        let handler = this.services[service];
-        if (!handler) {
-          throw new Error(M.unknown_service(service));
-        }
-
-        let value = await handler[command](...params);
-        respond({ value });
-      } catch (e) {
-        respond({ error: `${e}` });
+      let handler = this.services[service];
+      if (!handler || !handler[command]) {
+        throw new Error(M.invalid_service_request(service, command));
       }
-    })();
 
-    // Response is async.
-    return true;
+      let value = await handler[command](...params);
+      respond({ value });
+    } catch (e) {
+      respond({ error: `${e}` });
+    }
   }
 }
 
@@ -87,7 +86,7 @@ class SettingsService
     await this.settingsManager.set(settings);
   }
 
-  async showSettings(settings) {
+  async showSettingsPage() {
     return await this.controller.showOptionsPage('#settings');
   }
 
@@ -125,7 +124,7 @@ class HistoryService
     return await this.history.stats(since);
   }
 
-  async showHistory() {
+  async showHistoryPage() {
     return await this.controller.showOptionsPage('#history');
   }
 }

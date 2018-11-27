@@ -10,7 +10,7 @@
         <i v-for="_ of new Array(pomodoroCount)" class="icon-circle"></i>
       </p>
       <p>{{ M.completed_today }}</p>
-      <button @click.prevent="showHistory" class="view-history">{{ M.view_history }}</button>
+      <button @click.prevent="showHistoryPage" class="view-history">{{ M.view_history }}</button>
     </div>
   </div>
 </template>
@@ -153,8 +153,8 @@ export default {
     startSession() {
       PomodoroClient.startSession();
     },
-    showHistory() {
-      HistoryClient.showHistory();
+    showHistoryPage() {
+      HistoryClient.showHistoryPage();
     },
     onKeyPress(e) {
       // On Enter key press, start next session.
