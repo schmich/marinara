@@ -1,9 +1,9 @@
-import AsyncChrome from './AsyncChrome';
+import Chrome from './Chrome';
 import Mutex from './Mutex';
 
 function loadAudio(context, file) {
   return new Promise(async (resolve, reject) => {
-    let content = await AsyncChrome.files.readBinary(file);
+    let content = await Chrome.files.readBinary(file);
     context.decodeAudioData(content, buffer => resolve(buffer), error => reject(error));
   });
 }

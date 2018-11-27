@@ -1,4 +1,4 @@
-import AsyncChrome from '../AsyncChrome';
+import Chrome from '../Chrome';
 
 class SingletonPage
 {
@@ -9,7 +9,7 @@ class SingletonPage
 
     let page = this.pages[url];
     if (!page) {
-      let tab = await AsyncChrome.tabs.create({ url, active: false });
+      let tab = await Chrome.tabs.create({ url, active: false });
       page = new SingletonPage(url, tab.id);
       this.pages[url] = page;
     }

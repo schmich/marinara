@@ -1,4 +1,4 @@
-import AsyncChrome from './AsyncChrome';
+import Chrome from './Chrome';
 import M from './Messages';
 
 function createNotificationSounds() {
@@ -72,7 +72,7 @@ async function play(filename) {
   let source = context.createBufferSource();
   source.connect(context.destination);
   source.buffer = await new Promise(async (resolve, reject) => {
-    let content = await AsyncChrome.files.readBinary(filename);
+    let content = await Chrome.files.readBinary(filename);
     context.decodeAudioData(content, buffer => resolve(buffer), error => reject(error));
   });
 

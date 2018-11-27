@@ -1,11 +1,11 @@
-import AsyncChrome from '../AsyncChrome';
+import Chrome from '../Chrome';
 import StorageManager from './StorageManager';
 import RLE from './RLE';
 
 class History
 {
   constructor() {
-    this.storage = new StorageManager(new HistorySchema(), AsyncChrome.storage.local);
+    this.storage = new StorageManager(new HistorySchema(), Chrome.storage.local);
   }
 
   async raw() {

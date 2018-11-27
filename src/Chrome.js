@@ -5,30 +5,30 @@ class ChromeError extends Error
   }
 }
 
-class AsyncChrome
+class Chrome
 {
   static get tabs() {
-    return AsyncTabs;
+    return Tabs;
   }
 
   static get windows() {
-    return AsyncWindows;
+    return Windows;
   }
 
   static get notifications() {
-    return AsyncNotifications;
+    return Notifications;
   }
 
   static get storage() {
-    return AsyncStorage;
+    return Storage;
   }
 
   static get files() {
-    return AsyncFiles;
+    return Files;
   }
 
   static get alarms() {
-    return AsyncAlarms;
+    return Alarms;
   }
 }
 
@@ -47,7 +47,7 @@ function promise(fn) {
   });
 }
 
-class AsyncTabs
+class Tabs
 {
   static async create(options) {
     // Create tab in specific window.
@@ -55,7 +55,7 @@ class AsyncTabs
       // Get the currently active tab in this window and make it the 'opener'
       // of the tab we're creating. When our tab is closed, the opener tab will
       // be reactivated.
-      let tabs = await AsyncChrome.tabs.query({ active: true, windowId });
+      let tabs = await Chrome.tabs.query({ active: true, windowId });
       let openerTabId = (tabs && tabs.length > 0) ? tabs[0].id : null;
 
       let tabOptions = { ...options, windowId, openerTabId };
@@ -65,7 +65,7 @@ class AsyncTabs
     };
 
     try {
-      let targetWindow = await AsyncChrome.windows.getLastFocused({ windowTypes: ['normal'] });
+      let targetWindow = await Chrome.windows.getLastFocused({ windowTypes: ['normal'] });
       if (targetWindow) {
         return createInWindow(targetWindow.id);
       }
@@ -80,7 +80,7 @@ class AsyncTabs
 
     // No active window for our tab, so we must create our own.
     let windowOptions = { focused: !!options.active };
-    let newWindow = await AsyncChrome.windows.create(windowOptions);
+    let newWindow = await Chrome.windows.create(windowOptions);
     return createInWindow(newWindow.id);
   }
 
@@ -103,7 +103,7 @@ class AsyncTabs
   }
 }
 
-class AsyncWindows
+class Windows
 {
   static async getAll(getInfo) {
     return promise(callback => {
@@ -130,7 +130,7 @@ class AsyncWindows
   }
 }
 
-class AsyncNotifications
+class Notifications
 {
   static async create(options) {
     return promise(callback => {
@@ -151,7 +151,7 @@ class AsyncNotifications
   }
 }
 
-class AsyncStorage
+class Storage
 {
   constructor(store) {
     this.store = store;
@@ -177,20 +177,20 @@ class AsyncStorage
 
   static get sync() {
     if (!this._sync) {
-      this._sync = new AsyncStorage(chrome.storage.sync);
+      this._sync = new Storage(chrome.storage.sync);
     }
     return this._sync;
   }
 
   static get local() {
     if (!this._local) {
-      this._local = new AsyncStorage(chrome.storage.local);
+      this._local = new Storage(chrome.storage.local);
     }
     return this._local;
   }
 }
 
-class AsyncFiles
+class Files
 {
   static async readFile(file, type = null) {
     return new Promise((resolve, reject) => {
@@ -213,7 +213,7 @@ class AsyncFiles
   }
 }
 
-class AsyncAlarms
+class Alarms
 {
   static create(name, alarmInfo) {
     return chrome.alarms.create(name, alarmInfo);
@@ -224,4 +224,4 @@ class AsyncAlarms
   }
 }
 
-export default AsyncChrome;
+export default Chrome;

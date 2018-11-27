@@ -1,4 +1,4 @@
-import AsyncChrome from '../AsyncChrome';
+import Chrome from '../Chrome';
 
 class Notification
 {
@@ -13,7 +13,7 @@ class Notification
       buttons: [{ title: action, iconUrl: 'images/start.png' }]
     };
 
-    let notificationId = await AsyncChrome.notifications.create(options);
+    let notificationId = await Chrome.notifications.create(options);
     return new Notification(controller, notificationId);
   }
 

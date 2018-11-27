@@ -1,7 +1,7 @@
 import M from '../Messages';
 import { pomodoroCount } from '../Filters';
 import { Timer, Phase, PomodoroTimer } from './Timer';
-import AsyncChrome from '../AsyncChrome';
+import Chrome from '../Chrome';
 import * as Menu from './Menu';
 import * as Sounds from '../Sounds';
 import History from './History';
@@ -131,7 +131,7 @@ class Controller
       // Start a new cycle.
       this.timer.startCycle();
 
-      AsyncChrome.notifications.create({
+      Chrome.notifications.create({
         type: 'basic',
         title: M.autostart_notification_title,
         message: M.autostart_notification_message,
@@ -212,7 +212,7 @@ class Controller
   }
 
   async setAlarm(settings) {
-    await AsyncChrome.alarms.clearAll();
+    await Chrome.alarms.clearAll();
 
     let time = settings.autostart && settings.autostart.time;
     if (!time) {
@@ -228,7 +228,7 @@ class Controller
       startAt.setDate(startAt.getDate() + 1);
     }
 
-    AsyncChrome.alarms.create('autostart', { when: +startAt, });
+    Chrome.alarms.create('autostart', { when: +startAt, });
   }
 
   createMenu() {
@@ -414,7 +414,7 @@ class Controller
 }
 
 let history = new History();
-let settingsManager = new StorageManager(new SettingsSchema(), AsyncChrome.storage.sync);
+let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
 let controller = new Controller(settingsManager, history);
 let server = new BackgroundServer(controller, history, settingsManager);
 
