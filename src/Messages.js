@@ -585,6 +585,12 @@ class Messages
   get pulse() {
     return chrome.i18n.getMessage('pulse', []);
   }
+  get save_changes() {
+    return chrome.i18n.getMessage('save_changes', []);
+  }
+  get save_changes_notice() {
+    return chrome.i18n.getMessage('save_changes_notice', []);
+  }
 }
 
 export default new Messages();

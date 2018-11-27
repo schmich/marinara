@@ -1,6 +1,9 @@
 # Create Chrome extension package (.zip).
-package: validate-messages src/Messages.js
+package: validate-messages messages
 	ruby -Iscripts scripts/make-package.rb
+
+.PHONY: messages
+messages: src/Messages.js
 
 src/Messages.js: package/_locales/en/messages.json
 	ruby -Iscripts scripts/create-messages.rb "$<" > "$@"

@@ -163,8 +163,8 @@
     </div>
     <transition name="slide-up">
       <div v-if="areSettingsDirty" class="save">
-        <button @click.prevent="saveSettings">Save Changes</button>
-        <p>Any running Pomodoro sessions will end.</p>
+        <button @click.prevent="saveSettings">{{ M.save_changes }}</button>
+        <p>{{ M.save_changes_notice }}</p>
       </div>
     </transition>
   </form>
