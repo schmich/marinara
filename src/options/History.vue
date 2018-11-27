@@ -173,6 +173,7 @@
 import { HistoryClient } from '../background/Services';
 import { createWeekDistribution, createDayDistribution } from './Graphs';
 import { integer, float, strftime, pomodoroCount } from '../Filters';
+import * as File from './File';
 import Heatmap from './Heatmap';
 import M from '../Messages';
 
@@ -190,37 +191,27 @@ export default {
   methods: {
     async exportHistory() {
       let json = JSON.stringify(await HistoryClient.getRawHistory());
-      let link = document.createElement('a');
-      link.download = 'history.json';
-      link.href = `data:application/octet-stream,${encodeURIComponent(json)}`;
-      link.click();
+      File.save('history.json', json);
     },
-    importHistory() {
-      let input = document.createElement('input');
-      input.type = 'file';
-      input.accept = '.json';
-      input.onchange = ev => {
-        let file = ev.target.files[0];
-        let reader = new FileReader();
-        reader.onload = async f => {
-          try {
-            let content = f.target.result;
-            let history = JSON.parse(content);
+    async importHistory() {
+      try {
+        let content = await File.readText('.json');
+        if (!content) {
+          return;
+        }
 
-            if (!confirm(M.confirm_import)) {
-              return;
-            }
+        let history = JSON.parse(content);
+        if (!confirm(M.confirm_import)) {
+          return;
+        }
 
-            await HistoryClient.setRawHistory(history);
-          } catch (e) {
-            alert(M.import_failed(`${e}`));
-            return;
-          }
-          this.updateStats();
-        };
-        reader.readAsText(file);
-      };
-      input.click();
+        await HistoryClient.setRawHistory(history);
+      } catch (e) {
+        alert(M.import_failed(`${e}`));
+        return;
+      }
+
+      this.updateStats();
     },
     async updateStats() {
       let now = new Date();
