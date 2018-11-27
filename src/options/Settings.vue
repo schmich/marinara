@@ -6,8 +6,9 @@
         <label>
           <span>{{ M.duration }}</span>
           <input
-            type="text"
-            maxlength="3"
+            type="number"
+            min="1"
+            max="999"
             class="duration"
             v-model.number="settings.focus.duration"
             v-focus>
@@ -33,9 +34,10 @@
           <label>
             <span>{{ M.speed_label }}</span>
             <input
-              type="text"
+              type="number"
               class="duration"
-              maxlength="3"
+              min="1"
+              max="1000"
               :disabled="focusTimerBpm == null"
               v-model.number="focusTimerBpm">
             <span>{{ M.bpm }}</span>
@@ -70,8 +72,9 @@
         <label>
           <span>{{ M.duration }}</span>
           <input
-            type="text"
-            maxlength="3"
+            type="number"
+            min="1"
+            max="999"
             class="duration"
             v-model.number="settings.shortBreak.duration">
           <span>{{ M.minutes }}</span>
@@ -123,8 +126,9 @@
           <label>
             <span>{{ M.duration }}</span>
             <input
-              type="text"
-              maxlength="3"
+              type="number"
+              min="1"
+              max="999"
               class="duration"
               v-model.number="settings.longBreak.duration">
             <span>{{ M.minutes }}</span>

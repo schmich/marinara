@@ -142,7 +142,7 @@
     "description": "Timer duration label. Shown on the settings page."
   },
   "invalid_duration": {
-    "message": "Duration must be a positive number.",
+    "message": "Duration must be a positive number between 1-999.",
     "description": "Error message shown to user if Pomodoro duration is invalid."
   },
   "minutes": {

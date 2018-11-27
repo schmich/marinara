@@ -92,7 +92,7 @@ class SettingsService
 
   _validate(phase) {
     let { duration, timerSound } = phase;
-    if (duration <= 0 || isNaN(duration)) {
+    if (isNaN(duration) || duration <= 0 || duration > 999) {
       throw new Error(M.invalid_duration);
     }
 
