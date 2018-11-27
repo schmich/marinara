@@ -12,4 +12,4 @@ async function simulate(count) {
   }
 }
 
-simulate(1000).then(() => console.log('done'));
+simulate(2000).then(() => console.log('done'));

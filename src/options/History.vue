@@ -25,7 +25,7 @@
     <section class="day-distribution chart">
       <div class="title">
         <h2>{{ M.daily_distribution }}</h2>
-        <div v-if="stats.total > 0" class="options chart-content">
+        <div v-if="stats.total > 0" class="options chart-content" key="actions">
           <input type="radio" id="day-15" name="day-distribution" v-model.number="dayDistributionBucket" value="15">
           <label for="day-15">{{ M.min_suffix(15) }}</label>
           <input type="radio" id="day-30" name="day-distribution" v-model.number="dayDistributionBucket" value="30">
@@ -36,22 +36,22 @@
           <label for="day-120">{{ M.hr_suffix(2) }}</label>
         </div>
       </div>
-      <div v-if="stats.total > 0" ref="dayDistribution" class="chart-content"></div>
-      <div v-else class="empty">{{ M.daily_empty_placeholder }}</div>
+      <div v-if="stats.total > 0" ref="dayDistribution" class="chart-content" key="chart"></div>
+      <div v-else class="empty" key="empty">{{ M.daily_empty_placeholder }}</div>
     </section>
     <section class="chart">
       <div class="title">
         <h2>{{ M.weekly_distribution }}</h2>
       </div>
-      <div v-if="stats.total > 0" ref="weekDistribution" class="chart-content"></div>
-      <div v-else class="empty">{{ M.weekly_empty_placeholder }}</div>
+      <div v-if="stats.total > 0" ref="weekDistribution" class="chart-content" key="chart"></div>
+      <div v-else class="empty" key="empty">{{ M.weekly_empty_placeholder }}</div>
     </section>
     <section id="heatmap-section" class="chart">
       <div class="title">
         <h2>{{ stats.period | pomodoroCount | last_9_months }}</h2>
       </div>
-      <div v-if="stats.total > 0" ref="heatmap" class="heatmap chart-content"></div>
-      <div v-else class="empty">{{ M.history_empty_placeholder }}</div>
+      <div v-if="stats.total > 0" ref="heatmap" class="heatmap chart-content" key="chart"></div>
+      <div v-else class="empty" key="empty">{{ M.history_empty_placeholder }}</div>
     </section>
     <div class="actions">
       <button @click="importHistory">{{ M.import_history }}</button>
@@ -208,23 +208,7 @@ export default {
     };
   },
   async mounted() {
-    let now = new Date();
-    let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-    // Start at the first Sunday at least 39 weeks (~9 months) ago.
-    start.setDate(start.getDate() - 273);
-    start.setDate(start.getDate() - start.getDay());
-    this.stats = await BackgroundClient.getHistory(+start);
-
-    this.$nextTick(() => {
-      if (this.stats.total === 0) {
-        return;
-      }
-
-      this.dayDistributionBucket = 30;
-      createWeekDistribution(this.$refs.weekDistribution, this.stats.pomodoros);
-      createHeatmap(this.stats.daily, start, this.$refs.heatmap);
-    });
+    this.updateStats();
   },
   methods: {
     async exportHistory() {
@@ -259,12 +243,30 @@ export default {
             alert(M.import_failed(`${ex}`));
             return;
           }
-          // TODO: Support history reload after importing.
-          await loadHistory(true);
+          this.updateStats();
         };
         reader.readAsText(file);
       };
       input.click();
+    },
+    async updateStats() {
+      let now = new Date();
+      let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      // Start at the first Sunday at least 39 weeks (~9 months) ago.
+      start.setDate(start.getDate() - 273);
+      start.setDate(start.getDate() - start.getDay());
+      this.stats = await BackgroundClient.getHistory(+start);
+
+      this.$nextTick(() => {
+        if (this.stats.total === 0) {
+          return;
+        }
+
+        this.dayDistributionBucket = 30;
+        createWeekDistribution(this.$refs.weekDistribution, this.stats.pomodoros);
+        createHeatmap(this.stats.daily, start, this.$refs.heatmap);
+      });
     }
   },
   watch: {

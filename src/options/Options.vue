@@ -98,7 +98,7 @@ input.duration {
     color: #fff;
     opacity: 0.8;
     border-radius: 25px;
-    margin: 0 5px 7px 5px;
+    margin: 0 5px 10px 5px;
     transition: background-color 0.15s ease;
     &:hover {
       color: #fff;
