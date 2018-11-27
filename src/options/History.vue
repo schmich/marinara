@@ -25,7 +25,7 @@
     <section class="day-distribution chart">
       <div class="title">
         <h2>{{ M.daily_distribution }}</h2>
-        <div v-if="stats.total > 0" class="options chart-content" key="actions">
+        <div v-if="stats.total > 0" class="options" key="actions">
           <input type="radio" id="day-15" name="day-distribution" v-model.number="dayDistributionBucket" value="15">
           <label for="day-15">{{ M.min_suffix(15) }}</label>
           <input type="radio" id="day-30" name="day-distribution" v-model.number="dayDistributionBucket" value="30">
@@ -36,21 +36,21 @@
           <label for="day-120">{{ M.hr_suffix(2) }}</label>
         </div>
       </div>
-      <div v-if="stats.total > 0" ref="dayDistribution" class="chart-content" key="chart"></div>
+      <div v-if="stats.total > 0" ref="dayDistribution" key="chart"></div>
       <div v-else class="empty" key="empty">{{ M.daily_empty_placeholder }}</div>
     </section>
     <section class="chart">
       <div class="title">
         <h2>{{ M.weekly_distribution }}</h2>
       </div>
-      <div v-if="stats.total > 0" ref="weekDistribution" class="chart-content" key="chart"></div>
+      <div v-if="stats.total > 0" ref="weekDistribution" key="chart"></div>
       <div v-else class="empty" key="empty">{{ M.weekly_empty_placeholder }}</div>
     </section>
     <section id="heatmap-section" class="chart">
       <div class="title">
         <h2>{{ stats.period | pomodoroCount | last_9_months }}</h2>
       </div>
-      <div v-if="stats.total > 0" ref="heatmap" class="heatmap chart-content" key="chart"></div>
+      <Heatmap v-if="stats.total > 0" :pomodoros="stats.daily" :start="historyStart" key="chart"></Heatmap>
       <div v-else class="empty" key="empty">{{ M.history_empty_placeholder }}</div>
     </section>
     <div class="actions">
@@ -61,31 +61,6 @@
 </template>
 
 <style lang="scss">
-.heatmap {
-  font-size: 14px;
-  margin-left: -10px;
-}
-.heatmap .day {
-  fill: #eee;
-  stroke: #fff;
-  stroke-width: 2px;
-  outline: 0 !important;
-}
-.heatmap .label {
-  fill: #777;
-}
-.heatmap .color0 {
-  fill: #c6e48b;
-}
-.heatmap .color1 {
-  fill: #7bc96f;
-}
-.heatmap .color2 {
-  fill: #239a3b;
-}
-.heatmap .color3 {
-  fill: #196127;
-}
 .history {
   justify-content: space-between;
 }
@@ -196,15 +171,17 @@
 
 <script>
 import { HistoryClient } from '../background/Services';
-import { createWeekDistribution, createDayDistribution, createHeatmap } from './Graphs';
+import { createWeekDistribution, createDayDistribution } from './Graphs';
 import { integer, float, strftime, pomodoroCount } from '../Filters';
+import Heatmap from './Heatmap';
 import M from '../Messages';
 
 export default {
   data() {
     return {
       stats: null,
-      dayDistributionBucket: null
+      historyStart: null,
+      dayDistributionBucket: 30
     };
   },
   async mounted() {
@@ -253,21 +230,21 @@ export default {
       start.setDate(start.getDate() - 273);
       start.setDate(start.getDate() - start.getDay());
       this.stats = await HistoryClient.getHistory(+start);
+      this.historyStart = start;
 
       this.$nextTick(() => {
         if (this.stats.total === 0) {
           return;
         }
 
-        this.dayDistributionBucket = 30;
+        createDayDistribution(this.$refs.dayDistribution, this.dayDistributionBucket, this.stats.pomodoros);
         createWeekDistribution(this.$refs.weekDistribution, this.stats.pomodoros);
-        createHeatmap(this.stats.daily, start, this.$refs.heatmap);
       });
     }
   },
   watch: {
     dayDistributionBucket(to) {
-      if (this.stats.total === 0) {
+      if (!this.stats || this.stats.total === 0) {
         return;
       }
       createDayDistribution(this.$refs.dayDistribution, to, this.stats.pomodoros);
@@ -281,6 +258,9 @@ export default {
     in_month: M.in_month,
     average_stat: M.average_stat,
     last_9_months: M.last_9_months
+  },
+  components: {
+    Heatmap
   }
 };
 </script>
