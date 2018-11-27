@@ -9,7 +9,7 @@ end
 puts "class Messages\n{"
 
 locale = JSON.load(File.read(messages_filename))
-locale.each do |name, value|
+locale.sort_by(&:first).each do |name, value|
   message, description, placeholders = value['message'], value['description'], value['placeholders']
   if placeholders.nil? || placeholders.empty?
     puts "  get #{name}() {\n    return chrome.i18n.getMessage('#{name}', []);\n  }"
