@@ -1,5 +1,5 @@
 import Enum from './Enum';
-import EventEmitter from './EventEmitter';
+import EventEmitter from 'events';
 import Mutex from '../Mutex';
 
 const TimerState = new Enum({

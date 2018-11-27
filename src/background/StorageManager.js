@@ -1,4 +1,4 @@
-import EventEmitter from './EventEmitter';
+import EventEmitter from 'events';
 
 class StorageManager extends EventEmitter
 {
