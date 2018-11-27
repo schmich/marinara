@@ -1,7 +1,7 @@
 # Releasing
 
 - Sync with origin: `git pull --ff-only`
-- Bump `version` in `src/manifest.json`
+- Bump `version` in `package/manifest.json`
 - Commit: `git commit -a`
 - Create package: `make package`
 - Tag release: `git tag -s xx -m "Release xx."`

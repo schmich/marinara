@@ -1,0 +1,27 @@
+{
+  "name": "marinara",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service build --mode development --no-unsafe-inline --dest ../package/modules --watch",
+    "build": "vue-cli-service build --dest ../package/modules",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "d3": "^4.4.0",
+    "tippy.js": "^3.2.0",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-unit-mocha": "^3.1.1",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "chai": "^4.1.2",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

@@ -3,7 +3,7 @@ env:
   global:
   - COMMIT_AUTHOR_NAME: "'Chris Schmich'"
   - COMMIT_AUTHOR_EMAIL: schmch@gmail.com
-  - LOCALES_PATH: src/_locales
+  - LOCALES_PATH: package/_locales
 deploy:
   provider: script
   script: bash ./deploy/chrome-extension-localization/deploy/deploy.sh
