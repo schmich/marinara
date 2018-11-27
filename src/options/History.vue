@@ -195,7 +195,7 @@
 </style>
 
 <script>
-import BackgroundClient from '../BackgroundClient';
+import { HistoryClient } from '../background/Services';
 import { createWeekDistribution, createDayDistribution, createHeatmap } from './Graphs';
 import { integer, float, strftime, pomodoroCount } from '../Filters';
 import M from '../Messages';
@@ -212,7 +212,7 @@ export default {
   },
   methods: {
     async exportHistory() {
-      let json = JSON.stringify(await BackgroundClient.getRawHistory());
+      let json = JSON.stringify(await HistoryClient.getRawHistory());
       let link = document.createElement('a');
       link.download = 'history.json';
       link.href = `data:application/octet-stream,${encodeURIComponent(json)}`;
@@ -234,7 +234,7 @@ export default {
               return;
             }
 
-            let result = await BackgroundClient.setRawHistory(history);
+            let result = await HistoryClient.setRawHistory(history);
             if (result !== true) {
               alert(M.import_failed(`${result}`));
               return;
@@ -256,7 +256,7 @@ export default {
       // Start at the first Sunday at least 39 weeks (~9 months) ago.
       start.setDate(start.getDate() - 273);
       start.setDate(start.getDate() - start.getDay());
-      this.stats = await BackgroundClient.getHistory(+start);
+      this.stats = await HistoryClient.getHistory(+start);
 
       this.$nextTick(() => {
         if (this.stats.total === 0) {

@@ -129,7 +129,7 @@ body {
 </style>
 
 <script>
-import BackgroundClient from '../BackgroundClient';
+import { HistoryClient, PomodoroClient } from '../background/Services';
 
 export default {
   data() {
@@ -151,15 +151,15 @@ export default {
   },
   methods: {
     startSession() {
-      BackgroundClient.startSession();
+      PomodoroClient.startSession();
     },
     showHistory() {
-      BackgroundClient.showHistory();
+      HistoryClient.showHistory();
     },
     onKeyPress(e) {
       // On Enter key press, start next session.
       if (e.keyCode === 13) {
-        BackgroundClient.startSession();
+        this.startSession();
       }
     },
     onMessage(request, sender, respond) {

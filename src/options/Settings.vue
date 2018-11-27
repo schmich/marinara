@@ -228,7 +228,7 @@
 </style>
 
 <script>
-import BackgroundClient from '../BackgroundClient';
+import { SettingsClient, SoundsClient } from '../background/Services';
 import Metronome from '../Metronome';
 import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
@@ -255,9 +255,9 @@ export default {
   },
   async mounted() {
     [this.settings, this.notificationSounds, this.timerSounds] = await Promise.all([
-      BackgroundClient.getSettings(),
-      BackgroundClient.getNotificationSounds(),
-      BackgroundClient.getTimerSounds()
+      SettingsClient.getSettings(),
+      SoundsClient.getNotificationSounds(),
+      SoundsClient.getTimerSounds()
     ]);
 
     // Clone settings.
@@ -265,7 +265,7 @@ export default {
   },
   methods: {
     async saveSettings() {
-      let result = await BackgroundClient.setSettings(this.settings);
+      let result = await SettingsClient.setSettings(this.settings);
       if (result.error) {
         // TODO
         alert('Error saving settings');

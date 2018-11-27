@@ -7,7 +7,13 @@ import * as Sounds from '../Sounds';
 import History from './History';
 import StorageManager from './StorageManager';
 import SettingsSchema from './SettingsSchema';
-import BackgroundServer from './BackgroundServer';
+import {
+  ServiceBroker,
+  HistoryService,
+  SoundsService,
+  SettingsService,
+  PomodoroService
+} from './Services';
 import Notification from './Notification';
 import SingletonPage from './SingletonPage';
 import ExpirationPage from './ExpirationPage';
@@ -416,6 +422,11 @@ class Controller
 let history = new History();
 let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
 let controller = new Controller(settingsManager, history);
-let server = new BackgroundServer(controller, history, settingsManager);
+
+let broker = new ServiceBroker();
+broker.registerService(new HistoryService(controller, history));
+broker.registerService(new SoundsService());
+broker.registerService(new SettingsService(controller, settingsManager));
+broker.registerService(new PomodoroService(controller));
 
 controller.run();
