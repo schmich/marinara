@@ -21,11 +21,13 @@
             <option :value="null">{{ M.none }}</option>
             <option v-for="sound in timerSounds" :value="sound.files">{{ sound.name }}</option>
           </select>
-          <span v-if="focusTimerSounds" @mouseover="playMetronome" @mouseout="stopMetronome" class="preview">
-            <i class="icon-play"></i>
-            <span>{{ M.hover_preview }}</span>
-            <img src="/images/spinner.svg" :class="{ active: !!metronome }">
-          </span>
+          <transition name="fade">
+            <span v-if="canPlayMetronome" @mouseover="playMetronome" @mouseout="stopMetronome" class="preview">
+              <i class="icon-play"></i>
+              <span>{{ M.hover_preview }}</span>
+              <img src="/images/spinner.svg" :class="{ active: !!metronome }">
+            </span>
+          </transition>
         </p>
         <p class="field">
           <label>
@@ -277,7 +279,6 @@ export default {
       this.areSettingsDirty = false;
     },
     async playMetronome() {
-      // TODO: bpm > 0 && bpm < 1000
       let { files, bpm } = this.settings.focus.timerSound;
       this.metronomeMutex.exclusive(async () => {
         this.metronome = await Metronome.create(files, (60 / bpm) * 1000);
@@ -322,6 +323,11 @@ export default {
 
         this.settings.focus.timerSound.bpm = bpm;
       }
+    },
+    canPlayMetronome() {
+      return this.focusTimerSounds
+          && this.focusTimerBpm > 0
+          && this.focusTimerBpm <= 1000;
     }
   },
   watch: {

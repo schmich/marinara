@@ -166,7 +166,7 @@
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
   "invalid_bpm": {
-    "message": "Beats per minute must be a number between 1-1000.",
+    "message": "Beats per minute must be a positive number between 1-1000.",
     "description": "Error message shown to user if timer sound beats per minute (BPM) is invalid."
   },
   "none": {
