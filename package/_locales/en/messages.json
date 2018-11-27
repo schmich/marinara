@@ -129,6 +129,10 @@
     "message": "This scheduled Pomodoro was automatically started",
     "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
+  "invalid_autostart_time": {
+    "message": "Invalid autostart time.",
+    "description": "Error message shown to user if autostart time is not in expected format (hh:mm format, for example: 12:30)."
+  },
   "time": {
     "message": "Time:",
     "description": "Time input label. Shown on the settings page."
@@ -136,6 +140,10 @@
   "duration": {
     "message": "Duration:",
     "description": "Timer duration label. Shown on the settings page."
+  },
+  "invalid_duration": {
+    "message": "Duration must be a positive number.",
+    "description": "Error message shown to user if Pomodoro duration is invalid."
   },
   "minutes": {
     "message": "minutes",
@@ -156,6 +164,10 @@
   "bpm": {
     "message": "beats per minute",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "invalid_bpm": {
+    "message": "Beats per minute must be a number between 1-1000.",
+    "description": "Error message shown to user if timer sound beats per minute (BPM) is invalid."
   },
   "none": {
     "message": "None",
@@ -908,5 +920,25 @@
   "save_changes_notice": {
     "message": "Any running Pomodoro sessions will end",
     "description": "Notice shown on settings page. When user saves modified settings, all sessions are stopped."
+  },
+  "error_saving_settings": {
+    "message": "Error saving settings: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
+  },
+  "unknown_service": {
+    "message": "Unknown service: $name$",
+    "description": "Internal error message. Users should never see this message.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "invalid"
+      }
+    }
   }
 }

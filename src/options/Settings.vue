@@ -232,6 +232,7 @@ import { SettingsClient, SoundsClient } from '../background/Services';
 import Metronome from '../Metronome';
 import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
+import M from '../Messages';
 
 function deepEqual(x, y) {
   const ok = Object.keys, tx = typeof x, ty = typeof y;
@@ -268,8 +269,7 @@ export default {
       try {
         await SettingsClient.setSettings(this.settings);
       } catch (e) {
-        // TODO: Extract to messages.json.
-        alert(`Error saving settings: ${e}`);
+        alert(M.error_saving_settings(e));
       }
 
       // Clone settings.

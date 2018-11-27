@@ -93,11 +93,17 @@ class Messages
   get autostart_notification_message() {
     return chrome.i18n.getMessage('autostart_notification_message', []);
   }
+  get invalid_autostart_time() {
+    return chrome.i18n.getMessage('invalid_autostart_time', []);
+  }
   get time() {
     return chrome.i18n.getMessage('time', []);
   }
   get duration() {
     return chrome.i18n.getMessage('duration', []);
+  }
+  get invalid_duration() {
+    return chrome.i18n.getMessage('invalid_duration', []);
   }
   get minutes() {
     return chrome.i18n.getMessage('minutes', []);
@@ -113,6 +119,9 @@ class Messages
   }
   get bpm() {
     return chrome.i18n.getMessage('bpm', []);
+  }
+  get invalid_bpm() {
+    return chrome.i18n.getMessage('invalid_bpm', []);
   }
   get none() {
     return chrome.i18n.getMessage('none', []);
@@ -590,6 +599,12 @@ class Messages
   }
   get save_changes_notice() {
     return chrome.i18n.getMessage('save_changes_notice', []);
+  }
+  error_saving_settings(message) {
+    return chrome.i18n.getMessage('error_saving_settings', [message]);
+  }
+  unknown_service(name) {
+    return chrome.i18n.getMessage('unknown_service', [name]);
   }
 }
 

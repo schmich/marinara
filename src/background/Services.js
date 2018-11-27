@@ -1,4 +1,5 @@
 import * as Sounds from '../Sounds';
+import M from '../Messages';
 
 class ServiceBroker
 {
@@ -18,8 +19,7 @@ class ServiceBroker
 
         let handler = this.services[service];
         if (!handler) {
-          // TODO: Extract to messages.json.
-          throw new Error('Unknown service: ' + service);
+          throw new Error(M.unknown_service(service));
         }
 
         let value = await handler[command](...params);
@@ -81,7 +81,7 @@ class SettingsService
 
     let autostart = settings.autostart && settings.autostart.time;
     if (autostart && !autostart.match(/^\d+:\d+$/)) {
-      throw new Error('Invalid autostart time.');
+      throw new Error(M.invalid_autostart_time);
     }
 
     await this.settingsManager.set(settings);
@@ -92,16 +92,15 @@ class SettingsService
   }
 
   _validate(phase) {
-    let duration = phase.duration
+    let { duration, timerSound } = phase;
     if (duration <= 0 || isNaN(duration)) {
-      throw new Error('Duration must be a positive number.');
+      throw new Error(M.invalid_duration);
     }
 
-    let timerSound = phase.timerSound;
     if (timerSound) {
       let bpm = timerSound.bpm;
       if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
-        throw new Error('BPM must be a number between 1-1000.');
+        throw new Error(M.invalid_bpm);
       }
     }
   }
