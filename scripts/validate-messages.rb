@@ -17,9 +17,14 @@ def validate_json(file, messages)
     message = obj['message']
     referenced = Set.new(message.scan(/\$.*?\$/))
     defined = Set.new(obj['placeholders']&.map(&:first)&.map { |name| "$#{name}$" })
-    missing = referenced - defined
-    unless missing.empty?
-      error = "Placeholder referenced but not defined: #{missing.to_a.join(', ')}"
+    undefined = referenced - defined
+    unless undefined.empty?
+      error = "Placeholder referenced but not defined: #{undefined.to_a.join(', ')}"
+      raise ValidationError.new(error, file, id)
+    end
+    unreferenced = defined - referenced
+    unless unreferenced.empty?
+      error = "Placeholder defined but not referenced: #{unreferenced.to_a.join(', ')}"
       raise ValidationError.new(error, file, id)
     end
   end
