@@ -52,7 +52,11 @@ def validate(id, file)
 end
 
 begin
-  all_locales.each do |id, file|
+  locales = all_locales
+  if locales.empty?
+    raise 'No locales found.'
+  end
+  locales.each do |id, file|
     validate(id, file)
   end
   puts 'OK.'
