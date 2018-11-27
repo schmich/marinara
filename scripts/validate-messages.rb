@@ -15,16 +15,25 @@ end
 def validate_json(file, messages)
   messages.each do |id, obj|
     message = obj['message']
+
     referenced = Set.new(message.scan(/\$.*?\$/))
     defined = Set.new(obj['placeholders']&.map(&:first)&.map { |name| "$#{name}$" })
+
     undefined = referenced - defined
     unless undefined.empty?
       error = "Placeholder referenced but not defined: #{undefined.to_a.join(', ')}"
       raise ValidationError.new(error, file, id)
     end
+
     unreferenced = defined - referenced
     unless unreferenced.empty?
       error = "Placeholder defined but not referenced: #{unreferenced.to_a.join(', ')}"
+      raise ValidationError.new(error, file, id)
+    end
+
+    contents = obj['placeholders']&.map(&:last)&.map { |p| p['content'] } || []
+    if contents.length != contents.uniq.length
+      error = "Placeholders use the same positions: #{contents}."
       raise ValidationError.new(error, file, id)
     end
   end
@@ -67,5 +76,5 @@ begin
   puts 'OK.'
 rescue ValidationError => e
   location = [e.file, e.message_id].compact.join(', ')
-  puts "Error in #{location}:\n#{e}"
+  puts "Error in #{location}:\n\t#{e}"
 end

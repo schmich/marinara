@@ -1,12 +1,23 @@
+.PHONY: package
+
 # Create Chrome extension package (.zip).
-package: validate-messages messages
+package: messages
 	ruby -Iscripts scripts/make-package.rb
 
-.PHONY: messages
-messages: src/Messages.js
+.PHONY: messages validate-messages
 
+# Create Messages.js.
+messages: validate-messages src/Messages.js
+
+# Sanity check all messages.json files.
+validate-messages:
+	ruby -Iscripts scripts/validate-messages.rb
+
+# JS bindings for messages in messages.json.
 src/Messages.js: package/_locales/en/messages.json
 	ruby -Iscripts scripts/create-messages.rb "$<" > "$@"
+
+.PHONY: run run-loc run-pseudo show-descriptions
 
 # Run Chrome with a new (temporary) user profile with Marinara loaded.
 run:
@@ -19,10 +30,6 @@ run-loc:
 # Run Chrome with psuedo-localized messages.
 run-pseudo:
 	ruby -Iscripts scripts/run-pseudo-localized.rb
-
-# Sanity check all messages.json files.
-validate-messages:
-	ruby -Iscripts scripts/validate-messages.rb
 
 # Show and copy descriptions for Chrome Web Store.
 show-descriptions:
