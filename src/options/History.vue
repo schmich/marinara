@@ -77,7 +77,7 @@
   color: #555;
   padding: 10px 20px;
   border: 1px solid #555;
-  border-radius: 5px;
+  border-radius: 40px;
   text-decoration: none;
   display: inline-block;
   margin-left: 15px;
