@@ -119,7 +119,7 @@
   top: -1px;
 }
 .day-distribution .options input:checked + label {
-  border-radius: 3px;
+  border-radius: 10px;
   background: #777;
   color: #fff;
 }

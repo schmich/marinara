@@ -144,3 +144,23 @@ fieldset {
   flex: 1;
 }
 </style>
+
+<script>
+export default {
+  mounted() {
+    // Listen for showOptionsPage command.
+    window.addEventListener('message', this.handleMessage, false);
+  },
+  beforeDestroy() {
+    window.removeEventListener('message', this.handleMessage);
+  },
+  methods: {
+    handleMessage({ data }) {
+      if (!data || !data.page) {
+        return;
+      }
+      window.location.assign('#/' + data.page);
+    }
+  }
+};
+</script>

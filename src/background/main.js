@@ -157,18 +157,18 @@ class Controller
     });
   }
 
-  async showOptionsPage(hash) {
+  async showOptionsPage(page) {
     let manifest = chrome.runtime.getManifest();
 
-    let views = chrome.extension.getViews({ type: 'tab' });
-    for (let view of views) {
-      if (view.location.toString().indexOf(manifest.options_page) >= 0 && view.focus) {
-        view.focus(hash);
+    let windows = chrome.extension.getViews({ type: 'tab' });
+    for (let window of windows) {
+      if (window.location.toString().indexOf(manifest.options_page) >= 0) {
+        window.postMessage({ page });
         return;
       }
     }
 
-    let url = chrome.extension.getURL(manifest.options_page + hash);
+    let url = chrome.extension.getURL(manifest.options_page + '#/' + page);
     await SingletonPage.show(url);
   }
 

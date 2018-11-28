@@ -257,7 +257,7 @@ class PomodoroHistoryAction extends Action
   }
 
   run() {
-    this.controller.showOptionsPage('#history');
+    this.controller.showOptionsPage('history');
   }
 }
 

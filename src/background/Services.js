@@ -87,7 +87,7 @@ class SettingsService
   }
 
   async showSettingsPage() {
-    return await this.controller.showOptionsPage('#settings');
+    return await this.controller.showOptionsPage('settings');
   }
 
   _validate(phase) {
@@ -125,7 +125,7 @@ class HistoryService
   }
 
   async showHistoryPage() {
-    return await this.controller.showOptionsPage('#history');
+    return await this.controller.showOptionsPage('history');
   }
 }
 
