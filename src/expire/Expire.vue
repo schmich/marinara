@@ -150,6 +150,7 @@ export default {
   },
   beforeDestroy() {
     document.body.removeEventListener('keypress', this.onKeyPress);
+    chrome.runtime.onMessage.removeListener(this.onMessage);
   },
   methods: {
     startSession() {
