@@ -129,6 +129,7 @@ body {
 </style>
 
 <script>
+import M from '../Messages';
 import { HistoryClient, PomodoroClient } from '../background/Services';
 
 export default {
@@ -143,6 +144,7 @@ export default {
     };
   },
   created() {
+    document.title = M.expire_title;
     document.body.addEventListener('keypress', this.onKeyPress);
     chrome.runtime.onMessage.addListener(this.onMessage);
   },
