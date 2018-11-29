@@ -183,7 +183,7 @@
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .slide-up-leave-active {
-  transition: transform 0.3s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .slide-up-enter, .slide-up-leave-to {
   transform: translateY(300%);
