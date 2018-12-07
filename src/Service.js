@@ -62,12 +62,15 @@ class Service
 {
   constructor() {
     this.clients = {};
+    this.clientId = 0;
 
     let serviceName = this.constructor.name;
     this.onConnect = port => {
       if (port.name != serviceName) {
         return;
       }
+
+      let clientId = this.clientId++;
 
       const onMessage = async ({ id, method, args }) => {
         try {
@@ -84,11 +87,11 @@ class Service
 
       const onDisconnect = () => {
         // Remove event handlers.
-        this.clients[port]();
-        delete this.clients[port];
+        this.clients[clientId]();
+        delete this.clients[clientId];
       };
 
-      this.clients[port] = () => {
+      this.clients[clientId] = () => {
         port.onMessage.removeListener(onMessage);
         port.onDisconnect.removeListener(onDisconnect);
       };
@@ -106,6 +109,7 @@ class Service
     for (let removeListeners in Object.values(this.clients)) {
       removeListeners();
     }
+    this.clients = {};
   }
 
   emit(eventName, ...args) {
