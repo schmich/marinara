@@ -135,6 +135,8 @@ import { HistoryClient, PomodoroClient } from '../background/Services';
 export default {
   data() {
     return {
+      historyClient: new HistoryClient(),
+      pomodoroClient: new PomodoroClient(),
       loaded: false,
       title: '',
       action: '',
@@ -149,15 +151,17 @@ export default {
     chrome.runtime.onMessage.addListener(this.onMessage);
   },
   beforeDestroy() {
+    this.historyClient.dispose();
+    this.pomodoroClient.dispose();
     document.body.removeEventListener('keypress', this.onKeyPress);
     chrome.runtime.onMessage.removeListener(this.onMessage);
   },
   methods: {
     startSession() {
-      PomodoroClient.startSession();
+      this.pomodoroClient.startSession();
     },
     showHistoryPage() {
-      HistoryClient.showHistoryPage();
+      this.historyClient.showHistoryPage();
     },
     onKeyPress(e) {
       // On Enter key press, start next session.

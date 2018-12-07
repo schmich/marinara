@@ -180,6 +180,7 @@ import M from '../Messages';
 export default {
   data() {
     return {
+      historyClient: new HistoryClient(),
       stats: null,
       historyStart: null,
       dayDistributionBucket: 30
@@ -188,9 +189,12 @@ export default {
   async mounted() {
     this.updateStats();
   },
+  beforeDestroy() {
+    this.historyClient.dispose();
+  },
   methods: {
     async exportHistory() {
-      let json = JSON.stringify(await HistoryClient.getRawHistory());
+      let json = JSON.stringify(await this.historyClient.getRawHistory());
       File.save('history.json', json);
     },
     async importHistory() {
@@ -205,7 +209,7 @@ export default {
           return;
         }
 
-        await HistoryClient.setRawHistory(history);
+        await this.historyClient.setRawHistory(history);
       } catch (e) {
         alert(M.import_failed(`${e}`));
         return;
@@ -220,7 +224,7 @@ export default {
       // Start at the first Sunday at least 39 weeks (~9 months) ago.
       start.setDate(start.getDate() - 273);
       start.setDate(start.getDate() - start.getDay());
-      this.stats = await HistoryClient.getHistory(+start);
+      this.stats = await this.historyClient.getHistory(+start);
       this.historyStart = start;
 
       this.$nextTick(() => {

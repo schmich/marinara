@@ -8,7 +8,6 @@ import History from './History';
 import StorageManager from './StorageManager';
 import SettingsSchema from './SettingsSchema';
 import {
-  ServiceBroker,
   HistoryService,
   SoundsService,
   SettingsService,
@@ -422,10 +421,9 @@ let history = new History();
 let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
 let controller = new Controller(settingsManager, history);
 
-let broker = new ServiceBroker();
-broker.registerService(new HistoryService(controller, history));
-broker.registerService(new SoundsService());
-broker.registerService(new SettingsService(controller, settingsManager));
-broker.registerService(new PomodoroService(controller));
+HistoryService.start(controller, history);
+SoundsService.start();
+SettingsService.start(controller, settingsManager);
+PomodoroService.start(controller);
 
 controller.run();

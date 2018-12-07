@@ -1,64 +1,10 @@
 import * as Sounds from '../Sounds';
-import M from '../Messages';
+import Service from '../Service';
 
-class ServiceBroker
-{
-  constructor() {
-    this.services = {};
-    chrome.runtime.onMessage.addListener((request, sender, respond) => {
-      this._handleMessage(request, respond);
-      // Response is async.
-      return true;
-    });
-  }
-
-  registerService(service) {
-    this.services[service.constructor.name] = service;
-  }
-
-  async _handleMessage(request, respond) {
-    try {
-      let { service, command, params } = request;
-
-      let handler = this.services[service];
-      if (!handler || !handler[command]) {
-        throw new Error(M.invalid_service_request(service, command));
-      }
-
-      let value = await handler[command](...params);
-      respond({ value });
-    } catch (e) {
-      respond({ error: `${e}` });
-    }
-  }
-}
-
-function serviceProxy(serviceClass) {
-  return new Proxy({}, {
-    get(target, prop, receiver) {
-      return function() {
-        return new Promise((resolve, reject) => {
-          const message = {
-            service: serviceClass.name,
-            command: prop,
-            params: Array.from(arguments)
-          };
-          chrome.runtime.sendMessage(message, response => {
-            if (response.error) {
-              reject(response.error);
-            } else {
-              resolve(response.value);
-            }
-          });
-        });
-      };
-    }
-  });
-}
-
-class SettingsService
+class SettingsService extends Service
 {
   constructor(controller, settingsManager) {
+    super();
     this.controller = controller;
     this.settingsManager = settingsManager;
   }
@@ -105,9 +51,10 @@ class SettingsService
   }
 }
 
-class HistoryService
+class HistoryService extends Service
 {
   constructor(controller, history) {
+    super();
     this.controller = controller;
     this.history = history;
   }
@@ -129,9 +76,10 @@ class HistoryService
   }
 }
 
-class PomodoroService
+class PomodoroService extends Service
 {
   constructor(controller) {
+    super();
     this.controller = controller;
   }
 
@@ -140,7 +88,7 @@ class PomodoroService
   }
 }
 
-class SoundsService
+class SoundsService extends Service
 {
   async getNotificationSounds() {
     return Sounds.notification;
@@ -151,13 +99,12 @@ class SoundsService
   }
 }
 
-const SettingsClient = serviceProxy(SettingsService);
-const HistoryClient = serviceProxy(HistoryService);
-const PomodoroClient = serviceProxy(PomodoroService);
-const SoundsClient = serviceProxy(SoundsService);
+const SettingsClient = SettingsService.proxy;
+const HistoryClient = HistoryService.proxy;
+const PomodoroClient = PomodoroService.proxy;
+const SoundsClient = SoundsService.proxy;
 
 export {
-  ServiceBroker,
   SettingsService,
   SettingsClient,
   HistoryService,

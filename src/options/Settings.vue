@@ -254,6 +254,8 @@ function deepEqual(x, y) {
 export default {
   data() {
     return {
+      settingsClient: new SettingsClient(),
+      soundsClient: new SoundsClient(),
       settings: null,
       originalSettings: null,
       areSettingsDirty: false,
@@ -265,18 +267,22 @@ export default {
   },
   async mounted() {
     [this.settings, this.notificationSounds, this.timerSounds] = await Promise.all([
-      SettingsClient.getSettings(),
-      SoundsClient.getNotificationSounds(),
-      SoundsClient.getTimerSounds()
+      this.settingsClient.getSettings(),
+      this.soundsClient.getNotificationSounds(),
+      this.soundsClient.getTimerSounds()
     ]);
 
     // Clone settings.
     this.originalSettings = JSON.parse(JSON.stringify(this.settings));
   },
+  beforeDestroy() {
+    this.settingsClient.dispose();
+    this.soundsClient.dispose();
+  },
   methods: {
     async saveSettings() {
       try {
-        await SettingsClient.setSettings(this.settings);
+        await this.settingsClient.setSettings(this.settings);
       } catch (e) {
         alert(M.error_saving_settings(e));
       }
