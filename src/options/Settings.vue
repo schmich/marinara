@@ -258,7 +258,6 @@ export default {
       soundsClient: new SoundsClient(),
       settings: null,
       originalSettings: null,
-      areSettingsDirty: false,
       notificationSounds: null,
       timerSounds: null,
       metronome: null,
@@ -290,7 +289,6 @@ export default {
 
       // Clone settings.
       this.originalSettings = JSON.parse(JSON.stringify(this.settings));
-      this.areSettingsDirty = false;
     },
     async playMetronome() {
       let { files, bpm } = this.settings.focus.timerSound;
@@ -342,14 +340,9 @@ export default {
       return this.focusTimerSounds
           && this.focusTimerBpm > 0
           && this.focusTimerBpm <= 1000;
-    }
-  },
-  watch: {
-    settings: {
-      handler(to, from) {
-        this.areSettingsDirty = !deepEqual(to, this.originalSettings);
-      },
-      deep: true
+    },
+    areSettingsDirty() {
+      return !deepEqual(this.settings, this.originalSettings);
     }
   },
   components: {
