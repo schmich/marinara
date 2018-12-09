@@ -27,7 +27,7 @@ class ServiceProxy extends EventEmitter
       return this[prop];
     }
 
-    let self = this;
+    const self = this;
     return function() {
       return new Promise((resolve, reject) => {
         self.promises[self.messageId] = {
@@ -87,13 +87,16 @@ class Service
 
       const onDisconnect = () => {
         // Remove event handlers.
-        this.clients[clientId]();
+        this.clients[clientId].dispose();
         delete this.clients[clientId];
       };
 
-      this.clients[clientId] = () => {
-        port.onMessage.removeListener(onMessage);
-        port.onDisconnect.removeListener(onDisconnect);
+      this.clients[clientId] = {
+        port,
+        dispose() {
+          port.onMessage.removeListener(onMessage);
+          port.onDisconnect.removeListener(onDisconnect);
+        }
       };
 
       port.onMessage.addListener(onMessage);
@@ -106,14 +109,14 @@ class Service
   dispose() {
     // Remove all event handlers.
     chrome.runtime.onConnect.removeListener(this.onConnect);
-    for (let removeListeners in Object.values(this.clients)) {
-      removeListeners();
+    for (let { dispose } of Object.values(this.clients)) {
+      dispose();
     }
     this.clients = {};
   }
 
   emit(eventName, ...args) {
-    for (let port in this.clients) {
+    for (let { port } of Object.values(this.clients)) {
       try {
         port.postMessage({ event: eventName, args: args });
       } catch (e) {
