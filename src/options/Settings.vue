@@ -285,6 +285,7 @@ export default {
         await this.settingsClient.setSettings(this.settings);
       } catch (e) {
         alert(M.error_saving_settings(e));
+        return;
       }
 
       // Clone settings.

@@ -1,5 +1,6 @@
 import * as Sounds from '../Sounds';
 import Service from '../Service';
+import M from '../Messages';
 
 class SettingsService extends Service
 {
