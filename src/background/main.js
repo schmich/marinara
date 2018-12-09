@@ -180,7 +180,7 @@ class Controller
   }
 
   get state() {
-    return this.timer ? this.timer.state : null;
+    return this.timer && this.timer.state;
   }
 
   start() {

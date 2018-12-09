@@ -261,19 +261,19 @@ class PomodoroTimer
   }
 
   pause() {
-    this.timer ? this.timer.pause() : null;
+    return this.timer && this.timer.pause();
   }
 
   stop() {
-    this.timer ? this.timer.stop() : null;
+    return this.timer && this.timer.stop();
   }
 
   resume() {
-    this.timer ? this.timer.resume() : null;
+    return this.timer && this.timer.resume();
   }
 
   reset() {
-    this.timer ? this.timer.reset() : null;
+    return this.timer && this.timer.reset();
   }
 }
 
