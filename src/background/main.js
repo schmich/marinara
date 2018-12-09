@@ -332,14 +332,6 @@ class Controller
           options.tab.phase
         );
       }
-
-      // Reload history on options page.
-      let views = chrome.extension.getViews({ type: 'tab' });
-      for (let view of views) {
-        if (view.loadHistory) {
-          view.loadHistory(true);
-        }
-      }
     });
 
     timer.once('start', () => {
