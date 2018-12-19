@@ -153,4 +153,26 @@ class SettingsSchema
   }
 }
 
-export default SettingsSchema;
+class PersistentSettings
+{
+  static async create(settingsManager) {
+    let settings = await settingsManager.get();
+
+    // When the settings change, we update the underlying settigs object, which
+    // allows users of the settings to see the updated values.
+    settingsManager.on('change', newSettings => settings = newSettings);
+
+    // We return a proxy object that forwards all getters
+    // to the underlying settings object.
+    return new Proxy(function() {}, {
+      get(target, prop, receiver) {
+        return settings[prop];
+      }
+    });
+  }
+}
+
+export {
+  SettingsSchema,
+  PersistentSettings
+};

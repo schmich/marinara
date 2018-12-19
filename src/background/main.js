@@ -4,23 +4,10 @@ import Chrome from '../Chrome';
 import * as Menu from './Menu';
 import History from './History';
 import StorageManager from './StorageManager';
-import SettingsSchema from './SettingsSchema';
+import { SettingsSchema, PersistentSettings } from './Settings';
 import { HistoryService, SoundsService, SettingsService, PomodoroService, OptionsService } from './Services';
 import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, MenuObserver } from './Observers';
 import { ServiceBroker } from '../Service';
-
-class PersistentSettings
-{
-  static async create(settingsManager) {
-    let settings = await settingsManager.get();
-    settingsManager.on('change', newSettings => settings = newSettings);
-    return new Proxy(function() {}, {
-      get(target, prop, receiver) {
-        return settings[prop];
-      }
-    });
-  }
-}
 
 class Controller
 {
