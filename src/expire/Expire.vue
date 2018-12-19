@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" class="dialog">
+  <div class="dialog">
     <h1>{{ title }}</h1>
     <div><p>{{ message }}</p></div>
     <button @click.prevent="startSession" class="button start-session" :class="phase">
@@ -131,6 +131,7 @@ body {
 <script>
 import M from '../Messages';
 import { HistoryClient, PomodoroClient, OptionsClient } from '../background/Services';
+import { ExpirationClient } from '../background/Expiration';
 
 export default {
   data() {
@@ -138,7 +139,7 @@ export default {
       historyClient: new HistoryClient(),
       pomodoroClient: new PomodoroClient(),
       optionsClient: new OptionsClient(),
-      loaded: false,
+      expirationClient: new ExpirationClient(),
       title: '',
       action: '',
       message: '',
@@ -146,10 +147,16 @@ export default {
       pomodoroCount: 0
     };
   },
-  created() {
+  async created() {
     document.title = M.expire_title;
     document.body.addEventListener('keypress', this.onKeyPress);
-    chrome.runtime.onMessage.addListener(this.onMessage);
+
+    let { title, action, pomodoros, messages, phase } = await this.expirationClient.getProperties();
+    this.title = title;
+    this.action = action;
+    this.pomodoroCount = pomodoros;
+    this.message = messages.filter(m => m && m.trim()).join(' – ');
+    this.phase = phase;
   },
   beforeDestroy() {
     this.historyClient.dispose();
@@ -170,17 +177,6 @@ export default {
       if (e.keyCode === 13) {
         this.startSession();
       }
-    },
-    onMessage(request, sender, respond) {
-      // TODO: Check message, it should be for expiration information.
-      chrome.runtime.onMessage.removeListener(this.onMessage);
-
-      this.title = request.title;
-      this.action = request.action;
-      this.pomodoroCount = request.pomodoros;
-      this.message = request.messages.filter(m => m && m.trim() !== '').join(' – ');
-      this.phase = request.phase;
-      this.loaded = true;
     }
   }
 };

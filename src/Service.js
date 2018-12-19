@@ -25,6 +25,12 @@ class ServiceBroker
 
   register(service) {
     this.services[service.constructor.name] = service;
+    return service;
+  }
+
+  unregister(service) {
+    delete this.services[service.constructor.name];
+    return service;
   }
 
   async invoke({ serviceName, methodName, args }) {

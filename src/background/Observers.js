@@ -3,7 +3,7 @@ import { Phase } from './Timer';
 import { pomodoroCount } from '../Filters';
 import * as Sounds from '../Sounds';
 import Notification from './Notification';
-import ExpirationPage from './ExpirationPage';
+import { ExpirationPage } from './Expiration';
 import Metronome from '../Metronome';
 import Mutex from '../Mutex';
 
