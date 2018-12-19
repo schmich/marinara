@@ -930,19 +930,5 @@
         "example": "Duration must be a positive number."
       }
     }
-  },
-  "invalid_service_request": {
-    "message": "Invalid service request: $service$.$command$.",
-    "description": "Internal error message. Users should never see this message.",
-    "placeholders": {
-      "service": {
-        "content": "$1",
-        "example": "InvalidService"
-      },
-      "command": {
-        "content": "$2",
-        "example": "invalidCommand"
-      }
-    }
   }
 }

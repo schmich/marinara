@@ -252,9 +252,6 @@ class Messages
   get invalid_duration() {
     return chrome.i18n.getMessage('invalid_duration', []);
   }
-  invalid_service_request(service, command) {
-    return chrome.i18n.getMessage('invalid_service_request', [service, command]);
-  }
   get january() {
     return chrome.i18n.getMessage('january', []);
   }

@@ -54,7 +54,7 @@ class ServiceBroker
     }
 
     if (!service[methodName]) {
-      throw new Error(M.invalid_service_request(serviceName, methodName));
+      throw new Error(`Invalid service request: ${serviceName}.${methodName}.`);
     }
 
     (async () => {
