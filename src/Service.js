@@ -1,25 +1,98 @@
 import EventEmitter from 'events';
 import M from './Messages';
 
+class ServiceBroker
+{
+  constructor() {
+    this.services = {};
+    chrome.runtime.onMessage.addListener(this.onMessage.bind(this));
+  }
+
+  static get instance() {
+    if (!this._instance) {
+      this._instance = new ServiceBroker();
+    }
+    return this._instance;
+  }
+
+  static register(service) {
+    return this.instance.register(service);
+  }
+
+  static async invoke(call) {
+    return await this.instance.invoke(call);
+  }
+
+  register(service) {
+    this.services[service.constructor.name] = service;
+  }
+
+  async invoke({ serviceName, methodName, args }) {
+    let service = this.services[serviceName];
+    if (service && service[methodName]) {
+      // Service is defined in this context, call method directly.
+      return await service[methodName](...args);
+    }
+
+    // Service is defined in another context, use sendMessage to call it.
+    return await new Promise((resolve, reject) => {
+      let message = { serviceName, methodName, args };
+      chrome.runtime.sendMessage(message, ({ result, error }) => {
+        if (error !== undefined) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+  onMessage({ serviceName, methodName, args }, sender, respond) {
+    let service = this.services[serviceName];
+    if (!service || methodName === undefined) {
+      return;
+    }
+
+    if (!service[methodName]) {
+      throw new Error(M.invalid_service_request(serviceName, methodName));
+    }
+
+    (async () => {
+      try {
+        respond({ result: await service[methodName](...args) });
+      } catch (e) {
+        respond({ error: `${e}` });
+      }
+    })();
+
+    return true;
+  }
+}
+
 class ServiceProxy extends EventEmitter
 {
   constructor(serviceName) {
     super();
-    this.messageId = 0;
-    this.promises = {};
-    this.port = chrome.runtime.connect({ name: serviceName });
-    this.onMessage = this._onMessage.bind(this);
-    this.port.onMessage.addListener(this.onMessage);
+    this.serviceName = serviceName;
+    this.listenerCount = 0;
+
+    this.on('removeListener', () => {
+      if (--this.listenerCount === 0) {
+        chrome.runtime.onMessage.removeListener(this.onMessage);
+      }
+    });
+
+    this.on('newListener', () => {
+      if (++this.listenerCount === 1) {
+        this.onMessage = this._onMessage.bind(this);
+        chrome.runtime.onMessage.addListener(this.onMessage);
+      }
+    });
   }
 
   dispose() {
     this.removeAllListeners();
-    this.port.onMessage.removeListener(this.onMessage);
-    this.port.disconnect();
-    for (let promise of Object.values(this.promises)) {
-      promise.reject(new Error('Proxy disposed.'));
-    }
-    this.promises = {};
+    chrome.runtime.onMessage.removeListener(this.onMessage);
   }
 
   get(target, prop, receiver) {
@@ -28,33 +101,22 @@ class ServiceProxy extends EventEmitter
     }
 
     const self = this;
-    return function() {
-      return new Promise((resolve, reject) => {
-        self.promises[self.messageId] = {
-          resolve,
-          reject
-        };
-        const message = {
-          id: self.messageId,
-          method: prop,
-          args: Array.from(arguments)
-        };
-        self.port.postMessage(message);
-        self.messageId++;
-      });
+    return async function() {
+      const call = {
+        serviceName: self.serviceName,
+        methodName: prop,
+        args: Array.from(arguments)
+      };
+      return await ServiceBroker.invoke(call);
     };
   }
 
-  _onMessage({ id, value, error, event, args }) {
-    if (event != null) {
-      this.emit(event, ...args);
-    } else if (error != null) {
-      this.promises[id].reject(error);
-      delete this.promises[id];
-    } else {
-      this.promises[id].resolve(value);
-      delete this.promises[id];
+  _onMessage({ serviceName, eventName, args }, sender, respond) {
+    if (serviceName !== this.serviceName || eventName === undefined) {
+      return;
     }
+
+    this.emit(eventName, ...args);
   }
 }
 
@@ -64,69 +126,15 @@ class Service
     this.clients = {};
     this.clientId = 0;
 
-    let serviceName = this.constructor.name;
-    this.onConnect = port => {
-      if (port.name != serviceName) {
-        return;
-      }
-
-      let clientId = this.clientId++;
-
-      const onMessage = async ({ id, method, args }) => {
-        try {
-          if (!this[method]) {
-            throw new Error(M.invalid_service_request(serviceName, method));
-          }
-
-          let value = await this[method](...args);
-          port.postMessage({ id, value });
-        } catch (e) {
-          port.postMessage({ id, error: `${e}` });
-        }
-      };
-
-      const onDisconnect = () => {
-        // Remove event handlers.
-        this.clients[clientId].dispose();
-        delete this.clients[clientId];
-      };
-
-      this.clients[clientId] = {
-        port,
-        dispose() {
-          port.onMessage.removeListener(onMessage);
-          port.onDisconnect.removeListener(onDisconnect);
-        }
-      };
-
-      port.onMessage.addListener(onMessage);
-      port.onDisconnect.addListener(onDisconnect);
-    };
-
-    chrome.runtime.onConnect.addListener(this.onConnect);
-  }
-
-  dispose() {
-    // Remove all event handlers.
-    chrome.runtime.onConnect.removeListener(this.onConnect);
-    for (let { dispose } of Object.values(this.clients)) {
-      dispose();
-    }
-    this.clients = {};
+    this.serviceName = this.constructor.name;
   }
 
   emit(eventName, ...args) {
-    for (let { port } of Object.values(this.clients)) {
-      try {
-        port.postMessage({ event: eventName, args: args });
-      } catch (e) {
-        // Assume port has disconnected.
-      }
-    }
-  }
-
-  static start(...args) {
-    return new this(...args);
+    chrome.runtime.sendMessage({
+      serviceName: this.serviceName,
+      eventName,
+      args
+    });
   }
 
   static get proxy() {
@@ -141,4 +149,7 @@ class Service
   }
 }
 
-export default Service;
+export {
+  Service,
+  ServiceBroker
+};

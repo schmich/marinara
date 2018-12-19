@@ -170,7 +170,7 @@
 </style>
 
 <script>
-import { HistoryClient } from '../background/Services';
+import { HistoryClient, PomodoroClient } from '../background/Services';
 import { createWeekDistribution, createDayDistribution } from './Graphs';
 import { integer, float, strftime, pomodoroCount } from '../Filters';
 import * as File from './File';
@@ -181,6 +181,7 @@ export default {
   data() {
     return {
       historyClient: new HistoryClient(),
+      pomodoroClient: new PomodoroClient(),
       stats: null,
       historyStart: null,
       dayDistributionBucket: 30
@@ -188,9 +189,13 @@ export default {
   },
   async mounted() {
     this.updateStats();
+    this.pomodoroClient.on('timer:expire', () => {
+      this.updateStats();
+    });
   },
   beforeDestroy() {
     this.historyClient.dispose();
+    this.pomodoroClient.dispose();
   },
   methods: {
     async exportHistory() {

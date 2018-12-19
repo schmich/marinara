@@ -1,17 +1,18 @@
 import * as Sounds from '../Sounds';
-import Service from '../Service';
+import { Service } from '../Service';
 import M from '../Messages';
+import SingletonPage from './SingletonPage';
 
 class SettingsService extends Service
 {
-  constructor(controller, settingsManager) {
+  constructor(timer, settingsManager) {
     super();
-    this.controller = controller;
+    this.timer = timer;
     this.settingsManager = settingsManager;
   }
 
   async startSession() {
-    this.controller.start();
+    this.timer.start();
   }
 
   async getSettings() {
@@ -33,10 +34,6 @@ class SettingsService extends Service
     await this.settingsManager.set(settings);
   }
 
-  async showSettingsPage() {
-    return await this.controller.showOptionsPage('settings');
-  }
-
   _validate(phase) {
     let { duration, timerSound } = phase;
     if (isNaN(duration) || duration <= 0 || duration > 999) {
@@ -54,9 +51,8 @@ class SettingsService extends Service
 
 class HistoryService extends Service
 {
-  constructor(controller, history) {
+  constructor(history) {
     super();
-    this.controller = controller;
     this.history = history;
   }
 
@@ -71,21 +67,50 @@ class HistoryService extends Service
   async getHistory(since) {
     return await this.history.stats(since);
   }
-
-  async showHistoryPage() {
-    return await this.controller.showOptionsPage('history');
-  }
 }
 
 class PomodoroService extends Service
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
+    this.timer.observe(this);
   }
 
   async startSession() {
-    this.controller.start();
+    this.timer.start();
+  }
+
+  onTimerStart(...args) {
+    this.emit('timer:start', ...args);
+  }
+
+  onTimerStop(...args) {
+    this.emit('timer:stop', ...args);
+  }
+
+  onTimerPause(...args) {
+    this.emit('timer:pause', ...args);
+  }
+
+  onTimerResume(...args) {
+    this.emit('timer:resume', ...args);
+  }
+
+  onTimerTick(...args) {
+    this.emit('timer:tick', ...args);
+  }
+
+  onTimerExpire(...args) {
+    this.emit('timer:expire', ...args);
+  }
+
+  onTimerChange(...args) {
+    this.emit('timer:change', ...args);
+  }
+
+  onCycleReset(...args) {
+    this.emit('cycle:reset', ...args);
   }
 }
 
@@ -100,10 +125,45 @@ class SoundsService extends Service
   }
 }
 
+class OptionsService extends Service
+{
+  constructor() {
+    super();
+  }
+
+  async showPage(page) {
+    let manifest = chrome.runtime.getManifest();
+
+    let windows = chrome.extension.getViews({ type: 'tab' });
+    for (let window of windows) {
+      if (window.location.toString().indexOf(manifest.options_page) >= 0) {
+        window.postMessage({ page });
+        return;
+      }
+    }
+
+    let url = chrome.extension.getURL(manifest.options_page + '#/' + page);
+    await SingletonPage.show(url);
+  }
+
+  async showSettingsPage() {
+    return await this.showPage('settings');
+  }
+
+  async showHistoryPage() {
+    return await this.showPage('history');
+  }
+
+  async showFeedbackPage() {
+    return await this.showPage('feedback');
+  }
+}
+
 const SettingsClient = SettingsService.proxy;
 const HistoryClient = HistoryService.proxy;
 const PomodoroClient = PomodoroService.proxy;
 const SoundsClient = SoundsService.proxy;
+const OptionsClient = OptionsService.proxy;
 
 export {
   SettingsService,
@@ -113,5 +173,7 @@ export {
   PomodoroService,
   PomodoroClient,
   SoundsService,
-  SoundsClient
+  SoundsClient,
+  OptionsService,
+  OptionsClient
 };

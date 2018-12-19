@@ -1,11 +1,13 @@
 import Chrome from '../Chrome';
 import StorageManager from './StorageManager';
 import RLE from './RLE';
+import Mutex from '../Mutex';
 
 class History
 {
   constructor() {
     this.storage = new StorageManager(new HistorySchema(), Chrome.storage.local);
+    this.mutex = new Mutex();
   }
 
   async raw() {
@@ -13,106 +15,114 @@ class History
   }
 
   async import(history) {
-    if (!history.pomodoros) {
-      throw new Error(T('missing_pomodoro_data'));
-    }
+    await this.mutex.exclusive(async () => {
+      if (!history.pomodoros) {
+        throw new Error(T('missing_pomodoro_data'));
+      }
 
-    if (!history.durations) {
-      throw new Error(T('missing_duration_data'));
-    }
+      if (!history.durations) {
+        throw new Error(T('missing_duration_data'));
+      }
 
-    if (!history.timezones) {
-      throw new Error(T('missing_timezone_data'));
-    }
+      if (!history.timezones) {
+        throw new Error(T('missing_timezone_data'));
+      }
 
-    let durations = RLE.decode(history.durations);
-    let timezones = RLE.decode(history.timezones);
+      let durations = RLE.decode(history.durations);
+      let timezones = RLE.decode(history.timezones);
 
-    if (history.pomodoros.length !== durations.length) {
-      throw new Error('Mismatched Pomodoro/duration data.');
-    }
+      if (history.pomodoros.length !== durations.length) {
+        throw new Error('Mismatched Pomodoro/duration data.');
+      }
 
-    if (history.pomodoros.length !== timezones.length) {
-      throw new Error('Mismatched Pomodoro/timezone data.');
-    }
+      if (history.pomodoros.length !== timezones.length) {
+        throw new Error('Mismatched Pomodoro/timezone data.');
+      }
 
-    await this.storage.set(history);
+      await this.storage.set(history);
+    });
   }
 
   async addPomodoro(duration, when = null) {
-    let local = await this.storage.get();
+    await this.mutex.exclusive(async () => {
+      let local = await this.storage.get();
 
-    when = when || new Date();
-    let timestamp = History.timestamp(when);
+      when = when || new Date();
+      let timestamp = History.timestamp(when);
 
-    let i = local.pomodoros.length - 1;
-    while (i >= 0 && local.pomodoros[i] > timestamp) {
-      --i;
-    }
+      let i = local.pomodoros.length - 1;
+      while (i >= 0 && local.pomodoros[i] > timestamp) {
+        --i;
+      }
 
-    let timezone = when.getTimezoneOffset();
+      let timezone = when.getTimezoneOffset();
 
-    if (i >= local.pomodoros.length - 1) {
-      // Timestamps *should* be monotonically increasing, so we should
-      // always be able to quickly append new values.
-      RLE.append(local.durations, duration);
-      RLE.append(local.timezones, timezone);
-      local.pomodoros.push(timestamp);
-    } else {
-      // If there is a timestamp inversion for some reason, insert values
-      // at the correct sorted position.
-      let durations = RLE.decode(local.durations);
-      durations.splice(i + 1, 0, duration);
-      local.durations = RLE.encode(durations);
+      if (i >= local.pomodoros.length - 1) {
+        // Timestamps *should* be monotonically increasing, so we should
+        // always be able to quickly append new values.
+        RLE.append(local.durations, duration);
+        RLE.append(local.timezones, timezone);
+        local.pomodoros.push(timestamp);
+      } else {
+        // If there is a timestamp inversion for some reason, insert values
+        // at the correct sorted position.
+        let durations = RLE.decode(local.durations);
+        durations.splice(i + 1, 0, duration);
+        local.durations = RLE.encode(durations);
 
-      let timezones = RLE.decode(local.timezones);
-      timezones.splice(i + 1, 0, timezone);
-      local.timezones = RLE.encode(timezones);
+        let timezones = RLE.decode(local.timezones);
+        timezones.splice(i + 1, 0, timezone);
+        local.timezones = RLE.encode(timezones);
 
-      local.pomodoros.splice(i + 1, 0, timestamp);
-    }
+        local.pomodoros.splice(i + 1, 0, timestamp);
+      }
 
-    await this.storage.set(local);
+      await this.storage.set(local);
 
-    return this.countToday(local.pomodoros);
+      return this.countSince(local.pomodoros, History.today);
+    });
   }
 
   async stats(since) {
-    let { pomodoros } = await this.storage.get('pomodoros');
+    return this.mutex.exclusive(async () => {
+      let { pomodoros } = await this.storage.get('pomodoros');
 
-    let dayCount = 0;
-    if (pomodoros.length > 0) {
-      let delta = new Date() - History.date(pomodoros[0]);
-      dayCount = Math.ceil(delta / 1000 / 60 / 60 / 24);
-    }
+      let dayCount = 0;
+      if (pomodoros.length > 0) {
+        let delta = new Date() - History.date(pomodoros[0]);
+        dayCount = Math.ceil(delta / 1000 / 60 / 60 / 24);
+      }
 
-    let total = pomodoros.length;
-    let weekCount = dayCount === 0 ? 0 : (dayCount / 7);
-    let monthCount = dayCount === 0 ? 0 : (dayCount / (365.25 / 12));
+      let total = pomodoros.length;
+      let weekCount = dayCount === 0 ? 0 : (dayCount / 7);
+      let monthCount = dayCount === 0 ? 0 : (dayCount / (365.25 / 12));
 
-    return {
-      day: this.countSince(pomodoros, History.today),
-      dayAverage: dayCount === 0 ? 0 : (total / dayCount),
-      week: this.countSince(pomodoros, History.thisWeek),
-      weekAverage: weekCount === 0 ? 0 : (total / weekCount),
-      month: this.countSince(pomodoros, History.thisMonth),
-      monthAverage: monthCount === 0 ? 0 : (total / monthCount),
-      period: this.countSince(pomodoros, new Date(since)),
-      total: total,
-      daily: this.dailyGroups(pomodoros, since),
-      pomodoros: pomodoros.map(p => +History.date(p))
-    };
+      return {
+        day: this.countSince(pomodoros, History.today),
+        dayAverage: dayCount === 0 ? 0 : (total / dayCount),
+        week: this.countSince(pomodoros, History.thisWeek),
+        weekAverage: weekCount === 0 ? 0 : (total / weekCount),
+        month: this.countSince(pomodoros, History.thisMonth),
+        monthAverage: monthCount === 0 ? 0 : (total / monthCount),
+        period: this.countSince(pomodoros, new Date(since)),
+        total: total,
+        daily: this.dailyGroups(pomodoros, since),
+        pomodoros: pomodoros.map(p => +History.date(p))
+      };
+    });
   }
 
   async countToday(pomodoros = null) {
-    if (!pomodoros) {
-      pomodoros = (await this.storage.get('pomodoros')).pomodoros;
-      if (pomodoros.length === 0) {
-        return 0;
+    return this.mutex.exclusive(async () => {
+      if (!pomodoros) {
+        pomodoros = (await this.storage.get('pomodoros')).pomodoros;
+        if (pomodoros.length === 0) {
+          return 0;
+        }
       }
-    }
 
-    return this.countSince(pomodoros, History.today);
+      return this.countSince(pomodoros, History.today);
+    });
   }
 
   countSince(pomodoros, date) {

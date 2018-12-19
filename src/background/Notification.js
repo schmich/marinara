@@ -1,47 +1,66 @@
 import Chrome from '../Chrome';
+import Mutex from '../Mutex';
 
 class Notification
 {
-  static async show(controller, title, messages, action) {
-    let options = {
-      type: 'basic',
-      title: title,
-      message: messages.filter(m => m && m.trim() !== '').join("\n"),
-      iconUrl: 'images/128.png',
-      isClickable: true,
-      requireInteraction: true,
-      buttons: [{ title: action, iconUrl: 'images/start.png' }]
-    };
-
-    let notificationId = await Chrome.notifications.create(options);
-    return new Notification(controller, notificationId);
+  constructor(title, message, onClick = null) {
+    this.title = title;
+    this.message = message;
+    this.buttons = [];
+    this.notificationId = null;
+    this.onClick = onClick;
   }
 
-  constructor(controller, notificationId) {
-    this.controller = controller;
-    this.notificationId = notificationId;
+  addButton(title, onClick) {
+    this.buttons.push({ title, onClick });
+  }
 
-    let notificationClicked = id => {
-      if (id === this.notificationId) {
-        this.controller.start();
-        chrome.notifications.clear(id);
-      }
+  async show() {
+    if (this.notificationId != null) {
+      return;
+    }
+
+    let options = {
+      type: 'basic',
+      title: this.title,
+      message: this.message,
+      iconUrl: 'images/128.png',
+      isClickable: !!this.action,
+      requireInteraction: true,
+      buttons: this.buttons.map(b => {
+        return {
+          title: b.title,
+          iconUrl: 'images/start.png'
+        };
+      })
     };
 
-    let buttonClicked = id => {
-      if (id === this.notificationId) {
-        this.controller.start();
-        chrome.notifications.clear(id);
+    this.notificationId = await Chrome.notifications.create(options);
+
+    let notificationClicked = notificationId => {
+      if (notificationId !== this.notificationId) {
+        return;
       }
+      this.onClick && this.onClick();
+      chrome.notifications.clear(notificationId);
     };
 
-    let notificationClosed = id => {
-      if (id === this.notificationId) {
-        chrome.notifications.onClicked.removeListener(notificationClicked);
-        chrome.notifications.onButtonClicked.removeListener(buttonClicked);
-        chrome.notifications.onClosed.removeListener(notificationClosed);
-        this.notificationId = null;
+    let buttonClicked = (notificationId, buttonIndex) => {
+      if (notificationId !== this.notificationId) {
+        return;
       }
+      this.buttons[buttonIndex].onClick();
+      chrome.notifications.clear(notificationId);
+    };
+
+    let notificationClosed = notificationId => {
+      if (notificationId !== this.notificationId) {
+        return;
+      }
+      chrome.notifications.onClicked.removeListener(notificationClicked);
+      chrome.notifications.onButtonClicked.removeListener(buttonClicked);
+      chrome.notifications.onClosed.removeListener(notificationClosed);
+      this.notificationId = null;
     };
 
     chrome.notifications.onClicked.addListener(notificationClicked);
@@ -50,7 +69,7 @@ class Notification
   }
 
   close() {
-    if (this.notificationId) {
+    if (this.notificationId != null) {
       chrome.notifications.clear(this.notificationId);
     }
   }

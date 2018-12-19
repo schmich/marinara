@@ -1,5 +1,5 @@
 import M from '../Messages';
-import { TimerState } from './Timer';
+import { OptionsClient } from './Services';
 
 class Menu
 {
@@ -121,9 +121,9 @@ class Action
 
 class StartFocusingAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
@@ -135,20 +135,19 @@ class StartFocusingAction extends Action
   }
 
   run() {
-    this.controller.startFocus();
+    this.timer.startFocus();
   }
 }
 
 class StartShortBreakAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
-    let hasLong = this.controller.settings.longBreak.interval > 0;
-    return hasLong ? M.start_short_break : M.start_break;
+    return this.timer.hasLongBreak ? M.start_short_break : M.start_break;
   }
 
   get visible() {
@@ -156,15 +155,15 @@ class StartShortBreakAction extends Action
   }
 
   run() {
-    this.controller.startShortBreak();
+    this.timer.startShortBreak();
   }
 }
 
 class StartLongBreakAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
@@ -172,19 +171,19 @@ class StartLongBreakAction extends Action
   }
 
   get visible() {
-    return this.controller.settings.longBreak.interval > 0;
+    return this.timer.hasLongBreak;
   }
 
   run() {
-    this.controller.startLongBreak();
+    this.timer.startLongBreak();
   }
 }
 
 class StopTimerAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
@@ -192,20 +191,19 @@ class StopTimerAction extends Action
   }
 
   get visible() {
-    let state = this.controller.state;
-    return (state === TimerState.Running) || (state === TimerState.Paused);
+    return this.timer.isRunning || this.timer.isPaused;
   }
 
   run() {
-    this.controller.stop();
+    this.timer.stop();
   }
 }
 
 class PauseTimerAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
@@ -213,19 +211,19 @@ class PauseTimerAction extends Action
   }
 
   get visible() {
-    return this.controller.state === TimerState.Running;
+    return this.timer.isRunning;
   }
 
   run() {
-    this.controller.pause();
+    this.timer.pause();
   }
 }
 
 class ResumeTimerAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
@@ -233,19 +231,18 @@ class ResumeTimerAction extends Action
   }
 
   get visible() {
-    return this.controller.state === TimerState.Paused;
+    return this.timer.isPaused;
   }
 
   run() {
-    this.controller.resume();
+    this.timer.resume();
   }
 }
 
 class PomodoroHistoryAction extends Action
 {
-  constructor(controller) {
+  constructor() {
     super();
-    this.controller = controller;
   }
 
   get title() {
@@ -256,21 +253,23 @@ class PomodoroHistoryAction extends Action
     return true;
   }
 
-  run() {
-    this.controller.showOptionsPage('history');
+  async run() {
+    let optionsClient = new OptionsClient();
+    console.log('>>> OptionsClient');
+    await optionsClient.showHistoryPage();
+    optionsClient.dispose();
   }
 }
 
 class StartPomodoroCycleAction extends Action
 {
-  constructor(controller) {
+  constructor(timer) {
     super();
-    this.controller = controller;
+    this.timer = timer;
   }
 
   get title() {
-    const state = this.controller.state;
-    if (state === TimerState.Running || state === TimerState.Paused) {
+    if (this.timer.isRunning || this.timer.isPaused) {
       return M.restart_pomodoro_cycle;
     } else {
       return M.start_pomodoro_cycle;
@@ -278,25 +277,24 @@ class StartPomodoroCycleAction extends Action
   }
 
   get visible() {
-    return this.controller.settings.longBreak.interval > 0;
+    return this.timer.hasLongBreak;
   }
 
   run() {
-    this.controller.startCycle();
+    this.timer.startCycle();
   }
 }
 
 class PomodoroMenuSelector
 {
-  constructor(controller, inactive, active) {
-    this.controller = controller;
+  constructor(timer, inactive, active) {
+    this.timer = timer;
     this.inactive = inactive;
     this.active = active;
   }
 
   apply() {
-    let state = this.controller.state;
-    let menu = (state === TimerState.Running || state === TimerState.Paused) ? this.active : this.inactive;
+    let menu = (this.timer.isRunning || this.timer.isPaused) ? this.active : this.inactive;
     menu.apply();
   }
 }
