@@ -97,7 +97,7 @@ class TimerSoundObserver
       return;
     }
 
-    let { files, bpm } = this.settings.focus.timerSound;
+    let { files, bpm } = this.settings.focus.timerSound || {};
     if (files && bpm) {
       await this.mutex.exclusive(async () => {
         this.metronome && await this.metronome.close();
