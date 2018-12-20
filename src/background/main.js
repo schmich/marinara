@@ -1,7 +1,7 @@
 import M from '../Messages';
 import { PersistentPomodoroTimer } from './Timer';
 import Chrome from '../Chrome';
-import * as Menu from './Menu';
+import { createPomodoroMenu } from './Menu';
 import History from './History';
 import StorageManager from './StorageManager';
 import { SettingsSchema, PersistentSettings } from './Settings';
@@ -22,7 +22,7 @@ class Controller
 
     this.history = history;
     this.timer = timer;
-    this.menu = this.createMenu(this.timer);
+    this.menu = createPomodoroMenu(this.timer);
     this.timer.observe(new HistoryObserver(history));
     this.timer.observe(new BadgeObserver());
     this.timer.observe(new NotificationObserver(timer, settings, history));
@@ -92,48 +92,6 @@ class Controller
     } else {
       this.timer.start();
     }
-  }
-
-  createMenu(timer) {
-    let pause = new Menu.PauseTimerAction(timer);
-    let resume = new Menu.ResumeTimerAction(timer);
-    let stop = new Menu.StopTimerAction(timer);
-    let startCycle = new Menu.StartPomodoroCycleAction(timer);
-    let startFocus = new Menu.StartFocusingAction(timer);
-    let startShortBreak = new Menu.StartShortBreakAction(timer);
-    let startLongBreak = new Menu.StartLongBreakAction(timer);
-    let viewHistory = new Menu.PomodoroHistoryAction();
-
-    let inactive = new Menu.Menu(['browser_action'],
-      new Menu.MenuGroup(
-        startCycle,
-        startFocus,
-        startShortBreak,
-        startLongBreak
-      ),
-      new Menu.MenuGroup(
-        viewHistory
-      )
-    );
-
-    let active = new Menu.Menu(['browser_action'],
-      new Menu.MenuGroup(
-        pause,
-        resume,
-        stop,
-        new Menu.RestartTimerParentMenu(
-          startFocus,
-          startShortBreak,
-          startLongBreak
-        ),
-        startCycle
-      ),
-      new Menu.MenuGroup(
-        viewHistory
-      )
-    );
-
-    return new Menu.PomodoroMenuSelector(timer, inactive, active);
   }
 }
 

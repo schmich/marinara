@@ -298,18 +298,49 @@ class PomodoroMenuSelector
   }
 }
 
+function createPomodoroMenu(timer) {
+  let pause = new PauseTimerAction(timer);
+  let resume = new ResumeTimerAction(timer);
+  let stop = new StopTimerAction(timer);
+
+  let startCycle = new StartPomodoroCycleAction(timer);
+  let startFocus = new StartFocusingAction(timer);
+  let startShortBreak = new StartShortBreakAction(timer);
+  let startLongBreak = new StartLongBreakAction(timer);
+  let viewHistory = new PomodoroHistoryAction();
+
+  let inactive = new Menu(['browser_action'],
+    new MenuGroup(
+      startCycle,
+      startFocus,
+      startShortBreak,
+      startLongBreak
+    ),
+    new MenuGroup(
+      viewHistory
+    )
+  );
+
+  let active = new Menu(['browser_action'],
+    new MenuGroup(
+      pause,
+      resume,
+      stop,
+      new RestartTimerParentMenu(
+        startFocus,
+        startShortBreak,
+        startLongBreak
+      ),
+      startCycle
+    ),
+    new MenuGroup(
+      viewHistory
+    )
+  );
+
+  return new PomodoroMenuSelector(timer, inactive, active);
+}
+
 export {
-  Menu,
-  MenuGroup,
-  ParentMenu,
-  RestartTimerParentMenu,
-  StartFocusingAction,
-  StartShortBreakAction,
-  StartLongBreakAction,
-  StopTimerAction,
-  PauseTimerAction,
-  ResumeTimerAction,
-  PomodoroHistoryAction,
-  StartPomodoroCycleAction,
-  PomodoroMenuSelector
+  createPomodoroMenu
 };
