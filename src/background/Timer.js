@@ -157,6 +157,8 @@ class PomodoroTimer extends EventEmitter
 {
   constructor(settings, initialPhase) {
     super();
+    this.advanceTimer = false;
+    this.pomodoros = 0;
     this.settings = settings;
     this.phase = initialPhase;
   }
@@ -174,24 +176,27 @@ class PomodoroTimer extends EventEmitter
       this.timer = timer;
     }
 
+    this.pomodoros = 0;
+    this.emit('cycle:reset');
     while (true) {
-      for (let i = 0; !interval || (i < interval); interval && ++i) {
-        this._phase = Phase.Focus;
-        this.nextPhase = Phase.ShortBreak;
-        setTimer(new Timer(Math.floor(settings.focus.duration * 60), 60));
-        yield;
+      switch (this._phase) {
+        case Phase.Focus:
+          this.nextPhase = (interval && ((this.pomodoros + 1) % interval == 0)) ? Phase.LongBreak : Phase.ShortBreak;
+          setTimer(new Timer(Math.floor(settings.focus.duration * 60), 60));
+          yield;
+          break;
 
-        this._phase = Phase.ShortBreak;
-        this.nextPhase = interval && (i == interval - 1) ? Phase.LongBreak : Phase.Focus;
-        setTimer(new Timer(Math.floor(settings.shortBreak.duration * 60), 60));
-        yield;
-      }
+        case Phase.ShortBreak:
+          this.nextPhase = Phase.Focus;
+          setTimer(new Timer(Math.floor(settings.shortBreak.duration * 60), 60));
+          yield;
+          break;
 
-      if (settings.longBreak) {
-        this._phase = Phase.LongBreak;
-        this.nextPhase = Phase.Focus;
-        setTimer(new Timer(Math.floor(settings.longBreak.duration * 60), 60));
-        yield;
+        case Phase.LongBreak:
+          this.nextPhase = Phase.Focus;
+          setTimer(new Timer(Math.floor(settings.longBreak.duration * 60), 60));
+          yield;
+          break;
       }
     }
   }
@@ -205,13 +210,13 @@ class PomodoroTimer extends EventEmitter
       throw new Error('No long break interval defined.');
     }
 
-    this.timerGenerator = this.createTimers();
-    this._phase = null;
-    while (this.phase != newPhase) {
-      this.timerGenerator.next();
+    if (!this.timerGenerator) {
+      this.timerGenerator = this.createTimers();
     }
-    this.startOfCycle = true;
-    this.emit('cycle:reset', newPhase);
+
+    this._phase = newPhase;
+    this.timerGenerator.next();
+    this.advanceTimer = false;
   }
 
   get hasLongBreak() {
@@ -240,12 +245,14 @@ class PomodoroTimer extends EventEmitter
   }
 
   startCycle() {
+    this.timerGenerator = null;
     this.phase = Phase.Focus;
     this.start();
   }
 
   startFocus() {
-    this.startCycle();
+    this.phase = Phase.Focus;
+    this.start();
   }
 
   startShortBreak() {
@@ -259,10 +266,10 @@ class PomodoroTimer extends EventEmitter
   }
 
   start() {
-    if (this.startOfCycle) {
-      this.startOfCycle = false;
-    } else {
+    if (this.advanceTimer) {
+      this._phase = this.nextPhase;
       this.timerGenerator.next();
+      this.advanceTimer = false;
     }
 
     this.timer.start();
@@ -316,6 +323,10 @@ class PomodoroTimer extends EventEmitter
   }
 
   onExpire(...args) {
+    if (this.phase === Phase.Focus) {
+      this.pomodoros++;
+    }
+    this.advanceTimer = true;
     this.emit('timer:expire', ...[this.phase, this.nextPhase, ...args]);
   }
 
