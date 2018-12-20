@@ -172,21 +172,33 @@ function createHeatmap(data, start, el) {
         .attr('x', d => d * (cellSize + 2) + dx)
         .attr('class', d => `day color${d - 1}`);
 
-  tippy(el.querySelectorAll('.days .day'), {
+  let tooltips = tippy(el.querySelectorAll('.days .day'), {
     arrow: true,
     duration: 0,
     animation: null
   });
+
+  return function cleanup() {
+    tooltips.destroyAll();
+  };
 }
 
 export default {
   props: ['pomodoros', 'start'],
+  data() {
+    return {
+      cleanup: null
+    };
+  },
   mounted() {
     this.updateHeatmap();
   },
   methods: {
     updateHeatmap() {
-      createHeatmap(this.pomodoros || {}, this.start, this.$el);
+      if (this.cleanup) {
+        this.cleanup();
+      }
+      this.cleanup = createHeatmap(this.pomodoros || {}, this.start, this.$el);
     }
   },
   watch: {

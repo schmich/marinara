@@ -26,24 +26,24 @@
       <div class="title">
         <h2>{{ M.daily_distribution }}</h2>
         <div v-if="stats.total > 0" class="options" key="actions">
-          <input type="radio" id="day-15" name="day-distribution" v-model.number="dayDistributionBucket" value="15">
+          <input type="radio" id="day-15" name="day-distribution" v-model.number="dayDistributionBucketSize" value="15">
           <label for="day-15">{{ M.min_suffix(15) }}</label>
-          <input type="radio" id="day-30" name="day-distribution" v-model.number="dayDistributionBucket" value="30">
+          <input type="radio" id="day-30" name="day-distribution" v-model.number="dayDistributionBucketSize" value="30">
           <label for="day-30">{{ M.min_suffix(30) }}</label>
-          <input type="radio" id="day-60" name="day-distribution" v-model.number="dayDistributionBucket" value="60">
+          <input type="radio" id="day-60" name="day-distribution" v-model.number="dayDistributionBucketSize" value="60">
           <label for="day-60">{{ M.hr_suffix(1) }}</label>
-          <input type="radio" id="day-120" name="day-distribution" v-model.number="dayDistributionBucket" value="120">
+          <input type="radio" id="day-120" name="day-distribution" v-model.number="dayDistributionBucketSize" value="120">
           <label for="day-120">{{ M.hr_suffix(2) }}</label>
         </div>
       </div>
-      <div v-if="stats.total > 0" ref="dayDistribution" key="chart"></div>
+      <DayDistribution v-if="stats.total > 0" :pomodoros="stats.pomodoros" :bucketSize="dayDistributionBucketSize" key="chart"></DayDistribution>
       <div v-else class="empty" key="empty">{{ M.daily_empty_placeholder }}</div>
     </section>
     <section class="chart">
       <div class="title">
         <h2>{{ M.weekly_distribution }}</h2>
       </div>
-      <div v-if="stats.total > 0" ref="weekDistribution" key="chart"></div>
+      <WeekDistribution v-if="stats.total > 0" :pomodoros="stats.pomodoros" key="chart"></WeekDistribution>
       <div v-else class="empty" key="empty">{{ M.weekly_empty_placeholder }}</div>
     </section>
     <section id="heatmap-section" class="chart">
@@ -171,10 +171,11 @@
 
 <script>
 import { HistoryClient, PomodoroClient } from '../background/Services';
-import { createWeekDistribution, createDayDistribution } from './Graphs';
 import { integer, float, strftime, pomodoroCount } from '../Filters';
 import * as File from './File';
 import Heatmap from './Heatmap';
+import DayDistribution from './DayDistribution';
+import WeekDistribution from './WeekDistribution';
 import M from '../Messages';
 
 export default {
@@ -184,7 +185,7 @@ export default {
       pomodoroClient: new PomodoroClient(),
       stats: null,
       historyStart: null,
-      dayDistributionBucket: 30
+      dayDistributionBucketSize: 30
     };
   },
   async mounted() {
@@ -231,23 +232,6 @@ export default {
       start.setDate(start.getDate() - start.getDay());
       this.stats = await this.historyClient.getHistory(+start);
       this.historyStart = start;
-
-      this.$nextTick(() => {
-        if (this.stats.total === 0) {
-          return;
-        }
-
-        createDayDistribution(this.$refs.dayDistribution, this.dayDistributionBucket, this.stats.pomodoros);
-        createWeekDistribution(this.$refs.weekDistribution, this.stats.pomodoros);
-      });
-    }
-  },
-  watch: {
-    dayDistributionBucket(to) {
-      if (!this.stats || this.stats.total === 0) {
-        return;
-      }
-      createDayDistribution(this.$refs.dayDistribution, to, this.stats.pomodoros);
     }
   },
   filters: {
@@ -260,7 +244,9 @@ export default {
     last_9_months: M.last_9_months
   },
   components: {
-    Heatmap
+    Heatmap,
+    DayDistribution,
+    WeekDistribution
   }
 };
 </script>
