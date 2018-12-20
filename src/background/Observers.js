@@ -134,13 +134,7 @@ class NotificationObserver
     this.history = history;
     this.notification = null;
     this.expiration = null;
-    this.pomodorosUntilLongBreak = null;
     this.mutex = new Mutex();
-    this.onCycleReset();
-  }
-
-  onCycleReset() {
-    this.pomodorosUntilLongBreak = this.settings.longBreak && this.settings.longBreak.interval;
   }
 
   onTimerStart() {
@@ -158,10 +152,6 @@ class NotificationObserver
   }
 
   async onTimerExpire(phase, nextPhase) {
-    if (phase === Phase.Focus && this.pomodorosUntilLongBreak) {
-      --this.pomodorosUntilLongBreak;
-    }
-
     let settings = this.settings[{
       [Phase.Focus]: 'focus',
       [Phase.ShortBreak]: 'shortBreak',
@@ -188,8 +178,9 @@ class NotificationObserver
     }[nextPhase];
 
     let messages = [];
-    if (this.pomodorosUntilLongBreak > 0) {
-      messages.push(M.pomodoros_until_long_break(pomodoroCount(this.pomodorosUntilLongBreak)));
+    let remaining = this.timer.pomodorosUntilLongBreak;
+    if (remaining > 0) {
+      messages.push(M.pomodoros_until_long_break(pomodoroCount(remaining)));
     }
 
     let pomodorosToday = await this.history.countToday();

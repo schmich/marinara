@@ -155,8 +155,9 @@ const Phase = new Enum({
 
 class PomodoroTimer extends EventEmitter
 {
-  constructor(settings, initialPhase) {
+  constructor(settings, initialPhase = Phase.Focus, timerType = Timer) {
     super();
+    this.timerType = timerType;
     this.advanceTimer = false;
     this.pomodoros = 0;
     this.settings = settings;
@@ -165,7 +166,6 @@ class PomodoroTimer extends EventEmitter
 
   *createTimers() {
     let settings = this.settings;
-    let interval = settings.longBreak.interval;
 
     const setTimer = timer => {
       if (this.timer) {
@@ -181,20 +181,20 @@ class PomodoroTimer extends EventEmitter
     while (true) {
       switch (this._phase) {
         case Phase.Focus:
-          this.nextPhase = (interval && ((this.pomodoros + 1) % interval == 0)) ? Phase.LongBreak : Phase.ShortBreak;
-          setTimer(new Timer(Math.floor(settings.focus.duration * 60), 60));
+          this.nextPhase = this.pomodorosUntilLongBreak === 1 ? Phase.LongBreak : Phase.ShortBreak;
+          setTimer(new this.timerType(Math.floor(settings.focus.duration * 60), 60));
           yield;
           break;
 
         case Phase.ShortBreak:
           this.nextPhase = Phase.Focus;
-          setTimer(new Timer(Math.floor(settings.shortBreak.duration * 60), 60));
+          setTimer(new this.timerType(Math.floor(settings.shortBreak.duration * 60), 60));
           yield;
           break;
 
         case Phase.LongBreak:
           this.nextPhase = Phase.Focus;
-          setTimer(new Timer(Math.floor(settings.longBreak.duration * 60), 60));
+          setTimer(new this.timerType(Math.floor(settings.longBreak.duration * 60), 60));
           yield;
           break;
       }
@@ -221,6 +221,11 @@ class PomodoroTimer extends EventEmitter
 
   get hasLongBreak() {
     return this.settings.longBreak.interval > 0;
+  }
+
+  get pomodorosUntilLongBreak() {
+    let interval = this.settings.longBreak.interval;
+    return !interval ? null : (interval - ((this.pomodoros - 1) % interval) - 1);
   }
 
   get state() {
