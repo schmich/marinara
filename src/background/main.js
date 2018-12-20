@@ -102,7 +102,7 @@ class Controller
     let startFocus = new Menu.StartFocusingAction(timer);
     let startShortBreak = new Menu.StartShortBreakAction(timer);
     let startLongBreak = new Menu.StartLongBreakAction(timer);
-    let viewHistory = new Menu.PomodoroHistoryAction(this);
+    let viewHistory = new Menu.PomodoroHistoryAction();
 
     let inactive = new Menu.Menu(['browser_action'],
       new Menu.MenuGroup(
