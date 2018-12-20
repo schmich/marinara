@@ -109,17 +109,29 @@ function createHeatmap(data, start, el) {
     .append('g')
     .attr('transform', `translate(${dx},0)`);
 
-  // Add day-of-week labels.
+  // Add day-of-week labels (left side).
   heatmap.selectAll('text.dow')
     .data([1, 3, 5].map(d => shortDays[d]))
     .enter()
     .append('text')
-      .attr('transform', (d, i) => `translate(-5,${cellSize * 2 * (i + 1)})`)
+      .attr('transform', (d, i) => `translate(-7,${cellSize * 2 * (i + 1)})`)
       .style('text-anchor', 'end')
       .attr('class', 'label')
       .text(d => d);
 
   let dayRange = d3.timeDays(start, end);
+
+  // Add day-of-week labels (right side).
+  let numColumns = Math.ceil(dayRange.length / 7);
+  heatmap.selectAll('text.dow')
+    .data([1, 3, 5].map(d => shortDays[d]))
+    .enter()
+    .append('text')
+      .attr('transform', (d, i) => `translate(${numColumns * cellSize + 7},${cellSize * 2 * (i + 1)})`)
+      .style('text-anchor', 'start')
+      .attr('class', 'label')
+      .text(d => d);
+
   heatmap.selectAll('.day')
     // Heatmap of all days in the range.
     .data(dayRange)
