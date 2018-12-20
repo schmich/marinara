@@ -7,6 +7,7 @@ import { SettingsSchema, PersistentSettings } from './Settings';
 import { HistoryService, SoundsService, SettingsService, PomodoroService, OptionsService } from './Services';
 import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, MenuObserver } from './Observers';
 import { ServiceBroker } from '../Service';
+import * as Alarms from './Alarms';
 
 class Controller
 {
@@ -16,8 +17,6 @@ class Controller
 
   constructor(timer, settingsManager, settings, history) {
     this.settings = settings;
-    settingsManager.on('change', () => this.onSettingsChange(settings));
-
     this.history = history;
     this.timer = timer;
     this.menu = createPomodoroMenu(this.timer);
@@ -29,57 +28,8 @@ class Controller
     this.timer.observe(new MenuObserver(this.menu));
     this.menu.apply();
 
-    chrome.alarms.onAlarm.addListener(alarm => this.onAlarm(alarm));
+    Alarms.install(timer, settingsManager);
     chrome.browserAction.onClicked.addListener(() => this.onBrowserAction());
-  }
-
-  async setAlarm(settings) {
-    await Chrome.alarms.clearAll();
-
-    let time = settings.autostart && settings.autostart.time;
-    if (!time) {
-      return;
-    }
-
-    const now = new Date();
-
-    let startAt = new Date();
-    startAt.setHours(...time.split(':'), 0, 0);
-    if (startAt <= now) {
-      // The trigger is in the past. Set it for tomorrow instead.
-      startAt.setDate(startAt.getDate() + 1);
-    }
-
-    Chrome.alarms.create('autostart', { when: +startAt, });
-  }
-
-  onAlarm(alarm) {
-    if (alarm.name !== 'autostart') {
-      return;
-    }
-
-    // Set next autostart alarm.
-    this.setAlarm(this.settings);
-
-    if (!this.timer.isStopped) {
-      return;
-    }
-
-    // Start a new cycle.
-    this.timer.startCycle();
-
-    Chrome.notifications.create({
-      type: 'basic',
-      title: M.autostart_notification_title,
-      message: M.autostart_notification_message,
-      iconUrl: 'images/128.png',
-      isClickable: false,
-      requireInteraction: true
-    });
-  }
-
-  onSettingsChange(settings) {
-    this.setAlarm(settings);
   }
 
   onBrowserAction() {
