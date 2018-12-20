@@ -1,5 +1,5 @@
 import M from '../Messages';
-import { PersistentPomodoroTimer } from './Timer';
+import { PomodoroTimer } from './Timer';
 import Chrome from '../Chrome';
 import { createPomodoroMenu } from './Menu';
 import History from './History';
@@ -11,8 +11,7 @@ import { ServiceBroker } from '../Service';
 
 class Controller
 {
-  static async run(timer, settingsManager, history) {
-    let settings = await PersistentSettings.create(settingsManager);
+  static run(timer, settingsManager, settings, history) {
     return new Controller(timer, settingsManager, settings, history);
   }
 
@@ -97,9 +96,10 @@ class Controller
 
 async function run() {
   let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
-  let timer = await PersistentPomodoroTimer.create(settingsManager);
+  let settings = await PersistentSettings.create(settingsManager);
+  let timer = new PomodoroTimer(settings);
   let history = new History();
-  await Controller.run(timer, settingsManager, history);
+  Controller.run(timer, settingsManager, settings, history);
 
   ServiceBroker.register(new HistoryService(history));
   ServiceBroker.register(new SoundsService());
