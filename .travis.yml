@@ -1,4 +1,7 @@
-script: true
+language: node_js
+node_js:
+  - lts/*
+script: make test
 env:
   global:
   - COMMIT_AUTHOR_NAME: "'Chris Schmich'"
