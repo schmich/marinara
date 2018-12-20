@@ -99,15 +99,15 @@ input.duration {
     opacity: 0.8;
     border-radius: 25px;
     margin: 0 5px 10px 5px;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.2s ease;
     &:hover {
       color: #fff;
-      background: #a00;
+      background: #900;
     }
     &.router-link-exact-active {
       opacity: 1;
       color: #fff;
-      background: #900;
+      background: #800;
     }
   }
 }

@@ -1,4 +1,3 @@
-import M from '../Messages';
 import { PomodoroTimer } from './Timer';
 import Chrome from '../Chrome';
 import { createPomodoroMenu } from './Menu';
