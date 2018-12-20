@@ -17,6 +17,12 @@ validate-messages:
 src/Messages.js: package/_locales/en/messages.json
 	ruby -Iscripts scripts/create-messages.rb "$<" > "$@"
 
+.PHONY: test
+
+# Run tests.
+test:
+	npm run test:unit
+
 .PHONY: run run-loc run-pseudo show-descriptions
 
 # Run Chrome with a new (temporary) user profile with Marinara loaded.
