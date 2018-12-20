@@ -6,6 +6,18 @@ PomodoroTimer.prototype.expired = function() {
 };
 
 describe('PomodoroTimer', () => {
+  it('starts in the initial phase', async () => {
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { interval: null }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    assert.equal(timer.phase, Phase.Focus);
+    assert.equal(timer.nextPhase, Phase.ShortBreak);
+  });
+
   it('does not advance until timer expires', async () => {
     let settings = {
       focus: { duration: 100 },
@@ -27,8 +39,6 @@ describe('PomodoroTimer', () => {
     };
 
     let timer = new PomodoroTimer(settings, Phase.Focus);
-    assert.equal(timer.phase, Phase.Focus);
-
     for (let i = 0; i < 5; ++i) {
       timer.start();
       await timer.expired();
@@ -85,7 +95,7 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.phase, Phase.LongBreak);
   });
 
-  it('only considers complete Pomodoros towards long break', async () => {
+  it('only counts complete Pomodoros towards long break', async () => {
     let settings = {
       focus: { duration: 0 },
       shortBreak: { duration: 0 },
