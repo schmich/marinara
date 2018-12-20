@@ -103,7 +103,7 @@ async function run() {
 
   ServiceBroker.register(new HistoryService(history));
   ServiceBroker.register(new SoundsService());
-  ServiceBroker.register(new SettingsService(timer, settingsManager));
+  ServiceBroker.register(new SettingsService(settingsManager));
   ServiceBroker.register(new PomodoroService(timer));
   ServiceBroker.register(new OptionsService());
 }

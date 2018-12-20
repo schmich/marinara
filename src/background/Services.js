@@ -5,14 +5,9 @@ import SingletonPage from './SingletonPage';
 
 class SettingsService extends Service
 {
-  constructor(timer, settingsManager) {
+  constructor(settingsManager) {
     super();
-    this.timer = timer;
     this.settingsManager = settingsManager;
-  }
-
-  async startSession() {
-    this.timer.start();
   }
 
   async getSettings() {
