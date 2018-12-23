@@ -87,23 +87,19 @@ class History
     return this.mutex.exclusive(async () => {
       let { pomodoros } = await this.storage.get('pomodoros');
 
-      let dayCount = 0;
-      if (pomodoros.length > 0) {
-        let delta = new Date() - History.date(pomodoros[0]);
-        dayCount = Math.ceil(delta / 1000 / 60 / 60 / 24);
-      }
-
       let total = pomodoros.length;
-      let weekCount = dayCount === 0 ? 0 : (dayCount / 7);
-      let monthCount = dayCount === 0 ? 0 : (dayCount / (365.25 / 12));
+      let delta = total === 0 ? 0 : (new Date() - History.date(pomodoros[0]));
+      let dayCount = Math.max(delta / 1000 / 60 / 60 / 24, 1);
+      let weekCount = Math.max(dayCount / 7, 1);
+      let monthCount = Math.max(dayCount / (365.25 / 12), 1);
 
       return {
         day: this.countSince(pomodoros, History.today),
-        dayAverage: dayCount === 0 ? 0 : (total / dayCount),
+        dayAverage: total / dayCount,
         week: this.countSince(pomodoros, History.thisWeek),
-        weekAverage: weekCount === 0 ? 0 : (total / weekCount),
+        weekAverage: total / weekCount,
         month: this.countSince(pomodoros, History.thisMonth),
-        monthAverage: monthCount === 0 ? 0 : (total / monthCount),
+        monthAverage: total / monthCount,
         period: this.countSince(pomodoros, new Date(since)),
         total: total,
         daily: this.dailyGroups(pomodoros, since),
