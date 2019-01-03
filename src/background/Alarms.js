@@ -1,6 +1,8 @@
 import Chrome from '../Chrome';
+import Mutex from '../Mutex';
 
 let settings = null;
+let mutex = new Mutex();
 
 async function install(timer, settingsManager) {
   settings = await settingsManager.get();
@@ -13,23 +15,25 @@ async function install(timer, settingsManager) {
 }
 
 async function setAlarm(settings) {
-  await Chrome.alarms.clearAll();
+  await mutex.exclusive(async () => {
+    await Chrome.alarms.clearAll();
 
-  let time = settings.autostart && settings.autostart.time;
-  if (!time) {
-    return;
-  }
+    let time = settings.autostart && settings.autostart.time;
+    if (!time) {
+      return;
+    }
 
-  const now = new Date();
+    const now = new Date();
 
-  let startAt = new Date();
-  startAt.setHours(...time.split(':'), 0, 0);
-  if (startAt <= now) {
-    // The trigger is in the past. Set it for tomorrow instead.
-    startAt.setDate(startAt.getDate() + 1);
-  }
+    let startAt = new Date();
+    startAt.setHours(...time.split(':'), 0, 0);
+    if (startAt <= now) {
+      // The trigger is in the past. Set it for tomorrow instead.
+      startAt.setDate(startAt.getDate() + 1);
+    }
 
-  Chrome.alarms.create('autostart', { when: +startAt, });
+    Chrome.alarms.create('autostart', { when: +startAt, });
+  });
 }
 
 async function onAlarm(alarm, timer) {
