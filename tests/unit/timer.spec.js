@@ -93,6 +93,7 @@ describe('PomodoroTimer', () => {
     let timer = new PomodoroTimer(settings, Phase.Focus);
     timer.phase = Phase.LongBreak;
     assert.equal(timer.phase, Phase.LongBreak);
+    assert.equal(timer.nextPhase, Phase.Focus);
   });
 
   it('only counts complete Pomodoros towards long break', async () => {
@@ -150,5 +151,88 @@ describe('PomodoroTimer', () => {
     await timer.expired();
     assert.equal(timer.phase, Phase.Focus);
     assert.equal(timer.nextPhase, Phase.ShortBreak);
+  });
+
+  it('updates timer duration when settings change', async () => {
+    let settings = {
+      focus: { duration: 5 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: 2 }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+
+    timer.start();
+    assert.isAtLeast(timer.timeRemaining, 4 * 60);
+    timer.stop();
+
+    settings.focus.duration = 100;
+    timer.startCycle();
+    assert.isAtLeast(timer.timeRemaining, 99 * 60);
+    timer.stop();
+  });
+
+  it('updates phases when long break is disabld', async () => {
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: 2 }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+
+    // Run focus, short break, focus.
+    timer.start();
+    await timer.expired();
+    timer.start();
+    await timer.expired();
+    timer.start();
+    await timer.expired();
+
+    // Next phase should be long break.
+    assert.equal(timer.phase, Phase.Focus);
+    assert.equal(timer.nextPhase, Phase.LongBreak);
+
+    // Disable long breaks. The next phase should now be a short break.
+    settings.longBreak.interval = null;
+    assert.equal(timer.phase, Phase.Focus);
+    assert.equal(timer.nextPhase, Phase.ShortBreak);
+
+    timer.start();
+    await timer.expired();
+    assert.equal(timer.phase, Phase.ShortBreak);
+    assert.equal(timer.nextPhase, Phase.Focus);
+  });
+
+  it('updates phases when long break is enabled', async () => {
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: null }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+
+    // Run focus, short break, focus.
+    timer.start();
+    await timer.expired();
+    timer.start();
+    await timer.expired();
+    timer.start();
+    await timer.expired();
+
+    // Next phase should be short break.
+    assert.equal(timer.phase, Phase.Focus);
+    assert.equal(timer.nextPhase, Phase.ShortBreak);
+
+    // Enable long breaks. The next phase should now be a long break.
+    settings.longBreak.interval = 2;
+    assert.equal(timer.phase, Phase.Focus);
+    assert.equal(timer.nextPhase, Phase.LongBreak);
+
+    timer.start();
+    await timer.expired();
+    assert.equal(timer.phase, Phase.LongBreak);
+    assert.equal(timer.nextPhase, Phase.Focus);
   });
 });
