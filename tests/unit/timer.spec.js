@@ -96,6 +96,30 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.nextPhase, Phase.Focus);
   });
 
+  it('can be set to short break', async () => {
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: 2 }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    timer.phase = Phase.ShortBreak;
+    assert.equal(timer.phase, Phase.ShortBreak);
+    assert.equal(timer.nextPhase, Phase.Focus);
+  });
+
+  it('throws when trying to set long break when disabled', async () => {
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: null }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    assert.throws(() => timer.phase = Phase.LongBreak, Error);
+  });
+
   it('only counts complete Pomodoros towards long break', async () => {
     let settings = {
       focus: { duration: 0 },
