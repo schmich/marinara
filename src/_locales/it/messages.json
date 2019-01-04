@@ -8,11 +8,11 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Assistente per la tecnica di gestione del tempo del Pomodoro®",
+    "message": "Assistente per la tecnica di gestione del tempo Pomodoro®.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Pause lunghe & brevi\n• Icona della toolbar con conto alla rovescia\n• Tiene traccia temporale e statistiche di Pomodoro\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Scheduled automatic timers\n• Open source software",
+    "message": "• Pause lunghe & brevi\n• Icona della barra degli strumenti con timer per il conto alla rovescia\n• Tiene traccia temporale e delle statistiche Pomodoro\n• Lunghe pause di intervallo configurabili\n• Durata del timer configurabile\n• Notifiche desktop & tab\n• Notifiche audio con oltre 20 suoni\n• Suoni di tichettio del timer\n• Timer automatici programmabili\n• Programma Open source",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -24,7 +24,7 @@
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Riomincia un ciclo Pomodoro",
+    "message": "Ricomincia un ciclo Pomodoro",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
@@ -36,7 +36,7 @@
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Inizia una preve pausa",
+    "message": "Inizia una pausa breve",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
@@ -106,11 +106,11 @@
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "Breve pausa",
+    "message": "Pausa breve",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "Lunga pausa",
+    "message": "Pausa lunga",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
@@ -118,8 +118,16 @@
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Pianifica il primo Pomodoto della giornata per cominciare automaticamente all'ora indicata:",
+    "message": "Pianifica un Pomodoro che inizi automaticamente all'orario specificato.",
     "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "Avvio automatico di un Pomodoro",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Questo Pomodoro programmato è iniziato automaticamente",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
     "message": "Ora:",
@@ -166,7 +174,7 @@
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Suono:",
+    "message": "Riproduci suono:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
@@ -278,7 +286,7 @@
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ fra $start$ e $end$",
+    "message": "$pomodoros$ tra le $start$ e le $end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -516,7 +524,7 @@
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "In $month$",
+    "message": "A $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -660,7 +668,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "Inizia un'attività ora",
+    "message": "Inizia ora un'attività",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
@@ -676,15 +684,15 @@
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Inizia una pausa ora",
+    "message": "Inizia ora una pausa",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "Inizia una breve pausa ora",
+    "message": "Inizia ora una pausa breve",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "Inizia una lunga pausa ora",
+    "message": "Inizia ora una pausa lunga",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
@@ -712,7 +720,7 @@
     }
   },
   "less_than_minute": {
-    "message": "1m",
+    "message": "<1m",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
@@ -726,15 +734,15 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Dati Pomodoro mancanti",
+    "message": "Dati Pomodoro mancanti.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "Dati durata mancanti",
+    "message": "Dati di durata mancanti.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "Dati timezone mancanti",
+    "message": "Dati del fuso orario mancanti",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
@@ -742,7 +750,7 @@
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Incoerenza nei dati Pomodoro/timezone.",
+    "message": "Incoerenza nei dati Pomodoro/fuso orario.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
@@ -810,7 +818,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Tost",
+    "message": "Tostapane",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
