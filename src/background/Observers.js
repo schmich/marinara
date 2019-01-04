@@ -4,8 +4,8 @@ import { pomodoroCount } from '../Filters';
 import * as Sounds from '../Sounds';
 import Notification from './Notification';
 import { ExpirationPage } from './Expiration';
-import Metronome from '../Metronome';
 import Mutex from '../Mutex';
+import createTimerSound from '../TimerSound';
 
 class BadgeObserver
 {
@@ -64,6 +64,7 @@ class TimerSoundObserver
   constructor(settings) {
     this.settings = settings;
     this.mutex = new Mutex();
+    this.timerSound = null;
   }
 
   async onTimerStart(phase) {
@@ -71,37 +72,37 @@ class TimerSoundObserver
       return;
     }
 
-    let { files, bpm } = this.settings.focus.timerSound || {};
-    if (files && bpm) {
+    let timerSoundSettings = this.settings.focus.timerSound;
+    if (timerSoundSettings) {
       await this.mutex.exclusive(async () => {
-        this.metronome && await this.metronome.close();
-        this.metronome = await Metronome.create(files, (60 / bpm) * 1000);
-        this.metronome.start();
+        this.timerSound && await this.timerSound.close();
+        this.timerSound = await createTimerSound(timerSoundSettings);
+        this.timerSound.start();
       });
     }
   }
 
   async onTimerStop() {
     await this.mutex.exclusive(async () => {
-      this.metronome && await this.metronome.close();
+      this.timerSound && await this.timerSound.close();
     });
   }
 
   async onTimerPause() {
     await this.mutex.exclusive(async () => {
-      this.metronome && await this.metronome.stop();
+      this.timerSound && await this.timerSound.stop();
     });
   }
 
   async onTimerResume() {
     await this.mutex.exclusive(async () => {
-      this.metronome && await this.metronome.start();
+      this.timerSound && await this.timerSound.start();
     });
   }
 
   async onTimerExpire() {
     await this.mutex.exclusive(async () => {
-      this.metronome && await this.metronome.close();
+      this.timerSound && await this.timerSound.close();
     });
   }
 }

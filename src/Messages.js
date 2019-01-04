@@ -63,6 +63,9 @@ class Messages
   get bpm() {
     return chrome.i18n.getMessage('bpm', []);
   }
+  get brown_noise() {
+    return chrome.i18n.getMessage('brown_noise', []);
+  }
   browser_action_tooltip(title, text) {
     return chrome.i18n.getMessage('browser_action_tooltip', [title, text]);
   }
@@ -339,6 +342,9 @@ class Messages
   get never() {
     return chrome.i18n.getMessage('never', []);
   }
+  get noise() {
+    return chrome.i18n.getMessage('noise', []);
+  }
   get none() {
     return chrome.i18n.getMessage('none', []);
   }
@@ -357,8 +363,14 @@ class Messages
   get pause_timer() {
     return chrome.i18n.getMessage('pause_timer', []);
   }
+  get periodic_beat() {
+    return chrome.i18n.getMessage('periodic_beat', []);
+  }
   get pin_drop() {
     return chrome.i18n.getMessage('pin_drop', []);
+  }
+  get pink_noise() {
+    return chrome.i18n.getMessage('pink_noise', []);
   }
   get play_audio_notification() {
     return chrome.i18n.getMessage('play_audio_notification', []);
@@ -590,6 +602,9 @@ class Messages
   }
   get when_complete() {
     return chrome.i18n.getMessage('when_complete', []);
+  }
+  get white_noise() {
+    return chrome.i18n.getMessage('white_noise', []);
   }
   get wind_up_clock() {
     return chrome.i18n.getMessage('wind_up_clock', []);

@@ -18,19 +18,26 @@
       <p>{{ M.timer_sound_label }}</p>
       <div class="group">
         <p class="field">
-          <select v-model="focusTimerSounds">
+          <select v-model="focusTimerSound">
             <option :value="null">{{ M.none }}</option>
-            <option v-for="sound in timerSounds" :value="sound.files">{{ sound.name }}</option>
+            <optgroup :label="M.periodic_beat">
+              <option v-for="sound in timerSounds" :value="sound.files">{{ sound.name }}</option>
+            </optgroup>
+            <optgroup :label="M.noise">
+              <option :value="'brown-noise'">{{ M.brown_noise }}</option>
+              <option :value="'pink-noise'">{{ M.pink_noise }}</option>
+              <option :value="'white-noise'">{{ M.white_noise }}</option>
+            </optgroup>
           </select>
           <transition name="fade">
-            <span v-if="canPlayMetronome" @mouseover="playMetronome" @mouseout="stopMetronome" class="preview">
+            <span v-if="canPlayTimerSound" @mouseover="playTimerSound" @mouseout="stopTimerSound" class="preview">
               <i class="icon-play"></i>
               <span>{{ M.hover_preview }}</span>
-              <img src="/images/spinner.svg" :class="{ active: !!metronome }">
+              <img src="/images/spinner.svg" :class="{ active: !!timerSound }">
             </span>
           </transition>
         </p>
-        <p class="field">
+        <p class="field" v-if="focusTimerBpm != null">
           <label>
             <span>{{ M.speed_label }}</span>
             <input
@@ -38,7 +45,6 @@
               class="duration"
               min="1"
               max="1000"
-              :disabled="focusTimerBpm == null"
               v-model.number="focusTimerBpm">
             <span>{{ M.bpm }}</span>
           </label>
@@ -238,10 +244,10 @@
 
 <script>
 import { SettingsClient, SoundsClient } from '../background/Services';
-import Metronome from '../Metronome';
 import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
 import M from '../Messages';
+import createTimerSound from '../TimerSound';
 
 function deepEqual(x, y) {
   const ok = Object.keys, tx = typeof x, ty = typeof y;
@@ -260,8 +266,8 @@ export default {
       originalSettings: null,
       notificationSounds: null,
       timerSounds: null,
-      metronome: null,
-      metronomeMutex: new Mutex()
+      timerSound: null,
+      timerSoundMutex: new Mutex()
     };
   },
   async mounted() {
@@ -290,56 +296,65 @@ export default {
       // Clone settings.
       this.originalSettings = JSON.parse(JSON.stringify(this.settings));
     },
-    async playMetronome() {
-      let { files, bpm } = this.settings.focus.timerSound;
-      this.metronomeMutex.exclusive(async () => {
-        this.metronome = await Metronome.create(files, (60 / bpm) * 1000);
-        await this.metronome.start();
+    async playTimerSound() {
+      this.timerSoundMutex.exclusive(async () => {
+        this.timerSound = await createTimerSound(this.settings.focus.timerSound);
+        await this.timerSound.start();
       });
     },
-    stopMetronome() {
-      this.metronomeMutex.exclusive(async () => {
-        await this.metronome.close();
-        this.metronome = null;
+    stopTimerSound() {
+      this.timerSoundMutex.exclusive(async () => {
+        await this.timerSound.close();
+        this.timerSound = null;
       });
     }
   },
   computed: {
-    focusTimerSounds: {
+    focusTimerSound: {
       get() {
-        return this.settings.focus.timerSound
-            && this.settings.focus.timerSound.files;
+        let sound = this.settings.focus.timerSound;
+        return sound && (sound.procedural || sound.metronome.files);
       },
-      set(files) {
-        if (!files) {
-          this.settings.focus.timerSound = null;
-        } else if (!this.settings.focus.timerSound) {
-          this.settings.focus.timerSound = {
-            files: files,
-            bpm: 60
+      set(value) {
+        let focus = this.settings.focus;
+        if (!value) {
+          focus.timerSound = null;
+        } else if (!Array.isArray(value)) {
+          focus.timerSound = {
+            procedural: value
           };
+        } else if (focus.timerSound && focus.timerSound.metronome) {
+          focus.timerSound.metronome.files = value;
         } else {
-          this.settings.focus.timerSound.files = files;
+          focus.timerSound = {
+            metronome: {
+              files: value,
+              bpm: 60
+            }
+          };
         }
       }
     },
     focusTimerBpm: {
       get() {
-        return this.settings.focus.timerSound
-            && this.settings.focus.timerSound.bpm;
+        let sound = this.settings.focus.timerSound;
+        return sound
+            && sound.metronome
+            && sound.metronome.bpm;
       },
       set(bpm) {
-        if (!this.settings.focus.timerSound) {
+        let sound = this.settings.focus.timerSound;
+        if (!sound || !sound.metronome) {
           return;
         }
 
-        this.settings.focus.timerSound.bpm = bpm;
+        sound.metronome.bpm = bpm;
       }
     },
-    canPlayMetronome() {
-      return this.focusTimerSounds
-          && this.focusTimerBpm > 0
-          && this.focusTimerBpm <= 1000;
+    canPlayTimerSound() {
+      let bpm = this.focusTimerBpm;
+      return this.focusTimerSound
+          && ((bpm == null) || (bpm > 0 && bpm <= 1000));
     },
     areSettingsDirty() {
       return !deepEqual(this.settings, this.originalSettings);

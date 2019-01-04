@@ -865,6 +865,10 @@
     "message": "Digital Alarm Clock",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
+  "periodic_beat": {
+    "message": "Periodic Beat",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
   "stopwatch": {
     "message": "Stopwatch",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
@@ -911,6 +915,22 @@
   },
   "pulse": {
     "message": "Pulse",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Noise",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Brown Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Pink Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "White Noise",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "save_changes": {

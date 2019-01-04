@@ -35,8 +35,8 @@ class SettingsService extends Service
       throw new Error(M.invalid_duration);
     }
 
-    if (timerSound) {
-      let bpm = timerSound.bpm;
+    if (timerSound && timerSound.metronome) {
+      let { bpm } = timerSound.metronome;
       if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
         throw new Error(M.invalid_bpm);
       }

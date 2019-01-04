@@ -20,7 +20,7 @@ function clone(obj) {
 class SettingsSchema
 {
   get version() {
-    return 5;
+    return 6;
   }
 
   get default() {
@@ -150,6 +150,19 @@ class SettingsSchema
     };
 
     return v5;
+  }
+
+  from5To6(v5) {
+    let v6 = clone(v5);
+    v6.version = 6;
+
+    if (v6.focus.timerSound) {
+      v6.focus.timerSound = {
+        metronome: v6.focus.timerSound
+      };
+    }
+
+    return v6;
   }
 }
 

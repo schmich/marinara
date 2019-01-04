@@ -28,7 +28,7 @@ class Metronome
 
   static async create(soundFiles, period) {
     let context = new AudioContext();
-    context.suspend();
+    await context.suspend();
 
     let buffers = [];
     for (let file of soundFiles) {
