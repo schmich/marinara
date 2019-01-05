@@ -103,10 +103,6 @@ class PomodoroService extends Service
   onTimerChange(...args) {
     this.emit('timer:change', ...args);
   }
-
-  onCycleReset(...args) {
-    this.emit('cycle:reset', ...args);
-  }
 }
 
 class SoundsService extends Service

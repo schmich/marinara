@@ -190,7 +190,6 @@ class PomodoroTimer extends EventEmitter
     }
 
     this.pomodoros = 0;
-    this.emit('cycle:reset');
     while (true) {
       switch (this.phase) {
         case Phase.Focus:
@@ -342,7 +341,6 @@ class PomodoroTimer extends EventEmitter
     observer.onTimerTick && this.on('timer:tick', (...args) => observer.onTimerTick(...args));
     observer.onTimerExpire && this.on('timer:expire', (...args) => observer.onTimerExpire(...args));
     observer.onTimerChange && this.on('timer:change', (...args) => observer.onTimerChange(...args));
-    observer.onCycleReset && this.on('cycle:reset', (...args) => observer.onCycleReset(...args));
   }
 
   onStart(...args) {

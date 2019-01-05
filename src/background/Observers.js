@@ -270,10 +270,6 @@ class TraceObserver
   onTimerChange(...args) {
     console.log('timer:change', ...args);
   }
-
-  onCycleReset(...args) {
-    console.log('cycle:reset', ...args);
-  }
 }
 
 export {
