@@ -1,6 +1,7 @@
 # Releasing
 
 - Sync with origin: `git pull --ff-only`
+- Run tests: `make test`
 - Bump `version` in `package/manifest.json`
 - Commit: `git commit -a`
 - Create package: `make package`
