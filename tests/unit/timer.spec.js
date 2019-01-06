@@ -259,4 +259,39 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.phase, Phase.LongBreak);
     assert.equal(timer.nextPhase, Phase.Focus);
   });
+
+  it('works across 100 cycles', async function() {
+    // Extend default timeout for this test.
+    this.timeout(10000);
+
+    let settings = {
+      focus: { duration: 0 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: 2 }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+
+    for (let i = 0; i < 100; i++) {
+      timer.start();
+      await timer.expired();
+      assert.equal(timer.phase, Phase.Focus);
+      assert.equal(timer.nextPhase, Phase.ShortBreak);
+
+      timer.start();
+      await timer.expired();
+      assert.equal(timer.phase, Phase.ShortBreak);
+      assert.equal(timer.nextPhase, Phase.Focus);
+
+      timer.start();
+      await timer.expired();
+      assert.equal(timer.phase, Phase.Focus);
+      assert.equal(timer.nextPhase, Phase.LongBreak);
+
+      timer.start();
+      await timer.expired();
+      assert.equal(timer.phase, Phase.LongBreak);
+      assert.equal(timer.nextPhase, Phase.Focus);
+    }
+  });
 });
