@@ -177,7 +177,7 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.nextPhase, Phase.ShortBreak);
   });
 
-  it('updates timer duration when settings change', async () => {
+  it('updates timer duration across cycles when settings change', async () => {
     let settings = {
       focus: { duration: 5 },
       shortBreak: { duration: 0 },
@@ -192,6 +192,23 @@ describe('PomodoroTimer', () => {
 
     settings.focus.duration = 100;
     timer.startCycle();
+    assert.isAtLeast(timer.timeRemaining, 99 * 60);
+    timer.stop();
+  });
+
+  it('updates timer duration when settings change', async () => {
+    let settings = {
+      focus: { duration: 1 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: 2 }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    timer.start();
+    timer.stop();
+
+    settings.focus.duration = 100;
+    timer.start();
     assert.isAtLeast(timer.timeRemaining, 99 * 60);
     timer.stop();
   });

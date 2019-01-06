@@ -177,37 +177,20 @@ class PomodoroTimer extends EventEmitter
     this.phase = initialPhase;
   }
 
-  *createTimers() {
-    let settings = this.settings;
+  _updateTimer() {
+    let { duration } = {
+      [Phase.Focus]: this.settings.focus,
+      [Phase.ShortBreak]: this.settings.shortBreak,
+      [Phase.LongBreak]: this.settings.longBreak
+    }[this.phase];
 
-    const setTimer = timer => {
-      if (this.timer) {
-        this.timer.stop();
-        this.timer.removeAllListeners();
-      }
-      timer.observe(this);
-      this.timer = timer;
+    if (this.timer) {
+      this.timer.stop();
+      this.timer.removeAllListeners();
     }
 
-    this.pomodoros = 0;
-    while (true) {
-      switch (this.phase) {
-        case Phase.Focus:
-          setTimer(new this.timerType(Math.floor(settings.focus.duration * 60), 60));
-          yield;
-          break;
-
-        case Phase.ShortBreak:
-          setTimer(new this.timerType(Math.floor(settings.shortBreak.duration * 60), 60));
-          yield;
-          break;
-
-        case Phase.LongBreak:
-          setTimer(new this.timerType(Math.floor(settings.longBreak.duration * 60), 60));
-          yield;
-          break;
-      }
-    }
+    this.timer = new this.timerType(Math.floor(duration * 60), 60);
+    this.timer.observe(this);
   }
 
   get phase() {
@@ -219,12 +202,8 @@ class PomodoroTimer extends EventEmitter
       throw new Error('No long break interval defined.');
     }
 
-    if (!this.timerGenerator) {
-      this.timerGenerator = this.createTimers();
-    }
-
     this._phase = newPhase;
-    this.timerGenerator.next();
+    this._updateTimer();
     this.advanceTimer = false;
   }
 
@@ -287,7 +266,7 @@ class PomodoroTimer extends EventEmitter
   }
 
   startCycle() {
-    this.timerGenerator = null;
+    this.pomodoros = 0;
     this.phase = Phase.Focus;
     this.start();
   }
@@ -310,10 +289,10 @@ class PomodoroTimer extends EventEmitter
   start() {
     if (this.advanceTimer) {
       this._phase = this.nextPhase;
-      this.timerGenerator.next();
       this.advanceTimer = false;
     }
 
+    this._updateTimer();
     this.timer.start();
   }
 
