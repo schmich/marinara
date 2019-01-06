@@ -277,6 +277,26 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.nextPhase, Phase.Focus);
   });
 
+  it('stops when phase is modified', async () => {
+    let settings = {
+      focus: { duration: 10 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: null }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    timer.start();
+    assert.isTrue(timer.isRunning);
+    timer.phase = Phase.ShortBreak;
+    assert.equal(timer.phase, Phase.ShortBreak);
+    assert.isTrue(timer.isStopped);
+
+    timer.start();
+    await timer.expired();
+    assert.equal(timer.phase, Phase.ShortBreak);
+    assert.equal(timer.nextPhase, Phase.Focus);
+  });
+
   it('works across 100 cycles', async function() {
     // Extend default timeout for this test.
     this.timeout(10000);
