@@ -20,7 +20,11 @@
   },
   "background": {
     "persistent": true,
-    "scripts": ["modules/background.js"]
+    "scripts": [
+      "modules/chunk-common.js",
+      "modules/chunk-vendors.js",
+      "modules/background.js"
+    ]
   },
   "options_page": "modules/options.html",
   "icons": {
