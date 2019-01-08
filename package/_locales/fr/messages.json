@@ -546,7 +546,7 @@
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "Erreur à l'import de l'historique",
+    "message": "Erreur à l'import de l'historique: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -556,7 +556,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Grouper les Pomodoros par lot de $count$  minutes",
+    "message": "Grouper les Pomodoros par lot de $count$ minutes",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -566,7 +566,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Grouper les Pomodoros par lot de $count$  heures",
+    "message": "Grouper les Pomodoros par lot de $count$ heures",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
