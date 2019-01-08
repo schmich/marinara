@@ -67,6 +67,7 @@
   "modules/options.js",
   "_locales/bn/messages.json",
   "_locales/ca/messages.json",
+  "_locales/cs/messages.json",
   "_locales/da/messages.json",
   "_locales/de/messages.json",
   "_locales/el/messages.json",
