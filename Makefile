@@ -2,7 +2,7 @@
 
 # Create Chrome extension package (.zip).
 release: package
-	ruby -Iscripts scripts/make-package.rb
+	ruby -Iscripts scripts/create-package.rb
 
 package: messages
 	npm run build
