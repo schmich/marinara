@@ -146,6 +146,8 @@ fieldset {
 </style>
 
 <script>
+import Chrome from '../Chrome';
+
 export default {
   mounted() {
     // Listen for showOptionsPage command.
@@ -155,10 +157,16 @@ export default {
     window.removeEventListener('message', this.handleMessage);
   },
   methods: {
-    handleMessage({ data }) {
+    async handleMessage({ data }) {
       if (!data || !data.page) {
         return;
       }
+
+      // Focus current window & tab.
+      let tab = await Chrome.tabs.getCurrent();
+      await Chrome.tabs.update(tab.id, { active: true, highlighted: true });
+      await Chrome.windows.update(tab.windowId, { focused: true });
+
       window.location.assign('#/' + data.page);
     }
   }
