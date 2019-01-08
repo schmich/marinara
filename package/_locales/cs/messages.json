@@ -1,6 +1,6 @@
 {
   "app_name": {
-    "message": "Marinara : Assistant Pomodoro®",
+    "message": "Marinara: Pomodoro® asistent",
     "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
@@ -8,67 +8,67 @@
     "description": "The short name of the application. Shown at the top of the dropdown menu."
   },
   "app_desc": {
-    "message": "Assistant de gestion du temps méthode Pomodoro®",
+    "message": "Asistent techniky Pomodoro® organizace času.",
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• Pauses courtes et longues\n• Icône de la barre d'outils avec un compte à rebours\n• Suivre son historique et ses statistiques Pomodoro\n• Intervalles de longue pause configurable\n• Duration de la minuterie configurable\n• Notifications pour le bureau et les onglets\n• Notifications audio avec plus de 20 sons différents\n• Minuterie avec bruit de tic-tac\n• Planification automatique des minuteries\n• Logiciel Open source",
+    "message": "• Krátké a dlouhé přestávky\n• Ikonka rozšíření s odpočtem zbývajícího času\n• Historie a statistiky\n• Nastavitelný interval pro dlouhé přestávky\n• Nastavitelná délka odpočtu\n• Upozornění celková i pro jednotlivou kartu\n• Zvuková upozornění s více než 20 zvuky\n• Zvuky tikání minutky\n• Naplánované automatické časovače\n• Open source software",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
-    "message": "Assistant Pomodoro",
+    "message": "Pomodoro asistent",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
   },
   "start_pomodoro_cycle": {
-    "message": "Commencer un cycle Pomodoro",
+    "message": "Začít Pomodoro cyklus",
     "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_pomodoro_cycle": {
-    "message": "Recommencer un cycle Pomodoro",
+    "message": "Restartovat Pomodoro cyklus",
     "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
   },
   "restart_timer": {
-    "message": "Recommencer la minuterie",
+    "message": "Restartovat časovač",
     "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
   },
   "start_focusing": {
-    "message": "Commencer à me concentrer",
+    "message": "Začít se soustředit",
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "Commencer une courte pause",
+    "message": "Začít krátkou přestávku",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "Commencer une pause",
+    "message": "Začít přestávku",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "Commencer une longue pause",
+    "message": "Začít dlouhou přestávku",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
-    "message": "Arrêter la minuterie",
+    "message": "Zastavit časovač",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
   },
   "pause_timer": {
-    "message": "Mettre la minuterie sur pause",
+    "message": "Pozastavit časovač",
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "Reprendre la minuterie",
+    "message": "Pokračovat v odpočtu",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
-    "message": "Historique de Pomodoro",
+    "message": "Historie Pomodoro",
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "Minuterie sur pause",
+    "message": "Časovač pozastaven",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "Pas de Pomodoros",
+    "message": "Žádné Pomodora",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
@@ -76,7 +76,7 @@
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$count$ Pomodoros",
+    "message": "$count$ Pomodor",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -86,167 +86,167 @@
     }
   },
   "marinara_pomodoro_assistant": {
-    "message": "Marinara : Assistant Pomodoro®",
+    "message": "Marinara: Pomodoro asistent",
     "description": "Settings page title."
   },
   "settings": {
-    "message": "Paramètres",
+    "message": "Nastavení",
     "description": "Settings tab. Shown on the settings page."
   },
   "history": {
-    "message": "Historique",
+    "message": "Historie",
     "description": "History tab. Shown on the settings page."
   },
   "feedback": {
-    "message": "Feedback",
+    "message": "Zpětná vazba",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "Concentration",
+    "message": "Soustředění",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "Courte pause",
+    "message": "Krátká přestávka",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "Longue pause",
+    "message": "Dlouhá přestávka",
     "description": "Long Break section header. Shown on the settings page."
   },
   "autostart_title": {
-    "message": "Lancement automatique",
+    "message": "Autostart",
     "description": "Autostart section header. Shown on the settings page."
   },
   "autostart_description": {
-    "message": "Programmer le début automatique d'un Pomodoro à une heure définie",
+    "message": "Naplánovat utomatický start Pomodoro v určený čas.",
     "description": "Autostart setting description. Shown on the settings page."
   },
   "autostart_notification_title": {
-    "message": "Lancement automatique de Pomodoro",
+    "message": "Autostart Pomodoro",
     "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "autostart_notification_message": {
-    "message": "Ce Pomodoro a été programmé pour commencer automatiquement",
+    "message": "Toto naplánované Pomodoro automaticky započalo.",
     "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
   },
   "time": {
-    "message": "Heure :",
+    "message": "Čas:",
     "description": "Time input label. Shown on the settings page."
   },
   "duration": {
-    "message": "Durée :",
+    "message": "Trvání:",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
-    "message": "minutes",
+    "message": "minut",
     "description": "Minutes label for timer duration. Shown on the settings page."
   },
   "timer_sound_label": {
-    "message": "Son de la minuterie",
+    "message": "Zvuk časovače:",
     "description": "Timer sound label. Shown on the settings page."
   },
   "hover_preview": {
-    "message": "Survoler pour voir un aperçu",
+    "message": "Přejeďte myší pro náhled",
     "description": "Hover to preview note. Shown on the settings page."
   },
   "speed_label": {
-    "message": "Vitesse :",
+    "message": "Rychlost",
     "description": "Timer sound speed label. Shown on the settings page."
   },
   "bpm": {
-    "message": "battements par minute",
+    "message": "úderů za minutu",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
   "none": {
-    "message": "Aucun",
+    "message": "Žádný",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
-    "message": "À la fin : ",
+    "message": "Po dokončení",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
   "show_desktop_notification": {
-    "message": "Montrer les notifications de bureau",
+    "message": "Zobrazit upozornění",
     "description": "Desktop notification option. Shown on the settings page."
   },
   "show_new_tab_notification": {
-    "message": "Montrer les notifications d'onglet",
+    "message": "Zobrazit upozornění na nové kartě",
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "Jouer le son : ",
+    "message": "Přehrát zvuk:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "Prendre une longue pause : ",
+    "message": "Mít dlouhou přestávku:",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
-    "message": "Jamais",
+    "message": "nikdy",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "toutes les 2e pauses (en alternant)",
+    "message": "každou druhou přestávku (střídavě)",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "toutes les 3e pauses",
+    "message": "každou třetí přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "toutes les 4e pauses",
+    "message": "každou čtvrtou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "toutes les 5e pauses",
+    "message": "každou pátou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "toutes les 6e pauses",
+    "message": "každou šestou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "toutes les 7e pauses",
+    "message": "každou sedmou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "toutes les 8e pauses",
+    "message": "každou osmou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "toutes les 9e pauses",
+    "message": "každou devátou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "toutes les 10e pauses",
+    "message": "každou desátou přestávku",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "Tonalité",
+    "message": "Tón",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Carillon électronique",
+    "message": "Elektronický zvoneček",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
-    "message": "Aujourd'hui",
+    "message": "Dnes",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_week": {
-    "message": "Cette semaine",
+    "message": "Tento týden",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "this_month": {
-    "message": "Ce mois",
+    "message": "Tento měsíc",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "total": {
-    "message": "Total",
+    "message": "Celkově",
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ moy.",
+    "message": "$average$ prům.",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -256,15 +256,15 @@
     }
   },
   "daily_distribution": {
-    "message": "Distribution sur la journée",
+    "message": "Denní rozdělení",
     "description": "Daily distribution section header. Shown on the settings-history page."
   },
   "weekly_distribution": {
-    "message": "Distribution sur la semaine",
+    "message": "Týdenní rozdělení",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$count$ dans les 9 derniers mois",
+    "message": "$count$ v posledních devíti měsících",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -274,19 +274,19 @@
     }
   },
   "daily_empty_placeholder": {
-    "message": "Termine un Pomodoro pour voir les statistiques journalières",
+    "message": "Dokončete Pomodoro pro zobrazení denních statistik",
     "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "weekly_empty_placeholder": {
-    "message": "Termine un Pomodoro pour voir les statistiques hebdomadaires",
+    "message": "Dokončete Pomodoro pro zobrazení týdenních statistik",
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "Termine un Pomodoro pour voir ton historique",
+    "message": "Dokončete Pomodoro pro zobrazení historie",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ entre $start$ et $end$",
+    "message": "$pomodoros$ mezi $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -304,7 +304,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ le $day$",
+    "message": "$pomodoros$ v $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -318,7 +318,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ le $date$",
+    "message": "$pomodoros$ $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -336,19 +336,19 @@
     "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
   },
   "thousands_separator": {
-    "message": ".",
+    "message": " ",
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "%d %b %Y",
+    "message": "%d %b, %Y",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
-    "message": "%Hh",
+    "message": "%-I%p",
     "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
   },
   "hour_minute_format": {
-    "message": "%Hh%M",
+    "message": "%-I:%M%p",
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
@@ -356,175 +356,175 @@
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
-    "message": "%-d/%-m/%Y %Hh%M",
+    "message": "%x, %X",
     "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_format": {
-    "message": "%H:%M:%S",
+    "message": "%-I:%M:%S %p",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_am": {
-    "message": "a",
+    "message": "d",
     "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "time_period_pm": {
-    "message": "p",
+    "message": "o",
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "Dimanche",
+    "message": "Neděle",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "Lundi",
+    "message": "Pondělí",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "Mardi",
+    "message": "Úterý",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "Mercredi",
+    "message": "Středa",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "Jeudi",
+    "message": "Čtvrtek",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "Vendredi",
+    "message": "Pátek",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "Samedi",
+    "message": "Sobota",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "Dim",
+    "message": "Ned",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "Lun",
+    "message": "Pon",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "Mar",
+    "message": "Úte",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "Mer",
+    "message": "Stř",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "Jeu",
+    "message": "Čtv",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "Ven",
+    "message": "Pát",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "Sam",
+    "message": "Sob",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
-    "message": "Janvier",
+    "message": "Leden",
     "description": "January. Shown on the settings-history page."
   },
   "february": {
-    "message": "Février",
+    "message": "Únor",
     "description": "February. Shown on the settings-history page."
   },
   "march": {
-    "message": "Mars",
+    "message": "Březen",
     "description": "March. Shown on the settings-history page."
   },
   "april": {
-    "message": "Avril",
+    "message": "Duben",
     "description": "April. Shown on the settings-history page."
   },
   "may": {
-    "message": "Mai",
+    "message": "Květen",
     "description": "May. Shown on the settings-history page."
   },
   "june": {
-    "message": "Juin",
+    "message": "Červen",
     "description": "June. Shown on the settings-history page."
   },
   "july": {
-    "message": "Juillet",
+    "message": "Červenec",
     "description": "July. Shown on the settings-history page."
   },
   "august": {
-    "message": "Août",
+    "message": "Srpen",
     "description": "August. Shown on the settings-history page."
   },
   "september": {
-    "message": "Septembre",
+    "message": "Září",
     "description": "September. Shown on the settings-history page."
   },
   "october": {
-    "message": "Octobre",
+    "message": "Říjen",
     "description": "October. Shown on the settings-history page."
   },
   "november": {
-    "message": "Novembre",
+    "message": "Listopad",
     "description": "November. Shown on the settings-history page."
   },
   "december": {
-    "message": "Décembre",
+    "message": "Prosinec",
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "Janv.",
+    "message": "Led",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "Févr.",
+    "message": "Úno",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "Mars",
+    "message": "Bře",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "Avr.",
+    "message": "Dub",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "Mai",
+    "message": "Kvě",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "Juin",
+    "message": "Čvn",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "Juil.",
+    "message": "Čvc",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "Août",
+    "message": "Srp",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "Sept.",
+    "message": "Zář",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "Oct.",
+    "message": "Říj",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "Nov.",
+    "message": "Lis",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "Déc.",
+    "message": "Pro",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
-    "message": "En $month$",
+    "message": "V $month$",
     "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
     "placeholders": {
       "month": {
@@ -534,19 +534,19 @@
     }
   },
   "import_history": {
-    "message": "Importer l'historique",
+    "message": "Import historie",
     "description": "Import History button. Shown on the settings-history page."
   },
   "export_history": {
-    "message": "Exporter l'historique",
+    "message": "Export historie",
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "Importer l'historique va écraser l'historique existant. Veux tu continuer ?",
+    "message": "Importování historie přepíše všechnu historii. Přejete si pokračovat?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "Erreur à l'import de l'historique",
+    "message": "Chyba v importování historie: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -556,7 +556,7 @@
     }
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Grouper les Pomodoros par lot de $count$  minutes",
+    "message": "Seskupit Pomodora do $count$ minutových hromad",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -566,7 +566,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Grouper les Pomodoros par lot de $count$  heures",
+    "message": "Seskupit Pomodora do $count$ hodinových hromad",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -576,7 +576,7 @@
     }
   },
   "min_suffix": {
-    "message": "$count$ Min",
+    "message": "$count$ min",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -586,7 +586,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$count$ H",
+    "message": "$count$ hod",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -596,39 +596,39 @@
     }
   },
   "write_a_review": {
-    "message": "Écrire un avis",
+    "message": "Napsat recenzi",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
-    "message": "Rapporter un problème",
+    "message": "Nahlásit chybu",
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Notes de la dernière version",
+    "message": "Poznámky vydání",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
-    "message": "Code source",
+    "message": "Zdrojový kód",
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "Attributions",
+    "message": "Autoři",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "Licence",
+    "message": "Licenční ujednání",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "Voir",
+    "message": "Zobrazit",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
-    "message": "Version",
+    "message": "Verze",
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® et la Technique Pomodoro® sont des marques déposées de Francesco Cirillo. Marinara n'est pas affiliée ni associée avec, ou soutenue par Pomodoro®,  la Technique Pomodoro® ou Francesco Cirillo.",
+    "message": "Pomodoro® a The Pomodoro Technique® jsou obchodní známky Francesca Cirilla. Marinara není nijak spojena ani nesouvisí nebo není  podporována Pomodoro®, The Pomodoro Technique® nebo Francescem Cirillem.\n",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
@@ -636,19 +636,19 @@
     "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "contributors": {
-    "message": "Contributeurs",
+    "message": "Přispěvatel",
     "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
   },
   "completed_today": {
-    "message": "Accompli aujourd'hui",
+    "message": "Dnes dokončeno",
     "description": "Label for today's completed Pomodoro count. Shown on the timer expiration page."
   },
   "view_history": {
-    "message": "Voir l'historique",
+    "message": "Zobrazit historii",
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$ jusqu'à la prochaine pause longue",
+    "message": "$pomodoros$ do dlouhé přestávky",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -658,7 +658,7 @@
     }
   },
   "pomodoros_completed_today": {
-    "message": "$pomodoros$ aujourd'hui",
+    "message": "$pomodoros$ dnes",
     "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -668,35 +668,35 @@
     }
   },
   "start_focusing_now": {
-    "message": "Commencer à me concentrer maintenant",
+    "message": "Začít se soustředit",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
-    "message": "Prendre une pause",
+    "message": "Dát si přestávku",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "Prendre une courte pause",
+    "message": "Dát si krátkou přestávku",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "Prendre une longue pause",
+    "message": "Dát si dlouhou přestávku",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "Prendre une pause maintenant",
+    "message": "Začít přestávku",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "Prendre une courte pause maintenant",
+    "message": "Začít krátkou přestávku",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "Prendre une longue pause maintenant",
+    "message": "Začít dlouhou přestávku",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
-    "message": "$title$ : $text$",
+    "message": "$title$: $text$",
     "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
     "placeholders": {
       "title": {
@@ -720,11 +720,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1min",
+    "message": "<1 minuta",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "$time$ restant",
+    "message": "Zbývá $time$",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -734,31 +734,31 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "Données Pomodoro manquantes",
+    "message": "Chybějí data Pomodora.",
     "description": "Error when imported history has no Pomodoro information."
   },
   "missing_duration_data": {
-    "message": "Données de durée manquantes",
+    "message": "Chybějící data délky trvání.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
   "missing_timezone_data": {
-    "message": "Données de fuseau horaire manquantes",
+    "message": "Chybějící data časového pásma.",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
   "mismatched_pomodoro_duration_data": {
-    "message": "Données Pomodoro/durée erronées",
+    "message": "Nesedí data Pomodoro a délky trvání.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
   },
   "mismatched_pomodoro_timezone_data": {
-    "message": "Données Pomodoro/fuseau horaire erronées",
+    "message": "Nesedí data Pomodoro a časového pásma.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "help_translate": {
-    "message": "Aider à traduire",
+    "message": "Pomoc s překladem",
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "Le temps est écoulé · Marinara",
+    "message": "Čas vypršel · Marinara",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
@@ -770,135 +770,135 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Ordinateur magique",
+    "message": "Počítačové kouzlo",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Téléavertisseur",
+    "message": "Ohnivý pager",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "Bruit de verre",
+    "message": "Skleněné cinknutí",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
-    "message": "Boite à musique",
+    "message": "Hrací skříňka",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Épingle",
+    "message": "Upadnutí špendlíku",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "Bip de robot 1",
+    "message": "Robot 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "Bip de robot 2",
+    "message": "Robot 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
-    "message": "Cloche de bateau",
+    "message": "Lodní zvon",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "Sirène de train",
+    "message": "Houkání lokomotivy",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Klaxon de vélo",
+    "message": "Zvonek kola",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Clochette",
+    "message": "Zvon",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
-    "message": "Cloche",
+    "message": "Zvonek na recepci",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Grille-pain",
+    "message": "Toustovač",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Corne de bataille",
+    "message": "Válečný zvon",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
-    "message": "Ding",
+    "message": "Bim",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "dong": {
-    "message": "Dong",
+    "message": "Bam",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding_dong": {
-    "message": "Ding Dong",
+    "message": "Bim Bam",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "Avion",
+    "message": "Letado",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "Montre digitale",
+    "message": "Digitální hodinky",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "Réveil analogique",
+    "message": "Analogový budík",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "Réveil numérique",
+    "message": "Digitální budík",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "stopwatch": {
-    "message": "Chronomètre",
+    "message": "Stopky",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "clock": {
-    "message": "Horloge",
+    "message": "Hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wall_clock": {
-    "message": "Pendule",
+    "message": "Nástěnné hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "desk_clock": {
-    "message": "Horloge de bureau",
+    "message": "Stolní hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Horloge antique",
+    "message": "Starožitné hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
-    "message": "Petite horloge",
+    "message": "Malé hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "large_clock": {
-    "message": "Grande horloge",
+    "message": "Velké hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wristwatch": {
-    "message": "Montre",
+    "message": "Náramkové hodinky",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wind_up_clock": {
-    "message": "Horloge mécanique",
+    "message": "Natahovací hodiny",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "metronome": {
-    "message": "Métronome",
+    "message": "Metronom",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wood_block": {
-    "message": "Bloc de bois",
+    "message": "Dřevěná kostka",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pulse": {
-    "message": "Pouls",
+    "message": "Puls",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   }
 }

@@ -56,9 +56,11 @@ class Tabs
       // of the tab we're creating. When our tab is closed, the opener tab will
       // be reactivated.
       let tabs = await Chrome.tabs.query({ active: true, windowId });
-      let openerTabId = (tabs && tabs.length > 0) ? tabs[0].id : null;
+      let openerTab = (tabs && tabs.length > 0) ? tabs[0] : {};
+      let openerTabId = openerTab.id || null;
+      let index = openerTab.index + 1 || 0;
 
-      let tabOptions = { ...options, windowId, openerTabId };
+      let tabOptions = { ...options, windowId, openerTabId, index };
       return promise(callback => {
         chrome.tabs.create(tabOptions, callback);
       });
