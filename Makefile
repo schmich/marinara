@@ -1,8 +1,11 @@
-.PHONY: package
+.PHONY: release package
 
 # Create Chrome extension package (.zip).
-package: messages
+release: package
 	ruby -Iscripts scripts/make-package.rb
+
+package: messages
+	npm run build
 
 .PHONY: messages validate-messages
 
