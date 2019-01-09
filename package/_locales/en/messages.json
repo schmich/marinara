@@ -913,13 +913,9 @@
     "message": "Pulse",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
-  "save_changes": {
-    "message": "Save Changes",
-    "description": "Save Changes button shown on settings page when settings are modified."
-  },
-  "save_changes_notice": {
-    "message": "Any running Pomodoro sessions will end",
-    "description": "Notice shown on settings page. When user saves modified settings, all sessions are stopped."
+  "settings_saved": {
+    "message": "Settings Saved",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
   },
   "error_saving_settings": {
     "message": "Error saving settings: $message$",

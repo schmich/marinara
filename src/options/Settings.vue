@@ -168,9 +168,10 @@
       </p>
     </div>
     <transition name="slide-up">
-      <div v-if="areSettingsDirty" class="save">
-        <button @click.prevent="saveSettings">{{ M.save_changes }}</button>
-        <p>{{ M.save_changes_notice }}</p>
+      <div v-if="showSettingsSaved" @click="dismissSettingsSaved" class="save">
+        <p>
+          <img src="/images/check.svg"> {{ M.settings_saved }}
+        </p>
       </div>
     </transition>
   </form>
@@ -193,30 +194,23 @@
 }
 .save {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 40px 65px;
-  background: #fff;
-  border: 1px solid #f3f3f3;
-  border-top: 3px solid #c00;
-  box-shadow: 0px 12px 31px -9px rgba(0,0,0,0.75);
-  text-align: center;
-  button {
-    outline: 0;
-    cursor: pointer;
-    font-size: 20px;
-    border: 0;
-    border-radius: 40px;
-    padding: 13px 35px;
-    background: #c00;
-    color: #fff;
-    transition: background-color 0.2s ease;
-    &:hover {
-      background: #e00;
-    }
-  }
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px 60px;
   p {
-    margin-bottom: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    color: #58aa2a;
+    font-size: 18px;
+    img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
   }
 }
 .preview {
@@ -243,21 +237,14 @@ import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
 import M from '../Messages';
 
-function deepEqual(x, y) {
-  const ok = Object.keys, tx = typeof x, ty = typeof y;
-  return x && y && tx === 'object' && tx === ty ? (
-    ok(x).length === ok(y).length &&
-      ok(x).every(key => deepEqual(x[key], y[key]))
-  ) : (x === y);
-}
-
 export default {
   data() {
     return {
       settingsClient: new SettingsClient(),
       soundsClient: new SoundsClient(),
       settings: null,
-      originalSettings: null,
+      showSettingsSaved: false,
+      showSettingsSavedTimeout: null,
       notificationSounds: null,
       timerSounds: null,
       metronome: null,
@@ -270,9 +257,6 @@ export default {
       this.soundsClient.getNotificationSounds(),
       this.soundsClient.getTimerSounds()
     ]);
-
-    // Clone settings.
-    this.originalSettings = JSON.parse(JSON.stringify(this.settings));
   },
   beforeDestroy() {
     this.settingsClient.dispose();
@@ -283,12 +267,16 @@ export default {
       try {
         await this.settingsClient.setSettings(this.settings);
       } catch (e) {
-        alert(M.error_saving_settings(e));
+        // Ignore errors when saving settings.
         return;
       }
 
-      // Clone settings.
-      this.originalSettings = JSON.parse(JSON.stringify(this.settings));
+      clearTimeout(this.showSettingsSavedTimeout);
+      this.showSettingsSavedTimeout = setTimeout(() => {
+        this.showSettingsSaved = false;
+      }, 5000);
+
+      this.showSettingsSaved = true;
     },
     async playMetronome() {
       let { files, bpm } = this.settings.focus.timerSound;
@@ -302,6 +290,10 @@ export default {
         await this.metronome.close();
         this.metronome = null;
       });
+    },
+    dismissSettingsSaved() {
+      this.showSettingsSaved = false;
+      clearTimeout(this.showSettingsSavedTimeout);
     }
   },
   computed: {
@@ -340,9 +332,6 @@ export default {
       return this.focusTimerSounds
           && this.focusTimerBpm > 0
           && this.focusTimerBpm <= 1000;
-    },
-    areSettingsDirty() {
-      return !deepEqual(this.settings, this.originalSettings);
     }
   },
   components: {
@@ -354,6 +343,19 @@ export default {
         let input = el.querySelector('input');
         (input || el).focus();
       }
+    }
+  },
+  watch: {
+    settings: {
+      handler(to, from) {
+        if (!from) {
+          return;
+        }
+
+        // Settings changed, save them.
+        this.saveSettings();
+      },
+      deep: true
     }
   }
 };
