@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "• 支援短/長休息時間\n• 倒數計時器\n• 追蹤番茄歷史統計資訊\n• 設定長休息區間\n• 設定計時區間\n• 桌面通知\n• 新分頁通知\n• 20秒聲音通知\n• 開源軟體",
+    "message": "• 支援短/長休息時間\n• 工具欄倒數計時器\n• 追蹤番茄歷史統計資訊\n• 設定長休息區間\n• 設定計時區間\n• 桌面通知\n• 新分頁通知\n• 20+款通知音效\n• 開源軟體",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
@@ -36,15 +36,15 @@
     "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_short_break": {
-    "message": "休息（短暫）",
+    "message": "開始短休息",
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "休息",
+    "message": "開始休息",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
-    "message": "休息（長時間）",
+    "message": "開始長休息",
     "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "stop_timer": {
@@ -56,7 +56,7 @@
     "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
   },
   "resume_timer": {
-    "message": "繼續計時",
+    "message": "恢復計時",
     "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
   },
   "pomodoro_history": {
@@ -64,15 +64,15 @@
     "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
   },
   "timer_paused": {
-    "message": "計時器暫停",
+    "message": "計時器已暫停",
     "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
   },
   "pomodoro_count_zero": {
-    "message": "目前沒有番茄",
+    "message": "0個番茄",
     "description": "Label for zero Pomodoros. Shown on the expiration page."
   },
   "pomodoro_count_one": {
-    "message": "一個番茄",
+    "message": "1個番茄",
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
@@ -102,24 +102,48 @@
     "description": "Feedback tab and section header. Shown on the settings page."
   },
   "focus_title": {
-    "message": "專注",
+    "message": "專注時間",
     "description": "Focus section header. Shown on the settings page."
   },
   "short_break_title": {
-    "message": "休息（短暫）",
+    "message": "短休息",
     "description": "Short Break section header. Shown on the settings page."
   },
   "long_break_title": {
-    "message": "休息（長時間）",
+    "message": "長休息",
     "description": "Long Break section header. Shown on the settings page."
   },
   "duration": {
-    "message": "期間:",
+    "message": "維持:",
     "description": "Timer duration label. Shown on the settings page."
   },
   "minutes": {
     "message": "分鐘",
     "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "選擇通知音效:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "試聽音效",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "播放速度",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "BPM",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "invalid_bpm": {
+    "message": "播放速度需介乎1-1000 BPM。",
+    "description": "Error message shown to user if timer sound beats per minute (BPM) is invalid."
+  },
+  "none": {
+    "message": "無音效",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
   "when_complete": {
     "message": "結束時:",
@@ -134,11 +158,11 @@
     "description": "New tab notification option. Shown on the settings page."
   },
   "play_audio_notification": {
-    "message": "開啟音訊通知:",
+    "message": "選擇通知音效:",
     "description": "Audio notification label. Shown on the settings page."
   },
   "take_a_long_break_setting": {
-    "message": "休息（長時間）",
+    "message": "長休息",
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
@@ -146,39 +170,39 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
-    "message": "每兩次休息",
+    "message": "每兩次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_3rd_break": {
-    "message": "每三次休息",
+    "message": "每三次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_4th_break": {
-    "message": "每四次休息",
+    "message": "每四次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_5th_break": {
-    "message": "每五次休息",
+    "message": "每五次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_6th_break": {
-    "message": "每六次休息",
+    "message": "每六次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_7th_break": {
-    "message": "每七次休息",
+    "message": "每七次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_8th_break": {
-    "message": "每八次休息",
+    "message": "每八次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_9th_break": {
-    "message": "每九次休息",
+    "message": "每九次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_10th_break": {
-    "message": "每十次休息",
+    "message": "每十次短休息",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
@@ -300,7 +324,7 @@
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
-    "message": "%b %d, %Y",
+    "message": "%A, %B %e 日, %Y",
     "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
   },
   "hour_format": {
@@ -332,59 +356,59 @@
     "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
-    "message": "週日",
+    "message": "星期日",
     "description": "Sunday. Shown on the settings-history page."
   },
   "monday": {
-    "message": "週一",
+    "message": "星期一",
     "description": "Monday. Shown on the settings-history page."
   },
   "tuesday": {
-    "message": "週二",
+    "message": "星期二",
     "description": "Tuesday. Shown on the settings-history page."
   },
   "wednesday": {
-    "message": "週三",
+    "message": "星期三",
     "description": "Wednesday. Shown on the settings-history page."
   },
   "thursday": {
-    "message": "週四",
+    "message": "星期四",
     "description": "Thursday. Shown on the settings-history page."
   },
   "friday": {
-    "message": "週五",
+    "message": "星期五",
     "description": "Friday. Shown on the settings-history page."
   },
   "saturday": {
-    "message": "週六",
+    "message": "星期六",
     "description": "Saturday. Shown on the settings-history page."
   },
   "sunday_short": {
-    "message": "日",
+    "message": "星期日",
     "description": "Sunday abbreviated. Shown on the settings-history page."
   },
   "monday_short": {
-    "message": "一",
+    "message": "星期一",
     "description": "Monday abbreviated. Shown on the settings-history page."
   },
   "tuesday_short": {
-    "message": "二",
+    "message": "星期二",
     "description": "Tuesday abbreviated. Shown on the settings-history page."
   },
   "wednesday_short": {
-    "message": "三",
+    "message": "星期三",
     "description": "Wednesday abbreviated. Shown on the settings-history page."
   },
   "thursday_short": {
-    "message": "四",
+    "message": "星期四",
     "description": "Thursday abbreviated. Shown on the settings-history page."
   },
   "friday_short": {
-    "message": "五",
+    "message": "星期五",
     "description": "Friday abbreviated. Shown on the settings-history page."
   },
   "saturday_short": {
-    "message": "六",
+    "message": "星期六",
     "description": "Saturday abbreviated. Shown on the settings-history page."
   },
   "january": {
@@ -436,51 +460,51 @@
     "description": "December. Shown on the settings-history page."
   },
   "january_short": {
-    "message": "一",
+    "message": "一月",
     "description": "January abbreviated. Shown on the settings-history page."
   },
   "february_short": {
-    "message": "二",
+    "message": "二月",
     "description": "February abbreviated. Shown on the settings-history page."
   },
   "march_short": {
-    "message": "三",
+    "message": "三月",
     "description": "March abbreviated. Shown on the settings-history page."
   },
   "april_short": {
-    "message": "四",
+    "message": "四月",
     "description": "April abbreviated. Shown on the settings-history page."
   },
   "may_short": {
-    "message": "五",
+    "message": "五月",
     "description": "May abbreviated. Shown on the settings-history page."
   },
   "june_short": {
-    "message": "六",
+    "message": "六月",
     "description": "June abbreviated. Shown on the settings-history page."
   },
   "july_short": {
-    "message": "七",
+    "message": "七月",
     "description": "July abbreviated. Shown on the settings-history page."
   },
   "august_short": {
-    "message": "八",
+    "message": "八月",
     "description": "August abbreviated. Shown on the settings-history page."
   },
   "september_short": {
-    "message": "九",
+    "message": "九月",
     "description": "September abbreviated. Shown on the settings-history page."
   },
   "october_short": {
-    "message": "十",
+    "message": "十月",
     "description": "October abbreviated. Shown on the settings-history page."
   },
   "november_short": {
-    "message": "十一",
+    "message": "十一月",
     "description": "November abbreviated. Shown on the settings-history page."
   },
   "december_short": {
-    "message": "十二",
+    "message": "十二月",
     "description": "December abbreviated. Shown on the settings-history page."
   },
   "in_month": {
@@ -502,7 +526,7 @@
     "description": "Export History button. Shown on the settings-history page."
   },
   "confirm_import": {
-    "message": "匯入歷史紀錄會覆蓋掉目前紀錄， 要繼續嗎?",
+    "message": "匯入的歷史紀錄將會覆蓋目前紀錄， 要繼續嗎?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
@@ -556,7 +580,7 @@
     }
   },
   "write_a_review": {
-    "message": "編寫回應",
+    "message": "留言評論",
     "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
   },
   "report_an_issue": {
@@ -572,15 +596,15 @@
     "description": "Link to GitHub source code. Shown on the settings-feedback page."
   },
   "attributions": {
-    "message": "分配",
+    "message": "版權信息",
     "description": "Link to audio attributions. Shown on the settings-feedback page."
   },
   "license": {
-    "message": "授權",
+    "message": "使用授權",
     "description": "Link to source license. Shown on the settings-feedback page."
   },
   "view": {
-    "message": "畫面",
+    "message": "資訊",
     "description": "View section header. Shown on the settings-feedback page."
   },
   "version": {
@@ -608,7 +632,7 @@
     "description": "View History button text. Shown on the timer expiration page."
   },
   "pomodoros_until_long_break": {
-    "message": "$pomodoros$ 直到 休息(長時間)",
+    "message": "下個長休息前還有 $pomodoros$ ",
     "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
     "placeholders": {
       "pomodoros": {
@@ -619,7 +643,7 @@
   },
   "pomodoros_completed_today": {
     "message": "本日完成 $pomodoros$",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
@@ -628,7 +652,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "開始專心",
+    "message": "開始專注",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
@@ -636,23 +660,23 @@
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_short_break": {
-    "message": "休息（短暫）",
+    "message": "短休息",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "take_a_long_break": {
-    "message": "休息（長時間）",
+    "message": "長休息",
     "description": "Action title. Shown on the timer expiration page and in browser notifications."
   },
   "start_break_now": {
-    "message": "現在該休息囉",
+    "message": "開始休息",
     "description": "Notification button text when focus timer expires."
   },
   "start_short_break_now": {
-    "message": "現在該休息（短暫）囉！",
+    "message": "開始短休息",
     "description": "Notification button text when focus timer expires."
   },
   "start_long_break_now": {
-    "message": "現在該休息（長時間）囉！",
+    "message": "開始長休息",
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
@@ -680,11 +704,11 @@
     }
   },
   "less_than_minute": {
-    "message": "<1分鐘",
+    "message": "少於1分鐘",
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "$time$ 持續",
+    "message": "剩餘$time$",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -718,15 +742,15 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "時間到 · Marinara",
+    "message": "夠鐘了！ · Marinara",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
-    "message": "鑼1",
+    "message": "銅鑼1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
-    "message": "鑼2",
+    "message": "銅鑼2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
@@ -786,11 +810,11 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
-    "message": "咚",
+    "message": "叮",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "dong": {
-    "message": "鈴聲",
+    "message": "噹",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding_dong": {
@@ -798,7 +822,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "飛機",
+    "message": "飛機廣播",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
@@ -812,5 +836,67 @@
   "digital_alarm_clock": {
     "message": "數位鬧鐘",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "秒錶",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "時鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "掛牆鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "桌面鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "老爺鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "小型時鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "巨型時鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "腕錶",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "發條鐘",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "節拍器",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "木魚",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "脈衝",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "更改設定完成",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "更改設定錯誤: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
