@@ -2,7 +2,7 @@ require 'tmpdir'
 
 def run_chrome(language)
   user_data_dir = Dir.mktmpdir('marinara')
-  extension_dir = File.join(Dir.pwd, 'src')
+  extension_dir = File.join(Dir.pwd, 'package')
 
   orig = `defaults read com.google.Chrome AppleLanguages 2>&1`
   if $?.success?
