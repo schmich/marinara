@@ -199,12 +199,16 @@
   right: 0;
   display: flex;
   justify-content: flex-end;
-  padding: 40px 60px;
+  padding: 0;
   p {
-    margin: 0;
+    margin: 40px;
+    padding: 10px 20px;
     display: inline-flex;
     align-items: center;
-    color: #58aa2a;
+    color: #080;
+    background: #fff;
+    border: 1px solid #080;
+    border-radius: 40px;
     font-size: 18px;
     img {
       width: 32px;

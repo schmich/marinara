@@ -72,10 +72,10 @@ body {
   z-index: 1;
   position: relative;
   &.break, &.short-break, &.long-break {
-    background: #2b2;
+    background: #0a0;
     color: #fff;
     &:hover {
-      background: #2c2;
+      background: #0b0;
     }
   }
   &.focus {

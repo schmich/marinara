@@ -147,7 +147,7 @@
   margin-top: 3px;
 }
 .distribution rect {
-  fill: #2b2;
+  fill: #080;
   outline: 0 !important;
 }
 .distribution .domain {

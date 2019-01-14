@@ -71,7 +71,7 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: linear-gradient(to bottom, #d00, #c00000);
+  background: linear-gradient(to bottom, #c00, #b00);
   padding: 10px 0 0 0;
   box-shadow: 0 3px 10px #999;
   img {
