@@ -37,14 +37,20 @@ body {
   top: 15%;
   text-align: center;
   h1 {
-    margin: 0 0 10px 0;
+    margin: 0 auto 15px auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
     font-weight: normal;
-    font-size: 28px;
+    font-size: 32px;
+    width: 500px;
   }
   p {
     color: #222;
     font-size: 18px;
-    margin: 0 0 20px 0;
+    margin: 0 0 30px 0;
+  }
+  .pomodoros-today p {
+    margin-bottom: 15px;
   }
 }
 .button {
@@ -68,21 +74,22 @@ body {
   background: -webkit-linear-gradient(top, rgba(0,174,255,1) 0%, rgba(0,174,255,1) 92%, rgba(0,144,234,1) 100%);
   color: #fff;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.1s linear;
-  box-shadow: 0 15px 8px -10px rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: relative;
   &.break, &.short-break, &.long-break {
     background: #0a0;
+    box-shadow: 0 15px 8px -10px #00aa0055;
     color: #fff;
     &:hover {
       background: #0b0;
     }
   }
   &.focus {
-    background: #e22;
+    background: #d00;
+    box-shadow: 0 15px 8px -10px #bb000055;
     color: #fff;
     &:hover {
-      background: #f22;
+      background: #e00;
     }
   }
   &:active {
@@ -120,7 +127,7 @@ body {
 .pomodoros i {
   font-size: 35px;
   margin-top: 7px;
-  color: #e22 !important;
+  color: #d00 !important;
   text-shadow: 0 2px 2px rgba(200, 0, 0, 0.3);
 }
 .pomodoros:empty ~ * {

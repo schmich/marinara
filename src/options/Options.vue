@@ -71,7 +71,7 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: linear-gradient(to bottom, #c00, #b00);
+  background: linear-gradient(to bottom, #d00, #b00);
   padding: 10px 0 0 0;
   box-shadow: 0 3px 10px #999;
   img {
@@ -124,6 +124,9 @@ input.duration {
   flex: 1;
   width: 600px;
   margin: 0 auto;
+}
+.header .inner {
+  align-items: center;
 }
 .section h2 {
   margin: 0 0 15px 0;
