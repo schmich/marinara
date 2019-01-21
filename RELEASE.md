@@ -4,7 +4,7 @@
 - Run tests: `make test`
 - Bump `version` in `package/manifest.json`
 - Commit: `git commit -a`
-- Create package: `make package`
+- Create package: `make release`
 - Tag release: `git tag -s xx -m "Release xx."`
 - Push changes: `git push && git push --tags`
 - Publish package at https://chrome.google.com/webstore/devconsole
