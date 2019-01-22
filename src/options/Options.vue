@@ -52,7 +52,7 @@ html, body {
   display: block;
 }
 .group {
-  padding: 0 0 0 25px;
+  padding: 0 0 0 35px;
   p {
     padding: 0;
   }
@@ -71,7 +71,7 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: linear-gradient(to bottom, #d00, #c00000);
+  background: linear-gradient(to bottom, #d00, #b00);
   padding: 10px 0 0 0;
   box-shadow: 0 3px 10px #999;
   img {
@@ -125,6 +125,9 @@ input.duration {
   width: 600px;
   margin: 0 auto;
 }
+.header .inner {
+  align-items: center;
+}
 .section h2 {
   margin: 0 0 15px 0;
   padding: 0 0 5px 0;
@@ -146,6 +149,8 @@ fieldset {
 </style>
 
 <script>
+import Chrome from '../Chrome';
+
 export default {
   mounted() {
     // Listen for showOptionsPage command.
@@ -155,10 +160,16 @@ export default {
     window.removeEventListener('message', this.handleMessage);
   },
   methods: {
-    handleMessage({ data }) {
+    async handleMessage({ data }) {
       if (!data || !data.page) {
         return;
       }
+
+      // Focus current window & tab.
+      let tab = await Chrome.tabs.getCurrent();
+      await Chrome.tabs.update(tab.id, { active: true, highlighted: true });
+      await Chrome.windows.update(tab.windowId, { focused: true });
+
       window.location.assign('#/' + data.page);
     }
   }

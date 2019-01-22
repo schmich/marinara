@@ -19,16 +19,16 @@ def pseudolocalize(string)
   return "<#{out}>"
 end
 
-messages = JSON.parse(File.read('src/_locales/en/messages.json'))
+messages = JSON.parse(File.read('package/_locales/en/messages.json'))
 
 messages.each do |k, v|
   item = messages[k]
   item['message'] = pseudolocalize(item['message'])
 end
 
-Dir.mkdir('src/_locales/en_GB') rescue Errno::EEXIST
+Dir.mkdir('package/_locales/en_GB') rescue Errno::EEXIST
 
-File.open('src/_locales/en_GB/messages.json', 'w') do |file|
+File.open('package/_locales/en_GB/messages.json', 'w') do |file|
   file.puts(JSON.pretty_generate(messages))
 end
 

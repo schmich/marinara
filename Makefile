@@ -1,8 +1,17 @@
-.PHONY: package
+.PHONY: dev
+
+# Run development environment.
+dev:
+	npm run dev
+
+.PHONY: release package
 
 # Create Chrome extension package (.zip).
-package: messages
-	ruby -Iscripts scripts/make-package.rb
+release: production
+	ruby -Iscripts scripts/create-package.rb
+
+production: messages
+	npm run build
 
 .PHONY: messages validate-messages
 

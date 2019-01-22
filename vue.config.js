@@ -1,11 +1,37 @@
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+const WebpackTouch = require('webpack-touch');
+
 module.exports = {
   configureWebpack: {
     node: false,
     // Disable eval. Required for Chrome extension CSP.
     // See https://github.com/webpack/webpack/issues/5627#issuecomment-374386048.
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    // Override vue-cli's file naming to keep consistent naming
+    // between development and production builds.
+    output: {
+      filename: '[name].js',
+      chunkFilename: '[name].js'
+    },
+    plugins: [
+      // Delete background.html after build since it is not used.
+      new FileManagerPlugin({ onEnd: { delete: ['package/modules/background.html'] } }),
+      // Touch chunks after build to ensure they exist. This is necessary in development
+      // since we don't build them, but we still refer to them (see manifest.json).
+      new WebpackTouch({ filename: 'package/modules/chunk-vendors.js' }),
+      new WebpackTouch({ filename: 'package/modules/chunk-common.js' })
+    ]
+  },
+  // Leave CSS embedded in JS modules instead of
+  // extracting it into dedicated .css files.
+  css: {
+    extract: false
   },
   baseUrl: '/modules',
+  // Save on production package size by excluding source maps.
+  productionSourceMap: false,
+  // Exclude content hashes from filenames since we do
+  // not require them for versioning.
   filenameHashing: false,
   // Cannot use runtime compiler due to Chrome extension CSP.
   // See https://cli.vuejs.org/config/#runtimecompiler.
@@ -26,15 +52,15 @@ module.exports = {
     background: 'src/background/main.js'
   },
   chainWebpack: config => {
-    // Preserve HTML whitespace in templates.
+    // Preserve HTML whitespace in vue templates.
     // See https://github.com/vuejs/vue-cli/issues/1020.
     config.module
       .rule('vue')
       .use('vue-loader')
-      .loader('vue-loader')
-      .tap(options => {
-        options.compilerOptions.preserveWhitespace = true;
-        return options;
-      });
+        .loader('vue-loader')
+        .tap(options => {
+          options.compilerOptions.preserveWhitespace = true;
+          return options;
+        });
   }
 };

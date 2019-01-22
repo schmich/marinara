@@ -318,7 +318,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ på $date$",
+    "message": "$pomodoros$ den $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -774,7 +774,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Eldvarning",
+    "message": "Brandvarnare",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {

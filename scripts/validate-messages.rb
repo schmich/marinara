@@ -77,4 +77,5 @@ begin
 rescue ValidationError => e
   location = [e.file, e.message_id].compact.join(', ')
   puts "Error in #{location}:\n\t#{e}"
+  exit 1
 end

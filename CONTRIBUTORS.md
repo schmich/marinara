@@ -19,6 +19,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [XTacDK](https://github.com/XTacDK): Polish translation
 - [lena15n](https://github.com/lena15n): Russian translation
 - [Po Chun, Lu](https://github.com/Sirius207): Chinese (Taiwan) translation
+- [Omega Chiu](https://github.com/omeganc): Chinese (Taiwan) translation
 - [Kietzmann](https://github.com/Kietzmann): Ukrainian translation
 - [Shashank SVRSN](https://github.com/fossterer): Telugu translation
 - [frozzie](https://github.com/frozzie): Chinese (China) translation
@@ -40,3 +41,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Pyrox](https://github.com/Pyr0x1): Italian translation
 - [kbigwheel](https://github.com/bigwheel): Japanese translation
 - [André Laszlo](https://github.com/andrelaszlo): Swedish translation
+- [Jaroslav Svoboda](https://github.com/multiflexi): Czech translation
+- [David Bautista](https://github.com/dbautistav): Notification Tab enhancement
+- [Baptiste Jacquemet](https://github.com/bjacquemet): French Translation
+- [Valentina De Col](https://github.com/valentinadc): Italian translation

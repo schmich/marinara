@@ -3,7 +3,7 @@
   "short_name": "__MSG_app_name_short__",
   "description": "__MSG_app_desc__",
   "default_locale": "en",
-  "version": "20",
+  "version": "25",
   "manifest_version": 2,
   "author": "Chris Schmich <schmch@gmail.com>",
   "homepage_url": "https://github.com/schmich/marinara",
@@ -20,7 +20,11 @@
   },
   "background": {
     "persistent": true,
-    "scripts": ["modules/background.js"]
+    "scripts": [
+      "modules/chunk-common.js",
+      "modules/chunk-vendors.js",
+      "modules/background.js"
+    ]
   },
   "options_page": "modules/options.html",
   "icons": {

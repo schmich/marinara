@@ -26,7 +26,9 @@ class Controller
     this.timer.observe(new ExpirationSoundObserver(settings));
     this.timer.observe(new TimerSoundObserver(settings));
     this.timer.observe(new MenuObserver(this.menu));
+
     this.menu.apply();
+    settingsManager.on('change', () => this.menu.apply());
 
     Alarms.install(timer, settingsManager);
     chrome.browserAction.onClicked.addListener(() => this.onBrowserAction());

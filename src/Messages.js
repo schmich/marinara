@@ -429,12 +429,6 @@ class Messages
   get saturday_short() {
     return chrome.i18n.getMessage('saturday_short', []);
   }
-  get save_changes() {
-    return chrome.i18n.getMessage('save_changes', []);
-  }
-  get save_changes_notice() {
-    return chrome.i18n.getMessage('save_changes_notice', []);
-  }
   get september() {
     return chrome.i18n.getMessage('september', []);
   }
@@ -443,6 +437,9 @@ class Messages
   }
   get settings() {
     return chrome.i18n.getMessage('settings', []);
+  }
+  get settings_saved() {
+    return chrome.i18n.getMessage('settings_saved', []);
   }
   get ship_bell() {
     return chrome.i18n.getMessage('ship_bell', []);
