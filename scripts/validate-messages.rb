@@ -12,7 +12,14 @@ class ValidationError < StandardError
   attr_reader :file, :message_id
 end
 
-def validate_json(file, messages)
+def validate(id, file, en_message_names)
+  content = File.read(file)
+  begin
+    messages = JSON.parse(content)
+  rescue => e
+    raise ValidationError.new("Invalid JSON: #{e}", file)
+  end
+
   messages.each do |id, obj|
     message = obj['message']
 
@@ -37,17 +44,12 @@ def validate_json(file, messages)
       raise ValidationError.new(error, file, id)
     end
   end
-end
 
-def validate(id, file)
-  content = File.read(file)
-  begin
-    messages = JSON.parse(content)
-  rescue => e
-    raise ValidationError.new("Invalid JSON: #{e}", file)
+  invalid_names = messages.keys.uniq - en_message_names
+  if invalid_names.any?
+    error = "Messages not defined in en locale:\n" + invalid_names.map { |n| "\t\t#{n}" }.join("\n")
+    raise ValidationError.new(error, file)
   end
-
-  validate_json(file, messages)
 
   names = content.scan(/^  \"(.*?)\":/m).flatten
 
@@ -60,7 +62,7 @@ def validate(id, file)
   end
 
   if duplicates.any?
-    error = "Found duplicate message names:\n" + duplicates.to_a.map { |n| "\t#{n}" }.join("\n")
+    error = "Found duplicate message names:\n" + duplicates.to_a.map { |n| "\t\t#{n}" }.join("\n")
     raise ValidationError.new(error, file)
   end
 end
@@ -70,9 +72,14 @@ begin
   if locales.empty?
     raise 'No locales found.'
   end
+
+  en_messages = JSON.parse(File.read(locales['en']))
+  en_message_names = en_messages.keys
+
   locales.each do |id, file|
-    validate(id, file)
+    validate(id, file, en_message_names)
   end
+
   puts 'OK.'
 rescue ValidationError => e
   location = [e.file, e.message_id].compact.join(', ')
