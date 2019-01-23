@@ -2,6 +2,7 @@ import Chrome from '../Chrome';
 import StorageManager from './StorageManager';
 import RLE from './RLE';
 import Mutex from '../Mutex';
+import M from '../Messages';
 
 class History
 {
@@ -17,15 +18,15 @@ class History
   async import(history) {
     await this.mutex.exclusive(async () => {
       if (!history.pomodoros) {
-        throw new Error(T('missing_pomodoro_data'));
+        throw new Error(M.missing_pomodoro_data);
       }
 
       if (!history.durations) {
-        throw new Error(T('missing_duration_data'));
+        throw new Error(M.missing_duration_data);
       }
 
       if (!history.timezones) {
-        throw new Error(T('missing_timezone_data'));
+        throw new Error(M.missing_timezone_data);
       }
 
       let durations = RLE.decode(history.durations);
