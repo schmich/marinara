@@ -513,11 +513,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "导入历史",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "导出历史",
     "description": "Export History button. Shown on the settings-history page."
   },

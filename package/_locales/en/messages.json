@@ -545,13 +545,25 @@
       }
     }
   },
-  "import_history": {
-    "message": "Import History",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "Your History",
+    "description": "Your History section header. Shown on the settings-history page."
   },
-  "export_history": {
-    "message": "Export History",
-    "description": "Export History button. Shown on the settings-history page."
+  "export": {
+    "message": "Export",
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "For backup or for importing on another computer.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Import",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Import & merge Pomodoro history from an export.",
+    "description": "Import history description. Shown on the settings-history page."
   },
   "confirm_import": {
     "message": "Importing history overwrites all existing history. Continue?",

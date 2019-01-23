@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Geçmişi İçe Aktar",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Geçmişi Dışa Aktar",
     "description": "Export History button. Shown on the settings-history page."
   },

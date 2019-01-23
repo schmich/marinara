@@ -46,46 +46,61 @@
       <WeekDistribution v-if="stats.total > 0" :pomodoros="stats.pomodoros" key="chart"></WeekDistribution>
       <div v-else class="empty" key="empty">{{ M.weekly_empty_placeholder }}</div>
     </section>
-    <section id="heatmap-section" class="chart">
+    <section class="chart">
       <div class="title">
         <h2>{{ stats.period | pomodoroCount | last_9_months }}</h2>
       </div>
       <Heatmap v-if="stats.total > 0" :pomodoros="stats.daily" :start="historyStart" key="chart"></Heatmap>
       <div v-else class="empty" key="empty">{{ M.history_empty_placeholder }}</div>
     </section>
-    <div class="actions">
-      <button @click="importHistory">{{ M.import_history }}</button>
-      <button @click="exportHistory">{{ M.export_history }}</button>
-    </div>
+    <section class="chart">
+      <div class="title">{{ M.your_history }}</div>
+      <div class="actions">
+        <div class="action">
+          <button @click="exportHistory">{{ M.export }}</button>
+          <p>{{ M.export_description }}</p>
+        </div>
+        <div class="action">
+          <button @click="importHistory">{{ M.import }}</button>
+          <p>{{ M.import_description }}</p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <style lang="scss">
 .history {
   justify-content: space-between;
-}
-.history .actions {
-  display: flex;
-  justify-content: flex-end;
-  margin: 25px 0 35px 0;
-}
-.history .actions button {
-  outline: 0 !important;
-  font-size: 15px;
-  cursor: pointer;
-  background: transparent;
-  color: #555;
-  padding: 10px 20px;
-  border: 1px solid #555;
-  border-radius: 40px;
-  text-decoration: none;
-  display: inline-block;
-  margin-left: 15px;
-}
-.history .actions button:hover {
-  color: #a00;
-  border: 1px solid #a00;
-  text-decoration: none;
+  .actions {
+    .action {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      p {
+        flex: 1 1 auto;
+        margin: 0 0 0 15px;
+      }
+      button {
+        flex: 0 0 150px;
+        outline: 0 !important;
+        font-size: 15px;
+        cursor: pointer;
+        background: transparent;
+        color: #555;
+        padding: 10px 20px;
+        border: 1px solid #555;
+        border-radius: 40px;
+        text-decoration: none;
+        display: inline-block;
+        &:hover {
+          color: #a00;
+          border: 1px solid #a00;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 .history section {
   margin-bottom: 60px;

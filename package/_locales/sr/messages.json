@@ -533,11 +533,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Uvezi Istoriju",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Izvezi Istoriju",
     "description": "Export History button. Shown on the settings-history page."
   },

@@ -171,8 +171,11 @@ class Messages
   get expire_title() {
     return chrome.i18n.getMessage('expire_title', []);
   }
-  get export_history() {
-    return chrome.i18n.getMessage('export_history', []);
+  get export() {
+    return chrome.i18n.getMessage('export', []);
+  }
+  get export_description() {
+    return chrome.i18n.getMessage('export_description', []);
   }
   get february() {
     return chrome.i18n.getMessage('february', []);
@@ -237,11 +240,14 @@ class Messages
   hr_suffix(count) {
     return chrome.i18n.getMessage('hr_suffix', [count]);
   }
+  get import() {
+    return chrome.i18n.getMessage('import', []);
+  }
+  get import_description() {
+    return chrome.i18n.getMessage('import_description', []);
+  }
   import_failed(error) {
     return chrome.i18n.getMessage('import_failed', [error]);
-  }
-  get import_history() {
-    return chrome.i18n.getMessage('import_history', []);
   }
   in_month(month) {
     return chrome.i18n.getMessage('in_month', [month]);
@@ -614,6 +620,9 @@ class Messages
   }
   get write_a_review() {
     return chrome.i18n.getMessage('write_a_review', []);
+  }
+  get your_history() {
+    return chrome.i18n.getMessage('your_history', []);
   }
 }
 

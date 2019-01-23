@@ -517,11 +517,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Exportar histórico",
     "description": "Export History button. Shown on the settings-history page."
   },

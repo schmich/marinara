@@ -533,11 +533,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Importuoti istoriją",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Eksportuoti istoriją",
     "description": "Export History button. Shown on the settings-history page."
   },

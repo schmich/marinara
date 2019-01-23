@@ -517,11 +517,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "匯入 歷史紀錄",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "匯出 歷史紀錄",
     "description": "Export History button. Shown on the settings-history page."
   },

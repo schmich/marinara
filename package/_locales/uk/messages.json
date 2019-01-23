@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Імпортувати Історію",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Експортувати Історію",
     "description": "Export History button. Shown on the settings-history page."
   },

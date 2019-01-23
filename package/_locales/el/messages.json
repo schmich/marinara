@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "Εισαγωγή Ιστορικού",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "Εξαγωγή Ιστορικού",
     "description": "Export History button. Shown on the settings-history page."
   },

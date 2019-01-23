@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "นำประวัติเข้า",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "นำประวัติออก",
     "description": "Export History button. Shown on the settings-history page."
   },

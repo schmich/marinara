@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "ইতিহাস ইমপোর্ট করুন",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "ইতিহাস এক্সপোর্ট করুন",
     "description": "Export History button. Shown on the settings-history page."
   },

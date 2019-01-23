@@ -493,11 +493,11 @@
       }
     }
   },
-  "import_history": {
+  "import": {
     "message": "చరిత్రను అందుకో",
     "description": "Import History button. Shown on the settings-history page."
   },
-  "export_history": {
+  "export": {
     "message": "చరిత్రను అందించు",
     "description": "Export History button. Shown on the settings-history page."
   },
