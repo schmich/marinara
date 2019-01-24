@@ -230,7 +230,7 @@ export default {
         }
 
         let history = JSON.parse(content);
-        if (!confirm(M.confirm_import)) {
+        if (!confirm(M.import_confirmation)) {
           return;
         }
 

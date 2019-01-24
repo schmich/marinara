@@ -533,7 +533,7 @@
     "message": "Eksportér historie",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Importering af historie overskriver alt eksisterende historie. Fortsæt??",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

@@ -90,8 +90,8 @@ class Messages
   get computer_magic() {
     return chrome.i18n.getMessage('computer_magic', []);
   }
-  get confirm_import() {
-    return chrome.i18n.getMessage('confirm_import', []);
+  get import_confirmation() {
+    return chrome.i18n.getMessage('import_confirmation', []);
   }
   get contributors() {
     return chrome.i18n.getMessage('contributors', []);

@@ -525,7 +525,7 @@
     "message": "Ekspor Riwayat",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Mengimpor riwayat akan menghapus semua riwayat yang telah ada. Lanjutkan?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

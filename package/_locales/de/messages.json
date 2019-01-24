@@ -533,7 +533,7 @@
     "message": "Verlauf Exportieren",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Sicher? Dieser Vorgang überschreibt den alten Verlauf.",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

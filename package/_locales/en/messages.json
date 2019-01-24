@@ -565,7 +565,7 @@
     "message": "Import & merge Pomodoro history from an export.",
     "description": "Import history description. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Importing history overwrites all existing history. Continue?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

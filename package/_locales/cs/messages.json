@@ -541,7 +541,7 @@
     "message": "Export historie",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Importování historie přepíše všechnu historii. Přejete si pokračovat?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

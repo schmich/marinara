@@ -501,7 +501,7 @@
     "message": "ইতিহাস এক্সপোর্ট করুন",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "ইতিহাস ইমপোর্ট করলে বর্তমান ইতিহাস মুছে যাবে। সামনে চলুন?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

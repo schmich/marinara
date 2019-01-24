@@ -541,7 +541,7 @@
     "message": "Exporter l'historique",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Importer l'historique va écraser l'historique existant. Veux tu continuer ?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

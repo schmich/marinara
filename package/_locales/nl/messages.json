@@ -533,7 +533,7 @@
     "message": "Geschiedenis Exporteren",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Importeren van geschiedenis overschrijft alle bestaande geschiedenis. Verder gaan?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

@@ -501,7 +501,7 @@
     "message": "นำประวัติออก",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "การนำประวัติเข้าจะทำให้ประวัติเดิมทั้งหมดหายไป, ต้องการทำต่อ?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

@@ -501,7 +501,7 @@
     "message": "Експортувати Історію",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Імпортування історії перепише всю існуючу історію. Продовжити?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

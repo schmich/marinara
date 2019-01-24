@@ -541,7 +541,7 @@
     "message": "Izvezi Istoriju",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "Uvezena istorija se upisuje preko postojeće. \nNastavi?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },

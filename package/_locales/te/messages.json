@@ -501,7 +501,7 @@
     "message": "చరిత్రను అందించు",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "confirm_import": {
+  "import_confirmation": {
     "message": "చరిత్రను అందిపుచ్చుకోవటం వలన ఉన్న చరిత్ర కోల్పోవలసి ఉంటుంది. కొనసాగించాలా?",
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
