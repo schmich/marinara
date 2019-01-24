@@ -62,6 +62,10 @@ class HistoryService extends Service
   async getHistory(since) {
     return await this.history.stats(since);
   }
+
+  async clearHistory() {
+    return await this.history.clear();
+  }
 }
 
 class PomodoroService extends Service

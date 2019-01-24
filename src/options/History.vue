@@ -64,6 +64,10 @@
           <button @click="importHistory">{{ M.import }}</button>
           <p>{{ M.import_description }}</p>
         </div>
+        <div class="action">
+          <button @click="clearHistory">{{ M.clear_history }}</button>
+          <p>{{ M.clear_history_description }}</p>
+        </div>
       </div>
     </section>
   </div>
@@ -236,7 +240,15 @@ export default {
         return;
       }
 
-      this.updateStats();
+      await this.updateStats();
+    },
+    async clearHistory() {
+      if (!confirm(M.clear_history_confirmation)) {
+        return;
+      }
+
+      await this.historyClient.clearHistory();
+      await this.updateStats();
     },
     async updateStats() {
       let now = new Date();

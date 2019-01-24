@@ -14,6 +14,10 @@ class History
     return await this.storage.get();
   }
 
+  async clear() {
+    await this.storage.set(this.storage.schema.default);
+  }
+
   async import(history) {
     await this.mutex.exclusive(async () => {
       if (!history.pomodoros) {

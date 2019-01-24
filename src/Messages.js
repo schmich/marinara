@@ -72,6 +72,15 @@ class Messages
   get chrome_web_store_description() {
     return chrome.i18n.getMessage('chrome_web_store_description', []);
   }
+  get clear_history() {
+    return chrome.i18n.getMessage('clear_history', []);
+  }
+  get clear_history_confirmation() {
+    return chrome.i18n.getMessage('clear_history_confirmation', []);
+  }
+  get clear_history_description() {
+    return chrome.i18n.getMessage('clear_history_description', []);
+  }
   get clock() {
     return chrome.i18n.getMessage('clock', []);
   }

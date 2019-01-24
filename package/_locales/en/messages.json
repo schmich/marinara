@@ -579,6 +579,18 @@
       }
     }
   },
+  "clear_history": {
+    "message": "Clear History",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "Permanently delete all Pomodoro history.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "Permanently delete all Pomodoro history?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
+  },
   "group_pomodoros_minute_buckets": {
     "message": "Group Pomodoros into $count$ minute buckets",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
