@@ -19,32 +19,13 @@ class History
     await this.storage.set(this.storage.schema.default);
   }
 
-  async import(history) {
-    await this.mutex.exclusive(async () => {
-      if (!history.pomodoros) {
-        throw new Error(M.missing_pomodoro_data);
-      }
-
-      if (!history.durations) {
-        throw new Error(M.missing_duration_data);
-      }
-
-      if (!history.timezones) {
-        throw new Error(M.missing_timezone_data);
-      }
-
-      let durations = RLE.decode(history.durations);
-      let timezones = RLE.decode(history.timezones);
-
-      if (history.pomodoros.length !== durations.length) {
-        throw new Error('Mismatched Pomodoro/duration data.');
-      }
-
-      if (history.pomodoros.length !== timezones.length) {
-        throw new Error('Mismatched Pomodoro/timezone data.');
-      }
-
-      await this.storage.set(history);
+  async merge(history) {
+    return await this.mutex.exclusive(async () => {
+      let existing = decompress(await this.storage.get());
+      let importing = decompress(history);
+      let { count, merged } = merge(existing, importing);
+      await this.storage.set(compress(merged));
+      return count;
     });
   }
 
@@ -71,13 +52,13 @@ class History
       } else {
         // If there is a timestamp inversion for some reason, insert values
         // at the correct sorted position.
-        let durations = RLE.decode(local.durations);
+        let durations = RLE.decompress(local.durations);
         durations.splice(i + 1, 0, duration);
-        local.durations = RLE.encode(durations);
+        local.durations = RLE.compress(durations);
 
-        let timezones = RLE.decode(local.timezones);
+        let timezones = RLE.decompress(local.timezones);
         timezones.splice(i + 1, 0, timezone);
-        local.timezones = RLE.encode(timezones);
+        local.timezones = RLE.compress(timezones);
 
         local.pomodoros.splice(i + 1, 0, timestamp);
       }
@@ -205,6 +186,143 @@ class HistorySchema
   }
 }
 
+function decompress(historyRLE) {
+  if (!historyRLE) {
+    throw new Error(M.missing_pomodoro_data);
+  }
+
+  let {
+    pomodoros,
+    durations: durationsRLE,
+    timezones: timezonesRLE
+  } = historyRLE;
+
+  if (!pomodoros) {
+    throw new Error(M.missing_pomodoro_data);
+  }
+
+  if (!durationsRLE) {
+    throw new Error(M.missing_duration_data);
+  }
+
+  if (!Array.isArray(durationsRLE)) {
+    throw new Error(M.invalid_duration_data);
+  }
+
+  if (!timezonesRLE) {
+    throw new Error(M.missing_timezone_data);
+  }
+
+  if (!Array.isArray(timezonesRLE)) {
+    throw new Error(M.missing_timezone_data);
+  }
+
+  const durations = RLE.decompress(durationsRLE);
+  const timezones = RLE.decompress(timezonesRLE);
+
+  if (pomodoros.length !== durations.length) {
+    throw new Error(M.mismatched_pomodoro_duration_data);
+  }
+
+  if (pomodoros.length !== timezones.length) {
+    throw new Error(M.mismatched_pomodoro_timezone_data);
+  }
+
+  for (let i = 0; i < pomodoros.length; i++) {
+    if (!Number.isInteger(pomodoros[i])) {
+      throw new Error(M.invalid_pomodoro_data);
+    }
+
+    if (!Number.isInteger(durations[i])) {
+      throw new Error(M.invalid_duration_data);
+    }
+
+    if (!Number.isInteger(timezones[i])) {
+      throw new Error(M.invalid_timezone_data);
+    }
+  }
+
+  return {
+    ...historyRLE,
+    pomodoros,
+    durations,
+    timezones
+  };
+}
+
+function compress(history) {
+  if (!history) {
+    throw new Error(M.missing_pomodoro_data);
+  }
+
+  if (!history.durations) {
+    throw new Error(M.missing_duration_data);
+  }
+
+  if (!Array.isArray(history.durations)) {
+    throw new Error(M.invalid_duration_data);
+  }
+
+  if (!history.timezones) {
+    throw new Error(M.missing_timezone_data);
+  }
+
+  if (!Array.isArray(history.timezones)) {
+    throw new Error(M.invalid_timezone_data);
+  }
+
+  return {
+    ...history,
+    durations: RLE.compress(history.durations),
+    timezones: RLE.compress(history.timezones)
+  };
+}
+
+function merge(existing, importing) {
+  let {
+    pomodoros: existingPomodoros,
+    durations: existingDurations,
+    timezones: existingTimezones
+  } = existing;
+
+  let {
+    pomodoros: importingPomodoros,
+    durations: importingDurations,
+    timezones: importingTimezones
+  } = importing;
+
+  let pomodoros = [...existingPomodoros];
+  let durations = [...existingDurations];
+  let timezones = [...existingTimezones];
+
+  let count = 0;
+  for (let i = 0; i < importingPomodoros.length; i++) {
+    let timestamp = importingPomodoros[i];
+    let index = search(pomodoros, timestamp);
+
+    if (pomodoros[index] === timestamp) {
+      // Pomodoros with the same timestamp are considered
+      // identical and are excluded when being imported.
+      continue;
+    }
+
+    count++;
+    pomodoros.splice(index, 0, timestamp);
+    durations.splice(index, 0, importingDurations[i]);
+    timezones.splice(index, 0, importingTimezones[i]);
+  }
+
+  return {
+    count,
+    merged: {
+      ...existing,
+      pomodoros,
+      durations,
+      timezones
+    }
+  };
+}
+
 // Returns the index in arr for which all elements at or after the index are
 // at least min. If all elements are less than min, this returns arr.length.
 function search(arr, min, lo = null, hi = null) {
@@ -223,4 +341,7 @@ function search(arr, min, lo = null, hi = null) {
   return Math.min(lo, arr.length);
 }
 
-export default History;
+export {
+  History,
+  merge
+};

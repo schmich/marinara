@@ -773,13 +773,25 @@
     "message": "Missing Pomodoro data.",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Invalid Pomodoro data.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Missing duration data.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Invalid duration data.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Missing timezone data.",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "Invalid timezone data.",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "Mismatched Pomodoro/duration data.",
@@ -788,6 +800,16 @@
   "mismatched_pomodoro_timezone_data": {
     "message": "Mismatched Pomodoro/timezone data.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
+  },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ imported.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
   },
   "help_translate": {
     "message": "Help Translate",

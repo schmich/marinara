@@ -1,6 +1,6 @@
 class RLE
 {
-  static encode(arr) {
+  static compress(arr) {
     let result = [];
     let start = 0;
     let group = arr[0];
@@ -20,7 +20,7 @@ class RLE
     return result;
   }
 
-  static decode(arr) {
+  static decompress(arr) {
     let result = [];
     for (let i = 0; i < arr.length; i += 2) {
       for (let j = 0; j < arr[i]; ++j) {

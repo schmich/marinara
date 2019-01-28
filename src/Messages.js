@@ -90,9 +90,6 @@ class Messages
   get computer_magic() {
     return chrome.i18n.getMessage('computer_magic', []);
   }
-  get import_confirmation() {
-    return chrome.i18n.getMessage('import_confirmation', []);
-  }
   get contributors() {
     return chrome.i18n.getMessage('contributors', []);
   }
@@ -252,6 +249,9 @@ class Messages
   get import() {
     return chrome.i18n.getMessage('import', []);
   }
+  get import_confirmation() {
+    return chrome.i18n.getMessage('import_confirmation', []);
+  }
   get import_description() {
     return chrome.i18n.getMessage('import_description', []);
   }
@@ -269,6 +269,15 @@ class Messages
   }
   get invalid_duration() {
     return chrome.i18n.getMessage('invalid_duration', []);
+  }
+  get invalid_duration_data() {
+    return chrome.i18n.getMessage('invalid_duration_data', []);
+  }
+  get invalid_pomodoro_data() {
+    return chrome.i18n.getMessage('invalid_pomodoro_data', []);
+  }
+  get invalid_timezone_data() {
+    return chrome.i18n.getMessage('invalid_timezone_data', []);
   }
   get january() {
     return chrome.i18n.getMessage('january', []);
@@ -407,6 +416,9 @@ class Messages
   }
   pomodoros_completed_today(pomodoros) {
     return chrome.i18n.getMessage('pomodoros_completed_today', [pomodoros]);
+  }
+  pomodoros_imported(pomodoros) {
+    return chrome.i18n.getMessage('pomodoros_imported', [pomodoros]);
   }
   pomodoros_until_long_break(pomodoros) {
     return chrome.i18n.getMessage('pomodoros_until_long_break', [pomodoros]);

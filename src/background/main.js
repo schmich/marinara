@@ -1,7 +1,7 @@
 import { PomodoroTimer } from './Timer';
 import Chrome from '../Chrome';
 import { createPomodoroMenu } from './Menu';
-import History from './History';
+import { History } from './History';
 import StorageManager from './StorageManager';
 import { SettingsSchema, PersistentSettings } from './Settings';
 import { HistoryService, SoundsService, SettingsService, PomodoroService, OptionsService } from './Services';

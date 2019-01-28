@@ -234,7 +234,8 @@ export default {
           return;
         }
 
-        await this.historyClient.setRawHistory(history);
+        let count = await this.historyClient.merge(history);
+        alert(M.pomodoros_imported(pomodoroCount(count)));
       } catch (e) {
         alert(M.import_failed(`${e}`));
         return;

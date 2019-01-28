@@ -55,8 +55,8 @@ class HistoryService extends Service
     return await this.history.raw();
   }
 
-  async setRawHistory(history) {
-    await this.history.import(history);
+  async merge(history) {
+    return await this.history.merge(history);
   }
 
   async getHistory(since) {
