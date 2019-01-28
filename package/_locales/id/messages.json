@@ -690,7 +690,7 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "Waktu Habis · Marinara",
+    "message": "Waktu Habis",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   }
 }

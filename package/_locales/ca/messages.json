@@ -754,7 +754,7 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "S'ha acabat el temps · Marinara",
+    "message": "S'ha acabat el temps",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {

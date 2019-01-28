@@ -754,7 +754,7 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "Laikas baigėsi  · Marinara",
+    "message": "Laikas baigėsi",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {

@@ -714,7 +714,7 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "সময় শেষ · ম্যারিনারা",
+    "message": "সময় শেষ",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {

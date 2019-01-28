@@ -155,7 +155,7 @@ export default {
     };
   },
   async created() {
-    document.title = M.expire_title;
+    document.title = `${M.expire_title} - Marinara`;
     document.body.addEventListener('keypress', this.onKeyPress);
 
     let { title, action, pomodoros, messages, phase } = await this.expirationClient.getProperties();

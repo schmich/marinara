@@ -4,6 +4,7 @@ import Options from './Options';
 import Settings from './Settings';
 import History from './History';
 import Feedback from './Feedback';
+import M from '../Messages';
 
 Vue.use(Router);
 
@@ -23,19 +24,19 @@ const router = new Router({
           path: 'settings',
           name: 'settings',
           component: Settings,
-          meta: { title: 'Settings' }
+          meta: { title: M.settings }
         },
         {
           path: 'history',
           name: 'history',
           component: History,
-          meta: { title: 'History' }
+          meta: { title: M.history }
         },
         {
           path: 'feedback',
           name: 'feedback',
           component: Feedback,
-          meta: { title: 'Feedback' }
+          meta: { title: M.feedback }
         }
       ]
     }

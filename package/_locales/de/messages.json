@@ -746,7 +746,7 @@
     "description": "Feedback link. Shown on settings-feedback page."
   },
   "expire_title": {
-    "message": "Zeit abgelaufen · Marinara",
+    "message": "Zeit abgelaufen",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
   "gong_1": {
