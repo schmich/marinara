@@ -68,18 +68,18 @@ class TimerSoundObserver
   }
 
   async onTimerStart(phase) {
-    if (phase !== Phase.Focus) {
-      return;
-    }
-
     let timerSoundSettings = this.settings.focus.timerSound;
-    if (timerSoundSettings) {
-      await this.mutex.exclusive(async () => {
-        this.timerSound && await this.timerSound.close();
+    await this.mutex.exclusive(async () => {
+      // Cleanup any existing timer sound.
+      this.timerSound && await this.timerSound.close();
+
+      if (phase === Phase.Focus && timerSoundSettings) {
         this.timerSound = await createTimerSound(timerSoundSettings);
         this.timerSound.start();
-      });
-    }
+      } else {
+        this.timerSound = null;
+      }
+    });
   }
 
   async onTimerStop() {
