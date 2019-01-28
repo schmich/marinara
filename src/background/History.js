@@ -129,10 +129,6 @@ class History
   countSince(pomodoros, date) {
     let timestamp = History.timestamp(date);
     let index = search(pomodoros, timestamp);
-    if (index === null) {
-      return 0;
-    }
-
     return pomodoros.length - index;
   }
 
@@ -209,6 +205,8 @@ class HistorySchema
   }
 }
 
+// Returns the index in arr for which all elements at or after the index are
+// at least min. If all elements are less than min, this returns arr.length.
 function search(arr, min, lo = null, hi = null) {
   lo = lo || 0;
   hi = hi || (arr.length - 1);
@@ -222,7 +220,7 @@ function search(arr, min, lo = null, hi = null) {
     }
   }
 
-  return lo < arr.length ? lo : null;
+  return Math.min(lo, arr.length);
 }
 
 export default History;

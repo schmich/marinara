@@ -67,6 +67,7 @@ class ServiceBroker
       try {
         respond({ result: await service[methodName](...args) });
       } catch (e) {
+        console.error(e);
         respond({ error: `${e}` });
       }
     })();
