@@ -48,12 +48,12 @@ class History
     const row = values => values.map(v => escape(v.toString())).join(',') + '\n';
 
     let csv = row([
-      'Completion (ISO 8601)',
-      'Completion (Date)',
-      'Completion (24 Hour Time)',
-      'Completion (Unix Timestamp)',
-      'Completion Timezone (UTC Offset Minutes)',
-      'Duration (Seconds)'
+      M.end_iso_8601,
+      M.end_date,
+      M.end_time,
+      M.end_timestamp,
+      M.end_timezone,
+      M.duration_seconds
     ]);
 
     for (let i = 0; i < pomodoros.length; i++) {

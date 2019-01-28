@@ -557,6 +557,30 @@
     "message": "Use with Excel, Google Sheets, or other spreadsheet software.",
     "description": "Save as CSV description. Shown on the settings-history page."
   },
+  "end_iso_8601": {
+    "message": "End (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "End Date",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "End Time (24 Hour)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "End Timestamp (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "End Timezone (UTC Offset Minutes)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "Duration (Seconds)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
+  },
   "export": {
     "message": "Export",
     "description": "Export (history) button. Shown on the settings-history page."

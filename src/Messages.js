@@ -141,8 +141,26 @@ class Messages
   get duration() {
     return chrome.i18n.getMessage('duration', []);
   }
+  get duration_seconds() {
+    return chrome.i18n.getMessage('duration_seconds', []);
+  }
   get electronic_chime() {
     return chrome.i18n.getMessage('electronic_chime', []);
+  }
+  get end_date() {
+    return chrome.i18n.getMessage('end_date', []);
+  }
+  get end_iso_8601() {
+    return chrome.i18n.getMessage('end_iso_8601', []);
+  }
+  get end_time() {
+    return chrome.i18n.getMessage('end_time', []);
+  }
+  get end_timestamp() {
+    return chrome.i18n.getMessage('end_timestamp', []);
+  }
+  get end_timezone() {
+    return chrome.i18n.getMessage('end_timezone', []);
   }
   error_saving_settings(message) {
     return chrome.i18n.getMessage('error_saving_settings', [message]);
