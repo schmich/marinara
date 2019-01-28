@@ -456,6 +456,12 @@ class Messages
   get saturday_short() {
     return chrome.i18n.getMessage('saturday_short', []);
   }
+  get save_as_csv() {
+    return chrome.i18n.getMessage('save_as_csv', []);
+  }
+  get save_as_csv_description() {
+    return chrome.i18n.getMessage('save_as_csv_description', []);
+  }
   get september() {
     return chrome.i18n.getMessage('september', []);
   }

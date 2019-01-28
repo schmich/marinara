@@ -549,6 +549,14 @@
     "message": "Your History",
     "description": "Your History section header. Shown on the settings-history page."
   },
+  "save_as_csv": {
+    "message": "Save as CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "Use with Excel, Google Sheets, or other spreadsheet software.",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
   "export": {
     "message": "Export",
     "description": "Export (history) button. Shown on the settings-history page."

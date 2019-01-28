@@ -57,6 +57,10 @@
       <div class="title">{{ M.your_history }}</div>
       <div class="actions">
         <div class="action">
+          <button @click="exportHistoryCSV">{{ M.save_as_csv }}</button>
+          <p>{{ M.save_as_csv_description }}</p>
+        </div>
+        <div class="action">
           <button @click="exportHistory">{{ M.export }}</button>
           <p>{{ M.export_description }}</p>
         </div>
@@ -218,8 +222,12 @@ export default {
     this.pomodoroClient.dispose();
   },
   methods: {
+    async exportHistoryCSV() {
+      let csv = await this.historyClient.getCSV();
+      File.save('history.csv', csv);
+    },
     async exportHistory() {
-      let json = JSON.stringify(await this.historyClient.getRawHistory());
+      let json = JSON.stringify(await this.historyClient.getAll());
       File.save('history.json', json);
     },
     async importHistory() {
@@ -258,7 +266,7 @@ export default {
       // Start at the first Sunday at least 39 weeks (~9 months) ago.
       start.setDate(start.getDate() - 273);
       start.setDate(start.getDate() - start.getDay());
-      this.stats = await this.historyClient.getHistory(+start);
+      this.stats = await this.historyClient.getStats(+start);
       this.historyStart = start;
     }
   },

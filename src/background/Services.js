@@ -51,16 +51,20 @@ class HistoryService extends Service
     this.history = history;
   }
 
-  async getRawHistory() {
-    return await this.history.raw();
+  async getStats(since) {
+    return await this.history.stats(since);
+  }
+
+  async getCSV() {
+    return await this.history.toCSV();
+  }
+
+  async getAll() {
+    return await this.history.all();
   }
 
   async merge(history) {
     return await this.history.merge(history);
-  }
-
-  async getHistory(since) {
-    return await this.history.stats(since);
   }
 
   async clearHistory() {

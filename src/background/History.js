@@ -3,6 +3,7 @@ import StorageManager from './StorageManager';
 import RLE from './RLE';
 import Mutex from '../Mutex';
 import M from '../Messages';
+import moment from 'moment';
 
 class History
 {
@@ -11,7 +12,7 @@ class History
     this.mutex = new Mutex();
   }
 
-  async raw() {
+  async all() {
     return await this.storage.get();
   }
 
@@ -27,6 +28,48 @@ class History
       await this.storage.set(compress(merged));
       return count;
     });
+  }
+
+  async toCSV() {
+    let {
+      pomodoros,
+      durations,
+      timezones
+    } = decompress(await this.storage.get());
+
+    const escape = value => {
+      if (value.indexOf(',') < 0) {
+        return value;
+      }
+
+      return '"' + value.replace(/"/g, '""') + '"';
+    };
+
+    const row = values => values.map(v => escape(v.toString())).join(',') + '\n';
+
+    let csv = row([
+      'Completion (ISO 8601)',
+      'Completion (Date)',
+      'Completion (24 Hour Time)',
+      'Completion (Unix Timestamp)',
+      'Completion Timezone (UTC Offset Minutes)',
+      'Duration (Seconds)'
+    ]);
+
+    for (let i = 0; i < pomodoros.length; i++) {
+      let [timestamp, timezone] = [pomodoros[i] * 60, -timezones[i]];
+      let time = moment.unix(timestamp).utcOffset(timezone, true);
+      csv += row([
+        time.toISOString(true),
+        time.format('YYYY-MM-DD'),
+        time.format('HH:mm:ss'),
+        timestamp,
+        timezone,
+        durations[i]
+      ]);
+    }
+
+    return csv;
   }
 
   async addPomodoro(duration, when = null) {
