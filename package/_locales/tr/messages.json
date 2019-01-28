@@ -501,10 +501,6 @@
     "message": "Geçmişi Dışa Aktar",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Geçmişi içe aktarmak halihazırda olan geçmişin hepsini siler. Devam et?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Geçmişi içe aktarma başarısız oldu: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

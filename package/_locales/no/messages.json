@@ -533,10 +533,6 @@
     "message": "Eksporter Historikk",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Når historikk importeres slettes all eksisterende historikk. Fortsett?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Klarte ikke importere historikken: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

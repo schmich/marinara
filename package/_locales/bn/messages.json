@@ -501,10 +501,6 @@
     "message": "ইতিহাস এক্সপোর্ট করুন",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "ইতিহাস ইমপোর্ট করলে বর্তমান ইতিহাস মুছে যাবে। সামনে চলুন?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "ইতিহাস ইমপোর্ট করতে ব্যর্থ: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

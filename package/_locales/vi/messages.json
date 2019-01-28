@@ -541,10 +541,6 @@
     "message": "Xuất lịch sử",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Nhập dữ liệu lịch sử sẽ xóa toàn bộ lịch sử hiện tại. Tiếp tục?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Có lỗi khi nhập dữ liệu lịch sử: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

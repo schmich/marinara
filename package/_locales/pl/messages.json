@@ -501,10 +501,6 @@
     "message": "Eksportuj historię",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Importowanie historii spowoduje nadpisanie całej istniejącej historii. Kontynuować? ",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Importowanie historii nie powiodło się: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

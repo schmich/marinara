@@ -525,10 +525,6 @@
     "message": "匯出 歷史紀錄",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "匯入的歷史紀錄將會覆蓋目前紀錄， 要繼續嗎?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "匯入歷史紀錄失敗: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

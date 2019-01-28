@@ -541,10 +541,6 @@
     "message": "Exporter l'historique",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Importer l'historique va écraser l'historique existant. Veux tu continuer ?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Erreur à l'import de l'historique: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

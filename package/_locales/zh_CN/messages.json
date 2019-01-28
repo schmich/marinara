@@ -521,10 +521,6 @@
     "message": "导出历史",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "导入历史将覆盖现存的所有记录。继续？",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "无法导入历史记录：$error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

@@ -541,10 +541,6 @@
     "message": "Exportera Historik",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "All befintlig historik skrivs över vid import. Fortsätt ändå?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Kunde inte importera historik: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

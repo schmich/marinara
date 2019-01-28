@@ -541,10 +541,6 @@
     "message": "Izvezi Istoriju",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Uvezena istorija se upisuje preko postojeće. \nNastavi?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Neuspešno uvoženje istorije: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

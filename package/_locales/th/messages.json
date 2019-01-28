@@ -501,10 +501,6 @@
     "message": "นำประวัติออก",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "การนำประวัติเข้าจะทำให้ประวัติเดิมทั้งหมดหายไป, ต้องการทำต่อ?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "การนำประวัติเข้าไม่สำเร็จ: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

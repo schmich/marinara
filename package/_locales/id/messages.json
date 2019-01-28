@@ -525,10 +525,6 @@
     "message": "Ekspor Riwayat",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Mengimpor riwayat akan menghapus semua riwayat yang telah ada. Lanjutkan?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Gagal mengimpor riwayar: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

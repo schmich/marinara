@@ -355,13 +355,13 @@
     "message": "%-H.%M:%S",
     "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
-  "time_period_am": {	
-    "message": "",	
-    "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."	
-  },	
-  "time_period_pm": {	
-    "message": "",	
-    "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."	
+  "time_period_am": {
+    "message": "",
+    "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_period_pm": {
+    "message": "",
+    "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "sunday": {
     "message": "Sonntag",
@@ -532,10 +532,6 @@
   "export": {
     "message": "Verlauf Exportieren",
     "description": "Export History button. Shown on the settings-history page."
-  },
-  "import_confirmation": {
-    "message": "Sicher? Dieser Vorgang überschreibt den alten Verlauf.",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Verlauf importieren fehlgeschlagen: $error$",

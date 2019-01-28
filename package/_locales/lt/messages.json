@@ -541,10 +541,6 @@
     "message": "Eksportuoti istoriją",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Importuojant neliks esamų duomenų. Tęsti?",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Nepavyko importuoti: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",

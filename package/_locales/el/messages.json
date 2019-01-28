@@ -501,10 +501,6 @@
     "message": "Εξαγωγή Ιστορικού",
     "description": "Export History button. Shown on the settings-history page."
   },
-  "import_confirmation": {
-    "message": "Η εισαγωγή ιστορικού διαγράφει όλο το υπάρχον ιστορικό. Συνέχεια;",
-    "description": "Import history confirmation prompt. Shown on the settings-history page."
-  },
   "import_failed": {
     "message": "Αποτυχία εισαγωγής ιστορικού: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
