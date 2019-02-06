@@ -131,8 +131,6 @@ class Service
 {
   constructor() {
     this.clients = {};
-    this.clientId = 0;
-
     this.serviceName = this.constructor.name;
   }
 
@@ -145,14 +143,38 @@ class Service
   }
 
   static get proxy() {
-    let serviceName = this.name;
-    const constructProxy = {
+    const serviceName = this.name;
+    const create = () => new Proxy(function() {}, new ServiceProxy(serviceName));
+
+    const handler = {
       construct(target, args) {
-        return new Proxy(function() {}, new ServiceProxy(serviceName));
+        return create();
+      },
+      get(target, prop, receiver) {
+        // Support one-shot service invocations.
+        // This creates a client, performs the RPC, then cleans up.
+        // Example usage: let result = await SomeClient.once.doThing('abc', 123);
+
+        if (prop !== 'once') {
+          return undefined;
+        }
+
+        return new Proxy(function() {}, {
+          get(target, prop, receiver) {
+            return (...args) => {
+              let client = create();
+              try {
+                return client[prop](...args);
+              } finally {
+                client.dispose();
+              }
+            };
+          }
+        });
       }
     };
 
-    return new Proxy(function() {}, constructProxy);
+    return new Proxy(function() {}, handler);
   }
 }
 

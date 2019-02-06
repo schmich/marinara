@@ -31,7 +31,7 @@ class ExpirationPage
     this.service = new ExpirationService(properties, page);
     ServiceBroker.register(this.service);
 
-    let self = this;
+    const self = this;
     chrome.tabs.onRemoved.addListener(function removed(id) {
       if (id !== page.tabId) {
         return;

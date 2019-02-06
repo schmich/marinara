@@ -254,9 +254,7 @@ class PomodoroHistoryAction extends Action
   }
 
   async run() {
-    let optionsClient = new OptionsClient();
-    await optionsClient.showHistoryPage();
-    optionsClient.dispose();
+    await OptionsClient.once.showHistoryPage();
   }
 }
 
