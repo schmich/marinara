@@ -19,8 +19,8 @@ class Timer extends EventEmitter
     this.tickInterval = null;
     this.expireTimeout = null;
 
-    this.periodStartTime = null;
-    this.remaining = null;
+    this.checkpointStartAt = null;
+    this.checkpointElapsed = 0;
   }
 
   observe(observer) {
@@ -45,17 +45,27 @@ class Timer extends EventEmitter
     return this.state === TimerState.Paused;
   }
 
-  get timeRemaining() {
-    if (!this.periodStartTime || !this.remaining) {
-      return null;
-    }
-
-    let periodLength = (Date.now() - this.periodStartTime) / 1000;
-    return this.remaining - periodLength;
+  get remaining() {
+    return this.duration - this.elapsed;
   }
 
-  get timeElapsed() {
-    return this.duration - this.timeRemaining;
+  get elapsed() {
+    let periodElapsed = 0;
+    if (this.checkpointStartAt) {
+      periodElapsed = (Date.now() - this.checkpointStartAt) / 1000;
+    }
+    return this.checkpointElapsed + periodElapsed;
+  }
+
+  get status() {
+    return {
+      state: this.state,
+      duration: this.duration,
+      elapsed: this.elapsed,
+      remaining: this.remaining,
+      checkpointElapsed: this.checkpointElapsed,
+      checkpointStartAt: this.checkpointStartAt
+    };
   }
 
   start() {
@@ -66,12 +76,12 @@ class Timer extends EventEmitter
     this.setExpireTimeout(this.duration);
     this.setTickInterval(this.tick);
 
-    this.remaining = this.duration;
-
     this.state = TimerState.Running;
-    this.periodStartTime = Date.now();
-    this.emit('start', 0, this.remaining);
-    this.emit('change');
+    this.checkpointStartAt = Date.now();
+
+    let status = this.status;
+    this.emit('start', status);
+    this.emit('change', status);
   }
 
   stop() {
@@ -84,12 +94,13 @@ class Timer extends EventEmitter
 
     this.tickInterval = null;
     this.expireTimeout = null;
-    this.periodStartTime = null;
-    this.remaining = null;
+    this.checkpointStartAt = null;
 
     this.state = TimerState.Stopped;
-    this.emit('stop');
-    this.emit('change');
+
+    let status = this.status;
+    this.emit('stop', status);
+    this.emit('change', status);
   }
 
   pause() {
@@ -100,15 +111,15 @@ class Timer extends EventEmitter
     clearInterval(this.tickInterval);
     clearTimeout(this.expireTimeout);
 
-    let periodLength = (Date.now() - this.periodStartTime) / 1000;
-    this.remaining -= periodLength;
+    let periodElapsed = (Date.now() - this.checkpointStartAt) / 1000;
+    this.checkpointElapsed += periodElapsed;
 
     this.state = TimerState.Paused;
-    this.periodStartTime = null;
+    this.checkpointStartAt = null;
 
-    let elapsed = this.duration - this.remaining;
-    this.emit('pause', elapsed, this.remaining);
-    this.emit('change');
+    let status = this.status;
+    this.emit('pause', status);
+    this.emit('change', status);
   }
 
   resume() {
@@ -120,11 +131,11 @@ class Timer extends EventEmitter
     this.setTickInterval(this.tick);
 
     this.state = TimerState.Running;
-    this.periodStartTime = Date.now();
+    this.checkpointStartAt = Date.now();
 
-    let elapsed = this.duration - this.remaining;
-    this.emit('resume', elapsed, this.remaining);
-    this.emit('change');
+    let status = this.status;
+    this.emit('resume', status);
+    this.emit('change', status);
   }
 
   reset() {
@@ -139,23 +150,20 @@ class Timer extends EventEmitter
 
       this.tickInterval = null;
       this.expireTimeout = null;
-      this.periodStartTime = null;
-      this.remaining = null;
+      this.checkpointStartAt = null;
+      this.checkpointElapsed = 0;
 
       this.state = TimerState.Stopped;
 
-      this.emit('expire', this.duration, 0);
-      this.emit('change');
+      let status = this.status;
+      this.emit('expire', status);
+      this.emit('change', status);
     }, seconds * 1000);
   }
 
   setTickInterval(seconds) {
     this.tickInterval = setInterval(() => {
-      let periodLength = (Date.now() - this.periodStartTime) / 1000;
-      let remaining = this.remaining - periodLength;
-
-      let elapsed = this.duration - remaining;
-      this.emit('tick', elapsed, remaining);
+      this.emit('tick', this.status);
     }, seconds * 1000);
   }
 }
@@ -236,12 +244,12 @@ class PomodoroTimer extends EventEmitter
     return interval - ((this.pomodoros - 1) % interval) - 1;
   }
 
-  get timeRemaining() {
-    return this.timer.timeRemaining;
+  get remaining() {
+    return this.timer.remaining;
   }
 
-  get timeElapsed() {
-    return this.timer.timeElapsed;
+  get elapsed() {
+    return this.timer.elapsed;
   }
 
   get state() {
@@ -258,6 +266,14 @@ class PomodoroTimer extends EventEmitter
 
   get isPaused() {
     return this.timer.isPaused;
+  }
+
+  get status() {
+    return {
+      phase: this.phase,
+      nextPhase: this.nextPhase,
+      ...this.timer.status
+    };
   }
 
   dispose() {
@@ -313,46 +329,46 @@ class PomodoroTimer extends EventEmitter
   }
 
   observe(observer) {
-    observer.onTimerStart && this.on('timer:start', (...args) => observer.onTimerStart(...args));
-    observer.onTimerStop && this.on('timer:stop', (...args) => observer.onTimerStop(...args));
-    observer.onTimerPause && this.on('timer:pause', (...args) => observer.onTimerPause(...args));
-    observer.onTimerResume && this.on('timer:resume', (...args) => observer.onTimerResume(...args));
-    observer.onTimerTick && this.on('timer:tick', (...args) => observer.onTimerTick(...args));
-    observer.onTimerExpire && this.on('timer:expire', (...args) => observer.onTimerExpire(...args));
-    observer.onTimerChange && this.on('timer:change', (...args) => observer.onTimerChange(...args));
+    observer.onStart && this.on('start', (...args) => observer.onStart(...args));
+    observer.onStop && this.on('stop', (...args) => observer.onStop(...args));
+    observer.onPause && this.on('pause', (...args) => observer.onPause(...args));
+    observer.onResume && this.on('resume', (...args) => observer.onResume(...args));
+    observer.onTick && this.on('tick', (...args) => observer.onTick(...args));
+    observer.onExpire && this.on('expire', (...args) => observer.onExpire(...args));
+    observer.onChange && this.on('change', (...args) => observer.onChange(...args));
   }
 
-  onStart(...args) {
-    this.emit('timer:start', ...[this.phase, this.nextPhase, ...args]);
+  onStart(status) {
+    this.emit('start', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onStop(...args) {
-    this.emit('timer:stop', ...[this.phase, this.nextPhase, ...args]);
+  onStop(status) {
+    this.emit('stop', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onPause(...args) {
-    this.emit('timer:pause', ...[this.phase, this.nextPhase, ...args]);
+  onPause(status) {
+    this.emit('pause', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onResume(...args) {
-    this.emit('timer:resume', ...[this.phase, this.nextPhase, ...args]);
+  onResume(status) {
+    this.emit('resume', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onTick(...args) {
-    this.emit('timer:tick', ...[this.phase, this.nextPhase, ...args]);
+  onTick(status) {
+    this.emit('tick', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onExpire(...args) {
+  onExpire(status) {
     if (this.phase === Phase.Focus) {
       this.pomodoros++;
     }
 
     this.advanceTimer = true;
-    this.emit('timer:expire', ...[this.phase, this.nextPhase, ...args]);
+    this.emit('expire', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 
-  onChange(...args) {
-    this.emit('timer:change', ...[this.phase, this.nextPhase, ...args]);
+  onChange(status) {
+    this.emit('change', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 }
 

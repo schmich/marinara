@@ -84,32 +84,36 @@ class PomodoroService extends Service
     this.timer.start();
   }
 
-  onTimerStart(...args) {
-    this.emit('timer:start', ...args);
+  async getStatus() {
+    return this.timer.status;
   }
 
-  onTimerStop(...args) {
-    this.emit('timer:stop', ...args);
+  onStart(...args) {
+    this.emit('start', ...args);
   }
 
-  onTimerPause(...args) {
-    this.emit('timer:pause', ...args);
+  onStop(...args) {
+    this.emit('stop', ...args);
   }
 
-  onTimerResume(...args) {
-    this.emit('timer:resume', ...args);
+  onPause(...args) {
+    this.emit('pause', ...args);
   }
 
-  onTimerTick(...args) {
-    this.emit('timer:tick', ...args);
+  onResume(...args) {
+    this.emit('resume', ...args);
   }
 
-  onTimerExpire(...args) {
-    this.emit('timer:expire', ...args);
+  onTick(...args) {
+    this.emit('tick', ...args);
   }
 
-  onTimerChange(...args) {
-    this.emit('timer:change', ...args);
+  onExpire(...args) {
+    this.emit('expire', ...args);
+  }
+
+  onChange(...args) {
+    this.emit('change', ...args);
   }
 }
 

@@ -213,7 +213,7 @@ export default {
   },
   async mounted() {
     this.updateStats();
-    this.pomodoroClient.on('timer:expire', () => {
+    this.pomodoroClient.on('expire', () => {
       this.updateStats();
     });
   },

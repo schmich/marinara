@@ -9,27 +9,27 @@ import createTimerSound from '../TimerSound';
 
 class BadgeObserver
 {
-  onTimerStart(phase, nextPhase, elapsed, remaining) {
+  onStart({ phase, remaining }) {
     this.updateBadge({ phase, minutes: Math.round(remaining / 60) });
   }
 
-  onTimerTick(phase, nextPhase, elapsed, remaining) {
+  onTick({ phase, remaining }) {
     this.updateBadge({ phase, minutes: Math.round(remaining / 60) });
   }
 
-  onTimerStop(phase, nextPhase) {
+  onStop() {
     this.removeBadge();
   }
 
-  onTimerPause(phase, nextPhase) {
+  onPause({ phase }) {
     this.updateBadge({ phase, text: '—', tooltip: M.timer_paused });
   }
 
-  onTimerResume(phase, nextPhase, elapsed, remaining) {
+  onResume({ phase, remaining }) {
     this.updateBadge({ phase, minutes: Math.round(remaining / 60) });
   }
 
-  onTimerExpire(phase, nextPhase) {
+  onExpire() {
     this.removeBadge();
   }
 
@@ -67,7 +67,7 @@ class TimerSoundObserver
     this.timerSound = null;
   }
 
-  async onTimerStart(phase) {
+  async onStart({ phase }) {
     let timerSoundSettings = this.settings.focus.timerSound;
     await this.mutex.exclusive(async () => {
       // Cleanup any existing timer sound.
@@ -82,25 +82,25 @@ class TimerSoundObserver
     });
   }
 
-  async onTimerStop() {
+  async onStop() {
     await this.mutex.exclusive(async () => {
       this.timerSound && await this.timerSound.close();
     });
   }
 
-  async onTimerPause() {
+  async onPause() {
     await this.mutex.exclusive(async () => {
       this.timerSound && await this.timerSound.stop();
     });
   }
 
-  async onTimerResume() {
+  async onResume() {
     await this.mutex.exclusive(async () => {
       this.timerSound && await this.timerSound.start();
     });
   }
 
-  async onTimerExpire() {
+  async onExpire() {
     await this.mutex.exclusive(async () => {
       this.timerSound && await this.timerSound.close();
     });
@@ -113,7 +113,7 @@ class ExpirationSoundObserver
     this.settings = settings;
   }
 
-  onTimerExpire(phase) {
+  onExpire({ phase }) {
     let sound = s => s && s.notifications.sound;
     let filename = {
       [Phase.Focus]: sound(this.settings.focus),
@@ -138,7 +138,7 @@ class NotificationObserver
     this.mutex = new Mutex();
   }
 
-  onTimerStart() {
+  onStart() {
     this.mutex.exclusive(async () => {
       if (this.notification) {
         this.notification.close();
@@ -152,7 +152,7 @@ class NotificationObserver
     });
   }
 
-  async onTimerExpire(phase, nextPhase) {
+  async onExpire({ phase, nextPhase }) {
     let settings = this.settings[{
       [Phase.Focus]: 'focus',
       [Phase.ShortBreak]: 'shortBreak',
@@ -221,7 +221,7 @@ class HistoryObserver
     this.history = history;
   }
 
-  async onTimerExpire(phase, nextPhase, duration) {
+  async onExpire({ phase, duration }) {
     if (phase !== Phase.Focus) {
       return;
     }
@@ -236,7 +236,7 @@ class MenuObserver
     this.menu = menu;
   }
 
-  onTimerChange() {
+  onChange() {
     // Refresh menu.
     this.menu.apply();
   }
@@ -244,32 +244,32 @@ class MenuObserver
 
 class TraceObserver
 {
-  onTimerStart(...args) {
-    console.log('timer:start', ...args);
+  onStart(...args) {
+    console.log('start', ...args);
   }
 
-  onTimerStop(...args) {
-    console.log('timer:stop', ...args);
+  onStop(...args) {
+    console.log('stop', ...args);
   }
 
-  onTimerPause(...args) {
-    console.log('timer:pause', ...args);
+  onPause(...args) {
+    console.log('pause', ...args);
   }
 
-  onTimerResume(...args) {
-    console.log('timer:resume', ...args);
+  onResume(...args) {
+    console.log('resume', ...args);
   }
 
-  onTimerTick(...args) {
-    console.log('timer:tick', ...args);
+  onTick(...args) {
+    console.log('tick', ...args);
   }
 
-  onTimerExpire(...args) {
-    console.log('timer:expire', ...args);
+  onExpire(...args) {
+    console.log('expire', ...args);
   }
 
-  onTimerChange(...args) {
-    console.log('timer:change', ...args);
+  onChange(...args) {
+    console.log('change', ...args);
   }
 }
 

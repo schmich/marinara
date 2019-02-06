@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { Phase, PomodoroTimer } from '@/background/Timer';
 
 PomodoroTimer.prototype.expired = function() {
-  return new Promise(resolve => this.once('timer:expire', resolve));
+  return new Promise(resolve => this.once('expire', resolve));
 };
 
 describe('PomodoroTimer', () => {
@@ -187,12 +187,12 @@ describe('PomodoroTimer', () => {
     let timer = new PomodoroTimer(settings, Phase.Focus);
 
     timer.start();
-    assert.isAtLeast(timer.timeRemaining, 4 * 60);
+    assert.isAtLeast(timer.remaining, 4 * 60);
     timer.stop();
 
     settings.focus.duration = 100;
     timer.startCycle();
-    assert.isAtLeast(timer.timeRemaining, 99 * 60);
+    assert.isAtLeast(timer.remaining, 99 * 60);
     timer.stop();
   });
 
@@ -209,7 +209,7 @@ describe('PomodoroTimer', () => {
 
     settings.focus.duration = 100;
     timer.start();
-    assert.isAtLeast(timer.timeRemaining, 99 * 60);
+    assert.isAtLeast(timer.remaining, 99 * 60);
     timer.stop();
   });
 
