@@ -236,8 +236,27 @@ class MenuObserver
     this.menu = menu;
   }
 
-  onChange() {
-    // Refresh menu.
+  onStart() {
+    this.menu.apply();
+  }
+
+  onStop() {
+    this.menu.apply();
+  }
+
+  onPause() {
+    this.menu.apply();
+  }
+
+  onResume() {
+    this.menu.apply();
+  }
+
+  onTick() {
+    this.menu.apply();
+  }
+
+  onExpire() {
     this.menu.apply();
   }
 }
@@ -266,10 +285,6 @@ class TraceObserver
 
   onExpire(...args) {
     console.log('expire', ...args);
-  }
-
-  onChange(...args) {
-    console.log('change', ...args);
   }
 }
 

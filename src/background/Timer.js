@@ -30,7 +30,6 @@ class Timer extends EventEmitter
     observer.onResume && this.on('resume', (...args) => observer.onResume(...args));
     observer.onTick && this.on('tick', (...args) => observer.onTick(...args));
     observer.onExpire && this.on('expire', (...args) => observer.onExpire(...args));
-    observer.onChange && this.on('change', (...args) => observer.onChange(...args));
   }
 
   get isStopped() {
@@ -79,9 +78,7 @@ class Timer extends EventEmitter
     this.state = TimerState.Running;
     this.checkpointStartAt = Date.now();
 
-    let status = this.status;
-    this.emit('start', status);
-    this.emit('change', status);
+    this.emit('start', this.status);
   }
 
   stop() {
@@ -98,9 +95,7 @@ class Timer extends EventEmitter
 
     this.state = TimerState.Stopped;
 
-    let status = this.status;
-    this.emit('stop', status);
-    this.emit('change', status);
+    this.emit('stop', this.status);
   }
 
   pause() {
@@ -117,9 +112,7 @@ class Timer extends EventEmitter
     this.state = TimerState.Paused;
     this.checkpointStartAt = null;
 
-    let status = this.status;
-    this.emit('pause', status);
-    this.emit('change', status);
+    this.emit('pause', this.status);
   }
 
   resume() {
@@ -133,9 +126,7 @@ class Timer extends EventEmitter
     this.state = TimerState.Running;
     this.checkpointStartAt = Date.now();
 
-    let status = this.status;
-    this.emit('resume', status);
-    this.emit('change', status);
+    this.emit('resume', this.status);
   }
 
   reset() {
@@ -155,9 +146,7 @@ class Timer extends EventEmitter
 
       this.state = TimerState.Stopped;
 
-      let status = this.status;
-      this.emit('expire', status);
-      this.emit('change', status);
+      this.emit('expire', this.status);
     }, seconds * 1000);
   }
 
@@ -335,7 +324,6 @@ class PomodoroTimer extends EventEmitter
     observer.onResume && this.on('resume', (...args) => observer.onResume(...args));
     observer.onTick && this.on('tick', (...args) => observer.onTick(...args));
     observer.onExpire && this.on('expire', (...args) => observer.onExpire(...args));
-    observer.onChange && this.on('change', (...args) => observer.onChange(...args));
   }
 
   onStart(status) {
@@ -365,10 +353,6 @@ class PomodoroTimer extends EventEmitter
 
     this.advanceTimer = true;
     this.emit('expire', { phase: this.phase, nextPhase: this.nextPhase, ...status });
-  }
-
-  onChange(status) {
-    this.emit('change', { phase: this.phase, nextPhase: this.nextPhase, ...status });
   }
 }
 

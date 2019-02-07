@@ -111,10 +111,6 @@ class PomodoroService extends Service
   onExpire(...args) {
     this.emit('expire', ...args);
   }
-
-  onChange(...args) {
-    this.emit('change', ...args);
-  }
 }
 
 class SoundsService extends Service
@@ -130,10 +126,6 @@ class SoundsService extends Service
 
 class OptionsService extends Service
 {
-  constructor() {
-    super();
-  }
-
   async showPage(page) {
     let manifest = chrome.runtime.getManifest();
 
