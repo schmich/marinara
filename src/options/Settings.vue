@@ -227,16 +227,16 @@
   margin-left: 10px;
   cursor: default;
   color: #a00;
-}
-.preview img {
-  vertical-align: middle;
-  margin-left: 10px;
-  height: 8px;
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-.preview img:not(.active) {
-  opacity: 0;
+  img {
+    vertical-align: middle;
+    margin-left: 10px;
+    height: 8px;
+    opacity: 1;
+    transition: opacity 0.5s;
+    &:not(.active) {
+      opacity: 0;
+    }
+  }
 }
 </style>
 
