@@ -1,4 +1,4 @@
-import SingletonPage from './SingletonPage';
+import { SingletonPage, PageHost } from './SingletonPage';
 import { Service, ServiceBroker } from '../Service';
 
 class ExpirationService extends Service
@@ -20,7 +20,7 @@ class ExpirationService extends Service
 class ExpirationPage
 {
   static async show(title, messages, action, pomodoros, phase) {
-    let page = await SingletonPage.show(chrome.extension.getURL('modules/expire.html'), false);
+    let page = await SingletonPage.show(chrome.extension.getURL('modules/expire.html'), PageHost.Tab, {}, false);
     return new ExpirationPage(page, title, messages, action, pomodoros, phase);
   }
 

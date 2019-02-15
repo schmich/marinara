@@ -1,7 +1,7 @@
 import * as Sounds from '../Sounds';
 import { Service } from '../Service';
 import M from '../Messages';
-import SingletonPage from './SingletonPage';
+import { SingletonPage, PageHost } from './SingletonPage';
 
 class SettingsService extends Service
 {
@@ -138,7 +138,7 @@ class OptionsService extends Service
     }
 
     let url = chrome.extension.getURL(manifest.options_page + '#/' + page);
-    await SingletonPage.show(url);
+    await SingletonPage.show(url, PageHost.Tab);
   }
 
   async showSettingsPage() {

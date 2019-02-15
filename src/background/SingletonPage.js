@@ -1,17 +1,49 @@
 import Chrome from '../Chrome';
+import Enum from './Enum';
+
+const PageHost = new Enum({
+  Tab: 0,
+  Window: 1
+});
+
+function basePageUrl(url) {
+  // Base page URL is the combined origin and path, lowercased,
+  // excluding query strings, hashes, and trailing slashes.
+  // This will only reliably work with internal extension pages.
+  let parts = new URL(url);
+  return `${parts.origin}${parts.pathname.replace(/\/$/, '')}`.toLowerCase();
+}
+
+async function findExistingPage(url) {
+  let baseUrl = basePageUrl(url);
+
+  let windows = chrome.extension.getViews();
+  for (let window of windows) {
+    if (basePageUrl(window.location.href) !== baseUrl) {
+      continue;
+    }
+
+    let tabId = await new Promise(resolve => window.chrome.tabs.getCurrent(tab => resolve(tab.id)));
+    return new SingletonPage(tabId);
+  }
+
+  return null;
+}
 
 class SingletonPage
 {
-  static async show(url, focus = true) {
-    if (!this.pages) {
-      this.pages = {};
-    }
-
-    let page = this.pages[url];
+  static async show(url, host, properties = {}, focus = true) {
+    let page = await findExistingPage(url);
     if (!page) {
-      let tab = await Chrome.tabs.create({ url, active: false });
-      page = new SingletonPage(url, tab.id);
-      this.pages[url] = page;
+      if (host === PageHost.Tab) {
+        let tab = await Chrome.tabs.create({ url, active: false, ...properties });
+        page = new SingletonPage(tab.id);
+      } else if (host === PageHost.Window) {
+        let window = await Chrome.windows.create({ url, type: 'popup', ...properties });
+        page = new SingletonPage(window.tabs[0].id);
+      } else {
+        throw new Error('Invalid page host.');
+      }
     }
 
     if (focus) {
@@ -21,16 +53,14 @@ class SingletonPage
     return page;
   }
 
-  constructor(url, tabId) {
-    let self = this;
-    this.url = url;
+  constructor(tabId) {
     this._tabId = tabId;
 
+    const self = this;
     chrome.tabs.onRemoved.addListener(function removed(id) {
       if (id === self._tabId) {
         chrome.tabs.onRemoved.removeListener(removed);
         self._tabId = null;
-        delete SingletonPage.pages[self.url];
       }
     });
   }
@@ -60,4 +90,7 @@ class SingletonPage
   }
 }
 
-export default SingletonPage;
+export {
+  PageHost,
+  SingletonPage
+};
