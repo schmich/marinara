@@ -6,51 +6,43 @@ const PageHost = new Enum({
   Window: 1
 });
 
-function basePageUrl(url) {
-  // Base page URL is the combined origin and path, lowercased,
-  // excluding query strings, hashes, and trailing slashes.
+function canonical(url) {
+  // The canonical page URL is the combined origin, path, and sorted query,
+  // lowercased, excluding hashes and trailing slashes.
   // This will only reliably work with internal extension pages.
-  let parts = new URL(url);
-  return `${parts.origin}${parts.pathname.replace(/\/$/, '')}`.toLowerCase();
-}
-
-async function findExistingPage(url) {
-  let baseUrl = basePageUrl(url);
-
-  let windows = chrome.extension.getViews();
-  for (let window of windows) {
-    if (basePageUrl(window.location.href) !== baseUrl) {
-      continue;
-    }
-
-    let tabId = await new Promise(resolve => window.chrome.tabs.getCurrent(tab => resolve(tab.id)));
-    return new SingletonPage(tabId);
-  }
-
-  return null;
+  url.searchParams.sort();
+  return `${url.origin}${url.pathname.replace(/\/$/, '')}${url.searchParams}`.toLowerCase();
 }
 
 class SingletonPage
 {
-  static async show(url, host, properties = {}, focus = true) {
-    let page = await findExistingPage(url);
-    if (!page) {
-      if (host === PageHost.Tab) {
-        let tab = await Chrome.tabs.create({ url, active: false, ...properties });
-        page = new SingletonPage(tab.id);
-      } else if (host === PageHost.Window) {
-        let window = await Chrome.windows.create({ url, type: 'popup', ...properties });
-        page = new SingletonPage(window.tabs[0].id);
-      } else {
-        throw new Error('Invalid page host.');
+  static async show(url, host, properties = {}) {
+    // Search existing extension pages to see if page is already open.
+    let targetUrl = new URL(url);
+    let targetCanonical = canonical(targetUrl);
+
+    let windows = chrome.extension.getViews();
+    for (let window of windows) {
+      if (canonical(new URL(window.location.href)) !== targetCanonical) {
+        continue;
       }
+
+      // We found a matching page. Update its hash and return it.
+      let tabId = await new Promise(resolve => window.chrome.tabs.getCurrent(tab => resolve(tab.id)));
+      window.location.hash = targetUrl.hash;
+      return new SingletonPage(tabId);
     }
 
-    if (focus) {
-      page.focus();
+    // Page does not exist, so create it.
+    if (host === PageHost.Tab) {
+      let tab = await Chrome.tabs.create({ url, active: false, ...properties });
+      return new SingletonPage(tab.id);
+    } else if (host === PageHost.Window) {
+      let window = await Chrome.windows.create({ url, type: 'popup', ...properties });
+      return new SingletonPage(window.tabs[0].id);
+    } else {
+      throw new Error('Invalid page host.');
     }
-
-    return page;
   }
 
   constructor(tabId) {
@@ -80,6 +72,7 @@ class SingletonPage
         chrome.tabs.update(id, { active: true }, focusWindow);
       }
     };
+
     focusTab(this.tabId);
   }
 

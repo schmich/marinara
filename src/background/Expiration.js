@@ -20,7 +20,7 @@ class ExpirationService extends Service
 class ExpirationPage
 {
   static async show(title, messages, action, pomodoros, phase) {
-    let page = await SingletonPage.show(chrome.extension.getURL('modules/expire.html'), PageHost.Tab, {}, false);
+    let page = await SingletonPage.show(chrome.extension.getURL('modules/expire.html'), PageHost.Tab);
     return new ExpirationPage(page, title, messages, action, pomodoros, phase);
   }
 

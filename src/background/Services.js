@@ -126,19 +126,11 @@ class SoundsService extends Service
 
 class OptionsService extends Service
 {
-  async showPage(page) {
+  async showPage(optionPage) {
     let manifest = chrome.runtime.getManifest();
-
-    let windows = chrome.extension.getViews({ type: 'tab' });
-    for (let window of windows) {
-      if (window.location.toString().indexOf(manifest.options_page) >= 0) {
-        window.postMessage({ page });
-        return;
-      }
-    }
-
-    let url = chrome.extension.getURL(manifest.options_page + '#/' + page);
-    await SingletonPage.show(url, PageHost.Tab);
+    let url = chrome.extension.getURL(manifest.options_page + '#/' + optionPage);
+    let page = await SingletonPage.show(url, PageHost.Tab);
+    page.focus();
   }
 
   async showSettingsPage() {
