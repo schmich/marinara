@@ -54,22 +54,22 @@ class SingletonPage
   }
 
   constructor(tabId) {
-    this._tabId = tabId;
+    this.tabId = tabId;
 
     const self = this;
     chrome.tabs.onRemoved.addListener(function removed(id) {
-      if (id === self._tabId) {
+      if (id === self.tabId) {
         chrome.tabs.onRemoved.removeListener(removed);
-        self._tabId = null;
+        self.tabId = null;
       }
     });
   }
 
-  get tabId() {
-    return this._tabId;
-  }
-
   focus() {
+    if (!this.tabId) {
+      return;
+    }
+
     const focusWindow = tab => chrome.windows.update(tab.windowId, { focused: true });
     const focusTab = id => {
       try {
@@ -80,13 +80,15 @@ class SingletonPage
         chrome.tabs.update(id, { active: true }, focusWindow);
       }
     };
-    focusTab(this._tabId);
+    focusTab(this.tabId);
   }
 
   close() {
-    if (this._tabId) {
-      chrome.tabs.remove(this._tabId, () => {});
+    if (!this.tabId) {
+      return;
     }
+
+    chrome.tabs.remove(this.tabId, () => {});
   }
 }
 
