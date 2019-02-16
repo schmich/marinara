@@ -50,7 +50,7 @@ class Timer extends EventEmitter
 
   get elapsed() {
     let periodElapsed = 0;
-    if (this.checkpointStartAt) {
+    if (this.checkpointStartAt && this.isRunning) {
       periodElapsed = (Date.now() - this.checkpointStartAt) / 1000;
     }
     return this.checkpointElapsed + periodElapsed;
@@ -92,6 +92,7 @@ class Timer extends EventEmitter
     this.tickInterval = null;
     this.expireTimeout = null;
     this.checkpointStartAt = null;
+    this.checkpointElapsed = 0;
 
     this.state = TimerState.Stopped;
 
@@ -110,7 +111,6 @@ class Timer extends EventEmitter
     this.checkpointElapsed += periodElapsed;
 
     this.state = TimerState.Paused;
-    this.checkpointStartAt = null;
 
     this.emit('pause', this.status);
   }
@@ -141,8 +141,8 @@ class Timer extends EventEmitter
 
       this.tickInterval = null;
       this.expireTimeout = null;
-      this.checkpointStartAt = null;
-      this.checkpointElapsed = 0;
+      this.checkpointStartAt = Date.now();
+      this.checkpointElapsed = this.duration;
 
       this.state = TimerState.Stopped;
 
