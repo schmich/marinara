@@ -49,6 +49,12 @@ module.exports = {
       filename: 'expire.html',
       chunks: ['chunk-vendors', 'chunk-common', 'expire']
     },
+    countdown: {
+      entry: 'src/countdown/main.js',
+      template: 'src/countdown/countdown.html',
+      filename: 'countdown.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'countdown']
+    },
     background: 'src/background/main.js'
   },
   chainWebpack: config => {

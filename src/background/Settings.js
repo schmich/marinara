@@ -20,7 +20,7 @@ function clone(obj) {
 class SettingsSchema
 {
   get version() {
-    return 6;
+    return 7;
   }
 
   get default() {
@@ -28,6 +28,9 @@ class SettingsSchema
       focus: {
         duration: 25,
         timerSound: null,
+        countdown: {
+          host: null
+        },
         notifications: {
           desktop: true,
           tab: true,
@@ -37,6 +40,9 @@ class SettingsSchema
       shortBreak: {
         duration: 5,
         timerSound: null,
+        countdown: {
+          host: null
+        },
         notifications: {
           desktop: true,
           tab: true,
@@ -47,6 +53,9 @@ class SettingsSchema
         duration: 15,
         interval: 4,
         timerSound: null,
+        countdown: {
+          host: null
+        },
         notifications: {
           desktop: true,
           tab: true,
@@ -163,6 +172,25 @@ class SettingsSchema
     }
 
     return v6;
+  }
+
+  from6To7(v6) {
+    let v7 = clone(v6);
+    v7.version = 7;
+
+    v7.focus.countdown = {
+      host: null
+    };
+
+    v7.shortBreak.countdown = {
+      host: null
+    };
+
+    v7.longBreak.countdown = {
+      host: null
+    };
+
+    return v7;
   }
 }
 

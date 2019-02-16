@@ -5,7 +5,7 @@ import { History } from './History';
 import StorageManager from './StorageManager';
 import { SettingsSchema, PersistentSettings } from './Settings';
 import { HistoryService, SoundsService, SettingsService, PomodoroService, OptionsService } from './Services';
-import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, MenuObserver } from './Observers';
+import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, CountdownObserver, MenuObserver } from './Observers';
 import { ServiceBroker } from '../Service';
 import * as Alarms from './Alarms';
 
@@ -25,6 +25,7 @@ class Controller
     this.timer.observe(new NotificationObserver(timer, settings, history));
     this.timer.observe(new ExpirationSoundObserver(settings));
     this.timer.observe(new TimerSoundObserver(settings));
+    this.timer.observe(new CountdownObserver(settings));
     this.timer.observe(new MenuObserver(this.menu));
 
     this.menu.apply();

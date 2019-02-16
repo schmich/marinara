@@ -52,7 +52,7 @@ html, body {
   display: block;
 }
 .group {
-  padding: 0 0 0 35px;
+  margin: 0 0 0 40px;
   p {
     padding: 0;
   }

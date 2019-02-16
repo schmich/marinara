@@ -93,6 +93,12 @@ class Messages
   get contributors() {
     return chrome.i18n.getMessage('contributors', []);
   }
+  get countdown_timer() {
+    return chrome.i18n.getMessage('countdown_timer', []);
+  }
+  get countdown_title() {
+    return chrome.i18n.getMessage('countdown_title', []);
+  }
   get daily_distribution() {
     return chrome.i18n.getMessage('daily_distribution', []);
   }
@@ -134,6 +140,9 @@ class Messages
   }
   get disclaimer() {
     return chrome.i18n.getMessage('disclaimer', []);
+  }
+  get do_not_show() {
+    return chrome.i18n.getMessage('do_not_show', []);
   }
   get dong() {
     return chrome.i18n.getMessage('dong', []);
@@ -401,6 +410,12 @@ class Messages
   }
   get october_short() {
     return chrome.i18n.getMessage('october_short', []);
+  }
+  get open_tab() {
+    return chrome.i18n.getMessage('open_tab', []);
+  }
+  get open_window() {
+    return chrome.i18n.getMessage('open_window', []);
   }
   get pause_timer() {
     return chrome.i18n.getMessage('pause_timer', []);

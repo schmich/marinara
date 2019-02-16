@@ -50,6 +50,27 @@
           </label>
         </p>
       </div>
+      <p>{{ M.countdown_timer }}</p>
+      <div class="group">
+        <p class="field">
+          <label>
+            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" :value="null">
+            <span>{{ M.do_not_show }}</span>
+          </label>
+        </p>
+        <p class="field">
+          <label>
+            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" value="tab">
+            <span>{{ M.open_tab }}</span>
+          </label>
+        </p>
+        <p class="field">
+          <label>
+            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" value="window">
+            <span>{{ M.open_window }}</span>
+          </label>
+        </p>
+      </div>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -86,6 +107,27 @@
           <span>{{ M.minutes }}</span>
         </label>
       </p>
+      <p>{{ M.countdown_timer }}</p>
+      <div class="group">
+        <p class="field">
+          <label>
+            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" :value="null">
+            <span>{{ M.do_not_show }}</span>
+          </label>
+        </p>
+        <p class="field">
+          <label>
+            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" value="tab">
+            <span>{{ M.open_tab }}</span>
+          </label>
+        </p>
+        <p class="field">
+          <label>
+            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" value="window">
+            <span>{{ M.open_window }}</span>
+          </label>
+        </p>
+      </div>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -140,6 +182,27 @@
             <span>{{ M.minutes }}</span>
           </label>
         </p>
+        <p>{{ M.countdown_timer }}</p>
+        <div class="group">
+          <p class="field">
+            <label>
+              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" :value="null">
+              <span>{{ M.do_not_show }}</span>
+            </label>
+          </p>
+          <p class="field">
+            <label>
+              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" value="tab">
+              <span>{{ M.open_tab }}</span>
+            </label>
+          </p>
+          <p class="field">
+            <label>
+              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" value="window">
+              <span>{{ M.open_window }}</span>
+            </label>
+          </p>
+        </div>
         <p>{{ M.when_complete }}</p>
         <div class="group">
           <p class="field">

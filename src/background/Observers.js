@@ -6,6 +6,7 @@ import Notification from './Notification';
 import { ExpirationPage } from './Expiration';
 import Mutex from '../Mutex';
 import createTimerSound from '../TimerSound';
+import { SingletonPage, PageHost } from './SingletonPage';
 
 class BadgeObserver
 {
@@ -230,6 +231,41 @@ class HistoryObserver
   }
 }
 
+class CountdownObserver
+{
+  constructor(settings) {
+    this.settings = settings;
+  }
+
+  async onStart({ phase }) {
+    let settings = this.settings[{
+      [Phase.Focus]: 'focus',
+      [Phase.ShortBreak]: 'shortBreak',
+      [Phase.LongBreak]: 'longBreak'
+    }[phase]];
+
+    let { host } = settings.countdown;
+    if (!host) {
+      return;
+    }
+
+    let page = null;
+    let url = chrome.extension.getURL('modules/countdown.html');
+    if (host === 'tab') {
+      page = await SingletonPage.show(url, PageHost.Tab);
+    } else if (host === 'window') {
+      const windowWidth = 800;
+      const windowHeight = 600;
+      const { width: screenWidth, height: screenHeight } = window.screen;
+      let left = screenWidth / 2 - windowWidth / 2;
+      let top = screenHeight / 2 - windowHeight / 2;
+      page = await SingletonPage.show(url, PageHost.Window, { width: windowWidth, height: windowHeight, left, top });
+    }
+
+    page.focus();
+  }
+}
+
 class MenuObserver
 {
   constructor(menu) {
@@ -294,6 +330,7 @@ export {
   ExpirationSoundObserver,
   NotificationObserver,
   HistoryObserver,
+  CountdownObserver,
   MenuObserver,
   TraceObserver
 };

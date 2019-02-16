@@ -173,6 +173,22 @@
     "message": "None",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
+  "countdown_timer": {
+    "message": "Countdown timer:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "do_not_show": {
+    "message": "Do not show",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "open_tab": {
+    "message": "Open in a new tab",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "open_window": {
+    "message": "Open in a popup window",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
   "when_complete": {
     "message": "When complete:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
@@ -850,6 +866,10 @@
   "expire_title": {
     "message": "Time's Up",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown_title": {
+    "message": "Countdown",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "Gong 1",
