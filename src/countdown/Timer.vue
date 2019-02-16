@@ -56,14 +56,12 @@ function fromRad(cx, cy, r, rad) {
 }
 
 function arc(rad) {
-  let closed = rad >= (2 * Math.PI - 0.01);
-  if (closed) {
-    rad = 2 * Math.PI - 0.01;
-  }
+  rad = Math.max(2 * Math.PI - rad, 0.01);
   let [x, y] = fromRad(55, 55, 50, rad - Math.PI / 2);
-  let largeArc = rad > Math.PI ? 1 : 0;
-  let path = `M 55 5 A 50 50 0 ${largeArc} 1 ${x} ${y}`;
-  if (closed) {
+  let largeArc = rad > Math.PI ? 0 : 1;
+  let path = `M 55 5 A 50 50 0 ${largeArc} 0 ${x} ${y}`;
+  if (rad <= 0.01) {
+    // Draw closed path.
     path += ' Z';
   }
   return path;
