@@ -50,27 +50,7 @@
           </label>
         </p>
       </div>
-      <p>{{ M.countdown_timer }}</p>
-      <div class="group">
-        <p class="field">
-          <label>
-            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" :value="null">
-            <span>{{ M.do_not_show }}</span>
-          </label>
-        </p>
-        <p class="field">
-          <label>
-            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" value="tab">
-            <span>{{ M.open_tab }}</span>
-          </label>
-        </p>
-        <p class="field">
-          <label>
-            <input type="radio" name="focus-countdown" v-model="settings.focus.countdown.host" value="window">
-            <span>{{ M.open_window }}</span>
-          </label>
-        </p>
-      </div>
+      <CountdownSettings :settings="settings.focus"></CountdownSettings>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -107,27 +87,7 @@
           <span>{{ M.minutes }}</span>
         </label>
       </p>
-      <p>{{ M.countdown_timer }}</p>
-      <div class="group">
-        <p class="field">
-          <label>
-            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" :value="null">
-            <span>{{ M.do_not_show }}</span>
-          </label>
-        </p>
-        <p class="field">
-          <label>
-            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" value="tab">
-            <span>{{ M.open_tab }}</span>
-          </label>
-        </p>
-        <p class="field">
-          <label>
-            <input type="radio" name="short-break-countdown" v-model="settings.shortBreak.countdown.host" value="window">
-            <span>{{ M.open_window }}</span>
-          </label>
-        </p>
-      </div>
+      <CountdownSettings :settings="settings.shortBreak"></CountdownSettings>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -182,27 +142,7 @@
             <span>{{ M.minutes }}</span>
           </label>
         </p>
-        <p>{{ M.countdown_timer }}</p>
-        <div class="group">
-          <p class="field">
-            <label>
-              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" :value="null">
-              <span>{{ M.do_not_show }}</span>
-            </label>
-          </p>
-          <p class="field">
-            <label>
-              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" value="tab">
-              <span>{{ M.open_tab }}</span>
-            </label>
-          </p>
-          <p class="field">
-            <label>
-              <input type="radio" name="long-break-countdown" v-model="settings.longBreak.countdown.host" value="window">
-              <span>{{ M.open_window }}</span>
-            </label>
-          </p>
-        </div>
+        <CountdownSettings :settings="settings.longBreak"></CountdownSettings>
         <p>{{ M.when_complete }}</p>
         <div class="group">
           <p class="field">
@@ -307,6 +247,7 @@
 import { SettingsClient, SoundsClient } from '../background/Services';
 import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
+import CountdownSettings from './CountdownSettings';
 import M from '../Messages';
 import createTimerSound from '../TimerSound';
 
@@ -416,9 +357,6 @@ export default {
           && ((bpm == null) || (bpm > 0 && bpm <= 1000));
     }
   },
-  components: {
-    SoundSelect
-  },
   directives: {
     focus: {
       inserted(el) {
@@ -439,6 +377,10 @@ export default {
       },
       deep: true
     }
+  },
+  components: {
+    CountdownSettings,
+    SoundSelect
   }
 };
 </script>
