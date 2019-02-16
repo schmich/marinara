@@ -137,16 +137,12 @@ body {
 
 <script>
 import M from '../Messages';
-import { HistoryClient, PomodoroClient, OptionsClient } from '../background/Services';
+import { PomodoroClient, OptionsClient } from '../background/Services';
 import { ExpirationClient } from '../background/Expiration';
 
 export default {
   data() {
     return {
-      historyClient: new HistoryClient(),
-      pomodoroClient: new PomodoroClient(),
-      optionsClient: new OptionsClient(),
-      expirationClient: new ExpirationClient(),
       title: '',
       action: '',
       message: '',
@@ -155,10 +151,10 @@ export default {
     };
   },
   async created() {
-    document.title = `${M.expire_title} - Marinara`;
+    document.title = `${M.expire_title} - ${M.app_name_short}`;
     document.body.addEventListener('keypress', this.onKeyPress);
 
-    let { title, action, pomodoros, messages, phase } = await this.expirationClient.getProperties();
+    let { title, action, pomodoros, messages, phase } = await ExpirationClient.once.getProperties();
     this.title = title;
     this.action = action;
     this.pomodoroCount = pomodoros;
@@ -166,18 +162,14 @@ export default {
     this.phase = phase;
   },
   beforeDestroy() {
-    this.historyClient.dispose();
-    this.pomodoroClient.dispose();
-    this.optionsClient.dispose();
     document.body.removeEventListener('keypress', this.onKeyPress);
-    chrome.runtime.onMessage.removeListener(this.onMessage);
   },
   methods: {
     startSession() {
-      this.pomodoroClient.startSession();
+      PomodoroClient.once.startSession();
     },
     showHistoryPage() {
-      this.optionsClient.showHistoryPage();
+      OptionsClient.once.showHistoryPage();
     },
     onKeyPress(e) {
       // On Enter key press, start next session.
