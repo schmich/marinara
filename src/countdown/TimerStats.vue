@@ -71,7 +71,7 @@ export default {
       // to ensure smooth animation. Clamp interval between 20-1000ms.
       let interval = clamp(1000 / (500 * (2 * Math.PI / this.duration)), 20, 1000);
 
-      if (to && to.value === TimerState.Running.value) {
+      if (to == TimerState.Running) {
         this.timeInterval = setInterval(() => this.updateElapsed(), interval);
       } else {
         this.updateElapsed();
@@ -86,7 +86,7 @@ export default {
       }
 
       let totalElapsed = this.checkpointElapsed;
-      if (this.checkpointStartAt && this.state.value === TimerState.Running.value) {
+      if (this.checkpointStartAt && this.state == TimerState.Running) {
         totalElapsed += (Date.now() - this.checkpointStartAt) / 1000;
       }
 

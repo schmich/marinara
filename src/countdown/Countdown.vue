@@ -113,10 +113,10 @@ export default {
     timerClass() {
       return {
         null: '',
-        [Phase.Focus.value]: 'focus',
-        [Phase.ShortBreak.value]: 'break',
-        [Phase.LongBreak.value]: 'break'
-      }[this.phase && this.phase.value];
+        [Phase.Focus]: 'focus',
+        [Phase.ShortBreak]: 'break',
+        [Phase.LongBreak]: 'break'
+      }[this.phase];
     },
     title() {
       let phase = M.countdown_title;
@@ -124,10 +124,10 @@ export default {
       if (this.checkpointStartAt) {
         phase = {
           null: M.countdown_title,
-          [Phase.Focus.value]: M.focus_title,
-          [Phase.ShortBreak.value]: M.short_break_title,
-          [Phase.LongBreak.value]: M.long_break_title
-        }[this.phase && this.phase.value];
+          [Phase.Focus]: M.focus_title,
+          [Phase.ShortBreak]: M.short_break_title,
+          [Phase.LongBreak]: M.long_break_title
+        }[this.phase];
 
         remaining = `[${mmss(this.remainingSeconds)}] `;
       }

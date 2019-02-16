@@ -10,11 +10,19 @@ class EnumOption
     Object.freeze(this);
   }
 
+  [Symbol.toPrimitive](hint) {
+    return this.value;
+  }
+
   toString() {
     return this.symbol;
   }
 
   valueOf() {
+    return this.value;
+  }
+
+  toJSON() {
     return this.value;
   }
 }

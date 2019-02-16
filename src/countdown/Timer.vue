@@ -112,7 +112,7 @@ export default {
       return mmss(remaining);
     },
     isPaused() {
-      return this.state && (this.state.value === TimerState.Paused.value);
+      return this.state == TimerState.Paused;
     }
   },
   methods: {
