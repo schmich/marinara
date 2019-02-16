@@ -4,11 +4,25 @@
       <path class="duration" :d="arc(2 * Math.PI)"/>
       <path v-if="enabled" class="elapsed" :d="arc(2 * Math.PI * (elapsed / duration))"/>
     </svg>
-    <div class="time" :class="{ 'has-time': enabled }" :style="timeStyle">{{ time }}</div>
+    <div class="time" :class="{ enabled: enabled, paused: isPaused }" :style="timeStyle">{{ time }}</div>
   </div>
 </template>
 
 <style lang="scss">
+@keyframes blink  {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .timer {
   height: 100%;
   width: 100%;
@@ -36,10 +50,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
+    font-weight: 600;
     color: #ccc;
-    &.has-time {
-      color: #555;
+    &.enabled {
+      color: #333;
+    }
+    &.paused {
+      animation: blink 1s linear infinite;
     }
   }
 }
@@ -93,6 +110,9 @@ export default {
 
       let remaining = Math.max(0, Math.ceil(this.duration - this.elapsed));
       return mmss(remaining);
+    },
+    isPaused() {
+      return this.state && (this.state.value === TimerState.Paused.value);
     }
   },
   methods: {
