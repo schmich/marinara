@@ -90,7 +90,7 @@ button {
 <script>
 import TimerStats from './TimerStats';
 import Timer from './Timer';
-import Sprite from './Sprite';
+import Sprite from '../Sprite';
 import { Phase } from '../background/Timer';
 import { OptionsClient } from '../background/Services';
 import { mmss } from '../Filters';
