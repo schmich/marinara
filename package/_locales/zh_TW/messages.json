@@ -137,10 +137,6 @@
     "message": "BPM",
     "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
   },
-  "invalid_bpm": {
-    "message": "播放速度需介乎1-1000 BPM。",
-    "description": "Error message shown to user if timer sound beats per minute (BPM) is invalid."
-  },
   "none": {
     "message": "無音效",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."

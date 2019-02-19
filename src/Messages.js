@@ -300,15 +300,6 @@ class Messages
   in_month(month) {
     return chrome.i18n.getMessage('in_month', [month]);
   }
-  get invalid_autostart_time() {
-    return chrome.i18n.getMessage('invalid_autostart_time', []);
-  }
-  get invalid_bpm() {
-    return chrome.i18n.getMessage('invalid_bpm', []);
-  }
-  get invalid_duration() {
-    return chrome.i18n.getMessage('invalid_duration', []);
-  }
   get invalid_duration_data() {
     return chrome.i18n.getMessage('invalid_duration_data', []);
   }

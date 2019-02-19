@@ -1,6 +1,5 @@
 import * as Sounds from '../Sounds';
 import { Service } from '../Service';
-import M from '../Messages';
 import { SingletonPage, PageHost } from './SingletonPage';
 
 class SettingsService extends Service
@@ -15,30 +14,37 @@ class SettingsService extends Service
   }
 
   async setSettings(settings) {
-    this._validate(settings.focus);
-    this._validate(settings.shortBreak);
-    this._validate(settings.longBreak);
-
-    settings.longBreak.interval = +settings.longBreak.interval;
-
-    let autostart = settings.autostart && settings.autostart.time;
-    if (autostart && !autostart.match(/^\d+:\d+$/)) {
-      throw new Error(M.invalid_autostart_time);
+    if (!this._isValid(settings)) {
+      return;
     }
 
     await this.settingsManager.set(settings);
   }
 
-  _validate(phase) {
+  _isValid(settings) {
+    let phasesValid = [settings.focus, settings.shortBreak, settings.longBreak].every(p => this._isPhaseValid(p));
+    if (!phasesValid) {
+      return false;
+    }
+
+    let autostart = settings.autostart && settings.autostart.time;
+    if (autostart && !autostart.match(/^\d+:\d+$/)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  _isPhaseValid(phase) {
     let { duration, timerSound, countdown } = phase;
     if (isNaN(duration) || duration <= 0 || duration > 999) {
-      throw new Error(M.invalid_duration);
+      return false;
     }
 
     if (timerSound && timerSound.metronome) {
       let { bpm } = timerSound.metronome;
       if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
-        throw new Error(M.invalid_bpm);
+        return false;
       }
     }
 
@@ -48,9 +54,11 @@ class SettingsService extends Service
       // Resolution must either be 'fullscreen' or a [width, height] array.
       let isValid = (resolution === 'fullscreen') || (Array.isArray(resolution) && resolution.length === 2 && resolution.every(d => Number.isInteger(d)));
       if (!isValid) {
-        throw new Error('Invalid countdown window resolution.');
+        return false;
       }
     }
+
+    return true;
   }
 }
 
