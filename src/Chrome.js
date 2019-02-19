@@ -30,6 +30,10 @@ class Chrome
   static get alarms() {
     return Alarms;
   }
+
+  static get runtime() {
+    return Runtime;
+  }
 }
 
 function promise(fn) {
@@ -120,6 +124,23 @@ class Windows
   }
 
   static async create(createData) {
+    if (createData.state === 'maximized' && createData.type === 'popup') {
+      let { os } = await Chrome.runtime.getPlatformInfo();
+      if (os === chrome.runtime.PlatformOs.MAC) {
+        // Bug workaround: On macOS, creating maximized popup windows is bugged
+        // and creates really small windows instead. Here, we work around this
+        // behavior by creating a window with its size equal to the screen size.
+        createData = {
+          ...createData,
+          width: window.screen.width,
+          height: window.screen.height,
+          left: 0,
+          top: 0
+        };
+        delete createData.state;
+      }
+    }
+
     return promise(callback => {
       chrome.windows.create(createData, callback);
     });
@@ -222,7 +243,18 @@ class Alarms
   }
 
   static async clearAll() {
-    return promise(callback => chrome.alarms.clearAll(callback));
+    return promise(callback => {
+      chrome.alarms.clearAll(callback)
+    });
+  }
+}
+
+class Runtime
+{
+  static getPlatformInfo() {
+    return promise(callback => {
+      chrome.runtime.getPlatformInfo(callback)
+    });
   }
 }
 
