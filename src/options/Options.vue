@@ -133,7 +133,7 @@ input.duration {
   padding: 0 0 5px 0;
   font-weight: 500;
   color: #a00;
-  border-bottom: 1px solid #dbb;
+  border-bottom: 1px solid #aaa;
 }
 fieldset {
   border: 0;
@@ -147,31 +147,3 @@ fieldset {
   flex: 1;
 }
 </style>
-
-<script>
-import Chrome from '../Chrome';
-
-export default {
-  mounted() {
-    // Listen for showOptionsPage command.
-    window.addEventListener('message', this.handleMessage, false);
-  },
-  beforeDestroy() {
-    window.removeEventListener('message', this.handleMessage);
-  },
-  methods: {
-    async handleMessage({ data }) {
-      if (!data || !data.page) {
-        return;
-      }
-
-      // Focus current window & tab.
-      let tab = await Chrome.tabs.getCurrent();
-      await Chrome.tabs.update(tab.id, { active: true, highlighted: true });
-      await Chrome.windows.update(tab.windowId, { focused: true });
-
-      window.location.assign('#/' + data.page);
-    }
-  }
-};
-</script>
