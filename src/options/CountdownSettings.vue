@@ -68,6 +68,7 @@ export default {
     return {
       showCustomResolution: false,
       defaultResolutions: {
+        '200x200': [200, 200],
         '300x300': [300, 300],
         '400x400': [400, 400],
         '500x500': [500, 500],

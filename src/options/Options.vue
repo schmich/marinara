@@ -37,10 +37,6 @@
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
-body, html, button, select, input {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 15px;
-}
 html, body {
   margin: 0;
   padding: 0;

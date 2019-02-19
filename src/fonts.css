@@ -10,3 +10,6 @@
   font-weight: 600;
   src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(/fonts/SourceSansPro-SemiBold.ttf) format('truetype');
 }
+body, html, button, select, input {
+  font: 15px 'Source Sans Pro', sans-serif;
+}

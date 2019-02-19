@@ -9,11 +9,11 @@
         :enabled="hasTime">
       </Timer>
     </div>
-    <button @click="showSettings" class="settings" :title="M.settings">
+    <button @click="showSettings" class="settings nav" :title="M.settings">
       <Sprite src="/images/settings.svg"></Sprite>
       <span>{{ M.settings }}</span>
     </button>
-    <button @click="showHistory" class="history" :title="M.view_history">
+    <button @click="showHistory" class="history nav" :title="M.view_history">
       <span>{{ M.view_history }}</span>
       <Sprite src="/images/history.svg"></Sprite>
     </button>
@@ -26,9 +26,6 @@
 body {
   margin: 0;
   padding: 0;
-}
-body, html, button, select, input {
-  font-family: 'Source Sans Pro', sans-serif;
 }
 .countdown {
   display: flex;
@@ -50,32 +47,6 @@ body, html, button, select, input {
     stroke: #5a4;
   }
 }
-.settings {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  svg {
-    margin-right: 10px;
-  }
-}
-.history {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  svg {
-    margin-left: 10px;
-  }
-}
-@media (min-width: 400px) {
-  .settings {
-    left: 20px;
-    bottom: 20px;
-  }
-  .history {
-    right: 20px;
-    bottom: 20px;
-  }
-}
 button {
   flex: 0 0 150px;
   outline: 0 !important;
@@ -85,7 +56,13 @@ button {
   color: #555;
   border: 0;
   text-decoration: none;
-  display: flex;
+  &:hover {
+    color: #a00;
+  }
+}
+button.nav {
+  position: absolute;
+  display: none;
   align-items: center;
   span {
     display: none;
@@ -94,13 +71,35 @@ button {
     width: 28px;
     height: 28px;
   }
-  &:hover {
-    color: #a00;
+  @media (min-width: 250px) {
+    display: flex;
+  }
+  @media (min-width: 600px) {
+    span {
+      display: inherit;
+    }
   }
 }
-@media (min-width: 600px) {
-  button span {
-    display: inherit;
+.settings {
+  left: 10px;
+  bottom: 10px;
+  @media (min-width: 400px) {
+    left: 20px;
+    bottom: 20px;
+  }
+  svg {
+    margin-right: 10px;
+  }
+}
+.history {
+  right: 10px;
+  bottom: 10px;
+  @media (min-width: 400px) {
+    right: 20px;
+    bottom: 20px;
+  }
+  svg {
+    margin-left: 10px;
   }
 }
 </style>
