@@ -29,7 +29,9 @@ class SettingsSchema
         duration: 25,
         timerSound: null,
         countdown: {
-          host: null
+          host: null,
+          autoclose: true,
+          resolution: [500, 500]
         },
         notifications: {
           desktop: true,
@@ -41,7 +43,9 @@ class SettingsSchema
         duration: 5,
         timerSound: null,
         countdown: {
-          host: null
+          host: null,
+          autoclose: true,
+          resolution: [500, 500]
         },
         notifications: {
           desktop: true,
@@ -54,7 +58,9 @@ class SettingsSchema
         interval: 4,
         timerSound: null,
         countdown: {
-          host: null
+          host: null,
+          autoclose: true,
+          resolution: [500, 500]
         },
         notifications: {
           desktop: true,
@@ -155,7 +161,7 @@ class SettingsSchema
     v5.version = 5;
 
     v5.autostart = {
-      time: null,
+      time: null
     };
 
     return v5;
@@ -179,15 +185,21 @@ class SettingsSchema
     v7.version = 7;
 
     v7.focus.countdown = {
-      host: null
+      host: null,
+      autoclose: true,
+      resolution: [500, 500]
     };
 
     v7.shortBreak.countdown = {
-      host: null
+      host: null,
+      autoclose: true,
+      resolution: [500, 500]
     };
 
     v7.longBreak.countdown = {
-      host: null
+      host: null,
+      autoclose: true,
+      resolution: [500, 500]
     };
 
     return v7;

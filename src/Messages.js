@@ -93,11 +93,20 @@ class Messages
   get contributors() {
     return chrome.i18n.getMessage('contributors', []);
   }
+  get countdown_autoclose_tab() {
+    return chrome.i18n.getMessage('countdown_autoclose_tab', []);
+  }
+  get countdown_autoclose_window() {
+    return chrome.i18n.getMessage('countdown_autoclose_window', []);
+  }
   get countdown_timer() {
     return chrome.i18n.getMessage('countdown_timer', []);
   }
   get countdown_title() {
     return chrome.i18n.getMessage('countdown_title', []);
+  }
+  get custom() {
+    return chrome.i18n.getMessage('custom', []);
   }
   get daily_distribution() {
     return chrome.i18n.getMessage('daily_distribution', []);
@@ -230,6 +239,9 @@ class Messages
   }
   get friday_short() {
     return chrome.i18n.getMessage('friday_short', []);
+  }
+  get fullscreen() {
+    return chrome.i18n.getMessage('fullscreen', []);
   }
   get glass_ping() {
     return chrome.i18n.getMessage('glass_ping', []);

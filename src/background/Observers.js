@@ -244,24 +244,36 @@ class CountdownObserver
       [Phase.LongBreak]: 'longBreak'
     }[phase]];
 
-    let { host } = settings.countdown;
+    let { host, resolution } = settings.countdown;
     if (!host) {
       return;
     }
 
     let page = null;
     let url = chrome.extension.getURL('modules/countdown.html');
+
     if (host === 'tab') {
       page = await SingletonPage.show(url, PageHost.Tab);
-    } else if (host === 'window') {
-      const windowWidth = 800;
-      const windowHeight = 600;
+      page.focus();
+      return;
+    }
+
+    if (host !== 'window') {
+      return;
+    }
+
+    let properties = {};
+    if (resolution === 'fullscreen') {
+      properties = { state: 'maximized' };
+    } else if (Array.isArray(resolution)) {
+      let [windowWidth, windowHeight] = resolution;
       const { width: screenWidth, height: screenHeight } = window.screen;
       let left = screenWidth / 2 - windowWidth / 2;
       let top = screenHeight / 2 - windowHeight / 2;
-      page = await SingletonPage.show(url, PageHost.Window, { width: windowWidth, height: windowHeight, left, top });
+      properties = { width: windowWidth, height: windowHeight, left, top };
     }
 
+    page = await SingletonPage.show(url, PageHost.Window, properties);
     page.focus();
   }
 }

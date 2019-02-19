@@ -30,7 +30,7 @@ class SettingsService extends Service
   }
 
   _validate(phase) {
-    let { duration, timerSound } = phase;
+    let { duration, timerSound, countdown } = phase;
     if (isNaN(duration) || duration <= 0 || duration > 999) {
       throw new Error(M.invalid_duration);
     }
@@ -39,6 +39,16 @@ class SettingsService extends Service
       let { bpm } = timerSound.metronome;
       if (isNaN(bpm) || bpm <= 0 || bpm > 1000) {
         throw new Error(M.invalid_bpm);
+      }
+    }
+
+    if (countdown.host === 'window') {
+      let { resolution } = countdown;
+
+      // Resolution must either be 'fullscreen' or a [width, height] array.
+      let isValid = (resolution === 'fullscreen') || (Array.isArray(resolution) && resolution.length === 2 && resolution.every(d => Number.isInteger(d)));
+      if (!isValid) {
+        throw new Error('Invalid countdown window resolution.');
       }
     }
   }

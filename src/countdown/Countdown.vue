@@ -109,8 +109,8 @@ button {
 import TimerStats from './TimerStats';
 import Timer from './Timer';
 import Sprite from '../Sprite';
-import { Phase } from '../background/Timer';
-import { OptionsClient } from '../background/Services';
+import { TimerState, Phase } from '../background/Timer';
+import { OptionsClient, SettingsClient } from '../background/Services';
 import { mmss } from '../Filters';
 import M from '../Messages';
 
@@ -154,6 +154,22 @@ export default {
     }
   },
   watch: {
+    async state(to) {
+      if (to != TimerState.Stopped) {
+        return;
+      }
+
+      let settings = await SettingsClient.once.getSettings();
+      let { countdown } = settings[{
+        [Phase.Focus]: 'focus',
+        [Phase.ShortBreak]: 'shortBreak',
+        [Phase.LongBreak]: 'longBreak'
+      }[this.phase]];
+
+      if (countdown.autoclose) {
+        window.close();
+      }
+    },
     title(to) {
       document.title = to;
     }

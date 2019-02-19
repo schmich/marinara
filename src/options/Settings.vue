@@ -189,6 +189,9 @@
 <style lang="scss">
 @import '../fontello.css';
 
+input[type="number"] {
+  padding: 0;
+}
 .slide-up-enter-active {
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
