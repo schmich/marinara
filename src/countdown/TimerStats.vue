@@ -36,6 +36,7 @@ export default {
     this.updateElapsed();
   },
   beforeDestroy() {
+    clearInterval(this.timeInterval);
     this.pomodoroClient.dispose();
   },
   computed: {
