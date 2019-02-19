@@ -9,12 +9,12 @@
         :enabled="hasTime">
       </Timer>
     </div>
-    <button @click="showSettings" class="settings">
+    <button @click="showSettings" class="settings" :title="M.settings">
       <Sprite src="/images/settings.svg"></Sprite>
-      {{ M.settings }}
+      <span>{{ M.settings }}</span>
     </button>
-    <button @click="showHistory" class="history">
-      {{ M.view_history }}
+    <button @click="showHistory" class="history" :title="M.view_history">
+      <span>{{ M.view_history }}</span>
       <Sprite src="/images/history.svg"></Sprite>
     </button>
   </div>
@@ -52,18 +52,28 @@ body, html, button, select, input {
 }
 .settings {
   position: absolute;
-  left: 20px;
-  bottom: 20px;
+  left: 10px;
+  bottom: 10px;
   svg {
     margin-right: 10px;
   }
 }
 .history {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 10px;
   svg {
     margin-left: 10px;
+  }
+}
+@media (min-width: 400px) {
+  .settings {
+    left: 20px;
+    bottom: 20px;
+  }
+  .history {
+    right: 20px;
+    bottom: 20px;
   }
 }
 button {
@@ -77,12 +87,20 @@ button {
   text-decoration: none;
   display: flex;
   align-items: center;
+  span {
+    display: none;
+  }
   svg {
     width: 28px;
     height: 28px;
   }
   &:hover {
     color: #a00;
+  }
+}
+@media (min-width: 600px) {
+  button span {
+    display: inherit;
   }
 }
 </style>
