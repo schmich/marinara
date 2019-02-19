@@ -250,6 +250,7 @@ import SoundSelect from './SoundSelect';
 import CountdownSettings from './CountdownSettings';
 import M from '../Messages';
 import createTimerSound from '../TimerSound';
+import { focus } from '../Directives';
 
 export default {
   data() {
@@ -357,14 +358,6 @@ export default {
           && ((bpm == null) || (bpm > 0 && bpm <= 1000));
     }
   },
-  directives: {
-    focus: {
-      inserted(el) {
-        let input = el.querySelector('input');
-        (input || el).focus();
-      }
-    }
-  },
   watch: {
     settings: {
       handler(to, from) {
@@ -377,6 +370,9 @@ export default {
       },
       deep: true
     }
+  },
+  directives: {
+    focus
   },
   components: {
     CountdownSettings,
