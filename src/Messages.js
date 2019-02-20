@@ -414,12 +414,6 @@ class Messages
   get october_short() {
     return chrome.i18n.getMessage('october_short', []);
   }
-  get open_tab() {
-    return chrome.i18n.getMessage('open_tab', []);
-  }
-  get open_window() {
-    return chrome.i18n.getMessage('open_window', []);
-  }
   get pause_timer() {
     return chrome.i18n.getMessage('pause_timer', []);
   }
@@ -518,6 +512,12 @@ class Messages
   }
   get show_desktop_notification() {
     return chrome.i18n.getMessage('show_desktop_notification', []);
+  }
+  get show_in_tab() {
+    return chrome.i18n.getMessage('show_in_tab', []);
+  }
+  get show_in_window() {
+    return chrome.i18n.getMessage('show_in_window', []);
   }
   get show_new_tab_notification() {
     return chrome.i18n.getMessage('show_new_tab_notification', []);

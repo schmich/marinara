@@ -169,12 +169,12 @@
     "message": "Do not show",
     "description": "Countdown timer visibility option. Shown on the settings page."
   },
-  "open_tab": {
-    "message": "Open in a new tab",
+  "show_in_tab": {
+    "message": "Show in a new tab",
     "description": "Countdown timer visibility option. Shown on the settings page."
   },
-  "open_window": {
-    "message": "Open in a popup window",
+  "show_in_window": {
+    "message": "Show in a popup window",
     "description": "Countdown timer visibility option. Shown on the settings page."
   },
   "fullscreen": {

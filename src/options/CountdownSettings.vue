@@ -11,7 +11,7 @@
       <p class="field">
         <label>
           <input type="radio" v-model="settings.countdown.host" value="tab">
-          <span>{{ M.open_tab }}</span>
+          <span>{{ M.show_in_tab }}</span>
         </label>
         <div v-if="settings.countdown.host === 'tab'" class="group">
           <p class="field">
@@ -25,7 +25,7 @@
       <p class="field">
         <label>
           <input type="radio" v-model="settings.countdown.host" value="window">
-          <span>{{ M.open_window }}</span>
+          <span>{{ M.show_in_window }}</span>
         </label>
         <div v-if="settings.countdown.host === 'window'" class="group">
           <p class="field">
