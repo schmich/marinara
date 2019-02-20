@@ -93,6 +93,9 @@ class Messages
   get contributors() {
     return chrome.i18n.getMessage('contributors', []);
   }
+  get countdown() {
+    return chrome.i18n.getMessage('countdown', []);
+  }
   get countdown_autoclose_tab() {
     return chrome.i18n.getMessage('countdown_autoclose_tab', []);
   }
@@ -101,9 +104,6 @@ class Messages
   }
   get countdown_timer() {
     return chrome.i18n.getMessage('countdown_timer', []);
-  }
-  get countdown_title() {
-    return chrome.i18n.getMessage('countdown_title', []);
   }
   get custom() {
     return chrome.i18n.getMessage('custom', []);
@@ -231,8 +231,8 @@ class Messages
   get fire_pager() {
     return chrome.i18n.getMessage('fire_pager', []);
   }
-  get focus_title() {
-    return chrome.i18n.getMessage('focus_title', []);
+  get focus() {
+    return chrome.i18n.getMessage('focus', []);
   }
   get friday() {
     return chrome.i18n.getMessage('friday', []);
@@ -339,8 +339,8 @@ class Messages
   get license() {
     return chrome.i18n.getMessage('license', []);
   }
-  get long_break_title() {
-    return chrome.i18n.getMessage('long_break_title', []);
+  get long_break() {
+    return chrome.i18n.getMessage('long_break', []);
   }
   get march() {
     return chrome.i18n.getMessage('march', []);
@@ -507,8 +507,8 @@ class Messages
   get ship_bell() {
     return chrome.i18n.getMessage('ship_bell', []);
   }
-  get short_break_title() {
-    return chrome.i18n.getMessage('short_break_title', []);
+  get short_break() {
+    return chrome.i18n.getMessage('short_break', []);
   }
   get show_desktop_notification() {
     return chrome.i18n.getMessage('show_desktop_notification', []);

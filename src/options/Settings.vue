@@ -1,7 +1,7 @@
 <template>
   <form v-if="settings">
     <div class="section">
-      <h2>{{ M.focus_title }}</h2>
+      <h2>{{ M.focus }}</h2>
       <p class="field">
         <label>
           <span>{{ M.duration }}</span>
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="section">
-      <h2>{{ M.short_break_title }}</h2>
+      <h2>{{ M.short_break }}</h2>
       <p class="field">
         <label>
           <span>{{ M.duration }}</span>
@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="section">
-      <h2>{{ M.long_break_title }}</h2>
+      <h2>{{ M.long_break }}</h2>
       <p class="field">
         <label>
           <span>{{ M.take_a_long_break_setting }}</span>

@@ -116,7 +116,7 @@ import M from '../Messages';
 export default {
   mixins: [TimerStats],
   created() {
-    document.title = `${M.countdown_title} - ${M.app_name_short}`;
+    document.title = `${M.countdown} - ${M.app_name_short}`;
   },
   methods: {
     showSettings() {
@@ -136,14 +136,14 @@ export default {
       }[this.phase];
     },
     title() {
-      let phase = M.countdown_title;
+      let phase = M.countdown;
       let remaining = '';
       if (this.checkpointStartAt) {
         phase = {
-          null: M.countdown_title,
-          [Phase.Focus]: M.focus_title,
-          [Phase.ShortBreak]: M.short_break_title,
-          [Phase.LongBreak]: M.long_break_title
+          null: M.countdown,
+          [Phase.Focus]: M.focus,
+          [Phase.ShortBreak]: M.short_break,
+          [Phase.LongBreak]: M.long_break
         }[this.phase];
 
         remaining = `[${mmss(this.remainingSeconds)}] `;

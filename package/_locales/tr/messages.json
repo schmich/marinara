@@ -101,15 +101,15 @@
     "message": "Geri Bildirim",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "Odak",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "Kısa Ara",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "Uzun Ara",
     "description": "Long Break section header. Shown on the settings page."
   },

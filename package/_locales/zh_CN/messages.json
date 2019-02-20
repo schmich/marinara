@@ -101,15 +101,15 @@
     "message": "反馈",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "集中精力时间",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "短暂休息",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "长时间休息",
     "description": "Long Break section header. Shown on the settings page."
   },

@@ -101,15 +101,15 @@
     "message": "Feedback",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "Focus",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "Short Break",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "Long Break",
     "description": "Long Break section header. Shown on the settings page."
   },
@@ -871,7 +871,7 @@
     "message": "Time's Up",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
-  "countdown_title": {
+  "countdown": {
     "message": "Countdown",
     "description": "Countdown page title. Shown on the countdown timer page."
   },

@@ -101,15 +101,15 @@
     "message": "Đóng góp ý kiến",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "Tập trung",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "Nghỉ ngắn",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "Nghỉ dài",
     "description": "Long Break section header. Shown on the settings page."
   },

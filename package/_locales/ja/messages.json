@@ -101,15 +101,15 @@
     "message": "フィードバック",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "フォーカス",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "短い休憩",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "長い休憩",
     "description": "Long Break section header. Shown on the settings page."
   },

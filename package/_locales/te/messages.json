@@ -101,15 +101,15 @@
     "message": "అభిప్రాయము",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "దృష్టి కేంద్రీకరణ",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "చిన్న విరామము",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "పెద్ద విరామము",
     "description": "Long Break section header. Shown on the settings page."
   },

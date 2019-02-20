@@ -36,9 +36,9 @@ class BadgeObserver
 
   updateBadge({ phase, minutes, tooltip, text }) {
     let title = {
-      [Phase.Focus]: M.focus_title,
-      [Phase.ShortBreak]: M.short_break_title,
-      [Phase.LongBreak]: M.long_break_title
+      [Phase.Focus]: M.focus,
+      [Phase.ShortBreak]: M.short_break,
+      [Phase.LongBreak]: M.long_break
     }[phase];
 
     if (minutes != null) {

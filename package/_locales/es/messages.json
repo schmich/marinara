@@ -101,15 +101,15 @@
     "message": "Comentarios",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "Concentración",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "Descanso breve",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "Descanso largo",
     "description": "Long Break section header. Shown on the settings page."
   },

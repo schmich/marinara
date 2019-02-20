@@ -101,15 +101,15 @@
     "message": "Feedback",
     "description": "Feedback tab and section header. Shown on the settings page."
   },
-  "focus_title": {
+  "focus": {
     "message": "Focus",
     "description": "Focus section header. Shown on the settings page."
   },
-  "short_break_title": {
+  "short_break": {
     "message": "Korte Pauze",
     "description": "Short Break section header. Shown on the settings page."
   },
-  "long_break_title": {
+  "long_break": {
     "message": "Lange Pauze",
     "description": "Long Break section header. Shown on the settings page."
   },
