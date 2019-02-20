@@ -5,6 +5,14 @@
       <path v-if="enabled" class="elapsed" :d="arc(2 * Math.PI * (elapsed / duration))"/>
     </svg>
     <div class="time" :class="{ enabled: enabled, paused: isPaused }" :style="timeStyle">{{ time }}</div>
+    <div class="controls">
+      <button v-if="isRunning" @click="$emit('pause')" key="pause">
+        <Sprite src="/images/pause.svg"></Sprite>
+      </button>
+      <button v-else-if="isPaused" @click="$emit('resume')" key="resume">
+        <Sprite src="/images/play.svg"></Sprite>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -59,11 +67,36 @@
       animation: blink 1s linear infinite;
     }
   }
+  .controls {
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button {
+      color: #bbb;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      cursor: pointer;
+      transition: 150ms color ease;
+      &:hover {
+        color: #333;
+      }
+      svg {
+        width: 7vh;
+        height: 7vh;
+      }
+    }
+  }
 }
 </style>
 
 <script>
 import { TimerState } from '../background/Timer';
+import Sprite from '../Sprite';
 import { mmss } from '../Filters';
 
 function fromRad(cx, cy, r, rad) {
@@ -111,12 +144,18 @@ export default {
       let remaining = Math.max(0, Math.ceil(this.duration - this.elapsed));
       return mmss(remaining);
     },
+    isRunning() {
+      return this.state == TimerState.Running;
+    },
     isPaused() {
       return this.state == TimerState.Paused;
     }
   },
   methods: {
     arc
+  },
+  components: {
+    Sprite
   }
 };
 </script>

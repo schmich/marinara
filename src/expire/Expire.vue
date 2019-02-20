@@ -166,7 +166,7 @@ export default {
   },
   methods: {
     startSession() {
-      PomodoroClient.once.startSession();
+      PomodoroClient.once.start();
     },
     showHistoryPage() {
       OptionsClient.once.showHistoryPage();

@@ -6,7 +6,9 @@
         :state="state"
         :duration="duration"
         :elapsed="elapsed"
-        :enabled="hasTime">
+        :enabled="hasTime"
+        @pause="onPause"
+        @resume="onResume">
       </Timer>
     </div>
     <button @click="showSettings" class="settings nav" :title="M.settings">
@@ -47,7 +49,7 @@ body {
     stroke: #5a4;
   }
 }
-button {
+button.nav {
   flex: 0 0 150px;
   outline: 0 !important;
   background: transparent;
@@ -56,14 +58,12 @@ button {
   color: #555;
   border: 0;
   text-decoration: none;
-  &:hover {
-    color: #a00;
-  }
-}
-button.nav {
   position: absolute;
   display: none;
   align-items: center;
+  &:hover {
+    color: #a00;
+  }
   span {
     display: none;
   }
@@ -109,7 +109,7 @@ import TimerStats from './TimerStats';
 import Timer from './Timer';
 import Sprite from '../Sprite';
 import { TimerState, Phase } from '../background/Timer';
-import { OptionsClient, SettingsClient } from '../background/Services';
+import { OptionsClient, SettingsClient, PomodoroClient } from '../background/Services';
 import { mmss } from '../Filters';
 import M from '../Messages';
 
@@ -124,6 +124,12 @@ export default {
     },
     showHistory() {
       OptionsClient.once.showPage('history');
+    },
+    onPause() {
+      PomodoroClient.once.pause();
+    },
+    onResume() {
+      PomodoroClient.once.resume();
     }
   },
   computed: {

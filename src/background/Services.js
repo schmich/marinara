@@ -98,8 +98,16 @@ class PomodoroService extends Service
     this.timer.observe(this);
   }
 
-  async startSession() {
+  async start() {
     this.timer.start();
+  }
+
+  async pause() {
+    this.timer.pause();
+  }
+
+  async resume() {
+    this.timer.resume();
   }
 
   async getStatus() {
