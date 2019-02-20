@@ -22,7 +22,7 @@ class SettingsService extends Service
   }
 
   _isValid(settings) {
-    let phasesValid = [settings.focus, settings.shortBreak, settings.longBreak].every(p => this._isPhaseValid(p));
+    let phasesValid = [settings.focus, settings.shortBreak, settings.longBreak].every(this._isPhaseValid);
     if (!phasesValid) {
       return false;
     }
@@ -52,7 +52,7 @@ class SettingsService extends Service
       let { resolution } = countdown;
 
       // Resolution must either be 'fullscreen' or a [width, height] array.
-      let isValid = (resolution === 'fullscreen') || (Array.isArray(resolution) && resolution.length === 2 && resolution.every(d => Number.isInteger(d)));
+      let isValid = (resolution === 'fullscreen') || (Array.isArray(resolution) && resolution.length === 2 && resolution.every(Number.isInteger));
       if (!isValid) {
         return false;
       }
