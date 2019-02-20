@@ -61,7 +61,10 @@ input[type="checkbox"] {
   vertical-align: middle;
   position: relative;
   top: -1px;
-  margin: 5px 0;
+  margin: 5px 3px 5px 0;
+}
+input[type="radio"] {
+  vertical-align: text-bottom;
 }
 input.duration {
   width: 50px;
