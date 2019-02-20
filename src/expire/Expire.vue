@@ -173,7 +173,7 @@ export default {
     },
     onKeyPress(e) {
       // On Enter key press, start next session.
-      if (e.keyCode === 13) {
+      if (e.key === 'Enter') {
         this.startSession();
       }
     }
