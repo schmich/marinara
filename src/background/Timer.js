@@ -129,7 +129,7 @@ class Timer extends EventEmitter
     this.emit('resume', this.status);
   }
 
-  reset() {
+  restart() {
     this.stop();
     this.start();
   }
@@ -313,8 +313,11 @@ class PomodoroTimer extends EventEmitter
     return this.timer.resume();
   }
 
-  reset() {
-    return this.timer.reset();
+  restart() {
+    // Calling timer.restart directly would ignore any settings changes, so
+    // so we call start then stop to ensure we pick up on the changes.
+    this.stop();
+    return this.start();
   }
 
   observe(observer) {

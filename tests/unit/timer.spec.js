@@ -297,6 +297,22 @@ describe('PomodoroTimer', () => {
     assert.equal(timer.nextPhase, Phase.Focus);
   });
 
+  it('respects settings changes when restarted', async () => {
+    let settings = {
+      focus: { duration: 10 },
+      shortBreak: { duration: 0 },
+      longBreak: { duration: 0, interval: null }
+    };
+
+    let timer = new PomodoroTimer(settings, Phase.Focus);
+    timer.start();
+    assert.isAtLeast(timer.remaining, 9 * 60);
+
+    settings.focus.duration = 20;
+    timer.restart();
+    assert.isAtLeast(timer.remaining, 19 * 60);
+  });
+
   it('works across 100 cycles', async function() {
     // Extend default timeout for this test.
     this.timeout(10000);
