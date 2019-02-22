@@ -110,6 +110,10 @@ class PomodoroService extends Service
     this.timer.resume();
   }
 
+  async restart() {
+    this.timer.restart();
+  }
+
   async getStatus() {
     return this.timer.status;
   }

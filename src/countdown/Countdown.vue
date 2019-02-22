@@ -8,7 +8,8 @@
         :elapsed="elapsed"
         :enabled="hasTime"
         @pause="onPause"
-        @resume="onResume">
+        @resume="onResume"
+        @restart="onRestart">
       </Timer>
     </div>
     <button @click="showSettings" class="settings nav" :title="M.settings">
@@ -145,6 +146,9 @@ export default {
     },
     onResume() {
       PomodoroClient.once.resume();
+    },
+    onRestart() {
+      PomodoroClient.once.restart();
     }
   },
   computed: {

@@ -4,14 +4,27 @@
       <path class="duration" :d="arc(2 * Math.PI)"/>
       <path v-if="enabled" class="elapsed" :d="arc(2 * Math.PI * (elapsed / duration))"/>
     </svg>
-    <div class="time" :class="{ enabled: enabled, paused: isPaused }" :style="timeStyle">{{ time }}</div>
-    <div class="controls">
-      <button v-if="isRunning" @click="$emit('pause')" key="pause">
-        <Sprite src="/images/pause.svg"></Sprite>
-      </button>
-      <button v-else-if="isPaused" @click="$emit('resume')" key="resume">
-        <Sprite src="/images/play.svg"></Sprite>
-      </button>
+    <div class="overlay">
+      <div class="controls">
+        <button v-if="isPaused" @click="$emit('restart')" :title="M.restart_timer" class="restart" key="restart">
+          <Sprite src="/images/restart.svg"></Sprite>
+        </button>
+        <button v-else class="placeholder" key="placeholder">
+          <Sprite src="/images/restart.svg"></Sprite>
+        </button>
+      </div>
+      <div class="time" :class="{ enabled: enabled, paused: isPaused }" :style="timeStyle">{{ time }}</div>
+      <div class="controls">
+        <button v-if="isRunning" @click="$emit('pause')" :title="M.pause_timer" class="pause" key="pause">
+          <Sprite src="/images/pause.svg"></Sprite>
+        </button>
+        <button v-else-if="isPaused" @click="$emit('resume')" :title="M.resume_timer" class="resume" key="resume">
+          <Sprite src="/images/play.svg"></Sprite>
+        </button>
+        <button v-else class="placeholder" key="placeholder">
+          <Sprite src="/images/play.svg"></Sprite>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -49,30 +62,30 @@
       fill: none;
     }
   }
-  .time {
+  .overlay {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
-    color: #ccc;
-    &.enabled {
-      color: #333;
-    }
-    &.paused {
-      animation: blink 1s linear infinite;
+    .time {
+      font-weight: 600;
+      color: #ccc;
+      &.enabled {
+        color: #333;
+      }
+      &.paused {
+        animation: blink 1s linear infinite;
+      }
     }
   }
   .controls {
-    position: absolute;
-    top: 65%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    z-index: 2;
+    margin: 3vmin 0;
     button {
       color: #bbb;
       margin: 0;
@@ -86,10 +99,13 @@
         color: #333;
       }
       svg {
-        width: 7vh;
-        height: 7vh;
+        width: 7vmin;
+        height: 7vmin;
       }
     }
+  }
+  .controls .placeholder {
+    visibility: hidden;
   }
 }
 </style>
