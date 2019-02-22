@@ -117,6 +117,10 @@ export default {
   mixins: [TimerStats],
   created() {
     document.title = `${M.countdown} - ${M.app_name_short}`;
+    document.addEventListener('keydown', this.onKeyDown);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.onKeyDown);
   },
   methods: {
     showSettings() {
@@ -124,6 +128,17 @@ export default {
     },
     showHistory() {
       OptionsClient.once.showPage('history');
+    },
+    onKeyDown(e) {
+      if (e.key != ' ') {
+        return;
+      }
+
+      if (this.state == TimerState.Running) {
+        PomodoroClient.once.pause();
+      } else if (this.state == TimerState.Paused) {
+        PomodoroClient.once.resume();
+      }
     },
     onPause() {
       PomodoroClient.once.pause();
