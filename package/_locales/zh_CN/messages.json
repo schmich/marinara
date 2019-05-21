@@ -113,6 +113,26 @@
     "message": "长时间休息",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "autostart_title": {
+    "message": "自动开始",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "制定一个番茄工作计划并在特定的时间开始",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "自动开始番茄工作计划",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "已制定的番茄工作计划已经自动开始",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "time": {
+    "message": "时间：",
+    "description": "Time input label. Shown on the settings page."
+  },
   "duration": {
     "message": "持续时间：",
     "description": "Timer duration label. Shown on the settings page."
@@ -140,6 +160,38 @@
   "none": {
     "message": "无",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "countdown_timer": {
+    "message": "定时器：",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "do_not_show": {
+    "message": "不再显示",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "在新选项卡中显示",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "在弹出窗口中显示",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "全屏",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "自定义",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "当会话结束后关闭选项卡",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "当会话结束后关闭窗口",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
   },
   "when_complete": {
     "message": "完成时：",
@@ -513,13 +565,61 @@
       }
     }
   },
-  "import": {
-    "message": "导入历史",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "你的历史",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "另存为CSV文件",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "与Excel、Google Sheets或其他电子表格软件一起使用",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "结束(ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "结束日期",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "结束时间（24小时制）",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "结束时间戳(Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "结束时区(UTC偏移分钟)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "持续时间（秒）",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
     "message": "导出历史",
-    "description": "Export History button. Shown on the settings-history page."
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "用于备份或导入另一台计算机",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "导入历史",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "导入和合并番茄工作历史",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "导入的历史记录将与您现有的历史记录合并。 继续？",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "无法导入历史记录：$error$",
@@ -530,6 +630,18 @@
         "example": "Missing Pomodoro data."
       }
     }
+  },
+  "clear_history": {
+    "message": "清除历史",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "永久删除所有番茄工作历史",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "永久删除所有番茄工作历史",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
   },
   "group_pomodoros_minute_buckets": {
     "message": "将工作时段以 $count$分钟 为单位计数",
@@ -713,13 +825,25 @@
     "message": "缺少番茄工作数据。",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "无效的番茄工作数据。",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "缺少持续时间数据。",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "无效的持续时间。",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "缺少时区数据。",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "无效的时区数据",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "番茄工作/持续时间数据不匹配。",
@@ -729,6 +853,16 @@
     "message": "番茄工作/时区数据不匹配。",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "$pomodoros$已导入",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "协助翻译",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -736,6 +870,10 @@
   "expire_title": {
     "message": "时间到",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "倒计时",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "锣 1",
@@ -829,6 +967,10 @@
     "message": "数码闹钟",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
+  "periodic_beat": {
+    "message": "周期性节拍",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
   "stopwatch": {
     "message": "秒表",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
@@ -876,5 +1018,35 @@
   "pulse": {
     "message": "脉冲",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "噪声",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "褐色噪声",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "粉红噪声",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "白噪声",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "设置已保存",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "保存设定时发生错误：$message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
