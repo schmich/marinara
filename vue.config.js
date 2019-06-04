@@ -27,7 +27,7 @@ module.exports = {
   css: {
     extract: false
   },
-  baseUrl: '/modules',
+  publicPath: '/modules',
   // Save on production package size by excluding source maps.
   productionSourceMap: false,
   // Exclude content hashes from filenames since we do
