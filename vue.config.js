@@ -14,8 +14,16 @@ module.exports = {
       chunkFilename: '[name].js'
     },
     plugins: [
-      // Delete background.html after build since it is not used.
-      new FileManagerPlugin({ onEnd: { delete: ['package/modules/background.html'] } }),
+      new FileManagerPlugin({
+        onStart: {
+          // Ensure package/modules exists so WebpackTouch below works.
+          mkdir: ['package/modules']
+        },
+        onEnd: {
+          // Delete background.html after build since it is not used.
+          delete: ['package/modules/background.html']
+        }
+      }),
       // Touch chunks after build to ensure they exist. This is necessary in development
       // since we don't build them, but we still refer to them (see manifest.json).
       new WebpackTouch({ filename: 'package/modules/chunk-vendors.js' }),
