@@ -6,6 +6,9 @@ if messages_filename.nil?
   exit 1
 end
 
+# Do not translate line endings.
+$stdout.binmode
+
 puts "class Messages\n{"
 
 locale = JSON.load(File.read(messages_filename))
