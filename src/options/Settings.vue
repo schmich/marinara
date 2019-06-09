@@ -50,7 +50,6 @@
           </label>
         </p>
       </div>
-      <CountdownSettings :settings="settings.focus"></CountdownSettings>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -87,7 +86,6 @@
           <span>{{ M.minutes }}</span>
         </label>
       </p>
-      <CountdownSettings :settings="settings.shortBreak"></CountdownSettings>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
@@ -142,7 +140,6 @@
             <span>{{ M.minutes }}</span>
           </label>
         </p>
-        <CountdownSettings :settings="settings.longBreak"></CountdownSettings>
         <p>{{ M.when_complete }}</p>
         <div class="group">
           <p class="field">
