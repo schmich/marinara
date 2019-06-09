@@ -36,8 +36,8 @@
                 <option value="custom">{{ M.custom }}</option>
               </select>
               <template v-if="showCustomResolution">
-                <input v-model.number="settings.countdown.resolution[0]" v-focus type="number" min="1" max="4096" placeholder="Width"> &times;
-                <input v-model.number="settings.countdown.resolution[1]" type="number" min="1" max="4096" placeholder="Height">
+                <input v-model.number="settings.countdown.resolution[0]" v-focus type="number" min="1" max="4096" :placeholder="M.width"> &times;
+                <input v-model.number="settings.countdown.resolution[1]" type="number" min="1" max="4096" :placeholder="M.height">
               </template>
             </label>
           </p>

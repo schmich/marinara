@@ -165,6 +165,14 @@
     "message": "Countdown timer:",
     "description": "Countdown timer label. Shown on the settings page."
   },
+  "width": {
+    "message": "Width",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "Height",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
   "do_not_show": {
     "message": "Do not show",
     "description": "Countdown timer visibility option. Shown on the settings page."

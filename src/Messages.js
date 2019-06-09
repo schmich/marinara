@@ -264,6 +264,9 @@ class Messages
   heatmap_tooltip(pomodoros, date) {
     return chrome.i18n.getMessage('heatmap_tooltip', [pomodoros, date]);
   }
+  get height() {
+    return chrome.i18n.getMessage('height', []);
+  }
   get help_translate() {
     return chrome.i18n.getMessage('help_translate', []);
   }
@@ -671,6 +674,9 @@ class Messages
   }
   get white_noise() {
     return chrome.i18n.getMessage('white_noise', []);
+  }
+  get width() {
+    return chrome.i18n.getMessage('width', []);
   }
   get wind_up_clock() {
     return chrome.i18n.getMessage('wind_up_clock', []);
