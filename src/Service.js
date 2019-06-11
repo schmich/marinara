@@ -1,5 +1,4 @@
 import EventEmitter from 'events';
-import M from './Messages';
 
 class ServiceBroker
 {
@@ -35,9 +34,13 @@ class ServiceBroker
 
   async invoke({ serviceName, methodName, args }) {
     let service = this.services[serviceName];
-    if (service && service[methodName]) {
-      // Service is defined in this context, call method directly.
-      return await service[methodName](...args);
+    if (service) {
+      if (service[methodName]) {
+        // Service is defined in this context, call method directly.
+        return await service[methodName](...args);
+      } else {
+        throw new Exception(`Invalid service request: ${serviceName}.${methodName}.`);
+      }
     }
 
     // Service is defined in another context, use sendMessage to call it.
@@ -56,11 +59,13 @@ class ServiceBroker
   onMessage({ serviceName, methodName, args }, sender, respond) {
     let service = this.services[serviceName];
     if (!service || methodName === undefined) {
+      // Service is not defined in this context, so we have nothing to do.
       return;
     }
 
     if (!service[methodName]) {
-      throw new Error(`Invalid service request: ${serviceName}.${methodName}.`);
+      respond({ error: `Invalid service request: ${serviceName}.${methodName}.` });
+      return true;
     }
 
     (async () => {
