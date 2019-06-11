@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog">
+  <div class="dialog" v-if="show">
     <h1>{{ title }}</h1>
     <div><p>{{ message }}</p></div>
     <button @click.prevent="startSession" class="button start-session" :class="phase">
@@ -143,6 +143,7 @@ import { ExpirationClient } from '../background/Expiration';
 export default {
   data() {
     return {
+      show: false,
       title: '',
       action: '',
       message: '',
@@ -155,6 +156,7 @@ export default {
     document.body.addEventListener('keypress', this.onKeyPress);
 
     let { title, action, pomodoros, messages, phase } = await ExpirationClient.once.getProperties();
+    this.show = true;
     this.title = title;
     this.action = action;
     this.pomodoroCount = pomodoros;
