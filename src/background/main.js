@@ -10,6 +10,13 @@ import { ServiceBroker } from '../Service';
 import * as Alarms from './Alarms';
 
 async function run() {
+  chrome.runtime.onUpdateAvailable.addListener(() => {
+    // We must listen to (but do nothing with) the onUpdateAvailable event in order to
+    // defer updating the extension until the next time Chrome is restarted. We do not want
+    // the extension to automatically reload on update since a Pomodoro might be running.
+    // See https://developer.chrome.com/apps/runtime#event-onUpdateAvailable.
+  });
+
   let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
   let settings = await PersistentSettings.create(settingsManager);
   let timer = new PomodoroTimer(settings);
