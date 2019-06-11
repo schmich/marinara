@@ -3,10 +3,10 @@
 - Sync with origin: `git pull --ff-only`
 - Run tests: `make test`
 - Bump `version` in `package/manifest.json`
-- Commit: `git commit -a`
 - Create package: `make release`
-- Tag release: `git tag -s xx -m "Release xx."`
-- Push changes: `git push && git push --tags`
 - Publish package at https://chrome.google.com/webstore/devconsole
   - Upload updated package
   - Update descriptions for each language: `make show-descriptions`
+- Commit: `git commit -a`
+- Tag release: `git tag -s xx -m "Release xx."`
+- Push changes: `git push && git push --tags`
