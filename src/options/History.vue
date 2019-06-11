@@ -90,13 +90,13 @@
         margin: 0 0 0 15px;
       }
       button {
-        flex: 0 0 150px;
+        flex: 0 0 175px;
         outline: 0 !important;
         font-size: 15px;
         cursor: pointer;
         background: transparent;
         color: #555;
-        padding: 10px 20px;
+        padding: 10px 10px;
         border: 1px solid #555;
         border-radius: 40px;
         text-decoration: none;
