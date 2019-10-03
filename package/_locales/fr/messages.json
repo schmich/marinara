@@ -585,9 +585,25 @@
     "message": "Utiliser avec Excel, Google Sheets, ou un autre logciel de tableur",
     "description": "Save as CSV description. Shown on the settings-history page."
   },
+  "end_iso_8601": {
+    "message": "Fin (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
   "end_date": {
     "message": "Date de fin",
     "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "Heure de fin (24 heures)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "Horodatage de fin (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "Fin du fuseau horaire (décalage UTC en minutes)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
   },
   "duration_seconds": {
     "message": "Durée (Secondes)",
@@ -597,9 +613,21 @@
     "message": "Exporter l'historique",
     "description": "Export (history) button. Shown on the settings-history page."
   },
+  "export_description": {
+    "message": "Pour la sauvegarde ou pour l’importation sur un autre ordinateur.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
   "import": {
     "message": "Importer l'historique",
     "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Importer et fusionner l’historique de Pomodoro à partir d’un fichier exporté.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "L’historique importé sera fusionné avec votre historique existant. Continuer ?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Erreur à l'import de l'historique: $error$",
