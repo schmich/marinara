@@ -40,7 +40,7 @@
     "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_break": {
-    "message": "เริ่มพัก",
+    "message": "เริ่มการพัก",
     "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
   },
   "start_long_break": {
@@ -113,6 +113,26 @@
     "message": "พักระยะยาว",
     "description": "Long Break section header. Shown on the settings page."
   },
+  "autostart_title": {
+    "message": "ทำงานอัตโนมัติ",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "ตั้งเวลาให้ Pomodoro เริ่มทำงานเองโดยอัตโนมัติตามเวลาที่ตั้งไว้",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "เริ่ม Pomodoro โดยอัตโนติ",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Pomodoro ที่ถูกตั้งเวลาไว้นี้ถูกเริ่มโดยอัตโนมัติ",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "time": {
+    "message": "เวลา:",
+    "description": "Time input label. Shown on the settings page."
+  },
   "duration": {
     "message": "ช่วงเวลา:",
     "description": "Timer duration label. Shown on the settings page."
@@ -120,6 +140,66 @@
   "minutes": {
     "message": "นาที",
     "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "เสียงตัวจับเวลา:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "วางเคอร์เซอร์เมาส์ไว้ด้านบนเพื่อดูตัวอย่าง",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "ความเร็ว:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "จังหวะต่อนาที",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "ไม่มี",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "countdown_timer": {
+    "message": "ตัวนับถอยหลัง:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "ความกว้าง",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "ความสูง",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "ไม่แสดง",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "แสดงในแท็บ",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "แสดงในหน้าต่าง popup",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "แสดงเต็มจอ",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "กำหนดเอง",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "ปิดแท็บเมื่อหมดเซสชั่น",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "ปิดหน้าต่างเมื่อหมดเซสชั่น",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
   },
   "when_complete": {
     "message": "เมื่อเสร็จสิ้น:",
@@ -182,11 +262,11 @@
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "tone": {
-    "message": "โทน",
+    "message": "โทนเสียง",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "electronic_chime": {
-    "message": "Electronic Chime",
+    "message": "กระดิ่งอิเล็กทรอนิกส์",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "today": {
@@ -206,7 +286,7 @@
     "description": "Pomodoro stats label. Shown on the settings-history page."
   },
   "average_stat": {
-    "message": "$average$ เฉลี่ย",
+    "message": "$average$ โดยเฉลี่ย",
     "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "average": {
@@ -242,7 +322,7 @@
     "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "history_empty_placeholder": {
-    "message": "้เสร็จสิ้น Pomodoro เพื่อดูประวัติของคุณ",
+    "message": "เสร็จสิ้น Pomodoro เพื่อดูประวัติของคุณ",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
@@ -312,7 +392,7 @@
     "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
   },
   "date_format": {
-    "message": "%-m/%-d/%Y",
+    "message": "%-d/%-m/%Y",
     "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   },
   "date_time_format": {
@@ -493,13 +573,61 @@
       }
     }
   },
-  "import": {
-    "message": "นำประวัติเข้า",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "ประวัติของคุณ",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "บันทึกเป็นไฟล์ CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "สามารถใช้กับ Excel Google Sheets หรือโปรแกรม Spreadsheet อื่นๆ ได้",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "สิ้นสุด (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "วันที่สิ้นสุด",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "เวลาที่สิ้นสุด (24 ชั่วโมง)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "เวลาที่สิ้นสุด (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "เขตเวลาที่สิ้นสุด (UTF Offset Minutes)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "ความยาว (วินาที)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
-    "message": "นำประวัติออก",
-    "description": "Export History button. Shown on the settings-history page."
+    "message": "ส่งออกประวัติ",
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "สำหรับการสำรองข้อมูลหรือนำเข้าจากคอมพิวเตอร์เครื่องอื่น",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "นำเข้าประวัติ",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "นำเข้าและรวมประวัติจากไฟล์ที่ถูกส่งออก",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "การนำเข้าประวัตินี้จะรวมเข้ากับประวัติก่อนหน้า ต้องการทำต่อหรือไม่?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "การนำประวัติเข้าไม่สำเร็จ: $error$",
@@ -511,8 +639,20 @@
       }
     }
   },
+  "clear_history": {
+    "message": "ล้างประวัติ",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "ล้างประวัติทุกอย่างออกจาก Pomodoro",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "ต้องการล้างประวัติทุกอย่างออกจาก Pomodoro หรือไม่?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
+  },
   "group_pomodoros_minute_buckets": {
-    "message": "รวม Pomodoros ไปยัง $count$ ถังนาที",
+    "message": "แบ่ง Pomodoros เป็น $count$ กลุ่มนาที",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -522,7 +662,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "รวม Pomodoros ไปยัง $count$ ถังชั่วโมง",
+    "message": "แบ่ง Pomodoros เป็น $count$ กลุ่มชั่วโมง",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -584,7 +724,7 @@
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.",
+    "message": "Pomodoro® และ The Pomodoro Technique® เป็นเครื่องหมายการค้าของ Francesco Cirillo  Marinara ไม่ได้ประกอบกิจการร่วม เกี่ยวข้อง ได้รับการรับรอง หรือได้รับการสนับสนุนจาก Pomodoro® The Pomodoro Technique® หรือ Francesco Cirillo",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
@@ -615,7 +755,7 @@
   },
   "pomodoros_completed_today": {
     "message": "$pomodoros$ เพื่อทำวันนี้ให้สำเร็จ",
-    "description": "Daily Pomodoro counter. Shown on the timer expiration page and in browser notifications.",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
     "placeholders": {
       "pomodoros": {
         "content": "$1",
@@ -666,7 +806,7 @@
     }
   },
   "n_minutes": {
-    "message": "$count$m",
+    "message": "$count$นาที",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -690,16 +830,28 @@
     }
   },
   "missing_pomodoro_data": {
-    "message": "ไม่มีข้อมูล Pomodoro.",
+    "message": "ไม่มีข้อมูล Pomodoro",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "ข้อมูล Pomodoro ไม่ถูกต้อง",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
-    "message": "ไม่มีข้อมูลช่วงเวลา.",
+    "message": "ไม่มีข้อมูลระยะเวลา",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "ระยะเวลาไม่ถูกต้อง",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
-    "message": "ไม่มีข้อมูลเขตเวลา.",
+    "message": "ไม่มีข้อมูลเขตเวลา",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "เขตเวลาไม่ถูกต้อง",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "ข้อมูลระยะเวลา Pomodoro ไม่ตรงกัน.",
@@ -709,6 +861,16 @@
     "message": "ข้อมูลเขตเวลา Pomodoro ไม่ตรงกัน.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "นำเข้า $pomodoros$ แล้ว",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "ช่วยแปลภาษา",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -717,20 +879,24 @@
     "message": "หมดเวลา",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
   },
+  "countdown": {
+    "message": "นับถอยหลัง",
+    "description": "Countdown page title. Shown on the countdown timer page."
+  },
   "gong_1": {
-    "message": "ฆ้อน 1",
+    "message": "ฆ้อง 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "gong_2": {
-    "message": "ฆ้อน 2",
+    "message": "ฆ้อง 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "คอมพิวเตอร์เวทมนต์",
+    "message": "เวทมนต์คอมพิวเตอร์",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "กระดาษไฟ",
+    "message": "เสียงเรียกวิทยุสื่อสาร",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
@@ -758,7 +924,7 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "แตรรถไฟ",
+    "message": "หวูดรถไฟ",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
@@ -782,15 +948,15 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
-    "message": "ดิง",
+    "message": "ดิ๊ง",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "dong": {
-    "message": "หมา",
+    "message": "ด่อง",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding_dong": {
-    "message": "ดิง ด๊อง",
+    "message": "ดิ๊ง ด่อง",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
@@ -808,5 +974,87 @@
   "digital_alarm_clock": {
     "message": "นาฬิกาปลุกดิจิตอล",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "periodic_beat": {
+    "message": "จังหวะเป็นช่วงๆ",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "นาฬิกาจับเวลา",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "นาฬิกา",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "นาฬิกาแขวนผนัง",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "นาฬิกาตั้งโต๊ะ",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "นาฬิกาโบราณ",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "นาฬิกาเล็ก",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "นาฬิกาใหญ่",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "นาฬิกาข้อมือ",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "นาฬิกาไขลาน",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "เมโทรนอม",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "บล็อกไม้",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "ชีพจร",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "คลื่นแทรก",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "คลื่นแทรก (ลม)",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "คลื่นแทรก (ซา)",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "คลื่นแทรก (ฮู)",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "การตั้งค่าถูกบันทึกแล้ว",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "เกิดข้อผิดพลาดขณะบันทึกการตั้งค่า: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
