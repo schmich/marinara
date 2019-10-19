@@ -1,8 +1,8 @@
 # Releasing
 
 - Sync with origin: `git pull --ff-only`
-- Run tests: `make test`
 - Bump `version` in `package/manifest.json`
+- Run tests: `make test`
 - Create package: `make release`
 - Publish package at https://chrome.google.com/webstore/devconsole
   - Upload updated package
