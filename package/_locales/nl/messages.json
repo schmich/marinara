@@ -121,6 +121,14 @@
     "message": "Plan de eerste Pomodoro van de dag automatisch op het opgegeven tijdstip.",
     "description": "Autostart setting description. Shown on the settings page."
   },
+  "autostart_notification_title": {
+    "message": "Start Pomodoro automatisch",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Deze geplande Pomodoro werd automatisch gestart",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+  },
   "time": {
     "message": "Tijd:",
     "description": "Time input label. Shown on the settings page."
@@ -152,6 +160,46 @@
   "none": {
     "message": "Geen",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+"countdown_timer": {
+    "message": "Countdown timer:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "Breedte",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "Hoogte",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "Niet weergeven",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "Weergeven op een nieuw tabblad",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "Weergeven in een pop-upvenster",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "Volledig scherm",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "Handmatig",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "Tabblad sluiten wanneer sessie eindigt",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "Sluit venster wanneer sessie eindigt",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
   },
   "when_complete": {
     "message": "Wanneer compleet:",
@@ -525,13 +573,61 @@
       }
     }
   },
-  "import": {
-    "message": "Geschiedenis Importeren",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "Jouw geschiedenis",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "Opslaan als CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "Gebruik met Excel, Google Sheets, of andere spreadsheetsoftware.",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "Eind (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "Eind datum",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "Eind tijd (24 Uur)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "Eind tijdstempel (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "Eind tijdzone (UTC Offset Minutes)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "Duur (Seconden)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
-    "message": "Geschiedenis Exporteren",
-    "description": "Export History button. Shown on the settings-history page."
+    "message": "Exporteren",
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "Voor back-up of importeren op een andere computer.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Importeren",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Pomodoro-geschiedenis importeren en samenvoegen vanuit een geëxporteerd bestand.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "Geïmporteerde geschiedenis wordt samengevoegd met uw bestaande geschiedenis. Doorgaan?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Importeren van geschiedenis mislukt: $error$",
@@ -543,8 +639,20 @@
       }
     }
   },
+  "clear_history": {
+    "message": "Geschiedenis verwijderen",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "Verwijder permanent alle Pomodoro-geschiedenis.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "Alle Pomodoro-geschiedenis permanent verwijderen?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
+  },
   "group_pomodoros_minute_buckets": {
-    "message": "Groupeer Pomodoros in $count$ minuut groepen",
+    "message": "Groepeer Pomodoros in $count$ minuut groepen",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -554,7 +662,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Groupeer Pomodoros in $count$ uur groepen",
+    "message": "Groepeer Pomodoros in $count$ uur groepen",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -592,7 +700,7 @@
     "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
   },
   "release_notes": {
-    "message": "Release Notes",
+    "message": "Release-opmerkingen",
     "description": "Link to GitHub release notes. Shown on the settings-feedback page."
   },
   "source_code": {
@@ -725,13 +833,25 @@
     "message": "Pomodoro data niet gevonden.",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Ongeldige Pomodoro data.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Looptijd data niet gevonden.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Ongeldige looptijd data.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Tijdzone data niet gevonden.",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "Ongeldige tijdzone data.",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "Onvolledige Pomodoro/looptijd data.",
@@ -741,6 +861,16 @@
     "message": "Onvolledige Pomodoro/tijdzone data.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ geïmporteerd.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "Help Vertalen",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -748,6 +878,10 @@
   "expire_title": {
     "message": "Tijd Is Op",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "Countdown",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "Gong 1",
@@ -888,5 +1022,35 @@
   "pulse": {
     "message": "Pulse",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Geluid",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Bruin Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Roze geluid",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "Wit Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "Instellingen opgeslagen",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "Fout bij opslaan van instellingen: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }

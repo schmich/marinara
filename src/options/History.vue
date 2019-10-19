@@ -90,7 +90,7 @@
         margin: 0 0 0 15px;
       }
       button {
-        flex: 0 0 175px;
+        flex: 0 0 185px;
         outline: 0 !important;
         font-size: 15px;
         cursor: pointer;
