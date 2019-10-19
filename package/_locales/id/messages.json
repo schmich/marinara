@@ -788,7 +788,7 @@
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
-    "message": "Judul",
+    "message": "$title$: $text$",
     "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
     "placeholders": {
       "title": {
@@ -802,7 +802,7 @@
     }
   },
   "n_minutes": {
-    "message": "menit",
+    "message": "$count$ menit",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -858,7 +858,7 @@
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "pomodoros_imported": {
-    "message": "Pomodoro Terimpor.",
+    "message": "$pomodoros$ Pomodoro Terimpor.",
     "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
     "placeholders": {
       "pomodoros": {
@@ -1044,7 +1044,7 @@
     "description": "Settings Saved notification shown on settings page when settings are saved."
   },
   "error_saving_settings": {
-    "message": "Gagal Menyimpan Setelan",
+    "message": "Gagal Menyimpan Setelan: $message$",
     "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
     "placeholders": {
       "message": {
