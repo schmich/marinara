@@ -161,6 +161,46 @@
     "message": "Нет",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
+  "countdown_timer": {
+    "message": " Таймер отсчета:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "Ширина",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "Высота",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "Не показывать",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "Показывать",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "Показывать во всплывающем окне",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "В полный экран",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "Пользовательское",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "Закрывать вкладку по завершении сессии",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "Закрывать окно по завершении сессии",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
+  },
   "when_complete": {
     "message": "Когда закончится:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
@@ -533,13 +573,61 @@
       }
     }
   },
-  "import": {
-    "message": "Импорт Истории",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "Ваша история",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "Сохранить как CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "Открывается в Excel, Google Sheets или другом табличном ПО",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "Конец (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "Дата окончания",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "Время окончания (24ч)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "Таймкод окончания",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "Временная зона окончания",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "Продолжительность",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
     "message": "Экспорт Истории",
-    "description": "Export History button. Shown on the settings-history page."
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "Для резервного копирования или для импорта на другом компьютере.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Импорт Истории",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Импортировать и объединить историю из экспортированного файла.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "Импортированная история будет объединена с вашей существующей историей. Продолжить?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Не удалось импортировать историю: $error$",
@@ -550,6 +638,18 @@
         "example": "Missing Pomodoro data."
       }
     }
+  },
+  "clear_history": {
+    "message": "Очистить историю",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "Навсегда удалить всю историю помидоров.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "Удалить всю историю помидоров навсегда?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
   },
   "group_pomodoros_minute_buckets": {
     "message": "Сгруппировать Помидоры в $count$-минутные корзины",
@@ -733,13 +833,25 @@
     "message": "Нет информации о «Помидорах».",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Некорректные данные помидоров.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Нет информации о длительности.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Некорректные данные о продолжительности.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Нет данных о временной зоне.",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "Некорректные данные о временных поясах.",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "Несовпадающие данные о Помидорах/длительности.",
@@ -749,6 +861,16 @@
     "message": "Несовпадающие данные о «Помидорах»/временной зоне.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "Импортировано $pomodoros$.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "Помочь с переводом",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -756,6 +878,10 @@
   "expire_title": {
     "message": "Время вышло",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "Отсчет",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "Гонг 1",
@@ -849,6 +975,10 @@
     "message": "Цифровой будильник",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
+  "periodic_beat": {
+    "message": "Периодический звук",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
   "stopwatch": {
     "message": "Таймер",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
@@ -896,5 +1026,35 @@
   "pulse": {
     "message": "Пульс",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Шум",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Коричневый шум",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Розовый шум",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": " Белый шум",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "Настройки сохранены",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "Ошибка при сохранении настроек: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
