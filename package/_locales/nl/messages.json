@@ -161,7 +161,7 @@
     "message": "Geen",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
-"countdown_timer": {
+  "countdown_timer": {
     "message": "Countdown timer:",
     "description": "Countdown timer label. Shown on the settings page."
   },
