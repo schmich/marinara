@@ -622,7 +622,7 @@
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "כשלון בייבוא הסטוריה, שגיאה: %error$",
+    "message": "כשלון בייבוא הסטוריה, שגיאה: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -854,7 +854,7 @@
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
   "pomodoros_imported": {
-    "message": "$pomodoro$ ייובא",
+    "message": "$pomodoros$ ייובא",
     "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
     "placeholders": {
       "pomodoros": {
