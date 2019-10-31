@@ -47,5 +47,5 @@ This will produce a packaged extension ready for uploading to the Chrome Web Sto
 
 Pomodoro® and The Pomodoro Technique® are trademarks of Francesco Cirillo. Marinara is not affiliated or associated with or endorsed by Pomodoro®, The Pomodoro Technique® or Francesco Cirillo.
 
-Copyright &copy; 2015 Chris Schmich  
+Copyright &copy; 2015 Chris Schmich  \
 MIT License. See [LICENSE](LICENSE) for details.
