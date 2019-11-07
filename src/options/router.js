@@ -44,7 +44,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} - Marinara`;
+  document.title = `${to.meta.title} - ${M.app_name_short}`;
   next();
 });
 
