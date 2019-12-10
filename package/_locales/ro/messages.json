@@ -12,7 +12,7 @@
     "description": "The short description of the application. Shown in the web store."
   },
   "chrome_web_store_description": {
-    "message": "Pauze scurte și lungi\nIcoană în toolbar cu cronometru\nUrmărește istoricul și statisticile Pomodoro\nPauze lungi în intervaluri configurabile\nDurată timer configurabilă\nNotificări Desktop & tab\nNotificări audio cu peste 20 de secunde\nSunete timer\nTimer automat programat\nSoftware de tip open source",
+    "message": "• Pauze scurte și lungi\n• Icoană în toolbar cu cronometru\n• Urmărește istoricul și statisticile Pomodoro\n• Pauze lungi în intervaluri configurabile\n• Durată timer configurabilă\n• Notificări Desktop & tab\n• Notificări audio cu peste 20 de secunde\n• Sunete timer\n• Timer automat programat\n• Software de tip open source",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
   "pomodoro_assistant": {
