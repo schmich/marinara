@@ -866,7 +866,7 @@
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Reloj antinguo",
+    "message": "Reloj antiguo",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
