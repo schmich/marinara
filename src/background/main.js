@@ -24,7 +24,7 @@ async function run() {
 
   let menu = createPomodoroMenu(timer);
   timer.observe(new HistoryObserver(history));
-  timer.observe(new BadgeObserver());
+  timer.observe(new BadgeObserver(settings));
   timer.observe(new NotificationObserver(timer, settings, history));
   timer.observe(new ExpirationSoundObserver(settings));
   timer.observe(new TimerSoundObserver(settings));

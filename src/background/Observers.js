@@ -10,6 +10,9 @@ import { SingletonPage, PageHost } from './SingletonPage';
 
 class BadgeObserver
 {
+  constructor(settings) {
+    this.settings = settings;
+  }
   onStart({ phase, remaining }) {
     this.updateBadge({ phase, minutes: Math.round(remaining / 60) });
   }
@@ -41,12 +44,18 @@ class BadgeObserver
       [Phase.LongBreak]: M.long_break
     }[phase];
 
-    if (minutes != null) {
-      text = minutes < 1 ? M.less_than_minute : M.n_minutes(minutes);
-      tooltip = M.browser_action_tooltip(title, M.time_remaining(text));
-    } else {
-      tooltip = M.browser_action_tooltip(title, tooltip);
-    }
+      if (minutes != null) {
+        if (this.settings.focus.showTimerInToolbarIcon) {
+          text = minutes < 1 ? M.less_than_minute : M.n_minutes(minutes);
+          tooltip = M.browser_action_tooltip(title, M.time_remaining(text));
+        }
+        else {
+          text = "▶";
+          tooltip = title;
+        }
+      } else {
+        tooltip = M.browser_action_tooltip(title, tooltip);
+      }
 
     let color = phase === Phase.Focus ? '#bb0000' : '#11aa11';
     chrome.browserAction.setTitle({ title: tooltip });

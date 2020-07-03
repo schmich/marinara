@@ -205,6 +205,10 @@
     "message": "When complete:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
   },
+  "show_timer_in_toolbar_icon": {
+    "message": "Show timer in toolbar icon",
+    "description": "Show timer in toolbar icon"
+  },
   "show_desktop_notification": {
     "message": "Show desktop notification",
     "description": "Desktop notification option. Shown on the settings page."

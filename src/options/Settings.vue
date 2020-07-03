@@ -50,6 +50,12 @@
           </label>
         </p>
       </div>
+      <p class="field">
+        <label>
+          <input type="checkbox" v-model="settings.focus.showTimerInToolbarIcon" />
+          <span>{{ M.show_timer_in_toolbar_icon }}</span>
+        </label>
+      </p>
       <p>{{ M.when_complete }}</p>
       <div class="group">
         <p class="field">
