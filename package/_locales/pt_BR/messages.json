@@ -1011,6 +1011,10 @@
     "message": "Barulho rosa",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "white_noise": {
+    "message": "Barulho branco",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
   "settings_saved": {
     "message": "Configurações salvas",
     "description": "Settings Saved notification shown on settings page when settings are saved."
