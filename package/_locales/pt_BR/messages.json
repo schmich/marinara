@@ -837,6 +837,16 @@
     "message": "Informação sobre o fuso horário/Pomodoro incompatível.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ importados.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "Ajude a Traduzir",
     "description": "Feedback link. Shown on settings-feedback page."
