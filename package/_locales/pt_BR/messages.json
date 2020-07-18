@@ -161,6 +161,10 @@
     "message": "Nenhum",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
+  "countdown_timer": {
+    "message": "Temporizador:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
   "when_complete": {
     "message": "Quando terminado:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
