@@ -177,6 +177,10 @@
     "message": "Não mostrar",
     "description": "Countdown timer visibility option. Shown on the settings page."
   },
+  "show_in_tab": {
+    "message": "Mostrar numa nova aba",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
   "when_complete": {
     "message": "Quando terminado:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
