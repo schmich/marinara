@@ -619,6 +619,10 @@
     "message": "Limpar histórico",
     "description": "Clear History button. Shown on the settings-history page."
   },
+  "clear_history_description": {
+    "message": "Deletar permanentemente todo o histórico.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
   "group_pomodoros_minute_buckets": {
     "message": "Agrupar Pomodoros em $count$ minutos",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
