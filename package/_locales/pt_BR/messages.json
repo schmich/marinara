@@ -165,6 +165,10 @@
     "message": "Temporizador:",
     "description": "Countdown timer label. Shown on the settings page."
   },
+  "width": {
+    "message": "Largura",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
   "when_complete": {
     "message": "Quando terminado:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
