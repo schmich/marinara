@@ -565,6 +565,10 @@
       }
     }
   },
+  "your_history": {
+    "message": "Seu histórico",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
   "import": {
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
