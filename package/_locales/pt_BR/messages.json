@@ -825,6 +825,10 @@
     "message": "Faltando fuso horário.",
     "description": "Error when imported history has no Pomodoro timezone information."
   },
+  "invalid_timezone_data": {
+    "message": "Fuso horário inválido.",
+    "description": "Error when imported history has invalid timezone information."
+  },
   "mismatched_pomodoro_duration_data": {
     "message": "Informação sobre a duração/Pomodoro incompatível.",
     "description": "Error when imported history has mismatched Pomodoro/duration data."
