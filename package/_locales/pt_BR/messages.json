@@ -585,13 +585,17 @@
     "message": "Duração (Segundos)",
     "description": "CSV column header for the Pomodoro's duration in seconds."
   },
-  "import": {
-    "message": "Importar histórico",
-    "description": "Import History button. Shown on the settings-history page."
-  },
   "export": {
     "message": "Exportar histórico",
     "description": "Export History button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "Para backup ou para importar em outro computador.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Importar histórico",
+    "description": "Import History button. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Falha ao importar o histórico: $error$",
