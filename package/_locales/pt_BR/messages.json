@@ -581,6 +581,10 @@
     "message": "Fim (ISO 8601)",
     "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
   },
+  "duration_seconds": {
+    "message": "Duração (Segundos)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
+  },
   "import": {
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
