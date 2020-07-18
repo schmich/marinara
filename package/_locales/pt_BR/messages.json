@@ -121,6 +121,10 @@
     "message": "Programe o primeiro Pomodoro do dia para iniciar automaticamente no horário especificado.",
     "description": "Autostart setting description. Shown on the settings page."
   },
+  "autostart_notification_title": {
+    "message": "Iniciar Pomodoro automaticamente",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
   "time": {
     "message": "Tempo:",
     "description": "Time input label. Shown on the settings page."
