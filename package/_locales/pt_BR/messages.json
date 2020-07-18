@@ -601,6 +601,10 @@
     "message": "Importe e mescle o seu histórico com do arquivo exportado.",
     "description": "Import history description. Shown on the settings-history page."
   },
+  "import_confirmation": {
+    "message": "Histórico importado será mesclado com seu histórico existente. Deseja continuar?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
+  },
   "import_failed": {
     "message": "Falha ao importar o histórico: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
