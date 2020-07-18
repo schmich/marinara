@@ -809,6 +809,10 @@
     "message": "Faltando dados de Pomodoro.",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Dados de Pomodoro inválido.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Faltando informação sobre a duração.",
     "description": "Error when imported history has no Pomodoro duration information."
