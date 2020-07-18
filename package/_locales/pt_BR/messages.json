@@ -573,6 +573,10 @@
     "message": "Salvar como CSV",
     "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
   },
+  "save_as_csv_description": {
+    "message": "Abra com Excel, Google Sheets ou outro leitor de planilhas.",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
   "import": {
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
