@@ -597,6 +597,10 @@
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
   },
+  "import_description": {
+    "message": "Importe e mescle o seu histórico com do arquivo exportado.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
   "import_failed": {
     "message": "Falha ao importar o histórico: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
