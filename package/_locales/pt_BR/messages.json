@@ -817,6 +817,10 @@
     "message": "Faltando informação sobre a duração.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Informação sobre a duração inválida.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Faltando fuso horário.",
     "description": "Error when imported history has no Pomodoro timezone information."
