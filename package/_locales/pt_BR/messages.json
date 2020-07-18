@@ -569,6 +569,10 @@
     "message": "Seu histórico",
     "description": "Your History section header. Shown on the settings-history page."
   },
+  "save_as_csv": {
+    "message": "Salvar como CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
   "import": {
     "message": "Importar histórico",
     "description": "Import History button. Shown on the settings-history page."
