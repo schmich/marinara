@@ -121,6 +121,14 @@
     "message": "Programe o primeiro Pomodoro do dia para iniciar automaticamente no horário especificado.",
     "description": "Autostart setting description. Shown on the settings page."
   },
+  "autostart_notification_title": {
+    "message": "Iniciar Pomodoro automaticamente",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "Esse Pomodoro agendado foi iniciado automaticamente",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+  },
   "time": {
     "message": "Tempo:",
     "description": "Time input label. Shown on the settings page."
@@ -152,6 +160,46 @@
   "none": {
     "message": "Nenhum",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "countdown_timer": {
+    "message": "Temporizador:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "Largura",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "Altura",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "Não mostrar",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "Mostrar numa nova aba",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "Mostrar numa janela de pop-up",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "Tela cheia",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "Customizado",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "Fechar abas quando a sessão terminar",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "Fechar janela quando a sessão terminar",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
   },
   "when_complete": {
     "message": "Quando terminado:",
@@ -517,13 +565,45 @@
       }
     }
   },
-  "import": {
-    "message": "Importar histórico",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "Seu histórico",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "Salvar como CSV",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "Abra com Excel, Google Sheets ou outro leitor de planilhas.",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "Fim (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "duration_seconds": {
+    "message": "Duração (Segundos)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
     "message": "Exportar histórico",
     "description": "Export History button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "Para backup ou para importar em outro computador.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Importar histórico",
+    "description": "Import History button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Importe e mescle o seu histórico com do arquivo exportado.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "Histórico importado será mesclado com seu histórico existente. Deseja continuar?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Falha ao importar o histórico: $error$",
@@ -534,6 +614,18 @@
         "example": "Missing Pomodoro data."
       }
     }
+  },
+  "clear_history": {
+    "message": "Limpar histórico",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "Deletar permanentemente todo o histórico.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "Deletar permanentemente todo o histórico?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
   },
   "group_pomodoros_minute_buckets": {
     "message": "Agrupar Pomodoros em $count$ minutos",
@@ -717,13 +809,25 @@
     "message": "Faltando dados de Pomodoro.",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Dados de Pomodoro inválido.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Faltando informação sobre a duração.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Informação sobre a duração inválida.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Faltando fuso horário.",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "Fuso horário inválido.",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "Informação sobre a duração/Pomodoro incompatível.",
@@ -733,6 +837,16 @@
     "message": "Informação sobre o fuso horário/Pomodoro incompatível.",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ importados.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "Ajude a Traduzir",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -740,6 +854,10 @@
   "expire_title": {
     "message": "Acabou o Tempo",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "Temporizador",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "Gongo 1",
@@ -880,5 +998,35 @@
   "pulse": {
     "message": "Pulso",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Barulho",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Barulho marrom",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Barulho rosa",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "Barulho branco",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "Configurações salvas",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "Erro ao salvar configurações: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
