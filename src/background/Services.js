@@ -69,8 +69,8 @@ class HistoryService extends Service
     this.history = history;
   }
 
-  async getStats(since) {
-    return await this.history.stats(since);
+  async getStats(since, dateRangeStart, dateRangeEnd) {
+    return await this.history.stats(since, dateRangeStart, dateRangeEnd);
   }
 
   async getCSV() {

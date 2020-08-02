@@ -325,6 +325,18 @@
     "message": "Finish a Pomodoro to see your history",
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
+  "history_date_range": {
+    "message": "History Date Range",
+    "description": "Title for section for selecting the [start, end] date range of Pomodoro history data to display. Shown on the settings-history page."
+  },
+  "history_date_range_start": {
+    "message": "Start",
+    "description": "Label for the Date input for the start of the date range of Pomodoro history data to display. Shown on the settings-history page."
+  },
+  "history_date_range_end": {
+    "message": "End",
+    "description": "Label for the Date input for the end of the date range of Pomodoro history data to display. Shown on the settings-history page."
+  },
   "daily_tooltip": {
     "message": "$pomodoros$ between $start$—$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
