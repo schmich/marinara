@@ -22,6 +22,19 @@
         <div class="bucket">{{ M.total }}</div>
       </div>
     </div>
+    <section class="date-range-selection">
+      <div class="title">
+        <h2>{{ M.history_date_range }}</h2>
+      </div>
+      <div class="date-row">
+        <div class="date-row-label">{{ M.history_date_range_start }}</div>
+        <input class="date" type="date" id="history-start" name="start" v-model="dateRangeStartString" />
+      </div>
+      <div class="date-row">
+        <div class="date-row-label">{{ M.history_date_range_end }}</div>
+        <input class="date" type="date" id="history-end" name="end" v-model="dateRangeEndString" />
+      </div>
+    </section>
     <section class="day-distribution chart">
       <div class="title">
         <h2>{{ M.daily_distribution }}</h2>
@@ -126,6 +139,17 @@
   display: inline;
   font-weight: normal;
 }
+.date-row {
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+}
+.date-row-label {
+  width: 120px;
+}
+.date-range-selection .date {
+  width: 220px;
+}
 .day-distribution .options input {
   display: none;
 }
@@ -201,6 +225,19 @@ import DayDistribution from './DayDistribution';
 import WeekDistribution from './WeekDistribution';
 import M from '../Messages';
 
+function pad(num) {
+  return num >= 10 ? num : `0${num}`;
+}
+
+function toFormattedString(inputDate) {
+  if (!inputDate) return;
+
+  let y = inputDate.getFullYear();
+  let m = inputDate.getMonth();
+  let d = inputDate.getDate();
+  return `${y}-${pad(m+1)}-${pad(d)}`;
+}
+
 export default {
   data() {
     return {
@@ -208,8 +245,33 @@ export default {
       pomodoroClient: new PomodoroClient(),
       stats: null,
       historyStart: null,
-      dayDistributionBucketSize: 30
+      dayDistributionBucketSize: 30,
+      dateRangeStart: null,
+      dateRangeEnd: null
     };
+  },
+  computed: {
+    dateRangeStartString: {
+      get() {
+        return toFormattedString(this.dateRangeStart);
+      },
+      set(newVal) {
+        this.dateRangeStart = new Date(newVal);
+        this.updateStats();
+      }
+    },
+    dateRangeEndString: {
+      get() {
+        return toFormattedString(this.dateRangeEnd);
+      },
+      set(newVal) {
+        this.dateRangeEnd = new Date(newVal);
+
+        // add 1 day, so that we include pomodoros on dateRangeEnd
+        this.dateRangeEnd.setDate(this.dateRangeEnd.getDate() + 1);
+        this.updateStats();
+      }
+    }
   },
   async mounted() {
     this.updateStats();
@@ -266,8 +328,17 @@ export default {
       // Start at the first Sunday at least 39 weeks (~9 months) ago.
       start.setDate(start.getDate() - 273);
       start.setDate(start.getDate() - start.getDay());
-      this.stats = await this.historyClient.getStats(+start);
+      this.stats = await this.historyClient.getStats(+start, this.dateRangeStart, this.dateRangeEnd);
       this.historyStart = start;
+
+      // Initialize dateRangeStart and dateRangeEnd after we have fetched
+      // stats for the first time.
+      if (this.dateRangeStart === null) {
+        this.dateRangeStart = new Date(this.stats.start);
+      }
+      if (this.dateRangeEnd === null) {
+        this.dateRangeEnd = now;
+      }
     }
   },
   filters: {

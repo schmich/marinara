@@ -112,27 +112,37 @@ class History
     });
   }
 
-  async stats(since) {
+  async stats(since, dateRangeStart, dateRangeEnd) {
     return this.mutex.exclusive(async () => {
       let { pomodoros } = await this.storage.get('pomodoros');
+      let filteredPomodoros = pomodoros;
+      if (dateRangeStart) {
+        filteredPomodoros = filteredPomodoros.filter(p => +History.date(p) > +(new Date(dateRangeStart)));
+      }
 
-      let total = pomodoros.length;
-      let delta = total === 0 ? 0 : (new Date() - History.date(pomodoros[0]));
+      if (dateRangeEnd) {
+        filteredPomodoros = filteredPomodoros.filter(p => +History.date(p) < +(new Date(dateRangeEnd)));
+      }
+
+      let total = filteredPomodoros.length;
+      let start = History.date(filteredPomodoros[0]);
+      let delta = total === 0 ? 0 : (new Date() - start);
       let dayCount = Math.max(delta / 1000 / 60 / 60 / 24, 1);
       let weekCount = Math.max(dayCount / 7, 1);
       let monthCount = Math.max(dayCount / (365.25 / 12), 1);
 
       return {
-        day: this.countSince(pomodoros, History.today),
+        start: start,
+        day: this.countSince(filteredPomodoros, History.today),
         dayAverage: total / dayCount,
-        week: this.countSince(pomodoros, History.thisWeek),
+        week: this.countSince(filteredPomodoros, History.thisWeek),
         weekAverage: total / weekCount,
-        month: this.countSince(pomodoros, History.thisMonth),
+        month: this.countSince(filteredPomodoros, History.thisMonth),
         monthAverage: total / monthCount,
-        period: this.countSince(pomodoros, new Date(since)),
+        period: this.countSince(filteredPomodoros, new Date(since)),
         total: total,
-        daily: this.dailyGroups(pomodoros, since),
-        pomodoros: pomodoros.map(p => +History.date(p))
+        daily: this.dailyGroups(filteredPomodoros, since),
+        pomodoros: filteredPomodoros.map(p => +History.date(p))
       };
     });
   }

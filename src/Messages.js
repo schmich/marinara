@@ -273,6 +273,15 @@ class Messages
   get history() {
     return chrome.i18n.getMessage('history', []);
   }
+  get history_date_range() {
+    return chrome.i18n.getMessage('history_date_range', []);
+  }
+  get history_date_range_start() {
+    return chrome.i18n.getMessage('history_date_range_start', []);
+  }
+  get history_date_range_end() {
+    return chrome.i18n.getMessage('history_date_range_end', []);
+  }
   get history_empty_placeholder() {
     return chrome.i18n.getMessage('history_empty_placeholder', []);
   }
