@@ -142,6 +142,8 @@ function createHeatmap(data, start, el) {
       .attr('height', cellSize)
       .attr('x', (d, i) => Math.floor(i / 7) * cellSize)
       .attr('y', (d, i) => (i % 7) * cellSize)
+      .attr('rx', 3)
+      .attr('ry', 3)
       .datum(d => +d)
       // Tooltip title.
       .attr('data-tippy-content', d => {
@@ -170,6 +172,8 @@ function createHeatmap(data, start, el) {
         .attr('width', cellSize)
         .attr('height', cellSize)
         .attr('x', d => d * (cellSize + 2) + dx)
+        .attr('rx', 3)
+        .attr('ry', 3)
         .attr('class', d => `day color${d - 1}`);
 
   let tooltips = tippy(el.querySelectorAll('.days .day'), {
