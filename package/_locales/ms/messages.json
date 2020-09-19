@@ -344,7 +344,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ pada $start$—$end$",
+    "message": "$pomodoros$ pada $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {

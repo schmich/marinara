@@ -76,7 +76,7 @@
     "description": "Label for a single Pomodoro. Shown on the expiration page."
   },
   "pomodoro_count_many": {
-    "message": "$hesabu$ Pomodoros",
+    "message": "$count$ Pomodoros",
     "description": "Label for many Pomodoros. Shown on the expiration page.",
     "placeholders": {
       "count": {
@@ -294,7 +294,7 @@
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "$hesabu$ ya miezi tisa iliyopita",
+    "message": "$count$ ya miezi tisa iliyopita",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -316,7 +316,7 @@
     "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
   },
   "daily_tooltip": {
-    "message": "$pomodoros$ katikati $anza$-$mwisho$",
+    "message": "$pomodoros$ katikati $start$-$end$",
     "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -334,7 +334,7 @@
     }
   },
   "weekly_tooltip": {
-    "message": "$pomodoros$ ya $siku$",
+    "message": "$pomodoros$ ya $day$",
     "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -348,7 +348,7 @@
     }
   },
   "heatmap_tooltip": {
-    "message": "$pomodoros$ ya $tarehe$",
+    "message": "$pomodoros$ ya $date$",
     "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
     "placeholders": {
       "pomodoros": {
@@ -602,7 +602,7 @@
     "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
-    "message": "Imeshindwa kuleta historia: $kosa$",
+    "message": "Imeshindwa kuleta historia: $error$",
     "description": "Error message shown when history import fails. Shown on the settings-history page.",
     "placeholders": {
       "error": {
@@ -624,7 +624,7 @@
     "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
   },
   "group_pomodoros_minute_buckets": {
-    "message": "Pomodoros ya kikundi ndani ya $hesabu$ ndoo ya dakika",
+    "message": "Pomodoros ya kikundi ndani ya $count$ ndoo ya dakika",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -634,7 +634,7 @@
     }
   },
   "group_pomodoros_hour_buckets": {
-    "message": "Pomodoros ya kikundi ndani ya $hesabu$ ndoo ya masaa",
+    "message": "Pomodoros ya kikundi ndani ya $count$ ndoo ya masaa",
     "description": "Daily distribution bucket tooltip. Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -644,7 +644,7 @@
     }
   },
   "min_suffix": {
-    "message": "$hesabu$ Dakika",
+    "message": "$count$ Dakika",
     "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -654,7 +654,7 @@
     }
   },
   "hr_suffix": {
-    "message": "$hesabu$ Saa",
+    "message": "$count$ Saa",
     "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
     "placeholders": {
       "count": {
@@ -764,7 +764,7 @@
     "description": "Notification button text when focus timer expires."
   },
   "browser_action_tooltip": {
-    "message": "$kichwa$: $maandishi$",
+    "message": "$title$: $text$",
     "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
     "placeholders": {
       "title": {
@@ -778,7 +778,7 @@
     }
   },
   "n_minutes": {
-    "message": "$hesabu$m",
+    "message": "$count$m",
     "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
     "placeholders": {
       "count": {
@@ -792,7 +792,7 @@
     "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
   },
   "time_remaining": {
-    "message": "$muda$ Uliobaki",
+    "message": "$time$ Uliobaki",
     "description": "Badge tooltip to show time remaining for current timer.",
     "placeholders": {
       "time": {
@@ -1020,7 +1020,7 @@
     "description": "Settings Saved notification shown on settings page when settings are saved."
   },
   "error_saving_settings": {
-    "message": "Kosa la kuokoa mipangilio: $ujumbe$",
+    "message": "Kosa la kuokoa mipangilio: $message$",
     "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
     "placeholders": {
       "message": {
