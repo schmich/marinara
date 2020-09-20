@@ -3,7 +3,7 @@
   "short_name": "__MSG_app_name_short__",
   "description": "__MSG_app_desc__",
   "default_locale": "en",
-  "version": "32",
+  "version": "33",
   "manifest_version": 2,
   "author": "Chris Schmich <schmch@gmail.com>",
   "homepage_url": "https://github.com/schmich/marinara",
