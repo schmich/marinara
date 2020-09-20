@@ -73,7 +73,7 @@ module.exports = {
       .use('vue-loader')
         .loader('vue-loader')
         .tap(options => {
-          options.compilerOptions.preserveWhitespace = true;
+          options.compilerOptions.whitespace = 'preserve';
           return options;
         });
   }
