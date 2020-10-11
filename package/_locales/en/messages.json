@@ -1043,6 +1043,18 @@
     "message": "White Noise",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
+  "language": {
+    "message": "Language",
+    "description": "Language section header. Shown on the settings page."
+  },
+  "override_language": {
+    "message": "Override language:",
+    "description": "Language override settings label. Shown on the settings page."
+  },
+  "browser_default": {
+    "message": "Browser default",
+    "description": "Default option for language override settings. Shown on the settings page."
+  },
   "settings_saved": {
     "message": "Settings Saved",
     "description": "Settings Saved notification shown on settings page when settings are saved."

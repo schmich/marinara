@@ -1,5 +1,5 @@
 import Chrome from './Chrome';
-import M from './Messages';
+import { M } from './Messages';
 
 function createNotificationSounds() {
   let sounds = [

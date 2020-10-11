@@ -2,7 +2,7 @@ import Chrome from '../Chrome';
 import StorageManager from './StorageManager';
 import RLE from './RLE';
 import Mutex from '../Mutex';
-import M from '../Messages';
+import { M } from '../Messages';
 import moment from 'moment';
 
 class History

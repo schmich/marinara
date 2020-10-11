@@ -1,4 +1,4 @@
-import M from './Messages';
+import { M } from './Messages';
 import { timeFormatLocale } from 'd3';
 
 const monthIds = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];

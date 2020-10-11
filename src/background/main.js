@@ -1,3 +1,4 @@
+import { refreshLang } from '../Messages';
 import { PomodoroTimer } from './Timer';
 import Chrome from '../Chrome';
 import { createPomodoroMenu } from './Menu';
@@ -22,6 +23,12 @@ async function run() {
   let timer = new PomodoroTimer(settings);
   let history = new History();
 
+  ServiceBroker.register(new HistoryService(history));
+  ServiceBroker.register(new SoundsService());
+  ServiceBroker.register(new SettingsService(settingsManager));
+  ServiceBroker.register(new PomodoroService(timer));
+  ServiceBroker.register(new OptionsService());
+
   let menu = createPomodoroMenu(timer);
   timer.observe(new HistoryObserver(history));
   timer.observe(new BadgeObserver());
@@ -31,8 +38,11 @@ async function run() {
   timer.observe(new CountdownObserver(settings));
   timer.observe(new MenuObserver(menu));
 
-  menu.apply();
-  settingsManager.on('change', () => menu.apply());
+  const menu_apply = async (settings) => refreshLang(settings)
+    .then( () => menu.apply() )
+
+  menu_apply(settings)
+  settingsManager.on('change', menu_apply)
 
   Alarms.install(timer, settingsManager);
   chrome.browserAction.onClicked.addListener(() => {
@@ -44,12 +54,6 @@ async function run() {
       timer.start();
     }
   });
-
-  ServiceBroker.register(new HistoryService(history));
-  ServiceBroker.register(new SoundsService());
-  ServiceBroker.register(new SettingsService(settingsManager));
-  ServiceBroker.register(new PomodoroService(timer));
-  ServiceBroker.register(new OptionsService());
 }
 
 run();

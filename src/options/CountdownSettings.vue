@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import M from '../Messages';
+import { M } from '../Messages';
 import { focus } from '../Directives';
 
 export default {
