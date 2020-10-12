@@ -1,9 +1,8 @@
-import M from '../Messages';
+import { M } from '../Messages';
 import { Phase } from './Timer';
-import { pomodoroCount } from '../Filters';
 import * as Sounds from '../Sounds';
 import Notification from './Notification';
-import { ExpirationPage } from './Expiration';
+import { ExpirationPage, ExpirationMessages } from './Expiration';
 import Mutex from '../Mutex';
 import createTimerSound from '../TimerSound';
 import { SingletonPage, PageHost } from './SingletonPage';
@@ -161,39 +160,32 @@ class NotificationObserver
     }[phase]];
 
     let hasLongBreak = this.timer.hasLongBreak;
-    let title = {
-      [Phase.Focus]: M.start_focusing,
-      [Phase.ShortBreak]: hasLongBreak ? M.take_a_short_break : M.take_a_break,
-      [Phase.LongBreak]: M.take_a_long_break
+    let title_key = {
+      [Phase.Focus]: 'start_focusing',
+      [Phase.ShortBreak]: hasLongBreak ? 'take_a_short_break' : 'take_a_break',
+      [Phase.LongBreak]: 'take_a_long_break'
     }[nextPhase];
 
-    let buttonText = {
-      [Phase.Focus]: M.start_focusing_now,
-      [Phase.ShortBreak]: hasLongBreak ? M.start_short_break_now : M.start_break_now,
-      [Phase.LongBreak]: M.start_long_break_now
+    let buttonText_key = {
+      [Phase.Focus]: 'start_focusing_now',
+      [Phase.ShortBreak]: hasLongBreak ? 'start_short_break_now' : 'start_break_now',
+      [Phase.LongBreak]: 'start_long_break_now'
     }[nextPhase];
 
-    let action = {
-      [Phase.Focus]: M.start_focusing,
-      [Phase.ShortBreak]: hasLongBreak ? M.start_short_break : M.start_break,
-      [Phase.LongBreak]: M.start_long_break
+    let action_key = {
+      [Phase.Focus]: 'start_focusing',
+      [Phase.ShortBreak]: hasLongBreak ? 'start_short_break' : 'start_break',
+      [Phase.LongBreak]: 'start_long_break'
     }[nextPhase];
 
-    let messages = [];
-    let remaining = this.timer.pomodorosUntilLongBreak;
-    if (remaining > 0) {
-      messages.push(M.pomodoros_until_long_break(pomodoroCount(remaining)));
-    }
-
+    let pomodorosRemaining = this.timer.pomodorosUntilLongBreak;
     let pomodorosToday = await this.history.countToday();
-    messages.push(M.pomodoros_completed_today(pomodoroCount(pomodorosToday)));
-
-    messages = messages.filter(m => !!m);
+    let messages = ExpirationMessages(pomodorosRemaining, pomodorosToday)
 
     await this.mutex.exclusive(async () => {
       if (settings.notifications.desktop) {
-        this.notification = new Notification(title, messages.join('\n'), () => this.timer.start());
-        this.notification.addButton(buttonText, () => this.timer.start());
+        this.notification = new Notification(M[title_key], messages.join('\n'), () => this.timer.start());
+        this.notification.addButton(M[buttonText_key], () => this.timer.start());
         await this.notification.show();
       }
 
@@ -205,9 +197,10 @@ class NotificationObserver
         }[nextPhase];
 
         this.expiration = await ExpirationPage.show(
-          title,
-          messages,
-          action,
+          title_key,
+          pomodorosRemaining,
+          pomodorosToday,
+          action_key,
           pomodorosToday,
           phaseId
         );

@@ -1,4 +1,4 @@
-import M from '../Messages';
+import { M } from '../Messages';
 import { OptionsClient } from './Services';
 
 class Menu

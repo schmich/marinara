@@ -34,7 +34,7 @@
 import * as d3 from 'd3';
 import { formatter, shortDays } from '../LocaleFormat';
 import { pomodoroCount } from '../Filters';
-import M from '../Messages';
+import { M } from '../Messages';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 

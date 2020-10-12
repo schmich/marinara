@@ -5,7 +5,7 @@
 <script>
 import * as d3 from 'd3';
 import { formatter, shortDays, days } from '../LocaleFormat';
-import M from '../Messages';
+import { M } from '../Messages';
 import { pomodoroCount } from '../Filters';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';

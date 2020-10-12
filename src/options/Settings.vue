@@ -163,6 +163,15 @@
         </div>
       </fieldset>
     </div>
+    <div class="section">
+      <h2>{{ M.language }}</h2>
+      <p class="field">
+        <label>
+          <span>{{ M.override_language }}</span>
+          <LanguageSelect v-model="settings.language_override" :languages="languages"></LanguageSelect>
+        </label>
+      </p>
+    </div>
     <div class="section autostart">
       <h2>{{ M.autostart_title }}</h2>
       <p>{{ M.autostart_description }}</p>
@@ -247,8 +256,9 @@ input[type="number"] {
 import { SettingsClient, SoundsClient } from '../background/Services';
 import Mutex from '../Mutex';
 import SoundSelect from './SoundSelect';
+import LanguageSelect from './LanguageSelect';
 import CountdownSettings from './CountdownSettings';
-import M from '../Messages';
+import { languages } from '../Messages';
 import createTimerSound from '../TimerSound';
 import { focus } from '../Directives';
 
@@ -261,6 +271,7 @@ export default {
       showSettingsSaved: false,
       showSettingsSavedTimeout: null,
       notificationSounds: null,
+      languages: languages,
       timerSounds: null,
       timerSound: null,
       timerSoundMutex: new Mutex()
@@ -376,7 +387,8 @@ export default {
   },
   components: {
     CountdownSettings,
-    SoundSelect
+    SoundSelect,
+    LanguageSelect
   }
 };
 </script>

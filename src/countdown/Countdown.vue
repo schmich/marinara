@@ -112,7 +112,7 @@ import Sprite from '../Sprite';
 import { TimerState, Phase } from '../background/Timer';
 import { OptionsClient, SettingsClient, PomodoroClient } from '../background/Services';
 import { mmss } from '../Filters';
-import M from '../Messages';
+import { M } from '../Messages';
 
 export default {
   mixins: [TimerStats],

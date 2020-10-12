@@ -4,7 +4,7 @@ import Options from './Options';
 import Settings from './Settings';
 import History from './History';
 import Feedback from './Feedback';
-import M from '../Messages';
+import { M } from '../Messages';
 
 Vue.use(Router);
 

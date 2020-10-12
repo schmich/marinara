@@ -1,4 +1,4 @@
-import M from './Messages';
+import { M } from './Messages';
 import { formatter } from './LocaleFormat';
 
 function integer(value) {

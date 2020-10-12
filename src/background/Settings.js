@@ -20,7 +20,7 @@ function clone(obj) {
 class SettingsSchema
 {
   get version() {
-    return 7;
+    return 8;
   }
 
   get default() {
@@ -71,6 +71,7 @@ class SettingsSchema
       autostart: {
         time: null,
       },
+      language_override: null,
       version: this.version
     };
   }
@@ -203,6 +204,15 @@ class SettingsSchema
     };
 
     return v7;
+  }
+
+  from7To8(v7) {
+    let v8 = clone(v7);
+    v8.version = 8;
+
+    v8.language_override = null;
+
+    return v8;
   }
 }
 

@@ -136,9 +136,9 @@ body {
 </style>
 
 <script>
-import M from '../Messages';
+import { M } from '../Messages';
 import { PomodoroClient, OptionsClient } from '../background/Services';
-import { ExpirationClient } from '../background/Expiration';
+import { ExpirationClient, ExpirationMessages } from '../background/Expiration';
 
 export default {
   data() {
@@ -155,12 +155,13 @@ export default {
     document.title = `${M.expire_title} - ${M.app_name_short}`;
     document.body.addEventListener('keypress', this.onKeyPress);
 
-    let { title, action, pomodoros, messages, phase } = await ExpirationClient.once.getProperties();
+    let { title_key, action_key, pomodoros, pomodorosRemaining, pomodorosToday, phase } = await ExpirationClient.once.getProperties();
+    console.log(await ExpirationClient.once.getProperties())
     this.show = true;
-    this.title = title;
-    this.action = action;
+    this.title = M[title_key];
+    this.action = M[action_key];
     this.pomodoroCount = pomodoros;
-    this.message = messages.filter(m => m && m.trim()).join(' – ');
+    this.message = ExpirationMessages(pomodorosRemaining, pomodorosToday).filter(m => m && m.trim()).join(' – ');
     this.phase = phase;
   },
   beforeDestroy() {

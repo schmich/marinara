@@ -199,7 +199,7 @@ import * as File from './File';
 import Heatmap from './Heatmap';
 import DayDistribution from './DayDistribution';
 import WeekDistribution from './WeekDistribution';
-import M from '../Messages';
+import { M } from '../Messages';
 
 export default {
   data() {
