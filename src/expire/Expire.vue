@@ -10,7 +10,7 @@
     </button>
     <div class="pomodoros-today">
       <p class="pomodoros">
-        <i v-for="_ of new Array(pomodoroCount)" class="icon-circle"></i>
+        <i v-for="i of new Array(pomodoroCount)" v-bind:key=i class="icon-circle"></i>
       </p>
       <p>{{ M.completed_today }}</p>
       <button @click.prevent="showHistoryPage" class="view-history">{{ M.view_history }}</button>
