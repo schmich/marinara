@@ -15,6 +15,14 @@
     "message": "• Short & long breaks\n• Toolbar icon with countdown timer\n• Track Pomodoro history & stats\n• Configurable long break intervals\n• Configurable timer durations\n• Desktop & tab notifications\n• Audio notifications with over 20 sounds\n• Ticking timer sounds\n• Scheduled automatic timers\n• Open source software",
     "description": "Detailed extension description shown to users in the Chrome Web Store."
   },
+  "general_settings": {
+    "message": "General Settings",
+    "description": "General section header. Shown on the settings page."
+  },
+  "dark_mode": {
+    "message": "Dark mode:",
+    "description": "Dark mode settings label. Shown on the settings page."
+  },
   "pomodoro_assistant": {
     "message": "Pomodoro Assistant",
     "description": "Marinara title tagline. Shown on the settings-feedback page."
