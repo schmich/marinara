@@ -102,6 +102,10 @@ class PomodoroService extends Service
     this.timer.start();
   }
 
+  async startFocus() {
+    this.timer.startFocus();
+  }
+
   async pause() {
     this.timer.pause();
   }
