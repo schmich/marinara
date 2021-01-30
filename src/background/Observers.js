@@ -10,6 +10,9 @@ import { SingletonPage, PageHost } from './SingletonPage';
 
 class BadgeObserver
 {
+  constructor(settings) {
+    this.settings = settings;
+  }
   onStart({ phase, remaining }) {
     this.updateBadge({ phase, minutes: Math.round(remaining / 60) });
   }
@@ -42,7 +45,12 @@ class BadgeObserver
     }[phase];
 
     if (minutes != null) {
-      text = minutes < 1 ? M.less_than_minute : M.n_minutes(minutes);
+      if (!this.settings.showTimer) {
+        text = ' ';
+      }
+      else {
+        text = minutes < 1 ? M.less_than_minute : M.n_minutes(minutes);
+      }
       tooltip = M.browser_action_tooltip(title, M.time_remaining(text));
     } else {
       tooltip = M.browser_action_tooltip(title, tooltip);
