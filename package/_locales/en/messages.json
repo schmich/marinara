@@ -20,7 +20,7 @@
     "description": "General section header. Shown on the settings page."
   },
   "dark_mode": {
-    "message": "Dark mode:",
+    "message": "Dark mode",
     "description": "Dark mode settings label. Shown on the settings page."
   },
   "pomodoro_assistant": {
@@ -58,6 +58,10 @@
   "stop_timer": {
     "message": "Stop Timer",
     "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "show_timer": {
+    "message": "Show Timer",
+    "description": "Show timer settings label. Shown on the settings page."
   },
   "pause_timer": {
     "message": "Pause Timer",

@@ -351,6 +351,9 @@ class Messages
   get dark_mode() {
     return chrome.i18n.getMessage('dark_mode', []);
   }
+  get show_timer() {
+    return chrome.i18n.getMessage('show_timer', []);
+  }
   get march() {
     return chrome.i18n.getMessage('march', []);
   }

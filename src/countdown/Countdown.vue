@@ -161,6 +161,7 @@ export default {
       }[this.phase];
     },
     title() {
+      
       let phase = M.countdown;
       let remaining = '';
       if (this.checkpointStartAt) {

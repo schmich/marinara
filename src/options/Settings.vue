@@ -163,6 +163,27 @@
         </div>
       </fieldset>
     </div>
+    <div class="section">
+      <h2>{{ M.general_settings }}</h2>
+      <p class="field">
+        <label>
+          <span>{{ M.dark_mode }}</span>
+          <label class="switch">
+            <input type="checkbox" v-model="settings.darkMode">
+            <span class="slider round"></span>
+          </label>
+        </label>
+      </p>
+      <p class="field">
+        <label>
+          <span>{{ M.show_timer }}</span>
+          <label class="switch">
+            <input type="checkbox" v-model="settings.showTimer">
+            <span class="slider round"></span>
+          </label>
+        </label>
+      </p>
+    </div>
     <div class="section autostart">
       <h2>{{ M.autostart_title }}</h2>
       <p>{{ M.autostart_description }}</p>
@@ -170,18 +191,6 @@
         <label>
           <span>{{ M.time }}</span>
           <input type="time" v-model="settings.autostart.time" class="time" id="autostart-time">
-        </label>
-      </p>
-    </div>
-    <div class="section">
-      <h2>{{ M.general_settings }}</h2>
-      <p class="field">
-        <label>
-          <span>{{ M.dark_mode }}</span>
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
         </label>
       </p>
     </div>
