@@ -68,7 +68,6 @@ class SettingsSchema
           sound: null,
         }
       },
-      darkMode: false,
       showTimer: true,
       autostart: {
         time: null,
@@ -164,10 +163,6 @@ class SettingsSchema
 
     v5.autostart = {
       time: null
-    };
-
-    v5.general = {
-      darkMode: false
     };
 
     return v5;

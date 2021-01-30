@@ -348,9 +348,6 @@ class Messages
   get general_settings() {
     return chrome.i18n.getMessage('general_settings', []);
   }
-  get dark_mode() {
-    return chrome.i18n.getMessage('dark_mode', []);
-  }
   get show_timer() {
     return chrome.i18n.getMessage('show_timer', []);
   }

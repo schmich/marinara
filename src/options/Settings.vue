@@ -167,15 +167,6 @@
       <h2>{{ M.general_settings }}</h2>
       <p class="field">
         <label>
-          <span>{{ M.dark_mode }}</span>
-          <label class="switch">
-            <input type="checkbox" v-model="settings.darkMode">
-            <span class="slider round"></span>
-          </label>
-        </label>
-      </p>
-      <p class="field">
-        <label>
           <span>{{ M.show_timer }}</span>
           <label class="switch">
             <input type="checkbox" v-model="settings.showTimer">
