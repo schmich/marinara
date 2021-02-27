@@ -182,7 +182,7 @@
     "description": "Long break settings label. Shown on the settings page."
   },
   "never": {
-    "message": "決して",
+    "message": "長い休憩をしない",
     "description": "Long break option. Shown in the long break dropdown on the settings page."
   },
   "every_2nd_break": {
@@ -240,5 +240,413 @@
   "this_month": {
     "message": "今月",
     "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "total": {
+    "message": "合計",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "average_stat": {
+    "message": "平均$average$",
+    "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "average": {
+        "content": "$1",
+        "example": "7.33"
+      }
+    }
+  },
+  "daily_distribution": {
+    "message": "日間分布",
+    "description": "Daily distribution section header. Shown on the settings-history page."
+  },
+  "weekly_distribution": {
+    "message": "週間分布",
+    "description": "Weekly distribution section header. Shown on the settings-history page."
+  },
+  "last_9_months": {
+    "message": "直近9か月間で$counts$",
+    "description": "Last 9 months section header. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "No Pomodoros"
+      }
+    }
+  },
+  "daily_empty_placeholder": {
+    "message": "一日の統計を見るには、ポモドーロを一つ完了してください。",
+    "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "weekly_empty_placeholder": {
+    "message": "週間の統計を見るには、ポモドーロを一つ完了してください。",
+    "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "history_empty_placeholder": {
+    "message": "履歴を見るには、ポモドーロを一つ完了してください。",
+    "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "daily_tooltip": {
+    "message": "$start$から$end$まで$pomodoros$",
+    "description": "Tooltip for daily distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "15 Pomodoros"
+      },
+      "start": {
+        "content": "$2",
+        "example": "9:00a"
+      },
+      "end": {
+        "content": "$3",
+        "example": "10:00a"
+      }
+    }
+  },
+  "weekly_tooltip": {
+    "message": "$day$の合計:$pomodoros$",
+    "description": "Tooltip for weekly distribution chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "day": {
+        "content": "$2",
+        "example": "Mondays"
+      }
+    }
+  },
+  "heatmap_tooltip": {
+    "message": "$date$の合計:$pomodoros$",
+    "description": "Tooltip for heatmap chart. Shown on the settings-history page.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "25 Pomodoros"
+      },
+      "date": {
+        "content": "$2",
+        "example": "Jun 07, 2017"
+      }
+    }
+  },
+  "sunday": {
+    "message": "日曜日",
+    "description": "Sunday. Shown on the settings-history page."
+  },
+  "monday": {
+    "message": "月曜日",
+    "description": "Monday. Shown on the settings-history page."
+  },
+  "tuesday": {
+    "message": "火曜日",
+    "description": "Tuesday. Shown on the settings-history page."
+  },
+  "wednesday": {
+    "message": "水曜日",
+    "description": "Wednesday. Shown on the settings-history page."
+  },
+  "thursday": {
+    "message": "木曜日",
+    "description": "Thursday. Shown on the settings-history page."
+  },
+  "friday": {
+    "message": "金曜日",
+    "description": "Friday. Shown on the settings-history page."
+  },
+  "saturday": {
+    "message": "土曜日",
+    "description": "Saturday. Shown on the settings-history page."
+  },
+  "january": {
+    "message": "1月",
+    "description": "January. Shown on the settings-history page."
+  },
+  "february": {
+    "message": "2月",
+    "description": "February. Shown on the settings-history page."
+  },
+  "march": {
+    "message": "3月",
+    "description": "March. Shown on the settings-history page."
+  },
+  "april": {
+    "message": "4月",
+    "description": "April. Shown on the settings-history page."
+  },
+  "may": {
+    "message": "5月",
+    "description": "May. Shown on the settings-history page."
+  },
+  "june": {
+    "message": "6月",
+    "description": "June. Shown on the settings-history page."
+  },
+  "july": {
+    "message": "7月",
+    "description": "July. Shown on the settings-history page."
+  },
+  "august": {
+    "message": "8月",
+    "description": "August. Shown on the settings-history page."
+  },
+  "september": {
+    "message": "9月",
+    "description": "September. Shown on the settings-history page."
+  },
+  "october": {
+    "message": "10月",
+    "description": "October. Shown on the settings-history page."
+  },
+  "november": {
+    "message": "11月",
+    "description": "November. Shown on the settings-history page."
+  },
+  "december": {
+    "message": "12月",
+    "description": "December. Shown on the settings-history page."
+  },
+  "january_short": {
+    "message": "1",
+    "description": "January abbreviated. Shown on the settings-history page."
+  },
+  "february_short": {
+    "message": "2",
+    "description": "February abbreviated. Shown on the settings-history page."
+  },
+  "march_short": {
+    "message": "3",
+    "description": "March abbreviated. Shown on the settings-history page."
+  },
+  "april_short": {
+    "message": "4",
+    "description": "April abbreviated. Shown on the settings-history page."
+  },
+  "may_short": {
+    "message": "5",
+    "description": "May abbreviated. Shown on the settings-history page."
+  },
+  "june_short": {
+    "message": "6",
+    "description": "June abbreviated. Shown on the settings-history page."
+  },
+  "july_short": {
+    "message": "7",
+    "description": "July abbreviated. Shown on the settings-history page."
+  },
+  "august_short": {
+    "message": "8",
+    "description": "August abbreviated. Shown on the settings-history page."
+  },
+  "september_short": {
+    "message": "9",
+    "description": "September abbreviated. Shown on the settings-history page."
+  },
+  "october_short": {
+    "message": "10",
+    "description": "October abbreviated. Shown on the settings-history page."
+  },
+  "november_short": {
+    "message": "11",
+    "description": "November abbreviated. Shown on the settings-history page."
+  },
+  "december_short": {
+    "message": "12",
+    "description": "December abbreviated. Shown on the settings-history page."
+  },
+  "in_month": {
+    "message": "$month$の合計",
+    "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
+    "placeholders": {
+      "month": {
+        "content": "$1",
+        "example": "January"
+      }
+    }
+  },
+  "your_history": {
+    "message": "履歴",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "CSV形式で保存",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "ExcelやGoogle Sheetsなどのスプレッドシート用のCSVでとして保存します。",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "export": {
+    "message": "エクスポート",
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "他のコンピューターで使うためにバックアップを作成します。",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "インポート",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "エクスポートした履歴を読み込み＆マージします。",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "これまでの履歴と、インポートする履歴はマージされます。続けますか？",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
+  },
+  "import_failed": {
+    "message": "履歴のインポートに失敗しました:$error$",
+    "description": "Error message shown when history import fails. Shown on the settings-history page.",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Missing Pomodoro data."
+      }
+    }
+  },
+  "clear_history": {
+    "message": "履歴をクリア",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "ポモドーロの全履歴を完全に消去します。",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "ポモドーロの全履歴を消去しますか？この操作で消した履歴は戻せません。",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
+  },
+  "min_suffix": {
+    "message": "$count$ 分",
+    "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "hr_suffix": {
+    "message": "$count$ 時間",
+    "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "write_a_review": {
+    "message": "レビューを投稿",
+    "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
+  },
+  "report_an_issue": {
+    "message": "問題を報告",
+    "description": "Link to report an issue on GitHub. Shown on the settings-feedback page."
+  },
+  "release_notes": {
+    "message": "リリースノート",
+    "description": "Link to GitHub release notes. Shown on the settings-feedback page."
+  },
+  "source_code": {
+    "message": "ソースコード",
+    "description": "Link to GitHub source code. Shown on the settings-feedback page."
+  },
+  "attributions": {
+    "message": "アトリビューション（使用素材の帰属）",
+    "description": "Link to audio attributions. Shown on the settings-feedback page."
+  },
+  "license": {
+    "message": "ライセンス",
+    "description": "Link to source license. Shown on the settings-feedback page."
+  },
+  "view": {
+    "message": "情報を見る",
+    "description": "View section header. Shown on the settings-feedback page."
+  },
+  "version": {
+    "message": "バージョン",
+    "description": "Version section header. Shown on the settings-feedback page."
+  },
+  "view_history": {
+    "message": "履歴を見る",
+    "description": "View History button text. Shown on the timer expiration page."
+  },
+  "pomodoros_until_long_break": {
+    "message": "長い休憩まで$pomodoros$",
+    "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "5 Pomodoros"
+      }
+    }
+  },
+  "pomodoros_completed_today": {
+    "message": "今日は$pomodoros$",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "1 Pomodoro"
+      }
+    }
+  },
+  "start_focusing_now": {
+    "message": "フォーカスを始める",
+    "description": "Notification button text when break timer expires."
+  },
+  "take_a_break": {
+    "message": "休憩しましょう",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_short_break": {
+    "message": "短い休憩を取りましょう",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_long_break": {
+    "message": "長い休憩を取りましょう",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "time_remaining": {
+    "message": "残り$time$",
+    "description": "Badge tooltip to show time remaining for current timer.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5m"
+      }
+    }
+  },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ をインポートしました。",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
+  "help_translate": {
+    "message": "翻訳に協力",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "settings_saved": {
+    "message": "設定を保存しました。",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "設定保存エラー: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
