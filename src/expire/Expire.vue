@@ -5,9 +5,12 @@
     <button @click.prevent="startSession" class="button start-session" :class="phase">
       {{ action }}
     </button>
+    <button v-if="phase !== 'focus'" @click.prevent="startFocus" class="button start-session focus">
+      {{ M.start_focusing }}
+    </button>
     <div class="pomodoros-today">
       <p class="pomodoros">
-        <i v-for="_ of new Array(pomodoroCount)" class="icon-circle"></i>
+        <i v-for="i of new Array(pomodoroCount)" v-bind:key=i class="icon-circle"></i>
       </p>
       <p>{{ M.completed_today }}</p>
       <button @click.prevent="showHistoryPage" class="view-history">{{ M.view_history }}</button>
@@ -102,6 +105,7 @@ body {
 }
 .start-session {
   margin-top: 10px;
+  margin-left: 10px;
 }
 .pomodoros-today {
   margin-top: 110px;
@@ -169,6 +173,9 @@ export default {
   methods: {
     startSession() {
       PomodoroClient.once.start();
+    },
+    startFocus() {
+      PomodoroClient.once.startFocus();
     },
     showHistoryPage() {
       OptionsClient.once.showHistoryPage();
