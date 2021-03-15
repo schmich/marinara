@@ -49,7 +49,7 @@ Marinara is open source software and is built by volunteers from around the worl
 - [Pooria Morovati](https://github.com/pooriamo): Persian translation
 - [Esko Rikkonen](https://github.com/eskorikkonen): Finnish translation
 - [Darkpingouin](https://github.com/Darkpingouin): French translation
-- [Faisal] (https://github.com/tr0id): Arabic translation
+- [Faisal](https://github.com/tr0id): Arabic translation
 - [rootEnginear](https://github.com/rootEnginear): Thai translation
 - [Federico Matteoni](https://github.com/fexed): Italian translation
 - [Iosif Dan](https://github.com/danutiosif): Romanian translation
