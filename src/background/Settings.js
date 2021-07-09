@@ -27,6 +27,7 @@ class SettingsSchema
     return {
       focus: {
         duration: 25,
+        showTimerInToolbarIcon: true,
         timerSound: null,
         countdown: {
           host: null,

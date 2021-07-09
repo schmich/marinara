@@ -1,4 +1,4 @@
-class Messages
+class Messages 
 {
   get airplane() {
     return chrome.i18n.getMessage('airplane', []);
@@ -524,6 +524,9 @@ class Messages
   }
   get show_new_tab_notification() {
     return chrome.i18n.getMessage('show_new_tab_notification', []);
+  }
+  get show_timer_in_toolbar_icon() {
+    return chrome.i18n.getMessage('show_timer_in_toolbar_icon', []);
   }
   get small_clock() {
     return chrome.i18n.getMessage('small_clock', []);
