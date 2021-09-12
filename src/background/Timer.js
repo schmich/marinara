@@ -102,6 +102,7 @@ class Timer extends EventEmitter
     }
 
     clearInterval(this.countdownInterval);
+    this.countdownInterval = null;
 
     let periodElapsed = (Date.now() - this.checkpointStartAt) / 1000;
     this.checkpointElapsed += periodElapsed;
@@ -144,7 +145,7 @@ class Timer extends EventEmitter
 
   countdown() {
     const expireAt = this.checkpointStartAt + this.remaining * 1000;
-    let nextTickAt = this.checkpointStartAt + this.periodBeforeNextTick() * 1000;
+    let nextTickAt = this.checkpointStartAt + this.getRemainingTimeBeforeNextTick() * 1000;
 
     this.countdownInterval = setInterval(() => {
       const now = Date.now();
@@ -153,12 +154,12 @@ class Timer extends EventEmitter
         this.expire();
       } else if (now >= nextTickAt) {
         this.emit('tick', this.status);
-        nextTickAt = now + this.periodBeforeNextTick() * 1000;
+        nextTickAt = now + this.getRemainingTimeBeforeNextTick() * 1000;
       }
     }, 1000);
   }
 
-  periodBeforeNextTick() {
+  getRemainingTimeBeforeNextTick() {
     return this.tick - ((this.elapsed + this.tick) % this.tick);
   }
 }
