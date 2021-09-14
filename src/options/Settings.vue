@@ -67,7 +67,7 @@
         <p class="field">
           <label>
             <span>{{ M.play_audio_notification }}</span>
-            <SoundSelect v-model="settings.focus.notifications.sound" :sounds="notificationSounds"></SoundSelect>
+            <SoundSelect v-model="settings.focus.notifications" :sounds="notificationSounds"></SoundSelect>
           </label>
         </p>
       </div>
@@ -103,7 +103,7 @@
         <p class="field">
           <label>
             <span>{{ M.play_audio_notification }}</span>
-            <SoundSelect v-model="settings.shortBreak.notifications.sound" :sounds="notificationSounds"></SoundSelect>
+            <SoundSelect v-model="settings.shortBreak.notifications" :sounds="notificationSounds"></SoundSelect>
           </label>
         </p>
       </div>
@@ -157,7 +157,7 @@
           <p class="field">
             <label>
               <span>{{ M.play_audio_notification }}</span>
-              <SoundSelect v-model="settings.longBreak.notifications.sound" :sounds="notificationSounds"></SoundSelect>
+              <SoundSelect v-model="settings.longBreak.notifications" :sounds="notificationSounds"></SoundSelect>
             </label>
           </p>
         </div>

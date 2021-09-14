@@ -1,6 +1,8 @@
 import Chrome from './Chrome';
 import M from './Messages';
 
+const defaultOptions = { volume: 1.0 };
+
 function createNotificationSounds() {
   let sounds = [
     { name: M.tone, file: 'f62b45bc.mp3' },
@@ -60,7 +62,7 @@ function createTimerSounds() {
   return sounds;
 }
 
-async function play(filename) {
+async function play(filename, { volume } = defaultOptions) {
   if (!filename) {
     return;
   }
@@ -70,7 +72,13 @@ async function play(filename) {
   let context = new AudioContext();
 
   let source = context.createBufferSource();
-  source.connect(context.destination);
+  // Adds gain node for volume control
+  let gain = context.createGain();
+  gain.gain.setValueAtTime(volume, context.currentTime);
+
+  source.connect(gain);
+  gain.connect(context.destination);
+
   source.buffer = await new Promise(async (resolve, reject) => {
     let content = await Chrome.files.readBinary(filename);
     context.decodeAudioData(content, buffer => resolve(buffer), error => reject(error));
