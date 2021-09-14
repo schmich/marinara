@@ -20,7 +20,7 @@ function clone(obj) {
 class SettingsSchema
 {
   get version() {
-    return 7;
+    return 8;
   }
 
   get default() {
@@ -203,6 +203,17 @@ class SettingsSchema
     };
 
     return v7;
+  }
+
+  from7To8(v7) {
+    let v8 = clone(v7);
+    v8.version = 8;
+
+    v8.focus.notifications.volume = 1.0;
+    v8.shortBreak.notifications.volume = 1.0;
+    v8.longBreak.notifications.volume = 1.0;
+
+    return v8;
   }
 }
 
