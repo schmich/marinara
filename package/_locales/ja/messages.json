@@ -264,7 +264,7 @@
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
   "last_9_months": {
-    "message": "直近9か月間で$counts$",
+    "message": "直近9か月間で$count$",
     "description": "Last 9 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
