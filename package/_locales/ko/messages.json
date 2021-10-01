@@ -1,0 +1,918 @@
+{
+  "app_name": {
+    "message": "마리나라: 포모도로® 도우미",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "마리나라",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "포모도로® 시간 관리 도우미",
+    "description": "The short description of the application. Shown in the web store."
+  },
+  "chrome_web_store_description": {
+    "message": "• 짧고 & 긴 휴식\n• 툴바 아이콘과 카운트 다운 타이머\n• 포모도로 기록 & 통계\n• 긴 휴식 간격 조정\n• 타이머 시간 조정\n• 데스크톱 & 탭 알림\n• 20가지 이상의 알림 소리 종류\n• 타이머 째깍 소리\n• 자동 예정 타이머\n• 소프트웨어 출처 열람",
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
+  },
+  "pomodoro_assistant": {
+    "message": "포모도로 도우미",
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
+  },
+  "start_pomodoro_cycle": {
+    "message": "포모도로 싸이클 시작",
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_pomodoro_cycle": {
+    "message": "포모도로 싸이클 재시작",
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_timer": {
+    "message": "타이머 재시작",
+    "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+  },
+  "start_focusing": {
+    "message": "집중 시작",
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_short_break": {
+    "message": "짧은 휴식 시작",
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_break": {
+    "message": "휴식 시작",
+    "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_long_break": {
+    "message": "긴 휴식 시작",
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "stop_timer": {
+    "message": "타이머 중지",
+    "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "pause_timer": {
+    "message": "타이머 잠시 멈춤",
+    "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+  },
+  "resume_timer": {
+    "message": "타이머 재개",
+    "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+  },
+  "pomodoro_history": {
+    "message": "타이머 기록",
+    "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+  },
+  "timer_paused": {
+    "message": "타이머 잠시 멈춤 상태",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "포모도로 없음",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "1 포모도로",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$ 포모도로",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "marinara_pomodoro_assistant": {
+    "message": "마리나라: 포모도로 도우미",
+    "description": "Settings page title."
+  },
+  "settings": {
+    "message": "설정",
+    "description": "Settings tab. Shown on the settings page."
+  },
+  "history": {
+    "message": "기록",
+    "description": "History tab. Shown on the settings page."
+  },
+  "feedback": {
+    "message": "피드백",
+    "description": "Feedback tab and section header. Shown on the settings page."
+  },
+  "focus": {
+    "message": "집중",
+    "description": "Focus section header. Shown on the settings page."
+  },
+  "short_break": {
+    "message": "짧은 휴식",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break": {
+    "message": "긴 휴식",
+    "description": "Long Break section header. Shown on the settings page."
+  },
+  "autostart_title": {
+    "message": "자동시작",
+    "description": "Autostart section header. Shown on the settings page."
+  },
+  "autostart_description": {
+    "message": "정해진 시간에 포모도로 자동 시작 설정하기",
+    "description": "Autostart setting description. Shown on the settings page."
+  },
+  "autostart_notification_title": {
+    "message": "포모도로 자동 시작",
+    "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "autostart_notification_message": {
+    "message": "예정된 포모도로가 자동 시작 되었습니다",
+    "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+  },
+  "time": {
+    "message": "시간:",
+    "description": "Time input label. Shown on the settings page."
+  },
+  "duration": {
+    "message": "지속 시간:",
+    "description": "Timer duration label. Shown on the settings page."
+  },
+  "minutes": {
+    "message": "분",
+    "description": "Minutes label for timer duration. Shown on the settings page."
+  },
+  "timer_sound_label": {
+    "message": "타이머 소리:",
+    "description": "Timer sound label. Shown on the settings page."
+  },
+  "hover_preview": {
+    "message": "롤오버하여 미리보기",
+    "description": "Hover to preview note. Shown on the settings page."
+  },
+  "speed_label": {
+    "message": "속도:",
+    "description": "Timer sound speed label. Shown on the settings page."
+  },
+  "bpm": {
+    "message": "분당비트",
+    "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+  },
+  "none": {
+    "message": "선택안함",
+    "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+  },
+  "countdown_timer": {
+    "message": "카운트다운 타이머:",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "넓이",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "높이",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "숨기기",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "새로운 탭에서 보기",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "새로운 창에서 보기",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "전체화면",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "사용자 값",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "세션이 끝나면 탭 닫기",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "세션이 끝나면 창 닫기",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
+  },
+  "when_complete": {
+    "message": "끝나면:",
+    "description": "Section label for events to fire when timer completes. Shown on the settings page."
+  },
+  "show_desktop_notification": {
+    "message": "데스크톱 알림 설정",
+    "description": "Desktop notification option. Shown on the settings page."
+  },
+  "show_new_tab_notification": {
+    "message": "새로운 탭 알림 설정",
+    "description": "New tab notification option. Shown on the settings page."
+  },
+  "play_audio_notification": {
+    "message": "재생:",
+    "description": "Audio notification label. Shown on the settings page."
+  },
+  "take_a_long_break_setting": {
+    "message": "긴 휴식 시작하기:",
+    "description": "Long break settings label. Shown on the settings page."
+  },
+  "never": {
+    "message": "설정 안함",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_2nd_break": {
+    "message": "2번째 휴식마다 (교대)",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_3rd_break": {
+    "message": "3번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_4th_break": {
+    "message": "4번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_5th_break": {
+    "message": "5번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_6th_break": {
+    "message": "6번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_7th_break": {
+    "message": "7번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_8th_break": {
+    "message": "8번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_9th_break": {
+    "message": "9번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "every_10th_break": {
+    "message": "10번째 휴식마다",
+    "description": "Long break option. Shown in the long break dropdown on the settings page."
+  },
+  "tone": {
+    "message": "톤",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "electronic_chime": {
+    "message": "전자 소리",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "today": {
+    "message": "오늘",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_week": {
+    "message": "이번 주",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "this_month": {
+    "message": "이번 달",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "total": {
+    "message": "총",
+    "description": "Pomodoro stats label. Shown on the settings-history page."
+  },
+  "average_stat": {
+    "message": "평균 $average$",
+    "description": "Average Pomodoro completion stats label (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "average": {
+        "content": "$1",
+        "example": "7.33"
+      }
+    }
+  },
+  "daily_distribution": {
+    "message": "일 단위 분포",
+    "description": "Daily distribution section header. Shown on the settings-history page."
+  },
+  "weekly_distribution": {
+    "message": "주 단위 분포",
+    "description": "Weekly distribution section header. Shown on the settings-history page."
+  },
+  "last_9_months": {
+    "message": "최근 9개월간 $count$",
+    "description": "Last 9 months section header. Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "No Pomodoros"
+      }
+    }
+  },
+  "daily_empty_placeholder": {
+    "message": "하루 통계를 보기 위해 포모도로 끝내기",
+    "description": "Placeholder for daily stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "weekly_empty_placeholder": {
+    "message": "주 통계를 보기 위해 포모도로 끝내기",
+    "description": "Placeholder for weekly stats when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "history_empty_placeholder": {
+    "message": "기록을 보기 위해 포모도로 끝내기",
+    "description": "Placeholder for history heatmap when no Pomodoros have been completed. Shown on the settings-history page."
+  },
+  "decimal_separator": {
+    "message": ".",
+    "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
+  },
+  "thousands_separator": {
+    "message": ",",
+    "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
+  },
+  "heatmap_date_format": {
+    "message": "%Y, %A, %B %d",
+    "description": "Heatmap tooltip date format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the settings-history page."
+  },
+  "hour_format": {
+    "message": "%-I%p",
+    "description": "Hour-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown on the daily distribution chart on the settings-history page."
+  },
+  "hour_minute_format": {
+    "message": "%-I:%M%p",
+    "description": "Hour-with-minutes format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format. Shown in the daily distribution chart tooltips on the settings-history page."
+  },
+  "date_format": {
+    "message": "\n%Y/%-m/%-d",
+    "description": "Date-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "date_time_format": {
+    "message": "%x, %X",
+    "description": "Date-with-time format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_format": {
+    "message": "%-I:%M:%S %p",
+    "description": "Time-only format. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "sunday": {
+    "message": "일요일",
+    "description": "Sunday. Shown on the settings-history page."
+  },
+  "monday": {
+    "message": "월요일",
+    "description": "Monday. Shown on the settings-history page."
+  },
+  "tuesday": {
+    "message": "화요일",
+    "description": "Tuesday. Shown on the settings-history page."
+  },
+  "wednesday": {
+    "message": "수요일",
+    "description": "Wednesday. Shown on the settings-history page."
+  },
+  "thursday": {
+    "message": "목요일",
+    "description": "Thursday. Shown on the settings-history page."
+  },
+  "friday": {
+    "message": "금요일",
+    "description": "Friday. Shown on the settings-history page."
+  },
+  "saturday": {
+    "message": "토요일",
+    "description": "Saturday. Shown on the settings-history page."
+  },
+  "sunday_short": {
+    "message": "일",
+    "description": "Sunday abbreviated. Shown on the settings-history page."
+  },
+  "monday_short": {
+    "message": "월",
+    "description": "Monday abbreviated. Shown on the settings-history page."
+  },
+  "tuesday_short": {
+    "message": "화",
+    "description": "Tuesday abbreviated. Shown on the settings-history page."
+  },
+  "wednesday_short": {
+    "message": "수",
+    "description": "Wednesday abbreviated. Shown on the settings-history page."
+  },
+  "thursday_short": {
+    "message": "목",
+    "description": "Thursday abbreviated. Shown on the settings-history page."
+  },
+  "friday_short": {
+    "message": "금",
+    "description": "Friday abbreviated. Shown on the settings-history page."
+  },
+  "saturday_short": {
+    "message": "토",
+    "description": "Saturday abbreviated. Shown on the settings-history page."
+  },
+  "january": {
+    "message": "1월",
+    "description": "January. Shown on the settings-history page."
+  },
+  "february": {
+    "message": "2월",
+    "description": "February. Shown on the settings-history page."
+  },
+  "march": {
+    "message": "3월",
+    "description": "March. Shown on the settings-history page."
+  },
+  "april": {
+    "message": "4월",
+    "description": "April. Shown on the settings-history page."
+  },
+  "may": {
+    "message": "5월",
+    "description": "May. Shown on the settings-history page."
+  },
+  "june": {
+    "message": "6월",
+    "description": "June. Shown on the settings-history page."
+  },
+  "july": {
+    "message": "7월",
+    "description": "July. Shown on the settings-history page."
+  },
+  "august": {
+    "message": "8월",
+    "description": "August. Shown on the settings-history page."
+  },
+  "september": {
+    "message": "9월",
+    "description": "September. Shown on the settings-history page."
+  },
+  "october": {
+    "message": "10월",
+    "description": "October. Shown on the settings-history page."
+  },
+  "november": {
+    "message": "11월",
+    "description": "November. Shown on the settings-history page."
+  },
+  "december": {
+    "message": "12월",
+    "description": "December. Shown on the settings-history page."
+  },
+  "january_short": {
+    "message": "1월",
+    "description": "January abbreviated. Shown on the settings-history page."
+  },
+  "february_short": {
+    "message": "2월",
+    "description": "February abbreviated. Shown on the settings-history page."
+  },
+  "march_short": {
+    "message": "3월",
+    "description": "March abbreviated. Shown on the settings-history page."
+  },
+  "april_short": {
+    "message": "4월",
+    "description": "April abbreviated. Shown on the settings-history page."
+  },
+  "may_short": {
+    "message": "5월",
+    "description": "May abbreviated. Shown on the settings-history page."
+  },
+  "june_short": {
+    "message": "6월",
+    "description": "June abbreviated. Shown on the settings-history page."
+  },
+  "july_short": {
+    "message": "7월",
+    "description": "July abbreviated. Shown on the settings-history page."
+  },
+  "august_short": {
+    "message": "8월",
+    "description": "August abbreviated. Shown on the settings-history page."
+  },
+  "september_short": {
+    "message": "9월",
+    "description": "September abbreviated. Shown on the settings-history page."
+  },
+  "october_short": {
+    "message": "10월",
+    "description": "October abbreviated. Shown on the settings-history page."
+  },
+  "november_short": {
+    "message": "11월",
+    "description": "November abbreviated. Shown on the settings-history page."
+  },
+  "december_short": {
+    "message": "12월",
+    "description": "December abbreviated. Shown on the settings-history page."
+  },
+  "in_month": {
+    "message": "$month$",
+    "description": "Label for Pomodoro monthly stats, e.g. '5 Pomodoros / In January'. Shown on the settings-history page.",
+    "placeholders": {
+      "month": {
+        "content": "$1",
+        "example": "January"
+      }
+    }
+  },
+  "your_history": {
+    "message": "기록",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "CSV로 저장",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "엑셀, 구글 시트, 및 다른 스프레드시트 소프트웨어와 사용",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_date": {
+    "message": "종료 날짜",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "종료 시간 (24 시간)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "종료 타임 스탬프 (유닉스)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "duration_seconds": {
+    "message": "기간 (초)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
+  },
+  "export": {
+    "message": "데이터 내보내기",
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "데이터 불러오기",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "clear_history": {
+    "message": "기록 삭제",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "영구적으로 모든 포모도로 기록 삭제.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "모든 포모도로 기록을 영구적으로 삭제하겠습니까?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
+  },
+  "min_suffix": {
+    "message": "$count$ 분",
+    "description": "Number with minute suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "hr_suffix": {
+    "message": "$count$ 시간",
+    "description": "Number with hour suffix (abbreviated). Shown on the settings-history page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "write_a_review": {
+    "message": "리뷰 남기기",
+    "description": "Link to write a review on Chrome Web Store. Shown on the settings-feedback page."
+  },
+  "source_code": {
+    "message": "소스 코드",
+    "description": "Link to GitHub source code. Shown on the settings-feedback page."
+  },
+  "license": {
+    "message": "라이센스",
+    "description": "Link to source license. Shown on the settings-feedback page."
+  },
+  "view": {
+    "message": "보기",
+    "description": "View section header. Shown on the settings-feedback page."
+  },
+  "version": {
+    "message": "버전",
+    "description": "Version section header. Shown on the settings-feedback page."
+  },
+  "and": {
+    "message": "&",
+    "description": "Connector of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "contributors": {
+    "message": "기여자",
+    "description": "Part of 'Chris Schmich & Contributors'. Shown on the settings-feedback page."
+  },
+  "view_history": {
+    "message": "기록 보기",
+    "description": "View History button text. Shown on the timer expiration page."
+  },
+  "pomodoros_until_long_break": {
+    "message": "긴 휴식까지 $pomodoros$",
+    "description": "Pomodoro long break countdown. Shown on the timer expiration page and in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "5 Pomodoros"
+      }
+    }
+  },
+  "pomodoros_completed_today": {
+    "message": "오늘 $pomodoros$",
+    "description": "Daily Pomodoro counter. Should be short enough to fit in browser notification box. Shown in browser notifications.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "1 Pomodoro"
+      }
+    }
+  },
+  "start_focusing_now": {
+    "message": "집중 시작하기",
+    "description": "Notification button text when break timer expires."
+  },
+  "take_a_break": {
+    "message": "휴식 취하기",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_short_break": {
+    "message": "짧은 휴식 취하기",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "take_a_long_break": {
+    "message": "긴 휴식 취하기",
+    "description": "Action title. Shown on the timer expiration page and in browser notifications."
+  },
+  "start_break_now": {
+    "message": "휴식 시작하기",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_short_break_now": {
+    "message": "짧은 휴식 시작하기",
+    "description": "Notification button text when focus timer expires."
+  },
+  "start_long_break_now": {
+    "message": "긴 휴식 시작하기",
+    "description": "Notification button text when focus timer expires."
+  },
+  "browser_action_tooltip": {
+    "message": "$title$: $text$",
+    "description": "Browser action tooltip format with title and text. Title is usually timer phase (break, focus) while text is usually timer status (time remaining, paused).",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Short Break"
+      },
+      "text": {
+        "content": "$2",
+        "example": "5m remaining"
+      }
+    }
+  },
+  "n_minutes": {
+    "message": "$count$분",
+    "description": "Badge tooltip and overlay text when timer has least 1 minute remaining.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "less_than_minute": {
+    "message": "<1분",
+    "description": "Badge tooltip and overlay text when timer has less than 1 minute remaining."
+  },
+  "time_remaining": {
+    "message": "$time$ 남았습니다",
+    "description": "Badge tooltip to show time remaining for current timer.",
+    "placeholders": {
+      "time": {
+        "content": "$1",
+        "example": "5m"
+      }
+    }
+  },
+  "missing_pomodoro_data": {
+    "message": "포모도로 데이터를 찾을 수 없습니다",
+    "description": "Error when imported history has no Pomodoro information."
+  },
+  "invalid_pomodoro_data": {
+    "message": "잘못된 포모도로 데이터",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
+  "missing_duration_data": {
+    "message": "기간 데이터를 찾을 수 없습니다",
+    "description": "Error when imported history has no Pomodoro duration information."
+  },
+  "invalid_duration_data": {
+    "message": "잘못된 기간 데이터",
+    "description": "Error when imported history has invalid duration information."
+  },
+  "missing_timezone_data": {
+    "message": "시간대 데이터를 찾을 수 없습니다",
+    "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "잘못된 시간대 데이터",
+    "description": "Error when imported history has invalid timezone information."
+  },
+  "help_translate": {
+    "message": "통역 기여하기",
+    "description": "Feedback link. Shown on settings-feedback page."
+  },
+  "expire_title": {
+    "message": "시간이 다되었습니다",
+    "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "카운트다운",
+    "description": "Countdown page title. Shown on the countdown timer page."
+  },
+  "gong_1": {
+    "message": "Gong 1",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "gong_2": {
+    "message": "Gong 2",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "computer_magic": {
+    "message": "Computer Magic",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "fire_pager": {
+    "message": "Fire Pager",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "glass_ping": {
+    "message": "Glass Ping",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "music_box": {
+    "message": "Music Box",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "pin_drop": {
+    "message": "Pin Drop",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "robot_blip_1": {
+    "message": "Robot Blip 1",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "robot_blip_2": {
+    "message": "Robot Blip 2",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ship_bell": {
+    "message": "Ship Bell",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "train_horn": {
+    "message": "Train Horn",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "bike_horn": {
+    "message": "Bike Horn",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "bell_ring": {
+    "message": "Bell Ring",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "reception_bell": {
+    "message": "Reception Bell",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "toaster_oven": {
+    "message": "Toaster Oven",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "battle_horn": {
+    "message": "Battle Horn",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ding": {
+    "message": "Ding",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "dong": {
+    "message": "Dong",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "ding_dong": {
+    "message": "Ding Dong",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "airplane": {
+    "message": "Airplane",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_watch": {
+    "message": "Digital Watch",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "analog_alarm_clock": {
+    "message": "Analog Alarm Clock",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "digital_alarm_clock": {
+    "message": "Digital Alarm Clock",
+    "description": "Sound name. Shown in the audio notification dropdown in settings."
+  },
+  "periodic_beat": {
+    "message": "Periodic Beat",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "stopwatch": {
+    "message": "Stopwatch",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "clock": {
+    "message": "Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wall_clock": {
+    "message": "Wall Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "desk_clock": {
+    "message": "Desk Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "antique_clock": {
+    "message": "Antique Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "small_clock": {
+    "message": "Small Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "large_clock": {
+    "message": "Large Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wristwatch": {
+    "message": "Wristwatch",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wind_up_clock": {
+    "message": "Wind-up Clock",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "metronome": {
+    "message": "Metronome",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "wood_block": {
+    "message": "Wood Block",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pulse": {
+    "message": "Pulse",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Noise",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Brown Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Pink Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "White Noise",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "설정이 저장되었습니다",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "설정 저장 에러: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
+  }
+}
