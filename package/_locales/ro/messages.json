@@ -376,7 +376,7 @@
     "description": "Separator for fractional numbers (e.g. three-and-a-half: 3.5)."
   },
   "thousands_separator": {
-    "message": " ",
+    "message": ".",
     "description": "Group separator for large numbers (e.g. two thousand: 2,000)."
   },
   "heatmap_date_format": {
@@ -586,7 +586,7 @@
     "description": "Save as CSV description. Shown on the settings-history page."
   },
   "end_iso_8601": {
-    "message": "Sfârșit(ISO 8601)",
+    "message": "Sfârșit (ISO 8601)",
     "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
   },
   "end_date": {
@@ -724,7 +724,7 @@
     "description": "Version section header. Shown on the settings-feedback page."
   },
   "disclaimer": {
-    "message": "Pomodoro® și Pomodoro Technique® sunt mărci comerciale ale lui Francesco Cirillo. Marinara nu este afiliată sau asociată cu sau aprobată de Pomodoro®, The Pomodoro Technique® sau Francesco Cirillo.",
+    "message": "Pomodoro® și Pomodoro Technique® sunt mărci comerciale ale lui Francesco Cirillo. Marinara nu este afiliată, asociată sau aprobată de Pomodoro®, The Pomodoro Technique® sau Francesco Cirillo.",
     "description": "Disclaimer footer text. Shown on the settings-feedback page."
   },
   "and": {
@@ -764,7 +764,7 @@
     }
   },
   "start_focusing_now": {
-    "message": "Începe acum focusul",
+    "message": "începe să te concentrezi acum",
     "description": "Notification button text when break timer expires."
   },
   "take_a_break": {
@@ -892,59 +892,59 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "computer_magic": {
-    "message": "Computer Magic",
+    "message": "Magia Computerului",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "fire_pager": {
-    "message": "Fire Pager",
+    "message": "Alarmă Pager",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "glass_ping": {
-    "message": "Glass Ping",
+    "message": "Bing Sticlă",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "music_box": {
-    "message": "Music Box",
+    "message": "Cutie muzicală",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "pin_drop": {
-    "message": "Pin Drop",
+    "message": "Cui Căzut",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_1": {
-    "message": "Robot Blip 1",
+    "message": "Sunet Robot 1",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "robot_blip_2": {
-    "message": "Robot Blip 2",
+    "message": "Sunet Robot 2",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ship_bell": {
-    "message": "Ship Bell",
+    "message": "Clopot de navă",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "train_horn": {
-    "message": "Train Horn",
+    "message": "Claxon de Tren",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bike_horn": {
-    "message": "Bike Horn",
+    "message": "Claxon de Bicicletă",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "bell_ring": {
-    "message": "Bell Ring",
+    "message": "Sonerie",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "reception_bell": {
-    "message": "Reception Bell",
+    "message": "Clopot de recepție",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "toaster_oven": {
-    "message": "Toaster Oven",
+    "message": "Toaster",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "battle_horn": {
-    "message": "Battle Horn",
+    "message": "Corn de Luptă",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "ding": {
@@ -960,87 +960,87 @@
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "airplane": {
-    "message": "Airplane",
+    "message": "Avion",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_watch": {
-    "message": "Digital Watch",
+    "message": "Ceas Digital",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "analog_alarm_clock": {
-    "message": "Analog Alarm Clock",
+    "message": "Alarmă de Ceas Analogic",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "digital_alarm_clock": {
-    "message": "Digital Alarm Clock",
+    "message": "Alarmă de Ceas Digital",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
   "periodic_beat": {
-    "message": "Periodic Beat",
+    "message": "Bătaie Periodică",
     "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
   },
   "stopwatch": {
-    "message": "Stopwatch",
+    "message": "Cronometru",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "clock": {
-    "message": "Clock",
+    "message": "Ceas",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wall_clock": {
-    "message": "Wall Clock",
+    "message": "Ceas de perete",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "desk_clock": {
-    "message": "Desk Clock",
+    "message": "Ceas de birou",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "antique_clock": {
-    "message": "Antique Clock",
+    "message": "Ceas antic",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "small_clock": {
-    "message": "\nSmall Clock",
+    "message": "Ceas mic",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "large_clock": {
-    "message": "Large Clock",
+    "message": "Ceas mare",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wristwatch": {
-    "message": "Wristwatch",
+    "message": "Ceas de mână",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wind_up_clock": {
-    "message": "\nWind-up Clock",
+    "message": "Ceas cu cheiță",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "metronome": {
-    "message": "Metronome",
+    "message": "Metronom",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "wood_block": {
-    "message": "\nWood Block",
+    "message": "Bloc de Lemn",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pulse": {
-    "message": "Pulse",
+    "message": "Puls",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "noise": {
-    "message": "Noise",
+    "message": "Zgomot",
     "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
   },
   "brown_noise": {
-    "message": "Brown Noise",
+    "message": "Zgomot Maro",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "pink_noise": {
-    "message": "Pink Noise",
+    "message": "Zgomot Roz",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "white_noise": {
-    "message": "White Noise",
+    "message": "Zgomot Alb",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
   },
   "settings_saved": {
@@ -1048,7 +1048,7 @@
     "description": "Settings Saved notification shown on settings page when settings are saved."
   },
   "error_saving_settings": {
-    "message": "Eroare salvând setările: $message$",
+    "message": "Eroare la salvarea setărilor: $message$",
     "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
     "placeholders": {
       "message": {
