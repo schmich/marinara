@@ -161,6 +161,46 @@
     "message": "Be garso",
     "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
   },
+  "countdown_timer": {
+    "message": "Laikmatis",
+    "description": "Countdown timer label. Shown on the settings page."
+  },
+  "width": {
+    "message": "Plotis",
+    "description": "Width input placeholder. Refers to countdown window width in pixels."
+  },
+  "height": {
+    "message": "Aukštis",
+    "description": "Height input placeholder. Refers to countdown window height in pixels."
+  },
+  "do_not_show": {
+    "message": "Slėpti",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_tab": {
+    "message": "Rodyti naujame skirtuke",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "show_in_window": {
+    "message": "Rodyti naujame lange",
+    "description": "Countdown timer visibility option. Shown on the settings page."
+  },
+  "fullscreen": {
+    "message": "Viso ekrano",
+    "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+  },
+  "custom": {
+    "message": "Pasirinktinis",
+    "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+  },
+  "countdown_autoclose_tab": {
+    "message": "Uždaryti skirtuką pasibaigus sesijai",
+    "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+  },
+  "countdown_autoclose_window": {
+    "message": "Uždaryti langą pasibaigus sesijai",
+    "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
+  },
   "when_complete": {
     "message": "Įvykdžius užduotį:",
     "description": "Section label for events to fire when timer completes. Shown on the settings page."
@@ -533,13 +573,61 @@
       }
     }
   },
-  "import": {
-    "message": "Importuoti istoriją",
-    "description": "Import History button. Shown on the settings-history page."
+  "your_history": {
+    "message": "Jūsų istorija",
+    "description": "Your History section header. Shown on the settings-history page."
+  },
+  "save_as_csv": {
+    "message": "Išsaugoti CSV formatu",
+    "description": "Save as CSV button (.csv, comma-separated value file format). Shown on the settings-history page."
+  },
+  "save_as_csv_description": {
+    "message": "Naudokite Excel, Google Sheets ar kitą skaičiuoklės programinę įrangą.",
+    "description": "Save as CSV description. Shown on the settings-history page."
+  },
+  "end_iso_8601": {
+    "message": "Pabaiga (ISO 8601)",
+    "description": "CSV column header for the Pomodoro's end time formatted to the ISO 8601 standard. See https://en.wikipedia.org/wiki/ISO_8601."
+  },
+  "end_date": {
+    "message": "Pabaigos data",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "Pabaigos laikas (24 valandos)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "Pabaigos laiko žyma (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "end_timezone": {
+    "message": "Pabaigos laiko juosta (UTC poslinkio minutės)",
+    "description": "CSV column header for the Pomodoro's end timezone defined as the GMT/UTC (Coordinated Universal Time) offset, measured in minutes."
+  },
+  "duration_seconds": {
+    "message": "Trukmė (sekundės)",
+    "description": "CSV column header for the Pomodoro's duration in seconds."
   },
   "export": {
     "message": "Eksportuoti istoriją",
-    "description": "Export History button. Shown on the settings-history page."
+    "description": "Export (history) button. Shown on the settings-history page."
+  },
+  "export_description": {
+    "message": "Atsarginei kopijai sukurti arba importuoti į kitą kompiuterį.",
+    "description": "Export history description. Shown on the settings-history page."
+  },
+  "import": {
+    "message": "Importuoti istoriją",
+    "description": "Import (history) button. Shown on the settings-history page."
+  },
+  "import_description": {
+    "message": "Importuoti ir sujungti Pomodoro istoriją iš eksportuoto failo.",
+    "description": "Import history description. Shown on the settings-history page."
+  },
+  "import_confirmation": {
+    "message": "Importuota istorija bus sujungta su esama istorija. Tęsti?",
+    "description": "Import history confirmation prompt. Shown on the settings-history page."
   },
   "import_failed": {
     "message": "Nepavyko importuoti: $error$",
@@ -550,6 +638,18 @@
         "example": "Missing Pomodoro data."
       }
     }
+  },
+  "clear_history": {
+    "message": "Išvalyti istoriją",
+    "description": "Clear History button. Shown on the settings-history page."
+  },
+  "clear_history_description": {
+    "message": "Visam laikui ištrinkite visą Pomodoro istoriją.",
+    "description": "Clear history description. Shown on the settings-history page."
+  },
+  "clear_history_confirmation": {
+    "message": "Visam laikui ištrinti visą Pomodoro istoriją?",
+    "description": "Clear history confirmation prompt. Shown when user clicks Clear History on the settings-history page."
   },
   "group_pomodoros_minute_buckets": {
     "message": "Sugrupuoti užduotis pagal $count$ minutes",
@@ -733,13 +833,25 @@
     "message": "Trūksta duomenų.",
     "description": "Error when imported history has no Pomodoro information."
   },
+  "invalid_pomodoro_data": {
+    "message": "Neteisingi Pomodoro duomenys.",
+    "description": "Error when imported history has invalid Pomodoro information."
+  },
   "missing_duration_data": {
     "message": "Trūksta trukmės duomenų.",
     "description": "Error when imported history has no Pomodoro duration information."
   },
+  "invalid_duration_data": {
+    "message": "Neteisingi trukmės duomenys.",
+    "description": "Error when imported history has invalid duration information."
+  },
   "missing_timezone_data": {
     "message": "Trūksta laiko zonos duomenų.",
     "description": "Error when imported history has no Pomodoro timezone information."
+  },
+  "invalid_timezone_data": {
+    "message": "Neteisingi laiko juostos duomenys.",
+    "description": "Error when imported history has invalid timezone information."
   },
   "mismatched_pomodoro_duration_data": {
     "message": "Duomenų neatitikimas",
@@ -749,6 +861,16 @@
     "message": "Duomenų neatitikimas",
     "description": "Error when imported history has mismatched Pomodoro/timezone data."
   },
+  "pomodoros_imported": {
+    "message": "$pomodoros$ importuota.",
+    "description": "Count of Pomodoros imported. Shown in prompt after importing/merging Pomodoro history.",
+    "placeholders": {
+      "pomodoros": {
+        "content": "$1",
+        "example": "3 Pomodoros"
+      }
+    }
+  },
   "help_translate": {
     "message": "Padėti su vertimais",
     "description": "Feedback link. Shown on settings-feedback page."
@@ -756,6 +878,10 @@
   "expire_title": {
     "message": "Laikas baigėsi",
     "description": "Expiration page title. Shown on the expiration page when a focus/break session completes."
+  },
+  "countdown": {
+    "message": "Laikmatis",
+    "description": "Countdown page title. Shown on the countdown timer page."
   },
   "gong_1": {
     "message": "Gonagas 1",
@@ -849,6 +975,10 @@
     "message": "Skaitmeninis laikrodis.",
     "description": "Sound name. Shown in the audio notification dropdown in settings."
   },
+  "periodic_beat": {
+    "message": "Periodinis ritmas",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
   "stopwatch": {
     "message": "Laikmatis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
@@ -896,5 +1026,35 @@
   "pulse": {
     "message": "Pulsuojantis",
     "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "noise": {
+    "message": "Triukšmas",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "brown_noise": {
+    "message": "Rudasis triukšmas",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "pink_noise": {
+    "message": "Rožinis triukšmas",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "white_noise": {
+    "message": "Baltasis triukšmas",
+    "description": "Timer sound name. Shown in the timer sound dropdown in settings."
+  },
+  "settings_saved": {
+    "message": "Nustatymai išsaugoti",
+    "description": "Settings Saved notification shown on settings page when settings are saved."
+  },
+  "error_saving_settings": {
+    "message": "Klaida išsaugant nustatymus: $message$",
+    "description": "Shown to the user in an alert when settings can't be saved due to user input error or unexpected error.",
+    "placeholders": {
+      "message": {
+        "content": "$1",
+        "example": "Duration must be a positive number."
+      }
+    }
   }
 }
