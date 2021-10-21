@@ -63,7 +63,7 @@ button.nav {
   display: none;
   align-items: center;
   &:hover {
-    color: #a00;
+    color: #0487db;
   }
   span {
     display: none;

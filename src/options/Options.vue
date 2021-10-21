@@ -70,7 +70,7 @@ input.duration {
   width: 50px;
 }
 .header {
-  background: linear-gradient(to bottom, #d00, #b00);
+  background: linear-gradient(to bottom, #0487db, #025d97);
   padding: 10px 0 0 0;
   box-shadow: 0 3px 10px #999;
   img {
@@ -101,12 +101,12 @@ input.duration {
     transition: background-color 0.2s ease;
     &:hover {
       color: #fff;
-      background: #900;
+      background: #064c78;
     }
     &.router-link-exact-active {
       opacity: 1;
       color: #fff;
-      background: #800;
+      background: #064c78;
     }
   }
 }
@@ -131,7 +131,7 @@ input.duration {
   margin: 0 0 15px 0;
   padding: 0 0 5px 0;
   font-weight: 500;
-  color: #a00;
+  color: #0487db;
   border-bottom: 1px solid #aaa;
 }
 fieldset {

@@ -229,7 +229,7 @@ input[type="number"] {
 .preview {
   margin-left: 10px;
   cursor: default;
-  color: #a00;
+  color: #0487db;
   img {
     vertical-align: middle;
     margin-left: 10px;

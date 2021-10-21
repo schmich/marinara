@@ -48,13 +48,13 @@
   }
 }
 .feedback h1 {
-  color: #a00;
+  color: #0487db;
   font-weight: normal;
   margin: 0;
   padding: 0;
 }
 .feedback h2 {
-  color: #a00;
+  color: #0487db;
   font-size: 16px;
   margin: 0 0 5px 0;
   padding: 0;
@@ -63,7 +63,7 @@
   color: #555;
   text-decoration: underline;
   &:hover {
-    color: #a00;
+    color: #0487db;
   }
 }
 .feedback .disclaimer {
@@ -96,7 +96,7 @@
     color: #444;
     text-decoration: none;
     &:hover {
-      color: #a00;
+      color: #0487db;
       text-decoration: underline;
     }
   }

@@ -102,8 +102,8 @@
         text-decoration: none;
         display: inline-block;
         &:hover {
-          color: #a00;
-          border: 1px solid #a00;
+          color: #0487db;
+          border: 1px solid #0487db;
           text-decoration: none;
         }
       }
@@ -157,7 +157,7 @@
   flex-flow: column;
 }
 .stats .stat .value {
-  color: #a00;
+  color: #0487db;
   font-size: 30px;
   margin-bottom: 5px;
 }

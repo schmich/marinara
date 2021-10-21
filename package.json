@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "core-js": "^3.18.3",
     "d3": "^5.0.0",
     "events": "^3.0.0",
     "moment": "^2.24.0",

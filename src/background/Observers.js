@@ -48,7 +48,7 @@ class BadgeObserver
       tooltip = M.browser_action_tooltip(title, tooltip);
     }
 
-    let color = phase === Phase.Focus ? '#bb0000' : '#11aa11';
+    let color = phase === Phase.Focus ? '#2186c4' : '#11aa11';
     chrome.browserAction.setTitle({ title: tooltip });
     chrome.browserAction.setBadgeText({ text });
     chrome.browserAction.setBadgeBackgroundColor({ color });

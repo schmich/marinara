@@ -119,8 +119,8 @@ body {
   outline: 0 !important;
   border-radius: 35px;
   &:hover {
-    color: #a00;
-    border: 1px solid #a00;
+    color: #0487db;
+    border: 1px solid #0487db;
     text-decoration: none;
   }
 }
