@@ -85,7 +85,7 @@ body {
     }
   }
   &.focus {
-    background: #d00;
+    background: #0090ea;
     box-shadow: 0 15px 8px -10px #bb000055;
     color: #fff;
     &:hover {
@@ -127,7 +127,7 @@ body {
 .pomodoros i {
   font-size: 35px;
   margin-top: 7px;
-  color: #d00 !important;
+  color: #0090ea !important;
   text-shadow: 0 2px 2px rgba(200, 0, 0, 0.3);
 }
 .pomodoros:empty ~ * {

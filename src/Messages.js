@@ -352,7 +352,7 @@ class Messages
     return chrome.i18n.getMessage('march_short', []);
   }
   get marinara_pomodoro_assistant() {
-    return chrome.i18n.getMessage('marinara_pomodoro_assistant', []);
+    return "Marinara: Pomodoro Assistant";
   }
   get may() {
     return chrome.i18n.getMessage('may', []);
