@@ -22,7 +22,7 @@
     "@vue/test-utils": "^1.0.3",
     "chai": "^4.2.0",
     "filemanager-webpack-plugin": "^2.0.5",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^9.0.3",
     "vue-template-compiler": "^2.6.11",
     "webpack-touch": "^1.0.3"
