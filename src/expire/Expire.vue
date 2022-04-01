@@ -85,7 +85,7 @@ body {
     }
   }
   &.focus {
-    background: #0090ea;
+    background: #32b86a;
     box-shadow: 0 15px 8px -10px #bb000055;
     color: #fff;
     &:hover {
@@ -119,15 +119,15 @@ body {
   outline: 0 !important;
   border-radius: 35px;
   &:hover {
-    color: #0487db;
-    border: 1px solid #0487db;
+    color: #00aa3b;
+    border: 1px solid #31ae64;
     text-decoration: none;
   }
 }
 .pomodoros i {
   font-size: 35px;
   margin-top: 7px;
-  color: #0090ea !important;
+  color: #32b86a !important;
   text-shadow: 0 2px 2px rgba(200, 0, 0, 0.3);
 }
 .pomodoros:empty ~ * {
