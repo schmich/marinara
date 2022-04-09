@@ -10,7 +10,7 @@
   "dependencies": {
     "d3": "^5.0.0",
     "events": "^3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "tippy.js": "^3.2.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
