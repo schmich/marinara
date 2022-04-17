@@ -1028,5 +1028,29 @@
         "example": "Duration must be a positive number."
       }
     }
+  },
+  "periodic_beat": {
+    "message": "Batidas periodicas",
+    "description": "Timer sound group name. Shown in the timer sound dropdown in settings."
+  },
+  "end_date": {
+    "message": "Data final",
+    "description": "CSV column header for the Pomodoro's end date in YYYY-MM-DD format."
+  },
+  "end_time": {
+    "message": "Data final (24 horas)",
+    "description": "CSV column header for the Pomodoro's end time formatted as time on a 24-hour clock."
+  },
+  "end_timestamp": {
+    "message": "Fim em timestamp (Unix)",
+    "description": "CSV column header for the Pomodoro's end time formatted as a Unix timestamp. See https://en.wikipedia.org/wiki/Unix_time."
+  },
+  "time_period_am": {
+    "message": "am",
+    "description": "12-hour clock AM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
+  },
+  "time_period_pm": {
+    "message": "pm",
+    "description": "12-hour clock PM specifier. Can be empty if 24-hour clock is used. See format options at https://github.com/d3/d3-time-format/blob/master/README.md#locale_format."
   }
 }
