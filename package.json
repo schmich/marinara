@@ -18,7 +18,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.3",
     "@vue/cli-plugin-unit-mocha": "^4.5.3",
-    "@vue/cli-service": "^4.5.3",
+    "@vue/cli-service": "^5.0.8",
     "@vue/test-utils": "^1.0.3",
     "chai": "^4.2.0",
     "filemanager-webpack-plugin": "^2.0.5",
