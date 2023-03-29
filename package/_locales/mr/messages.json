@@ -1,0 +1,108 @@
+{
+  "app_name": {
+    "message": "मरीनारा: पोमोडोरो® सहाय्यक ",
+    "description": "The name of the application. Shown in the web store."
+  },
+  "app_name_short": {
+    "message": "मरीनारा",
+    "description": "The short name of the application. Shown at the top of the dropdown menu."
+  },
+  "app_desc": {
+    "message": "पोमोडोरो® वेळ व्यवस्थापन सहाय्यक",
+    "description": "The short description of the application. Shown in the web store."
+  },
+  "chrome_web_store_description": {
+    "message": "लहान आणि दीर्घ ब्रेक\nटूलबार चिन्ह  काउंटडाउन टाइमरसह \nपोमोडोरो इतिहास आणि आकडेवारीचा मागोवा घ्या \nकॉन्फिगर करण्यायोग्य दीर्घ ब्रेक अंतराल \nकॉन्फिगर करण्यायोग्य टाइमर कालावधी\nडेस्कटॉप आणि टॅब सूचना \n20 पेक्षा जास्त आवाजांसह ऑडिओ सूचना\n टिकींग टायमर आवाज\nशेड्यूल केलेले ऑटोमॅटिक टाइमर\nओपन सोर्स सॉफ्टवेअर \n\n\n\n",
+    "description": "Detailed extension description shown to users in the Chrome Web Store."
+  },
+  "pomodoro_assistant": {
+    "message": "पोमोडोरो असिस्टंट",
+    "description": "Marinara title tagline. Shown on the settings-feedback page."
+  },
+  "start_pomodoro_cycle": {
+    "message": " स्टार्ट पोमोडोरो सायकल",
+    "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_pomodoro_cycle": {
+    "message": "सुधारक सायकल रीमॉडेलिंग",
+    "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
+  },
+  "restart_timer": {
+    "message": "फोकस सुरू करा",
+    "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+  },
+  "start_focusing": {
+    "message": " शॉर्ट ब्रेक सुरू करा ",
+    "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_short_break": {
+    "message": "स्टार्ट ब्रेक सुरू करा ",
+    "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "start_long_break": {
+    "message": "लाँग ब्रेक   ",
+    "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+  },
+  "stop_timer": {
+    "message": "स्टॉप टाइमर",
+    "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+  },
+  "pause_timer": {
+    "message": "पॉज टायमर",
+    "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+  },
+  "resume_timer": {
+    "message": "रिझ्युम करा",
+    "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+  },
+  "pomodoro_history": {
+    "message": " पोमोडोरो हिस्ट्री ",
+    "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+  },
+  "timer_paused": {
+    "message": "टाइमर पॉझ ",
+    "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+  },
+  "pomodoro_count_zero": {
+    "message": "केलेले नाही पोमोडोरोस ",
+    "description": "Label for zero Pomodoros. Shown on the expiration page."
+  },
+  "pomodoro_count_one": {
+    "message": "1 पोमोडोरो",
+    "description": "Label for a single Pomodoro. Shown on the expiration page."
+  },
+  "pomodoro_count_many": {
+    "message": "$count$ पोमोडोरोस",
+    "description": "Label for many Pomodoros. Shown on the expiration page.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "marinara_pomodoro_assistant": {
+    "message": "मरीनारा: पोमोडोरो सहाय्यक",
+    "description": "Settings page title."
+  },
+  "settings": {
+    "message": " सेटिंग्ज",
+    "description": "Settings tab. Shown on the settings page."
+  },
+  "history": {
+    "message": " इतिहास",
+    "description": "History tab. Shown on the settings page."
+  },
+  "feedback": {
+    "message": " फीडबॅक",
+    "description": "Feedback tab and section header. Shown on the settings page."
+  },
+  "short_break": {
+    "message": " शॉर्ट ब्रेक",
+    "description": "Short Break section header. Shown on the settings page."
+  },
+  "long_break": {
+    "message": "लाँग ब्रेक ",
+    "description": "Long Break section header. Shown on the settings page."
+  }
+}
