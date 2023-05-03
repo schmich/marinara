@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "d3": "^5.0.0",
+    "d3": "^7.6.1",
     "events": "^3.0.0",
     "moment": "^2.29.2",
     "tippy.js": "^3.2.0",
