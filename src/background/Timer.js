@@ -16,11 +16,10 @@ class Timer extends EventEmitter
     this.duration = duration;
     this.tick = tick;
 
-    this.tickInterval = null;
-    this.expireTimeout = null;
-
     this.checkpointStartAt = null;
     this.checkpointElapsed = 0;
+
+    this.countdownInterval = null;
   }
 
   observe(observer) {
@@ -72,11 +71,11 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireTimeout(this.duration);
-    this.setTickInterval(this.tick);
+    this.checkpointStartAt = Date.now();
+
+    this.countdown();
 
     this.state = TimerState.Running;
-    this.checkpointStartAt = Date.now();
 
     this.emit('start', this.status);
   }
@@ -86,11 +85,9 @@ class Timer extends EventEmitter
       return;
     }
 
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
+    clearInterval(this.countdownInterval);
+    this.countdownInterval = null;
 
-    this.tickInterval = null;
-    this.expireTimeout = null;
     this.checkpointStartAt = null;
     this.checkpointElapsed = 0;
 
@@ -104,8 +101,8 @@ class Timer extends EventEmitter
       return;
     }
 
-    clearInterval(this.tickInterval);
-    clearTimeout(this.expireTimeout);
+    clearInterval(this.countdownInterval);
+    this.countdownInterval = null;
 
     let periodElapsed = (Date.now() - this.checkpointStartAt) / 1000;
     this.checkpointElapsed += periodElapsed;
@@ -120,11 +117,11 @@ class Timer extends EventEmitter
       return;
     }
 
-    this.setExpireTimeout(this.remaining);
-    this.setTickInterval(this.tick);
+    this.checkpointStartAt = Date.now();
+
+    this.countdown();
 
     this.state = TimerState.Running;
-    this.checkpointStartAt = Date.now();
 
     this.emit('resume', this.status);
   }
@@ -134,26 +131,36 @@ class Timer extends EventEmitter
     this.start();
   }
 
-  setExpireTimeout(seconds) {
-    this.expireTimeout = setTimeout(() => {
-      clearInterval(this.tickInterval);
-      clearTimeout(this.expireTimeout);
+  expire() {
+    clearInterval(this.countdownInterval);
+    this.countdownInterval = null;
 
-      this.tickInterval = null;
-      this.expireTimeout = null;
-      this.checkpointStartAt = Date.now();
-      this.checkpointElapsed = this.duration;
+    this.checkpointStartAt = null;
+    this.checkpointElapsed = 0;
 
-      this.state = TimerState.Stopped;
+    this.state = TimerState.Stopped;
 
-      this.emit('expire', this.status);
-    }, seconds * 1000);
+    this.emit('expire', this.status);
   }
 
-  setTickInterval(seconds) {
-    this.tickInterval = setInterval(() => {
-      this.emit('tick', this.status);
-    }, seconds * 1000);
+  countdown() {
+    const expireAt = this.checkpointStartAt + this.remaining * 1000;
+    let nextTickAt = this.checkpointStartAt + this.getRemainingTimeBeforeNextTick() * 1000;
+
+    this.countdownInterval = setInterval(() => {
+      const now = Date.now();
+
+      if (now >= expireAt) {
+        this.expire();
+      } else if (now >= nextTickAt) {
+        this.emit('tick', this.status);
+        nextTickAt = now + this.getRemainingTimeBeforeNextTick() * 1000;
+      }
+    }, 1000);
+  }
+
+  getRemainingTimeBeforeNextTick() {
+    return this.tick - ((this.elapsed + this.tick) % this.tick);
   }
 }
 
