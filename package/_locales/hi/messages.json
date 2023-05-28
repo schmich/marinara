@@ -1,0 +1,288 @@
+{
+    "app_name": {
+      "message": "मारिनारा: पोमोडोरो® सहायक",
+      "description": "The name of the application. Shown in the web store."
+    },
+    "app_name_short": {
+      "message": "मारिनारा",
+      "description": "The short name of the application. Shown at the top of the dropdown menu."
+    },
+    "app_desc": {
+      "message": "पोमोडोरो® समय प्रबंधन सहायक.",
+      "description": "The short description of the application. Shown in the web store."
+    },
+    "chrome_web_store_description": {
+      "message": "• छोटा और लंबा ब्रेक\n• टूलबार आइकन के साथ काउंटडाउन टाइमर\n• ट्रैक करें पोमोडोरो इतिहास और आँकड़े\n• विन्यास करने योग्य लंबे ब्रेक अंतराल\n• विन्यास करने योग्य टाइमर अवधि\n• डेस्कटॉप और टैब सूचनाएं\n• २० से अधिक ध्वनियों के साथ ऑडियो सूचनाएं\n• टिक-टिक टाइमर आवाज़ के साथ\n• अनुसूचित स्वचालित टाइमर\n• ओपन सोर्स सॉफ्टवेयर",
+      "description": "Detailed extension description shown to users in the Chrome Web Store."
+    },
+    "pomodoro_assistant": {
+      "message": "पोमोडोरो सहायक",
+      "description": "Marinara title tagline. Shown on the settings-feedback page."
+    },
+    "start_pomodoro_cycle": {
+      "message": "पोमोडोरो साइकिल शुरू करें",
+      "description": "Menu entry to start a new Pomodoro cycle. Shown in the dropdown menu."
+    },
+    "restart_pomodoro_cycle": {
+      "message": "पोमोडोरो साइकिल को फिर से शुरू करें",
+      "description": "Menu entry to restart the current Pomodoro cycle. Shown in the dropdown menu."
+    },
+    "restart_timer": {
+      "message": "टाइमर को पुनरारंभ करें",
+      "description": "Menu entry to restart the current timer. Shown in the dropdown menu."
+    },
+    "start_focusing": {
+      "message": "फोकस करना शुरू करें",
+      "description": "Start a focus session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+    },
+    "start_short_break": {
+      "message": "छोटा विराम प्रारंभ करें",
+      "description": "Start a short break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+    },
+    "start_break": {
+      "message": "ब्रेक शुरू करें",
+      "description": "Start a break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+    },
+    "start_long_break": {
+      "message": "लंबा ब्रेक शुरू करें",
+      "description": "Start a long break session. Shown in the dropdown menu, timer expiration page, and in browser notifications."
+    },
+    "stop_timer": {
+      "message": "टाइमर बंद करो",
+      "description": "Menu entry to stop the current timer. Shown in the dropdown menu."
+    },
+    "pause_timer": {
+      "message": "टाइमर रोकें",
+      "description": "Menu entry to pause the current timer. Shown in the dropdown menu."
+    },
+    "resume_timer": {
+      "message": "टाइमर शुरू करें",
+      "description": "Menu entry to resume the paused timer. Shown in the dropdown menu."
+    },
+    "pomodoro_history": {
+      "message": "पोमोडोरो इतिहास",
+      "description": "Menu entry to view Pomodoro history/stats. Shown in the dropdown menu."
+    },
+    "timer_paused": {
+      "message": "टाइमर रोका गया",
+      "description": "Tooltip to indicate the current timer is paused. Shown when hovering over the toolbar icon."
+    },
+    "pomodoro_count_zero": {
+      "message": "कोई पोमोडोरोस नहीं",
+      "description": "Label for zero Pomodoros. Shown on the expiration page."
+    },
+    "pomodoro_count_one": {
+      "message": "१ पोमोडोरो",
+      "description": "Label for a single Pomodoro. Shown on the expiration page."
+    },
+    "pomodoro_count_many": {
+      "message": "$count$ पोमोडोरो",
+      "description": "Label for many Pomodoros. Shown on the expiration page.",
+      "placeholders": {
+        "count": {
+          "content": "$1",
+          "example": "10"
+        }
+      }
+    },
+    "marinara_pomodoro_assistant": {
+      "message": "मारिनारा: पोमोडोरो सहायक",
+      "description": "Settings page title."
+    },
+    "settings": {
+      "message": "सेटिंग",
+      "description": "Settings tab. Shown on the settings page."
+    },
+    "history": {
+      "message": "इतिहास",
+      "description": "History tab. Shown on the settings page."
+    },
+    "feedback": {
+      "message": "प्रतिक्रिया",
+      "description": "Feedback tab and section header. Shown on the settings page."
+    },
+    "focus": {
+      "message": "ध्यान",
+      "description": "Focus section header. Shown on the settings page."
+    },
+    "short_break": {
+      "message": "छोटा ब्रेक",
+      "description": "Short Break section header. Shown on the settings page."
+    },
+    "long_break": {
+      "message": "लंबा ब्रेक",
+      "description": "Long Break section header. Shown on the settings page."
+    },
+    "autostart_title": {
+      "message": "अपने आप शुरू करें",
+      "description": "Autostart section header. Shown on the settings page."
+    },
+    "autostart_description": {
+      "message": "निर्दिष्ट समय पर अपने आप शुरू होने के लिए पोमोडोरो को शेड्यूल करें.",
+      "description": "Autostart setting description. Shown on the settings page."
+    },
+    "autostart_notification_title": {
+      "message": "पोमोडोरो को अपने आप शुरू करें",
+      "description": "Autostart notification title. Shown in browser notifications when the autostart Pomodoro starts."
+    },
+    "autostart_notification_message": {
+      "message": "यह शेड्यूल किया गया पोमोडोरो अपने आप शुरू हो गया हे|",
+      "description": "Autostart notification message. Shown in browser notifications when the autostart Pomodoro starts."
+    },
+    "time": {
+      "message": "समय:",
+      "description": "Time input label. Shown on the settings page."
+    },
+    "duration": {
+      "message": "लंबाई:",
+      "description": "Timer duration label. Shown on the settings page."
+    },
+    "minutes": {
+      "message": "मिनट",
+      "description": "Minutes label for timer duration. Shown on the settings page."
+    },
+    "timer_sound_label": {
+      "message": "टाइमर की ध्वनि:",
+      "description": "Timer sound label. Shown on the settings page."
+    },
+    "hover_preview": {
+      "message": "पूर्व दर्शन के लिए होवर करें",
+      "description": "Hover to preview note. Shown on the settings page."
+    },
+    "speed_label": {
+      "message": "रफ़्तार:",
+      "description": "Timer sound speed label. Shown on the settings page."
+    },
+    "bpm": {
+      "message": "हर मिनट की धुन",
+      "description": "Beats per minute; speed unit for timer sound. Shown on the settings page."
+    },
+    "none": {
+      "message": "कोई आवाज नहीं",
+      "description": "The 'no sound' option. Represents nothing selected. Shown on the settings page."
+    },
+    "countdown_timer": {
+      "message": "उल्टी गिनती:",
+      "description": "Countdown timer label. Shown on the settings page."
+    },
+    "width": {
+      "message": "चौड़ाई",
+      "description": "Width input placeholder. Refers to countdown window width in pixels."
+    },
+    "height": {
+      "message": "ऊंचाई",
+      "description": "Height input placeholder. Refers to countdown window height in pixels."
+    },
+    "do_not_show": {
+      "message": "नहीं दिखाये",
+      "description": "Countdown timer visibility option. Shown on the settings page."
+    },
+    "show_in_tab": {
+      "message": "एक नए टैब में दिखाएं",
+      "description": "Countdown timer visibility option. Shown on the settings page."
+    },
+    "show_in_window": {
+      "message": "पॉपअप विंडो में दिखाएं",
+      "description": "Countdown timer visibility option. Shown on the settings page."
+    },
+    "fullscreen": {
+      "message": "पूर्ण स्क्रीन",
+      "description": "Countdown timer resolution option for a fullscreen (maximized) countdown timer. Shown on the settings page."
+    },
+    "custom": {
+      "message": "कस्टम",
+      "description": "Countdown timer resolution option. Lets the user specify their own countdown window resolution. Shown on the settings page."
+    },
+    "countdown_autoclose_tab": {
+      "message": "सेशन समाप्त होने पर टैब बंद करें",
+      "description": "Countdown timer option. Specifies if the countdown tab should close when the session ends. Shown on the settings page."
+    },
+    "countdown_autoclose_window": {
+      "message": "सेशन समाप्त होने पर विंडो बंद करें",
+      "description": "Countdown timer option. Specifies if the countdown window should close when the session ends. Shown on the settings page."
+    },
+    "when_complete": {
+      "message": "जब पूरा हो जाए:",
+      "description": "Section label for events to fire when timer completes. Shown on the settings page."
+    },
+    "show_desktop_notification": {
+      "message": "डेस्कटॉप अधिसूचना दिखाएं",
+      "description": "Desktop notification option. Shown on the settings page."
+    },
+    "show_new_tab_notification": {
+      "message": "नया टैब अधिसूचना दिखाएं",
+      "description": "New tab notification option. Shown on the settings page."
+    },
+    "play_audio_notification": {
+      "message": "आवाज़ बजाएं:",
+      "description": "Audio notification label. Shown on the settings page."
+    },
+    "take_a_long_break_setting": {
+      "message": "लंबा ब्रेक लें:",
+      "description": "Long break settings label. Shown on the settings page."
+    },
+    "never": {
+      "message": "कभी नहीँ",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_2nd_break": {
+      "message": "हर २ वां ब्रेक (एकांतर)",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_3rd_break": {
+      "message": "हर ३ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_4th_break": {
+      "message": "हर ४ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_5th_break": {
+      "message": "हर ५ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_6th_break": {
+      "message": "हर ६ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_7th_break": {
+      "message": "हर ७ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_8th_break": {
+      "message": "हर ८ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_9th_break": {
+      "message": "हर ९ वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "every_10th_break": {
+      "message": "हर १० वां ब्रेक",
+      "description": "Long break option. Shown in the long break dropdown on the settings page."
+    },
+    "tone": {
+      "message": "सुर",
+      "description": "Sound name. Shown in the audio notification dropdown in settings."
+    },
+    "electronic_chime": {
+      "message": "इलेक्ट्रॉनिक झंकार",
+      "description": "Sound name. Shown in the audio notification dropdown in settings."
+    },
+    "today": {
+      "message": "आज",
+      "description": "Pomodoro stats label. Shown on the settings-history page."
+    },
+    "this_week": {
+      "message": "इस सप्ताह",
+      "description": "Pomodoro stats label. Shown on the settings-history page."
+    },
+    "this_month": {
+      "message": "इस महीने",
+      "description": "Pomodoro stats label. Shown on the settings-history page."
+    },
+    "total": {
+      "message": "कुल",
+      "description": "Pomodoro stats label. Shown on the settings-history page."
+    }
+  }
